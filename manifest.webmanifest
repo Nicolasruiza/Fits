@@ -1,0 +1,13 @@
+{
+  "name": "Fits",
+  "short_name": "Fits",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f3f2",
+  "theme_color": "#1f2428",
+  "description": "Outfit inspiration, wardrobe coverage and weather-aware suggestions.",
+  "icons": [
+    {"src":"apple-touch-icon.png","sizes":"180x180","type":"image/png"}
+  ]
+}
