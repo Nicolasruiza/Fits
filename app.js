@@ -3,22 +3,109 @@ const defaults=Object.fromEntries(DATA.pieces.map(p=>[p.id,p.status]));
 let wardrobe=JSON.parse(localStorage.getItem('fitsWardrobe')||'null')||defaults;
 let customPieces=JSON.parse(localStorage.getItem('fitsCustomPieces')||'[]');
 let wearHistory=JSON.parse(localStorage.getItem('fitsWearHistory')||'{}');
-const piece=id=>DATA.pieces.find(p=>p.id===id)||customPieces.find(p=>p.id===id),look=id=>DATA.looks.find(l=>l.id===id),family=id=>DATA.families.find(f=>f.id===id),missingFor=l=>l.pieces.filter(id=>wardrobe[id]!=='owned'),familyLooks=f=>f.looks.map(look).filter(Boolean),readyVariants=f=>familyLooks(f).filter(l=>missingFor(l).length===0);
-function save(){localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));localStorage.setItem('fitsCustomPieces',JSON.stringify(customPieces));localStorage.setItem('fitsWearHistory',JSON.stringify(wearHistory));renderCurrent()}
+const piece=id=>DATA.pieces.find(p=>p.id===id)||customPieces.find(p=>p.id===id);
+const look=id=>DATA.looks.find(l=>l.id===id);
+const family=id=>DATA.families.find(f=>f.id===id);
+const missingFor=l=>l.pieces.filter(id=>wardrobe[id]!=='owned');
+const familyLooks=f=>f.looks.map(look).filter(Boolean);
+const readyVariants=f=>familyLooks(f).filter(l=>missingFor(l).length===0);
+
+function save(){
+  localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));
+  localStorage.setItem('fitsCustomPieces',JSON.stringify(customPieces));
+  localStorage.setItem('fitsWearHistory',JSON.stringify(wearHistory));
+  renderCurrent();
+}
+
 function nav(a){return `<nav class="nav"><a href="index.html" class="${a==='looks'?'active':''}"><b>▦</b>Looks</a><a href="wardrobe.html" class="${a==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="unlock.html" class="${a==='unlock'?'active':''}"><b>↗</b>Unlock</a></nav>`}
 function top(t,s,r=''){return `<header class="topbar"><div class="brandrow"><div class="brand">${t}</div><div class="kicker">${r}</div></div><div class="subtitle">${s}</div></header>`}
 function meter(n){return `<div class="meter">${[0,1,2,3,4].map(i=>`<span class="dot ${i<n?'on':''}"></span>`).join('')}</div>`}
-function familyCard(f){const vs=familyLooks(f),h=look(f.hero)||vs[0],ready=readyVariants(f).length,b=[...new Set(vs.flatMap(v=>v.badges))],formal=Math.round(vs.reduce((s,v)=>s+v.formal,0)/vs.length);return `<a class="look-card family-card" href="detail.html?family=${f.id}"><div class="look-image family-image">${vs.length>1?`<div class="variant-stack">${vs.slice(1,3).map((v,i)=>`<img class="variant-peek peek-${i+1}" src="${v.image}">`).join('')}</div>`:''}<img class="hero-img" src="${h.image}"><span class="pill ${ready?'ready':''}">${ready?`${ready}/${vs.length} ready`:'Incomplete'}</span>${vs.length>1?`<span class="variant-count">${vs.length} variants</span>`:''}</div><div class="look-body"><h3>${f.name}</h3>${meter(formal)}<div class="badges">${b.map(x=>`<span class="badge">${x}</span>`).join('')}</div></div></a>`}
-function weatherBlock(){return `<section class="weather-card" id="weatherCard"><div><span class="weather-kicker">TODAY</span><strong id="weatherMain">Weather</strong><small id="weatherSub">Allow location to match outfits to the day.</small></div><button class="weather-btn" onclick="loadWeather()">Use location</button></section>`}
-async function loadWeather(){const card=document.getElementById('weatherCard');if(!navigator.geolocation){card.querySelector('#weatherSub').textContent='Location is not available on this device.';return}card.querySelector('#weatherSub').textContent='Getting local weather…';navigator.geolocation.getCurrentPosition(async pos=>{try{const {latitude,longitude}=pos.coords;const u=`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,precipitation,rain,weather_code&temperature_unit=celsius`;const r=await fetch(u);const d=await r.json();const c=d.current;const rainy=(c.rain||c.precipitation)>0;document.getElementById('weatherMain').textContent=`${Math.round(c.temperature_2m)}°C · ${rainy?'Rain':'Dry'}`;document.getElementById('weatherSub').textContent=rainy?'Rain can change the shoe and outer-layer choice.':'Good day for lighter footwear and layers.';localStorage.setItem('fitsWeather',JSON.stringify({t:c.temperature_2m,rainy,ts:Date.now()}))}catch(e){document.getElementById('weatherSub').textContent='Could not load weather right now.'}},()=>{document.getElementById('weatherSub').textContent='Location permission was not granted.'})}
-function renderLooks(){const ready=DATA.families.filter(f=>readyVariants(f).length).length;document.body.innerHTML=`<div class="app">${top('Fits','Curated outfit families',`${DATA.families.length} families`)}<main>${weatherBlock()}<div class="chips"><button class="chip active">All</button><button class="chip">Office</button><button class="chip">Weekend</button><button class="chip">Dinner</button><button class="chip">Travel</button></div><div class="stats" style="margin-top:13px"><div class="stat"><b>${DATA.families.length}</b><span>style families</span></div><div class="stat"><b>${DATA.looks.length}</b><span>real variants</span></div><div class="stat"><b>${ready}</b><span>wearable now</span></div></div><div class="grid">${DATA.families.map(familyCard).join('')}</div></main>${nav('looks')}</div>`;const w=JSON.parse(localStorage.getItem('fitsWeather')||'null');if(w&&Date.now()-w.ts<3600000){document.getElementById('weatherMain').textContent=`${Math.round(w.t)}°C · ${w.rainy?'Rain':'Dry'}`;document.getElementById('weatherSub').textContent=w.rainy?'Rain can change the shoe and outer-layer choice.':'Good day for lighter footwear and layers.'}}
+
+function weatherFit(f,w){
+  if(!w)return null;
+  const vs=familyLooks(f);
+  const ids=[...new Set(vs.flatMap(v=>v.pieces))];
+  const names=ids.map(id=>(piece(id)?.name||'').toLowerCase()).join(' ');
+  const hasOuter=/blazer|jacket|vest|coat|sweater|cardigan/.test(names);
+  const hasLoafers=/loafer|derbies|dress shoe/.test(names);
+  const hasSneakers=/sneaker/.test(names);
+  const t=Math.round(w.t);
+  if(w.rainy&&hasLoafers&&!hasSneakers)return {level:'caution',label:'Maybe skip',reason:'Rain today — save the dressier shoes if you can.'};
+  if(t>=25&&hasOuter)return {level:'caution',label:'Might feel warm',reason:`${t}°C — the extra layer may feel heavy.`};
+  if(t<=12&&!hasOuter)return {level:'caution',label:'Could feel cool',reason:`${t}°C — you may want an extra layer.`};
+  if(w.rainy&&hasOuter)return {level:'good',label:'Good today',reason:'The extra layer works well with today’s rain.'};
+  if(t>=22&&!hasOuter)return {level:'good',label:'Good today',reason:`${t}°C — lighter pieces make sense.`};
+  return {level:'neutral',label:'Could work',reason:'Weather should not be a major issue for this family.'};
+}
+
+function familyCard(f,w){
+  const vs=familyLooks(f),h=look(f.hero)||vs[0],ready=readyVariants(f).length,b=[...new Set(vs.flatMap(v=>v.badges))],formal=Math.round(vs.reduce((s,v)=>s+v.formal,0)/vs.length),fit=weatherFit(f,w);
+  return `<a class="look-card family-card" href="detail.html?family=${f.id}"><div class="look-image family-image">${vs.length>1?`<div class="variant-stack">${vs.slice(1,3).map((v,i)=>`<img class="variant-peek peek-${i+1}" src="${v.image}">`).join('')}</div>`:''}<img class="hero-img" src="${h.image}"><span class="pill ${ready?'ready':''}">${ready?`${ready}/${vs.length} ready`:'Incomplete'}</span>${vs.length>1?`<span class="variant-count">${vs.length} variants</span>`:''}</div><div class="look-body"><h3>${f.name}</h3>${fit?`<div class="weather-fit ${fit.level}"><strong>${fit.label}</strong><span>${fit.reason}</span></div>`:''}${meter(formal)}<div class="badges">${b.map(x=>`<span class="badge">${x}</span>`).join('')}</div></div></a>`
+}
+
+function weatherBlock(w){
+  if(w){
+    const rainText=w.rainy?'Rain':'Dry';
+    const advice=w.rainy?'Rain may change shoes and outer layers.':'No rain — footwear is wide open.';
+    return `<section class="weather-card" id="weatherCard"><div class="weather-icon">${w.rainy?'☂':'☀'}</div><div class="weather-copy"><span class="weather-kicker">TODAY · ${w.location||'YOUR LOCATION'}</span><strong id="weatherMain">${Math.round(w.t)}°C · ${rainText}</strong><small id="weatherSub">${advice}</small></div><button class="weather-btn" onclick="loadWeather()">↻</button></section>`;
+  }
+  return `<section class="weather-card" id="weatherCard"><div class="weather-icon">⌖</div><div class="weather-copy"><span class="weather-kicker">TODAY</span><strong id="weatherMain">Use your location</strong><small id="weatherSub">Get suggestions for temperature and rain. Nothing gets hidden.</small></div><button class="weather-btn" onclick="loadWeather()">Enable</button></section>`;
+}
+
+async function resolveLocation(latitude,longitude){
+  try{
+    const r=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+    const d=await r.json();
+    return d.locality||d.city||d.principalSubdivision||'Your location';
+  }catch(e){return 'Your location'}
+}
+
+async function loadWeather(){
+  const sub=document.getElementById('weatherSub');
+  if(!navigator.geolocation){if(sub)sub.textContent='Location is not available on this device.';return}
+  if(sub)sub.textContent='Getting local weather…';
+  navigator.geolocation.getCurrentPosition(async pos=>{
+    try{
+      const {latitude,longitude}=pos.coords;
+      const [r,location]=await Promise.all([
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,precipitation,rain,weather_code&temperature_unit=celsius`),
+        resolveLocation(latitude,longitude)
+      ]);
+      const d=await r.json(),c=d.current,rainy=(c.rain||c.precipitation)>0;
+      localStorage.setItem('fitsWeather',JSON.stringify({t:c.temperature_2m,rainy,location,ts:Date.now()}));
+      renderLooks();
+    }catch(e){if(sub)sub.textContent='Could not load weather right now.'}
+  },()=>{if(sub)sub.textContent='Location permission was not granted.'});
+}
+
+function renderLooks(){
+  const ready=DATA.families.filter(f=>readyVariants(f).length).length;
+  const stored=JSON.parse(localStorage.getItem('fitsWeather')||'null');
+  const w=stored&&Date.now()-stored.ts<3600000?stored:null;
+  document.body.innerHTML=`<div class="app">${top('Fits','Curated outfit families',`${DATA.families.length} families`)}<main>${weatherBlock(w)}${w?`<div class="weather-legend"><span><i class="fit-dot good"></i>Good today</span><span><i class="fit-dot neutral"></i>Could work</span><span><i class="fit-dot caution"></i>Weather note</span></div>`:''}<div class="chips"><button class="chip active">All</button><button class="chip">Office</button><button class="chip">Weekend</button><button class="chip">Dinner</button><button class="chip">Travel</button></div><div class="stats" style="margin-top:13px"><div class="stat"><b>${DATA.families.length}</b><span>style families</span></div><div class="stat"><b>${DATA.looks.length}</b><span>real variants</span></div><div class="stat"><b>${ready}</b><span>wearable now</span></div></div><div class="grid">${DATA.families.map(f=>familyCard(f,w)).join('')}</div></main>${nav('looks')}</div>`;
+}
+
 function addManualItem(){const name=document.getElementById('newItemName').value.trim(),category=document.getElementById('newItemCategory').value;if(!name)return;const id='custom-'+Date.now();customPieces.push({id,name,category,status:'owned',custom:true});wardrobe[id]='owned';save()}
-function renderWardrobe(){const all=[...DATA.pieces,...customPieces],owned=all.filter(p=>wardrobe[p.id]==='owned').length,missing=all.filter(p=>wardrobe[p.id]==='missing').length,unsure=all.length-owned-missing;document.body.innerHTML=`<div class="app">${top('Wardrobe','Mark what you own and add pieces anytime',`${all.length} items`)}<main><div class="add-item"><div><strong>Add a piece</strong><small>For things not yet seen in inspiration photos.</small></div><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select><button onclick="addManualItem()">Add to wardrobe</button></div><div class="stats"><div class="stat"><b>${owned}</b><span>owned</span></div><div class="stat"><b>${missing}</b><span>missing</span></div><div class="stat"><b>${unsure}</b><span>unsure</span></div></div><div class="ward-list">${all.map(p=>`<div class="ward-item"><div class="ward-info"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div><div class="status-group">${['owned','missing','unsure'].map(s=>`<button class="status-btn ${wardrobe[p.id]===s?'active '+s:''}" onclick="wardrobe['${p.id}']='${s}';save()">${s==='owned'?'Tengo':s==='missing'?'No tengo':'Dudoso'}</button>`).join('')}</div></div>`).join('')}</div></main>${nav('wardrobe')}</div>`}
-function renderUnlock(){const items=DATA.pieces.filter(p=>wardrobe[p.id]!=='owned').map(p=>{let used=0,completes=0,fs=new Set;DATA.looks.forEach(l=>{if(l.pieces.includes(p.id)){const m=missingFor(l);if(m.includes(p.id)){used++;fs.add(l.family);if(m.length===1)completes++}}});return {...p,used,completes,familiesHelped:fs.size}}).filter(x=>x.used).sort((a,b)=>b.completes-a.completes||b.familiesHelped-a.familiesHelped||b.used-a.used);document.body.innerHTML=`<div class="app">${top('Unlock','Buy for coverage, not clutter','coverage')}<main><div class="notice">Ranking uses real variants but also counts how many style families each missing piece helps.</div>${items.map((p,i)=>`<div class="unlock-card"><div class="unlock-top"><strong>${i+1}. ${p.name}</strong><span class="unlock-score">${p.completes?`completes ${p.completes}`:`${p.familiesHelped} families`}</span></div><p>${p.completes?`Adding this would immediately complete ${p.completes} variant${p.completes>1?'s':''}. `:''}It appears in ${p.used} variant${p.used>1?'s':''} across ${p.familiesHelped} style famil${p.familiesHelped===1?'y':'ies'}.</p></div>`).join('')}</main>${nav('unlock')}</div>`}
+
+function renderWardrobe(){
+  const all=[...DATA.pieces,...customPieces],owned=all.filter(p=>wardrobe[p.id]==='owned').length,missing=all.filter(p=>wardrobe[p.id]==='missing').length,unsure=all.length-owned-missing;
+  document.body.innerHTML=`<div class="app">${top('Wardrobe','Mark what you own and add pieces anytime',`${all.length} items`)}<main><div class="add-item"><div><strong>Add a piece</strong><small>For things not yet seen in inspiration photos.</small></div><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select><button onclick="addManualItem()">Add to wardrobe</button></div><div class="stats"><div class="stat"><b>${owned}</b><span>owned</span></div><div class="stat"><b>${missing}</b><span>missing</span></div><div class="stat"><b>${unsure}</b><span>unsure</span></div></div><div class="ward-list">${all.map(p=>`<div class="ward-item"><div class="ward-info"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div><div class="status-group">${['owned','missing','unsure'].map(s=>`<button class="status-btn ${wardrobe[p.id]===s?'active '+s:''}" onclick="wardrobe['${p.id}']='${s}';save()">${s==='owned'?'Tengo':s==='missing'?'No tengo':'Dudoso'}</button>`).join('')}</div></div>`).join('')}</div></main>${nav('wardrobe')}</div>`
+}
+
+function renderUnlock(){
+  const items=DATA.pieces.filter(p=>wardrobe[p.id]!=='owned').map(p=>{let used=0,completes=0,fs=new Set;DATA.looks.forEach(l=>{if(l.pieces.includes(p.id)){const m=missingFor(l);if(m.includes(p.id)){used++;fs.add(l.family);if(m.length===1)completes++}}});return {...p,used,completes,familiesHelped:fs.size}}).filter(x=>x.used).sort((a,b)=>b.completes-a.completes||b.familiesHelped-a.familiesHelped||b.used-a.used);
+  document.body.innerHTML=`<div class="app">${top('Unlock','Buy for coverage, not clutter','coverage')}<main><div class="notice">Ranking uses real variants but also counts how many style families each missing piece helps.</div>${items.map((p,i)=>`<div class="unlock-card"><div class="unlock-top"><strong>${i+1}. ${p.name}</strong><span class="unlock-score">${p.completes?`completes ${p.completes}`:`${p.familiesHelped} families`}</span></div><p>${p.completes?`Adding this would immediately complete ${p.completes} variant${p.completes>1?'s':''}. `:''}It appears in ${p.used} variant${p.used>1?'s':''} across ${p.familiesHelped} style famil${p.familiesHelped===1?'y':'ies'}.</p></div>`).join('')}</main>${nav('unlock')}</div>`
+}
+
 function variantDifference(f,v){const vs=familyLooks(f),base=vs[0];if(v.id===base.id)return'Base look';const add=v.pieces.filter(x=>!base.pieces.includes(x)).map(x=>piece(x)?.name).filter(Boolean),rem=base.pieces.filter(x=>!v.pieces.includes(x)).map(x=>piece(x)?.name).filter(Boolean);if(add.length===1&&rem.length===1)return`${rem[0]} → ${add[0]}`;if(add.length===1&&!rem.length)return`Add ${add[0]}`;if(!add.length&&rem.length===1)return`Without ${rem[0]}`;return v.name}
 function wearCount(id){return (wearHistory[id]||[]).length}
 function lastWorn(id){const h=wearHistory[id]||[];return h.length?new Date(h[h.length-1]).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'Never'}
 function wearToday(id){const d=new Date().toISOString().slice(0,10);wearHistory[id]=wearHistory[id]||[];if(!wearHistory[id].includes(d))wearHistory[id].push(d);save()}
-function renderDetail(){const q=new URLSearchParams(location.search),f=family(q.get('family'))||DATA.families[0],vs=familyLooks(f),active=look(q.get('look'))||look(f.hero)||vs[0],miss=missingFor(active);document.body.innerHTML=`<div class="app"><header class="topbar"><a class="back" href="index.html">← Back to looks</a><div class="brandrow"><div class="brand">${f.name}</div><div class="kicker">${vs.length>1?`${vs.length} variants`:'single look'}</div></div></header><main><div class="detail-hero"><img src="${active.image}"></div><div class="detail-head"><h1>${active.name}</h1><p>${miss.length?`${miss.length} item${miss.length>1?'s':''} missing in this variant`:'Ready with your current wardrobe'}</p></div><div class="wear-panel"><button class="wear-btn" onclick="wearToday('${active.id}')">Wear this today</button><div><strong>${wearCount(active.id)}× worn</strong><small>Last worn: ${lastWorn(active.id)}</small></div></div>${vs.length>1?`<section class="variants"><div class="variant-heading"><h2>Variants</h2><span>${vs.length} real combinations</span></div><div class="variant-strip">${vs.map((v,i)=>`<a class="variant-option ${v.id===active.id?'active':''}" href="detail.html?family=${f.id}&look=${v.id}"><img src="${v.image}"><div><strong>Option ${i+1}</strong><small>${variantDifference(f,v)}</small></div></a>`).join('')}</div></section>`:''}<section class="collection"><h2>Pieces in this variant</h2><div class="product-grid">${active.pieces.map(pid=>{const p=piece(pid),st=wardrobe[pid];return `<div class="product-card">${st==='missing'?'<span class="missing-tag">MISSING</span>':''}<div class="product-visual"><div class="shape"></div></div><strong>${p.name}</strong><small>${st==='owned'?'In wardrobe':st==='missing'?'Not in wardrobe':'Confirm item'}</small></div>`}).join('')}</div></section></main>${nav('looks')}</div>`}
+
+function renderDetail(){
+  const q=new URLSearchParams(location.search),f=family(q.get('family'))||DATA.families[0],vs=familyLooks(f),active=look(q.get('look'))||look(f.hero)||vs[0],miss=missingFor(active);
+  document.body.innerHTML=`<div class="app"><header class="topbar"><a class="back" href="index.html">← Back to looks</a><div class="brandrow"><div class="brand">${f.name}</div><div class="kicker">${vs.length>1?`${vs.length} variants`:'single look'}</div></div></header><main><div class="detail-hero"><img src="${active.image}"></div><div class="detail-head"><h1>${active.name}</h1><p>${miss.length?`${miss.length} item${miss.length>1?'s':''} missing in this variant`:'Ready with your current wardrobe'}</p></div><div class="wear-panel"><button class="wear-btn" onclick="wearToday('${active.id}')">Wear this today</button><div><strong>${wearCount(active.id)}× worn</strong><small>Last worn: ${lastWorn(active.id)}</small></div></div>${vs.length>1?`<section class="variants"><div class="variant-heading"><h2>Variants</h2><span>${vs.length} real combinations</span></div><div class="variant-strip">${vs.map((v,i)=>`<a class="variant-option ${v.id===active.id?'active':''}" href="detail.html?family=${f.id}&look=${v.id}"><img src="${v.image}"><div><strong>Option ${i+1}</strong><small>${variantDifference(f,v)}</small></div></a>`).join('')}</div></section>`:''}<section class="collection"><h2>Pieces in this variant</h2><div class="product-grid">${active.pieces.map(pid=>{const p=piece(pid),st=wardrobe[pid];return `<div class="product-card">${st==='missing'?'<span class="missing-tag">MISSING</span>':''}<div class="product-visual"><div class="shape"></div></div><strong>${p.name}</strong><small>${st==='owned'?'In wardrobe':st==='missing'?'Not in wardrobe':'Confirm item'}</small></div>`}).join('')}</div></section></main>${nav('looks')}</div>`
+}
+
 function renderCurrent(){const p=document.body.dataset.page;if(p==='looks')renderLooks();if(p==='wardrobe')renderWardrobe();if(p==='unlock')renderUnlock();if(p==='detail')renderDetail()}
 document.addEventListener('DOMContentLoaded',renderCurrent);
