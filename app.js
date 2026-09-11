@@ -106,22 +106,21 @@ function renderWardrobe(){
   const owned=all.filter(p=>isOwned(p.id)).length;
   const missing=all.length-owned;
   document.body.innerHTML=`<div class="app wardrobe-v2">
-    ${headerBar('Wardrobe','A visual inventory of what you own — and what you still need.',`${all.length} items`)}
+    ${headerBar('Wardrobe','Your visual inventory. Just mark what you own and what you don’t.',`${all.length} items`)}
     <main>
       <div class="add-item compact-add">
         <div><strong>Add a piece</strong><small>Add something that hasn't appeared in an outfit yet.</small></div>
         <div class="add-row"><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select></div>
         <button onclick="addManualItem()">Add to wardrobe</button>
       </div>
-      <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>No, I need it</span></div></div>
+      <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Owned</span></div><div class="stat"><b>${missing}</b><span>Missing</span></div></div>
       <div class="ward-grid">${all.map(p=>{
         const ownedNow=isOwned(p.id);
         return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}">
-          <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NEED</span>':''}</div>
+          <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">MISSING</span>':''}</div>
           <div class="ward-card-body">
             <div class="ward-card-copy"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div>
             <div class="own-row"><span class="own-question">Own it?</span><button class="own-toggle ${ownedNow?'on':''}" aria-pressed="${ownedNow}" onclick="toggleOwned('${p.id}')"><span class="toggle-knob"></span></button><b class="own-state">${ownedNow?'Yes':'No'}</b></div>
-            ${!ownedNow?`<button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>↗</span></button>`:''}
           </div>
         </article>`;
       }).join('')}</div>
