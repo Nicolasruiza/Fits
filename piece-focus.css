@@ -1,0 +1,1 @@
+.ward-photo,.unlock-photo{isolation:isolate}.ward-photo img.piece-focus-img,.unlock-photo img.piece-focus-img{width:100%;height:100%;display:block;object-fit:cover;object-position:var(--pf-x,50%) var(--pf-y,50%);transform:scale(var(--pf-s,2));transform-origin:var(--pf-x,50%) var(--pf-y,50%);filter:none}
