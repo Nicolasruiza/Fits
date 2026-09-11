@@ -68,7 +68,6 @@ function persist(){
 }
 
 function saveAndRender(){persist();renderCurrent();}
-
 function isOwned(id){return wardrobe[id]==='owned'}
 
 window.toggleOwned=function(id){
@@ -106,18 +105,18 @@ function renderWardrobe(){
   const owned=all.filter(p=>isOwned(p.id)).length;
   const missing=all.length-owned;
   document.body.innerHTML=`<div class="app wardrobe-v2">
-    ${headerBar('Wardrobe','Your visual inventory. Just mark what you own and what you don’t.',`${all.length} items`)}
+    ${headerBar('Wardrobe','Your visual inventory. Mark only what is actually in your closet.',`${all.length} items`)}
     <main>
       <div class="add-item compact-add">
         <div><strong>Add a piece</strong><small>Add something that hasn't appeared in an outfit yet.</small></div>
         <div class="add-row"><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select></div>
         <button onclick="addManualItem()">Add to wardrobe</button>
       </div>
-      <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Owned</span></div><div class="stat"><b>${missing}</b><span>Missing</span></div></div>
+      <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>Not in wardrobe</span></div></div>
       <div class="ward-grid">${all.map(p=>{
         const ownedNow=isOwned(p.id);
         return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}">
-          <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">MISSING</span>':''}</div>
+          <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NO</span>':''}</div>
           <div class="ward-card-body">
             <div class="ward-card-copy"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div>
             <div class="own-row"><span class="own-question">Own it?</span><button class="own-toggle ${ownedNow?'on':''}" aria-pressed="${ownedNow}" onclick="toggleOwned('${p.id}')"><span class="toggle-knob"></span></button><b class="own-state">${ownedNow?'Yes':'No'}</b></div>
@@ -141,17 +140,23 @@ function renderUnlock(){
         if(missing.length===1)completes++;
       }
     });
-    return {...p,used,completes,familiesHelped:familiesHelped.size};
-  }).filter(x=>x.used).sort((a,b)=>b.completes-a.completes||b.familiesHelped-a.familiesHelped||b.used-a.used);
+    const familyCount=familiesHelped.size;
+    const score=completes*100+familyCount*10+used;
+    return {...p,used,completes,familiesHelped:familyCount,score};
+  }).filter(x=>x.used).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
 
   document.body.innerHTML=`<div class="app wardrobe-v2">
-    ${headerBar('Unlock','Buy pieces that unlock the most real outfits first.','coverage')}
+    ${headerBar('Unlock','What should you buy next? Ranked by how much each piece expands your real outfits.','smart buys')}
     <main>
-      <div class="notice">Nothing is searched automatically. Tap <b>Find item</b> only when you want shopping options.</div>
-      <div class="unlock-list-v2">${items.map((p,i)=>`<article class="unlock-card-v2">
-        <div class="unlock-photo">${piecePhoto(p)}<span class="unlock-rank">${i+1}</span></div>
-        <div class="unlock-copy-v2"><strong>${p.name}</strong><span>${p.completes?`Completes ${p.completes} look${p.completes>1?'s':''}`:`Helps ${p.familiesHelped} style famil${p.familiesHelped===1?'y':'ies'}`}</span><small>Used in ${p.used} real variant${p.used>1?'s':''}.</small><button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>↗</span></button></div>
-      </article>`).join('')}</div>
+      <div class="notice">Ranked from your actual saved looks and your current Yes/No wardrobe. Nothing is searched until you tap <b>Find item</b>.</div>
+      <div class="unlock-list-v2">${items.map((p,i)=>{
+        const impact=p.completes?`Unlocks ${p.completes} complete look${p.completes>1?'s':''} now`:`Moves ${p.familiesHelped} style famil${p.familiesHelped===1?'y':'ies'} closer`;
+        const support=p.used===1?'Appears in 1 real variant.':`Appears in ${p.used} real variants.`;
+        return `<article class="unlock-card-v2">
+          <div class="unlock-photo">${piecePhoto(p)}<span class="unlock-rank">${i+1}</span></div>
+          <div class="unlock-copy-v2"><strong>${p.name}</strong><span>${impact}</span><small>${support}</small><button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>↗</span></button></div>
+        </article>`;
+      }).join('')}</div>
     </main>${nav('unlock')}
   </div>`;
 }
