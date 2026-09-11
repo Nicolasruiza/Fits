@@ -1,33 +1,171 @@
 const DATA=window.FITS_DATA;
-function safeJSON(key,fallback){try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch(e){localStorage.removeItem(key);return fallback}}
-const defaults=Object.fromEntries(DATA.pieces.map(p=>[p.id,p.status]));
-let wardrobe=safeJSON('fitsWardrobe',defaults);
+
+function safeJSON(key,fallback){
+  try{
+    const raw=localStorage.getItem(key);
+    return raw?JSON.parse(raw):fallback;
+  }catch(e){
+    localStorage.removeItem(key);
+    return fallback;
+  }
+}
+
+const PIECE_IMAGES={
+  'green-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112731_a1c25724-b0f8-46cb-bc6f-5b7b3b5997b3_min.webp',
+  'burgundy-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112753_ff1de524-d9ec-4de2-aa78-4304419858b5_min.webp',
+  'white-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112731_4d1b0f4f-21e9-4b91-8bb6-c1d654401378_min.webp',
+  'navy-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112731_477bd972-f6a4-4a09-a3f1-a0df7b38632d_min.webp',
+  'charcoal-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112753_fc716767-a5d6-4723-866b-07a040bdcc56_min.webp',
+  'khaki-chinos':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112731_5946e51f-ff6c-42db-8bd9-644e7f4ed155_min.webp',
+  'charcoal-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112753_f41efad4-e9e4-4480-829c-41239c1d38f7_min.webp',
+  'navy-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112753_43b423c1-f59e-48b3-a2c9-24f788e4bfa2_min.webp',
+  'grey-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112817_6d6cfb77-6fa0-4e49-a2c0-fa33cf4c9604_min.webp',
+  'taupe-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112818_ec918c39-3ae5-4f91-a734-0b6ea8b702a3_min.webp',
+  'light-grey-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112817_60657859-8786-4f95-9c81-c2be37c1d559_min.webp',
+  'dark-denim':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112817_01ac291a-1b8c-4757-a18e-f3b9ac0296ef_min.webp',
+  'brown-loafers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112842_b1adba30-919a-4995-9291-db61c94d25db_min.webp',
+  'brown-derbies':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112842_00d2596d-3241-45f9-9c90-778a49d4915c_min.webp',
+  'dark-loafers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112842_f2f03f65-dc19-4bec-a160-baf9d04215e9_min.webp',
+  'brown-casual-shoes':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112842_71500d40-4372-45e1-b15b-b91397303402_min.webp',
+  'white-leather-sneakers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112908_e55159f1-41bc-4d9e-853b-d7869d9f20ec_min.webp',
+  'brown-belt':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112908_19f73389-fb2a-4934-a355-cfb245aa0556_min.webp',
+  'dark-belt':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112908_ee0582d0-3cb1-4bc9-8c99-88c38aa186a1_min.webp',
+  'navy-blazer':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112909_dc9051d9-9e9a-4899-82eb-fa27d3dd05f6_min.webp'
+};
+
 let customPieces=safeJSON('fitsCustomPieces',[]);
 let wearHistory=safeJSON('fitsWearHistory',{});
+const storedWardrobe=safeJSON('fitsWardrobe',{});
+let wardrobe={};
+
+function normalizeWardrobe(){
+  [...DATA.pieces,...customPieces].forEach(p=>{
+    const current=storedWardrobe[p.id];
+    wardrobe[p.id]=(current==='owned'||(!current&&p.status==='owned'))?'owned':'missing';
+  });
+  localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));
+}
+normalizeWardrobe();
+
 const piece=id=>DATA.pieces.find(p=>p.id===id)||customPieces.find(p=>p.id===id);
 const look=id=>DATA.looks.find(l=>l.id===id);
 const family=id=>DATA.families.find(f=>f.id===id);
 const missingFor=l=>l.pieces.filter(id=>wardrobe[id]!=='owned');
 const familyLooks=f=>f.looks.map(look).filter(Boolean);
-const readyVariants=f=>familyLooks(f).filter(l=>missingFor(l).length===0);
 
-function save(){localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));localStorage.setItem('fitsCustomPieces',JSON.stringify(customPieces));localStorage.setItem('fitsWearHistory',JSON.stringify(wearHistory));renderCurrent()}
-function nav(a){return `<nav class="nav"><a href="index.html" class="${a==='looks'?'active':''}"><b>▦</b>Looks</a><a href="wardrobe.html" class="${a==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="unlock.html" class="${a==='unlock'?'active':''}"><b>↗</b>Unlock</a></nav>`}
-function headerBar(t,s,r=''){return `<header class="topbar"><div class="brandrow"><div class="brand">${t}</div><div class="kicker">${r}</div></div><div class="subtitle">${s}</div></header>`}
-function meter(n){return `<div class="meter">${[0,1,2,3,4].map(i=>`<span class="dot ${i<n?'on':''}"></span>`).join('')}</div>`}
-function weatherFit(f,w){if(!w)return null;const vs=familyLooks(f),ids=[...new Set(vs.flatMap(v=>v.pieces))],names=ids.map(id=>(piece(id)?.name||'').toLowerCase()).join(' '),hasOuter=/blazer|jacket|vest|coat|sweater|cardigan/.test(names),hasLoafers=/loafer|derbies|dress shoe/.test(names),hasSneakers=/sneaker/.test(names),t=Math.round(w.t);if(w.rainy&&hasLoafers&&!hasSneakers)return{level:'caution',label:'Maybe skip',reason:'Rain today — save the dressier shoes if you can.'};if(t>=25&&hasOuter)return{level:'caution',label:'Might feel warm',reason:`${t}°C — the extra layer may feel heavy.`};if(t<=12&&!hasOuter)return{level:'caution',label:'Could feel cool',reason:`${t}°C — you may want an extra layer.`};if(w.rainy&&hasOuter)return{level:'good',label:'Good today',reason:'The extra layer works well with today’s rain.'};if(t>=22&&!hasOuter)return{level:'good',label:'Good today',reason:`${t}°C — lighter pieces make sense.`};return{level:'neutral',label:'Could work',reason:'Weather should not be a major issue for this family.'}}
-function familyCard(f,w){const vs=familyLooks(f),h=look(f.hero)||vs[0],ready=readyVariants(f).length,b=[...new Set(vs.flatMap(v=>v.badges))],formal=Math.round(vs.reduce((s,v)=>s+v.formal,0)/vs.length),fit=weatherFit(f,w);return `<a class="look-card family-card" href="detail.html?family=${f.id}"><div class="look-image family-image">${vs.length>1?`<div class="variant-stack">${vs.slice(1,3).map((v,i)=>`<img class="variant-peek peek-${i+1}" src="${v.image}" alt="">`).join('')}</div>`:''}<img class="hero-img" src="${h.image}" alt="${h.name}"><span class="pill ${ready?'ready':''}">${ready?`${ready}/${vs.length} ready`:'Incomplete'}</span>${vs.length>1?`<span class="variant-count">${vs.length} variants</span>`:''}</div><div class="look-body"><h3>${f.name}</h3>${fit?`<div class="weather-fit ${fit.level}"><strong>${fit.label}</strong><span>${fit.reason}</span></div>`:''}${meter(formal)}<div class="badges">${b.map(x=>`<span class="badge">${x}</span>`).join('')}</div></div></a>`}
-function weatherBlock(w){if(w){const rainText=w.rainy?'Rain':'Dry',advice=w.rainy?'Rain may change shoes and outer layers.':'No rain — footwear is wide open.';return `<section class="weather-card" id="weatherCard"><div class="weather-icon">${w.rainy?'☂':'☀'}</div><div class="weather-copy"><span class="weather-kicker">TODAY · ${w.location||'YOUR LOCATION'}</span><strong id="weatherMain">${Math.round(w.t)}°C · ${rainText}</strong><small id="weatherSub">${advice}</small></div><button class="weather-btn" onclick="loadWeather()">↻</button></section>`}return `<section class="weather-card" id="weatherCard"><div class="weather-icon">⌖</div><div class="weather-copy"><span class="weather-kicker">TODAY</span><strong id="weatherMain">Use your location</strong><small id="weatherSub">Get suggestions for temperature and rain. Nothing gets hidden.</small></div><button class="weather-btn" onclick="loadWeather()">Enable</button></section>`}
-async function resolveLocation(latitude,longitude){try{const r=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`),d=await r.json();return d.locality||d.city||d.principalSubdivision||'Your location'}catch(e){return'Your location'}}
-async function loadWeather(){const sub=document.getElementById('weatherSub');if(!navigator.geolocation){if(sub)sub.textContent='Location is not available on this device.';return}if(sub)sub.textContent='Getting local weather…';navigator.geolocation.getCurrentPosition(async pos=>{try{const{latitude,longitude}=pos.coords,[r,location]=await Promise.all([fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,precipitation,rain,weather_code&temperature_unit=celsius`),resolveLocation(latitude,longitude)]),d=await r.json(),c=d.current,rainy=(c.rain||c.precipitation)>0;localStorage.setItem('fitsWeather',JSON.stringify({t:c.temperature_2m,rainy,location,ts:Date.now()}));renderLooks()}catch(e){if(sub)sub.textContent='Could not load weather right now.'}},()=>{if(sub)sub.textContent='Location permission was not granted.'})}
-function renderLooks(){const ready=DATA.families.filter(f=>readyVariants(f).length).length,stored=safeJSON('fitsWeather',null),w=stored&&Date.now()-stored.ts<3600000?stored:null;document.body.innerHTML=`<div class="app">${headerBar('Fits','Curated outfit families',`${DATA.families.length} families`)}<main>${weatherBlock(w)}${w?`<div class="weather-legend"><span><i class="fit-dot good"></i>Good today</span><span><i class="fit-dot neutral"></i>Could work</span><span><i class="fit-dot caution"></i>Weather note</span></div>`:''}<div class="chips"><button class="chip active">All</button><button class="chip">Office</button><button class="chip">Weekend</button><button class="chip">Dinner</button><button class="chip">Travel</button></div><div class="stats" style="margin-top:13px"><div class="stat"><b>${DATA.families.length}</b><span>style families</span></div><div class="stat"><b>${DATA.looks.length}</b><span>real variants</span></div><div class="stat"><b>${ready}</b><span>wearable now</span></div></div><div class="grid">${DATA.families.map(f=>familyCard(f,w)).join('')}</div></main>${nav('looks')}</div>`}
-function addManualItem(){const name=document.getElementById('newItemName').value.trim(),category=document.getElementById('newItemCategory').value;if(!name)return;const id='custom-'+Date.now();customPieces.push({id,name,category,status:'owned',custom:true});wardrobe[id]='owned';save()}
-function renderWardrobe(){const all=[...DATA.pieces,...customPieces],owned=all.filter(p=>wardrobe[p.id]==='owned').length,missing=all.filter(p=>wardrobe[p.id]==='missing').length,unsure=all.length-owned-missing;document.body.innerHTML=`<div class="app">${headerBar('Wardrobe','Mark what you own and add pieces anytime',`${all.length} items`)}<main><div class="add-item"><div><strong>Add a piece</strong><small>For things not yet seen in inspiration photos.</small></div><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select><button onclick="addManualItem()">Add to wardrobe</button></div><div class="stats"><div class="stat"><b>${owned}</b><span>owned</span></div><div class="stat"><b>${missing}</b><span>missing</span></div><div class="stat"><b>${unsure}</b><span>unsure</span></div></div><div class="ward-list">${all.map(p=>`<div class="ward-item"><div class="ward-info"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div><div class="status-group">${['owned','missing','unsure'].map(s=>`<button class="status-btn ${wardrobe[p.id]===s?'active '+s:''}" onclick="wardrobe['${p.id}']='${s}';save()">${s==='owned'?'Tengo':s==='missing'?'No tengo':'Dudoso'}</button>`).join('')}</div></div>`).join('')}</div></main>${nav('wardrobe')}</div>`}
-function renderUnlock(){const items=DATA.pieces.filter(p=>wardrobe[p.id]!=='owned').map(p=>{let used=0,completes=0,fs=new Set;DATA.looks.forEach(l=>{if(l.pieces.includes(p.id)){const m=missingFor(l);if(m.includes(p.id)){used++;fs.add(l.family);if(m.length===1)completes++}}});return{...p,used,completes,familiesHelped:fs.size}}).filter(x=>x.used).sort((a,b)=>b.completes-a.completes||b.familiesHelped-a.familiesHelped||b.used-a.used);document.body.innerHTML=`<div class="app">${headerBar('Unlock','Buy for coverage, not clutter','coverage')}<main><div class="notice">Ranking uses real variants but also counts how many style families each missing piece helps.</div>${items.map((p,i)=>`<div class="unlock-card"><div class="unlock-top"><strong>${i+1}. ${p.name}</strong><span class="unlock-score">${p.completes?`completes ${p.completes}`:`${p.familiesHelped} families`}</span></div><p>${p.completes?`Adding this would immediately complete ${p.completes} variant${p.completes>1?'s':''}. `:''}It appears in ${p.used} variant${p.used>1?'s':''} across ${p.familiesHelped} style famil${p.familiesHelped===1?'y':'ies'}.</p></div>`).join('')}</main>${nav('unlock')}</div>`}
-function variantDifference(f,v){const vs=familyLooks(f),base=vs[0];if(v.id===base.id)return'Base look';const add=v.pieces.filter(x=>!base.pieces.includes(x)).map(x=>piece(x)?.name).filter(Boolean),rem=base.pieces.filter(x=>!v.pieces.includes(x)).map(x=>piece(x)?.name).filter(Boolean);if(add.length===1&&rem.length===1)return`${rem[0]} → ${add[0]}`;if(add.length===1&&!rem.length)return`Add ${add[0]}`;if(!add.length&&rem.length===1)return`Without ${rem[0]}`;return v.name}
-function wearCount(id){return(wearHistory[id]||[]).length}
-function lastWorn(id){const h=wearHistory[id]||[];return h.length?new Date(h[h.length-1]).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'Never'}
-function wearToday(id){const d=new Date().toISOString().slice(0,10);wearHistory[id]=wearHistory[id]||[];if(!wearHistory[id].includes(d))wearHistory[id].push(d);save()}
-function renderDetail(){const q=new URLSearchParams(location.search),f=family(q.get('family'))||DATA.families[0],vs=familyLooks(f),active=look(q.get('look'))||look(f.hero)||vs[0],miss=missingFor(active);document.body.innerHTML=`<div class="app"><header class="topbar"><a class="back" href="index.html">← Back to looks</a><div class="brandrow"><div class="brand">${f.name}</div><div class="kicker">${vs.length>1?`${vs.length} variants`:'single look'}</div></div></header><main><div class="detail-hero"><img src="${active.image}"></div><div class="detail-head"><h1>${active.name}</h1><p>${miss.length?`${miss.length} item${miss.length>1?'s':''} missing in this variant`:'Ready with your current wardrobe'}</p></div><div class="wear-panel"><button class="wear-btn" onclick="wearToday('${active.id}')">Wear this today</button><div><strong>${wearCount(active.id)}× worn</strong><small>Last worn: ${lastWorn(active.id)}</small></div></div>${vs.length>1?`<section class="variants"><div class="variant-heading"><h2>Variants</h2><span>${vs.length} real combinations</span></div><div class="variant-strip">${vs.map((v,i)=>`<a class="variant-option ${v.id===active.id?'active':''}" href="detail.html?family=${f.id}&look=${v.id}"><img src="${v.image}"><div><strong>Option ${i+1}</strong><small>${variantDifference(f,v)}</small></div></a>`).join('')}</div></section>`:''}<section class="collection"><h2>Pieces in this variant</h2><div class="product-grid">${active.pieces.map(pid=>{const p=piece(pid),st=wardrobe[pid];return `<div class="product-card">${st==='missing'?'<span class="missing-tag">MISSING</span>':''}<div class="product-visual"><div class="shape"></div></div><strong>${p.name}</strong><small>${st==='owned'?'In wardrobe':st==='missing'?'Not in wardrobe':'Confirm item'}</small></div>`}).join('')}</div></section></main>${nav('looks')}</div>`}
-function renderCurrent(){try{const p=document.body.dataset.page;if(p==='looks')renderLooks();if(p==='wardrobe')renderWardrobe();if(p==='unlock')renderUnlock();if(p==='detail')renderDetail()}catch(e){console.error(e);document.body.innerHTML='<div style="max-width:430px;margin:0 auto;padding:28px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif"><h1>Fits</h1><p>The app hit a startup error.</p><button onclick="localStorage.clear();location.reload()" style="border:0;border-radius:999px;background:#202428;color:white;padding:10px 14px">Reset and reload</button></div>'}}
+function nav(active){
+  return `<nav class="nav"><a href="index.html"><b>▦</b>Looks</a><a href="wardrobe.html" class="${active==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="unlock.html" class="${active==='unlock'?'active':''}"><b>↗</b>Unlock</a></nav>`;
+}
+
+function headerBar(title,subtitle,kicker=''){
+  return `<header class="topbar"><div class="brandrow"><div class="brand">${title}</div><div class="kicker">${kicker}</div></div><div class="subtitle">${subtitle}</div></header>`;
+}
+
+function persist(){
+  localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));
+  localStorage.setItem('fitsCustomPieces',JSON.stringify(customPieces));
+  localStorage.setItem('fitsWearHistory',JSON.stringify(wearHistory));
+}
+
+function saveAndRender(){persist();renderCurrent();}
+
+function isOwned(id){return wardrobe[id]==='owned'}
+
+window.toggleOwned=function(id){
+  wardrobe[id]=isOwned(id)?'missing':'owned';
+  saveAndRender();
+};
+
+window.searchItem=function(id){
+  const p=piece(id);
+  if(!p)return;
+  const query=encodeURIComponent(`${p.name} men's clothing Canada`);
+  window.open(`https://www.google.com/search?udm=28&q=${query}`,'_blank','noopener,noreferrer');
+};
+
+function piecePhoto(p){
+  const src=PIECE_IMAGES[p.id];
+  if(src)return `<img src="${src}" alt="${p.name}" loading="lazy">`;
+  const initials=p.name.split(' ').slice(0,2).map(x=>x[0]).join('').toUpperCase();
+  return `<div class="piece-fallback">${initials}</div>`;
+}
+
+window.addManualItem=function(){
+  const input=document.getElementById('newItemName');
+  const category=document.getElementById('newItemCategory').value;
+  const name=input.value.trim();
+  if(!name)return;
+  const id='custom-'+Date.now();
+  customPieces.push({id,name,category,status:'owned',custom:true});
+  wardrobe[id]='owned';
+  saveAndRender();
+};
+
+function renderWardrobe(){
+  const all=[...DATA.pieces,...customPieces];
+  const owned=all.filter(p=>isOwned(p.id)).length;
+  const missing=all.length-owned;
+  document.body.innerHTML=`<div class="app wardrobe-v2">
+    ${headerBar('Wardrobe','A visual inventory of what you own — and what you still need.',`${all.length} items`)}
+    <main>
+      <div class="add-item compact-add">
+        <div><strong>Add a piece</strong><small>Add something that hasn't appeared in an outfit yet.</small></div>
+        <div class="add-row"><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select></div>
+        <button onclick="addManualItem()">Add to wardrobe</button>
+      </div>
+      <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>No, I need it</span></div></div>
+      <div class="ward-grid">${all.map(p=>{
+        const ownedNow=isOwned(p.id);
+        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}">
+          <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NEED</span>':''}</div>
+          <div class="ward-card-body">
+            <div class="ward-card-copy"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div>
+            <div class="own-row"><span class="own-question">Own it?</span><button class="own-toggle ${ownedNow?'on':''}" aria-pressed="${ownedNow}" onclick="toggleOwned('${p.id}')"><span class="toggle-knob"></span></button><b class="own-state">${ownedNow?'Yes':'No'}</b></div>
+            ${!ownedNow?`<button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>↗</span></button>`:''}
+          </div>
+        </article>`;
+      }).join('')}</div>
+    </main>${nav('wardrobe')}
+  </div>`;
+}
+
+function renderUnlock(){
+  const items=DATA.pieces.filter(p=>!isOwned(p.id)).map(p=>{
+    let used=0,completes=0;
+    const familiesHelped=new Set();
+    DATA.looks.forEach(l=>{
+      if(!l.pieces.includes(p.id))return;
+      const missing=missingFor(l);
+      if(missing.includes(p.id)){
+        used++;
+        familiesHelped.add(l.family);
+        if(missing.length===1)completes++;
+      }
+    });
+    return {...p,used,completes,familiesHelped:familiesHelped.size};
+  }).filter(x=>x.used).sort((a,b)=>b.completes-a.completes||b.familiesHelped-a.familiesHelped||b.used-a.used);
+
+  document.body.innerHTML=`<div class="app wardrobe-v2">
+    ${headerBar('Unlock','Buy pieces that unlock the most real outfits first.','coverage')}
+    <main>
+      <div class="notice">Nothing is searched automatically. Tap <b>Find item</b> only when you want shopping options.</div>
+      <div class="unlock-list-v2">${items.map((p,i)=>`<article class="unlock-card-v2">
+        <div class="unlock-photo">${piecePhoto(p)}<span class="unlock-rank">${i+1}</span></div>
+        <div class="unlock-copy-v2"><strong>${p.name}</strong><span>${p.completes?`Completes ${p.completes} look${p.completes>1?'s':''}`:`Helps ${p.familiesHelped} style famil${p.familiesHelped===1?'y':'ies'}`}</span><small>Used in ${p.used} real variant${p.used>1?'s':''}.</small><button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>↗</span></button></div>
+      </article>`).join('')}</div>
+    </main>${nav('unlock')}
+  </div>`;
+}
+
+function renderCurrent(){
+  try{
+    const page=document.body.dataset.page;
+    if(page==='wardrobe')renderWardrobe();
+    else if(page==='unlock')renderUnlock();
+  }catch(e){
+    console.error(e);
+    document.body.innerHTML='<div style="max-width:430px;margin:0 auto;padding:28px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif"><h1>Fits</h1><p>The wardrobe hit a startup error.</p><button onclick="localStorage.clear();location.reload()" style="border:0;border-radius:999px;background:#202428;color:white;padding:10px 14px">Reset and reload</button></div>';
+  }
+}
+
 document.addEventListener('DOMContentLoaded',renderCurrent);
