@@ -7,7 +7,10 @@ window.FITS_DATA={
     {id:'family-navy-taupe',name:'Navy + taupe chinos',hero:'look-05',looks:['look-05']},
     {id:'family-charcoal-navy',name:'Charcoal + navy chinos',hero:'look-06',looks:['look-06']},
     {id:'family-charcoal-lightgrey',name:'Charcoal + light grey chinos',hero:'look-09',looks:['look-09']},
-    {id:'family-navy-denim',name:'Navy + denim',hero:'look-10',looks:['look-10']}
+    {id:'family-navy-denim',name:'Navy + denim',hero:'look-10',looks:['look-10']},
+    {id:'family-lightblue-beige',name:'Light blue Oxford + beige chinos',hero:'look-11',looks:['look-11']},
+    {id:'family-blazer-white-beige',name:'Navy blazer + white shirt + beige chinos',hero:'look-12',looks:['look-12']},
+    {id:'family-dark-blazer-dark',name:'Dark blazer + dark chinos',hero:'look-13',looks:['look-13']}
   ],
   looks:[
     {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113208_3fedb759-ebd0-4afb-b34c-06d1978bb3ab_min.webp',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -19,7 +22,10 @@ window.FITS_DATA={
     {id:'look-07',family:'family-white-navy',name:'White polo + navy chinos + loafers',image:'assets/source-04.jpg',formal:3,badges:['Office','Dinner'],pieces:['white-polo','navy-trousers','dark-loafers','dark-belt']},
     {id:'look-08',family:'family-navy-grey',name:'Navy blazer + navy polo + grey chinos',image:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113253_006662eb-836a-4789-8462-67b3039570fc_min.webp',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','navy-polo','grey-trousers','brown-loafers','brown-belt']},
     {id:'look-09',family:'family-charcoal-lightgrey',name:'Charcoal polo + light grey chinos',image:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113252_7705bdc4-4678-44ff-8c84-7fcee52e79d1_min.webp',formal:2,badges:['Travel','Weekend','Office'],pieces:['charcoal-polo','light-grey-trousers','white-leather-sneakers','dark-belt']},
-    {id:'look-10',family:'family-navy-denim',name:'Navy polo + dark denim',image:'assets/look-navy-denim-v1.webp?v=10',formal:1,badges:['Weekend','Travel'],pieces:['navy-polo','dark-denim','white-leather-sneakers']}
+    {id:'look-10',family:'family-navy-denim',name:'Navy polo + dark denim',image:'assets/look-navy-denim-v1.webp?v=10',formal:1,badges:['Weekend','Travel'],pieces:['navy-polo','dark-denim','white-leather-sneakers']},
+    {id:'look-11',family:'family-lightblue-beige',name:'Light blue Oxford + beige chinos + white sneakers',image:'https://d2ol7oe51mr4n9.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/2d00a5b0-ece3-4548-a7b5-b9718b7dddf9.png',formal:2,badges:['Weekend','Office','Travel'],pieces:['light-blue-oxford','beige-chinos','white-leather-sneakers']},
+    {id:'look-12',family:'family-blazer-white-beige',name:'Navy blazer + white shirt + beige chinos',image:'https://d2ol7oe51mr4n9.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/9ad052ee-b070-4a0f-befe-116349bf217e.png',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','white-shirt','beige-chinos','brown-loafers','brown-belt']},
+    {id:'look-13',family:'family-dark-blazer-dark',name:'Dark blazer + dark crewneck + dark chinos',image:'https://d2ol7oe51mr4n9.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/3ad24798-f7da-4842-8d45-9cddef74d1df.png',formal:3,badges:['Dinner','Office'],pieces:['navy-blazer','dark-crewneck','dark-chinos','white-leather-sneakers']}
   ],
   pieces:[
     {id:'green-polo',name:'Green polo',category:'Top',status:'missing'},
@@ -27,12 +33,17 @@ window.FITS_DATA={
     {id:'white-polo',name:'White polo',category:'Top',status:'owned'},
     {id:'navy-polo',name:'Navy polo',category:'Top',status:'owned'},
     {id:'charcoal-polo',name:'Charcoal polo',category:'Top',status:'missing'},
+    {id:'light-blue-oxford',name:'Light blue Oxford shirt',category:'Top',status:'missing'},
+    {id:'white-shirt',name:'White button-up shirt',category:'Top',status:'missing'},
+    {id:'dark-crewneck',name:'Dark crewneck',category:'Top',status:'missing'},
     {id:'khaki-chinos',name:'Khaki chinos',category:'Pants',status:'missing'},
     {id:'charcoal-trousers',name:'Charcoal chinos',category:'Pants',status:'missing'},
     {id:'navy-trousers',name:'Navy chinos',category:'Pants',status:'owned'},
     {id:'grey-trousers',name:'Grey chinos',category:'Pants',status:'owned'},
     {id:'taupe-trousers',name:'Taupe chinos',category:'Pants',status:'missing'},
     {id:'light-grey-trousers',name:'Light grey chinos',category:'Pants',status:'missing'},
+    {id:'beige-chinos',name:'Beige chinos',category:'Pants',status:'missing'},
+    {id:'dark-chinos',name:'Dark chinos',category:'Pants',status:'missing'},
     {id:'dark-denim',name:'Dark denim',category:'Pants',status:'owned'},
     {id:'brown-loafers',name:'Brown loafers',category:'Shoes',status:'missing'},
     {id:'brown-derbies',name:'Brown derbies',category:'Shoes',status:'missing'},
