@@ -1,9 +1,1 @@
-Object.assign(PIECE_IMAGES,{
-  'green-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113337_36ddc891-e55d-47b6-a8ca-6eb4834f3f87_min.webp',
-  'khaki-chinos':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113337_053579fb-16f0-4d52-b848-df8da4a2507a_min.webp',
-  'charcoal-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113337_a6049ff8-6ffe-457e-96ce-ab5fbcc4adbf_min.webp',
-  'navy-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113338_31d9ca44-f60a-4836-b98a-88e3fdf750fa_min.webp',
-  'grey-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113337_ab582b82-31b8-4eb7-a594-6bccaff5b0a7_min.webp',
-  'taupe-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113338_91868b0a-8f8f-439b-a424-653c056430d9_min.webp',
-  'light-grey-trousers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113510_2d25f063-ef3b-4241-924a-b614d68da4c6_min.webp'
-});
+Object.assign(PIECE_IMAGES,window.FITS_CATALOG_IMAGES||{});
