@@ -1,51 +1,16 @@
 (()=>{
-  const D=window.FITS_DATA;
-  if(!D)return;
-  const p=id=>D.pieces.find(x=>x.id===id);
-  const l=id=>D.looks.find(x=>x.id===id);
-  function seasonsForLook(look){
-    const names=(look?.pieces||[]).map(id=>(p(id)?.name||id).toLowerCase()).join(' ');
-    const cold=/overcoat|wool|leather jacket|coat|turtleneck|cable|sweater/.test(names);
-    const layer=/blazer|jacket|cardigan|quarter[- ]?zip|vest|overshirt|henley/.test(names);
-    if(cold)return ['Cold'];
-    if(layer)return ['Transitional'];
-    return ['Summer'];
+  const D=window.FITS_DATA;if(!D)return;
+  let occasion='All',season='All';
+  const look=id=>D.looks.find(l=>l.id===id);
+  const seasonsForFamily=f=>[...new Set((f.looks||[]).map(look).filter(Boolean).flatMap(l=>l.seasons||['Summer']))];
+  function apply(){let visible=0;document.querySelectorAll('.card').forEach(card=>{const tags=(card.dataset.tags||'').split(','),ss=(card.dataset.seasons||'').split(',');const showOcc=occasion==='All'||tags.includes(occasion),showSeason=season==='All'||ss.includes(season),show=showOcc&&showSeason;card.classList.toggle('hidden',!show);if(show)visible++});const empty=document.querySelector('.empty');if(empty){empty.style.display=visible?'none':'block';empty.textContent=`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'looks':occasion.toLowerCase()+' looks'} yet.`}const count=document.querySelector('.filter-result-count');if(count)count.textContent=`${visible} ${visible===1?'family':'families'}`;}
+  function enhance(){const chips=document.querySelector('.chips');if(!chips)return;chips.classList.add('occasion-chips');
+    D.families.forEach(f=>{const card=document.querySelector(`a.card[href="detail.html?family=${f.id}"]`);if(card){const ss=seasonsForFamily(f);card.dataset.seasons=ss.join(',');const body=card.querySelector('.body');if(body&&!body.querySelector('.season-note')){const n=document.createElement('div');n.className='season-note';n.textContent=ss.join(' · ');body.appendChild(n)}}});
+    [...chips.querySelectorAll('[data-season]')].forEach(x=>x.remove());
+    chips.querySelectorAll('[data-filter]').forEach(btn=>{btn.classList.toggle('active',btn.dataset.filter===occasion);btn.onclick=e=>{e.preventDefault();occasion=btn.dataset.filter;chips.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter===occasion));apply()}});
+    if(!document.querySelector('.season-filter-wrap')){const wrap=document.createElement('div');wrap.className='season-filter-wrap';wrap.innerHTML=`<div class="filter-label-row"><span>Season</span><b class="filter-result-count"></b></div><div class="season-chips">${['All','Summer','Transitional','Cold'].map(x=>`<button class="chip season-choice ${x===season?'active':''}" data-season-choice="${x}">${x==='All'?'All seasons':x}</button>`).join('')}</div>`;chips.after(wrap);wrap.querySelectorAll('[data-season-choice]').forEach(btn=>btn.onclick=()=>{season=btn.dataset.seasonChoice;wrap.querySelectorAll('[data-season-choice]').forEach(x=>x.classList.toggle('active',x.dataset.seasonChoice===season));apply()})}
+    apply();
   }
-  function seasonsForFamily(f){
-    return [...new Set((f.looks||[]).map(l).filter(Boolean).flatMap(seasonsForLook))];
-  }
-  function enhance(){
-    const chips=document.querySelector('.chips');
-    if(!chips)return;
-    D.families.forEach(f=>{
-      const card=document.querySelector(`a.card[href="detail.html?family=${f.id}"]`);
-      if(card)card.dataset.seasons=seasonsForFamily(f).join(',');
-    });
-    if(!chips.querySelector('[data-season="Summer"]')){
-      ['Summer','Transitional','Cold'].forEach(name=>{
-        const b=document.createElement('button');
-        b.className='chip season-chip';
-        b.dataset.season=name;
-        b.textContent=name;
-        b.addEventListener('click',()=>{
-          document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
-          b.classList.add('active');
-          let visible=0;
-          document.querySelectorAll('.card').forEach(card=>{
-            const show=(card.dataset.seasons||'').split(',').includes(name);
-            card.classList.toggle('hidden',!show);
-            if(show)visible++;
-          });
-          const empty=document.querySelector('.empty');
-          if(empty)empty.style.display=visible?'none':'block';
-        });
-        chips.appendChild(b);
-      });
-    }
-  }
-  const original=window.render;
-  if(typeof original==='function'){
-    window.render=function(...args){const out=original.apply(this,args);enhance();return out};
-  }
+  const original=window.render;if(typeof original==='function')window.render=function(...args){const out=original.apply(this,args);enhance();return out};
   enhance();
 })();
