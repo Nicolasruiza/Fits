@@ -1,0 +1,45 @@
+{
+  "sourceCount": 69,
+  "status": "curated",
+  "rules": {
+    "exactObservedCombinationIsAtomic": true,
+    "ignoreEducationalSlidesAsLooks": true,
+    "differentShoesAreVariants": true,
+    "doNotInventCombinations": true
+  },
+  "newFamilies": [
+    {"id":"field-jacket","label":"Olive field jacket layers","sources":["IMG_2295.jpeg","IMG_2320.jpeg","IMG_2322.jpeg","IMG_2347.jpeg"],"priority":"high"},
+    {"id":"blazer-knit","label":"Blazer + knit sweater","sources":["IMG_2298.jpeg","IMG_2305.jpeg","IMG_2314.jpeg","IMG_2316.jpeg","IMG_2317.jpeg"],"priority":"high"},
+    {"id":"overshirt-tee","label":"Overshirt + tee + chinos","sources":["IMG_2296.jpeg","IMG_2341.jpeg"],"priority":"medium"},
+    {"id":"quarter-zip","label":"Quarter-zip + chinos","sources":["IMG_2348.jpeg","IMG_2371.jpeg","IMG_2378.jpeg"],"priority":"high"},
+    {"id":"hoodie-henley","label":"Zip hoodie + Henley + denim","sources":["IMG_2344.jpeg","IMG_2345.jpeg","IMG_2365.jpeg"],"priority":"medium"},
+    {"id":"cable-knit","label":"Cable-knit sweater + denim/chinos","sources":["IMG_2309.jpeg","IMG_2306.jpeg","IMG_2314.jpeg"],"priority":"medium"},
+    {"id":"denim-jacket-tee","label":"Denim jacket + tee + chinos","sources":["IMG_2295.jpeg"],"priority":"medium"},
+    {"id":"tee-chinos","label":"Simple tee + chinos","sources":["IMG_2318.jpeg","IMG_2338.jpeg"],"priority":"low"},
+    {"id":"summer-henley-shorts","label":"Henley + shorts + sneakers","sources":["IMG_2291.jpeg"],"priority":"low"}
+  ],
+  "variantsToExistingFamilies": [
+    {"family":"family-overcoat-navy","sources":["IMG_2301.jpeg","IMG_2304.jpeg","IMG_2307.jpeg","IMG_2310.jpeg"],"notes":"Camel/grey overcoat, knit and scarf variants"},
+    {"family":"family-blazer-white-beige","sources":["IMG_2301.jpeg","IMG_2308.jpeg","IMG_2314.jpeg","IMG_2347.jpeg"],"notes":"Burgundy/grey blazer and shirt variants"},
+    {"family":"family-cardigan-dark","sources":["IMG_2346.jpeg"],"notes":"Grey cardigan + dark Henley + dark denim + white sneakers"},
+    {"family":"family-cardigan-light","sources":["IMG_2340.jpeg","IMG_2346.jpeg","IMG_2347.jpeg","IMG_2378.jpeg"],"notes":"Navy/grey cardigan variants"},
+    {"family":"family-henley-dark","sources":["IMG_2318.jpeg","IMG_2329.jpeg","IMG_2338.jpeg","IMG_2355.jpeg"],"notes":"Grey Henley with beige/navy/dark bottoms"},
+    {"family":"family-lightblue-beige","sources":["IMG_2291.jpeg","IMG_2324.jpeg","IMG_2327.jpeg","IMG_2360.jpeg","IMG_2367.jpeg","IMG_2374.jpeg"],"notes":"Light-blue shirt with beige/grey/navy bottoms and brown shoes"},
+    {"family":"family-navy-denim","sources":["IMG_2324.jpeg","IMG_2332.jpeg","IMG_2363.jpeg"],"notes":"Medium-wash denim and shoe variants"},
+    {"family":"family-navy-taupe","sources":["IMG_2318.jpeg","IMG_2335.jpeg"],"notes":"Navy polo with olive/beige chinos and brown shoes"},
+    {"family":"family-white-navy","sources":["IMG_2327.jpeg","IMG_2337.jpeg","IMG_2369.jpeg"],"notes":"White polo/shirt with navy chinos and brown shoes"},
+    {"family":"family-leather-turtleneck","sources":["IMG_2310.jpeg"],"notes":"Brown leather jacket with olive chinos and brown boots"},
+    {"family":"family-dark-blazer-dark","sources":["IMG_2295.jpeg","IMG_2365.jpeg"],"notes":"Dark blazer/crewneck casual variants"}
+  ],
+  "referenceOnlySources": [
+    "IMG_2292.jpeg","IMG_2293.jpeg","IMG_2297.jpeg","IMG_2303.jpeg","IMG_2315.jpeg","IMG_2319.jpeg","IMG_2320.jpeg","IMG_2321.jpeg","IMG_2323.jpeg","IMG_2326.jpeg","IMG_2328.jpeg","IMG_2330.jpeg","IMG_2331.jpeg","IMG_2334.jpeg","IMG_2342.jpeg","IMG_2349.jpeg","IMG_2350.jpeg","IMG_2352.jpeg","IMG_2354.jpeg","IMG_2358.jpeg","IMG_2359.jpeg","IMG_2376.jpeg","IMG_2377.jpeg"
+  ],
+  "highPriorityGenerationQueue": [
+    "Quarter-zip + beige chinos + brown shoes",
+    "Olive field jacket + navy knit + dark denim + brown boots",
+    "Navy blazer + burgundy/cream knit + dark chinos",
+    "Grey overshirt + white tee + olive chinos + brown loafers",
+    "Grey cardigan + dark Henley + dark denim + white sneakers",
+    "Camel/grey overcoat seasonal variant"
+  ]
+}
