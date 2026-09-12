@@ -1,0 +1,7 @@
+(()=>{const D=window.FITS_DATA;if(!D)return;
+const explicit={
+'look-01':['Summer'],'look-02':['Summer'],'look-03':['Summer'],'look-04':['Summer'],'look-05':['Summer'],'look-06':['Summer'],'look-07':['Summer'],'look-08':['Summer','Transitional'],'look-09':['Summer'],'look-10':['Summer'],'look-11':['Summer'],'look-12':['Transitional'],'look-13':['Transitional'],'look-14':['Transitional'],'look-15':['Transitional'],'look-16':['Cold'],'look-17':['Cold'],'look-18':['Transitional'],'look-19':['Summer','Transitional'],'look-20':['Transitional'],'look-21':['Summer','Transitional'],'look-22':['Transitional'],'look-23':['Transitional'],'look-24':['Summer','Transitional'],'look-25':['Summer','Transitional'],'look-26':['Transitional'],'look-27':['Summer','Transitional'],'look-28':['Summer'],'look-29':['Summer'],'look-30':['Transitional'],'look-31':['Transitional'],'look-32':['Cold'],'look-33':['Transitional'],'look-34':['Summer'],'look-35':['Summer'],'look-36':['Transitional']};
+const piece=id=>D.pieces.find(p=>p.id===id);
+function infer(l){const names=(l.pieces||[]).map(id=>(piece(id)?.name||id).toLowerCase()).join(' ');if(/overcoat|wool|coat|turtleneck|heavy sweater/.test(names))return['Cold'];if(/blazer|jacket|cardigan|quarter[- ]?zip|vest|overshirt|henley|chelsea/.test(names))return['Transitional'];return['Summer'];}
+(D.looks||[]).forEach(l=>{l.seasons=explicit[l.id]||infer(l)});
+})();
