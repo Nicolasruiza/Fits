@@ -1,0 +1,1 @@
+(()=>{const D=window.FITS_DATA;if(!D)return;(D.pieces||[]).forEach(p=>{p.status='missing'});})();
