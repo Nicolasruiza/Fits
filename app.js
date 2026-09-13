@@ -54,7 +54,7 @@ const missingFor=l=>l.pieces.filter(id=>wardrobe[id]!=='owned');
 const familyLooks=f=>f.looks.map(look).filter(Boolean);
 
 function nav(active){
-  return `<nav class="nav"><a href="index.html"><b>▦</b>Looks</a><a href="wardrobe.html" class="${active==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="unlock.html" class="${active==='unlock'?'active':''}"><b>↗</b>Unlock</a></nav>`;
+  return `<nav class="nav"><a href="index.html"><b>▦</b>Looks</a><a href="wardrobe.html" class="${active==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="unlock.html" class="${active==='unlock'?'active':''}"><b>↗</b>Unlock</a><a href="stats.html" class="${active==='stats'?'active':''}"><b>◫</b>Stats</a></nav>`;
 }
 
 function headerBar(title,subtitle,kicker=''){

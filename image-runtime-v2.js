@@ -1,1 +1,1 @@
-(()=>{const D=window.FITS_DATA,I=window.FITS_IMG||{};if(!D)return;['look-34','look-35','look-36'].forEach(id=>{const l=D.looks.find(x=>x.id===id);if(l&&!l.image&&I[id])l.image='data:image/webp;base64,'+I[id];});})();
+(()=>{const D=window.FITS_DATA,I=window.FITS_IMG||{};if(!D)return;['look-35','look-36'].forEach(id=>{const l=D.looks.find(x=>x.id===id);if(l&&!l.image&&I[id])l.image='data:image/webp;base64,'+I[id];});})();

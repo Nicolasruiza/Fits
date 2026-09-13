@@ -2,4 +2,4 @@
 
 Personal mobile-first wardrobe inspiration app.
 
-MVP includes look catalog, wardrobe inventory, incomplete-look tracking, and an Unlock view showing which missing pieces enable the most outfits.
+MVP includes the look catalog, wardrobe inventory, incomplete-look tracking, smart purchase ranking in Unlock, and wear-history insights in Stats.
