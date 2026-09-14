@@ -4,6 +4,7 @@
   const MAX_AGE=60*60*1000;
   const read=(key,fallback=null)=>{try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}};
   const setLoading=on=>{const b=document.getElementById('weatherBtn');if(b){b.classList.toggle('loading',!!on);b.disabled=!!on}};
+  const resetHorizontalDrift=()=>{try{document.documentElement.scrollLeft=0;document.body.scrollLeft=0}catch(e){}};
 
   function buildWeather(d,location){
     const c=d.current,start=new Date(),idx=d.hourly.time.findIndex(t=>new Date(t)>=start),hours=[];
@@ -26,9 +27,13 @@
       const saved=read(COORDS_KEY,{})||{};
       localStorage.setItem(COORDS_KEY,JSON.stringify({lat,lon,location:w.location,savedAt:saved.savedAt||Date.now()}));
       if(typeof render==='function')render(w);
+      resetHorizontalDrift();
+      bindControls();
     }catch(e){
       const cached=read(WEATHER_KEY,null);
       if(typeof render==='function')render(cached);
+      resetHorizontalDrift();
+      bindControls();
     }finally{setLoading(false)}
   }
 
@@ -53,15 +58,15 @@
   window.loadWeather=smartLoadWeather;
   window.refreshFitsLocation=requestCurrentLocation;
 
-  function bindLocationLabel(){
-    const el=document.querySelector('.weather .location');
-    if(!el||el.dataset.locationBound)return;
-    el.dataset.locationBound='1';
-    el.title='Tap to update current location';
-    el.addEventListener('click',requestCurrentLocation);
+  function bindControls(){
+    const loc=document.querySelector('.weather .location');
+    if(loc&&!loc.dataset.locationBound){loc.dataset.locationBound='1';loc.title='Tap to update current location';loc.addEventListener('click',requestCurrentLocation)}
+    const btn=document.getElementById('weatherBtn');
+    if(btn&&!btn.dataset.smartWeatherBound){btn.dataset.smartWeatherBound='1';btn.onclick=smartLoadWeather}
   }
-  new MutationObserver(bindLocationLabel).observe(document.documentElement,{childList:true,subtree:true});
-  bindLocationLabel();
+  new MutationObserver(bindControls).observe(document.documentElement,{childList:true,subtree:true});
+  bindControls();
+  resetHorizontalDrift();
 
   const saved=read(COORDS_KEY,null),cached=read(WEATHER_KEY,null);
   const cacheMissingDaily=cached&&(!Number.isFinite(cached.maxTemp)||!Array.isArray(cached.hours)||cached.hours.length<5);
