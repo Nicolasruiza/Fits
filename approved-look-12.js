@@ -1,0 +1,1 @@
+(()=>{const D=window.FITS_DATA;if(!D)return;const l=D.looks.find(x=>x.id==='look-12');if(l)l.image='assets/look-12-approved.webp?v=1';})();
