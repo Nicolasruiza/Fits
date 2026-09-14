@@ -7,24 +7,28 @@
     const parts=s.trim().split(/\s+/).filter(Boolean);
     return (parts.slice(0,2).map(x=>x[0]).join('')||'—').toUpperCase();
   }
+  function removeBrokenLook(img){
+    const card=img.closest?.('.card,.rank-row,.recent-row,.variant');
+    if(card){card.remove();return true}
+    return false;
+  }
   function fail(img){
     if(!img||img.dataset.fallbackDone==='1')return;
     img.dataset.fallbackDone='1';
     const p=img.parentElement;
     if(!p)return;
+    const pieceLike=p.classList.contains('ward-photo')||p.classList.contains('unlock-photo')||p.classList.contains('piece-photo');
+    if(!pieceLike&&removeBrokenLook(img))return;
     if(img.classList.contains('variant-thumb')){img.style.display='none';return;}
     img.style.display='none';
     if(p.querySelector(':scope > .fits-img-fallback'))return;
     const d=document.createElement('div');
     d.className='fits-img-fallback';
-    const pieceLike=p.classList.contains('ward-photo')||p.classList.contains('unlock-photo')||p.classList.contains('piece-photo');
-    d.textContent=pieceLike?initials(img.alt):'Photo pending';
+    d.textContent=pieceLike?initials(img.alt):'Image unavailable';
     p.appendChild(d);
   }
   document.addEventListener('error',e=>{if(e.target instanceof HTMLImageElement)fail(e.target)},true);
-  function scan(root=document){
-    root.querySelectorAll?.('img').forEach(img=>{if(img.complete&&img.naturalWidth===0)fail(img)});
-  }
+  function scan(root=document){root.querySelectorAll?.('img').forEach(img=>{if(img.complete&&img.naturalWidth===0)fail(img)})}
   scan();
   new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType!==1)return;if(n.tagName==='IMG'){if(n.complete&&n.naturalWidth===0)fail(n)}else scan(n)}))).observe(document.documentElement,{childList:true,subtree:true});
 })();
