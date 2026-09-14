@@ -1,0 +1,1 @@
+(()=>{const D=window.FITS_DATA;if(!D)return;const ids=new Set(D.looks.map(x=>x.id));D.families=D.families.filter(f=>f.looks.some(id=>ids.has(id)));D.families.forEach(f=>{f.looks=f.looks.filter(id=>ids.has(id));if(!ids.has(f.hero))f.hero=f.looks[0]||'';});})();
