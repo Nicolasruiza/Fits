@@ -1,5 +1,7 @@
 (()=>{const D=window.FITS_DATA;if(!D)return;
-// Only approved final look photos belong in Looks.
-// The previous look-37/look-38/look-39 entries were built from inspiration/reference images,
-// so they are intentionally not added here. Inspiration remains available through data-batch7.
+const addFamily=f=>{if(!D.families.some(x=>x.id===f.id))D.families.push(f)};
+const addLook=l=>{if(!D.looks.some(x=>x.id===l.id))D.looks.push(l)};
+// Approved final only. Inspiration/reference cards stay out of Looks.
+addFamily({id:'family-navy-crewneck-beige',name:'Navy crewneck + beige chinos',hero:'look-38',looks:['look-38']});
+addLook({id:'look-38',family:'family-navy-crewneck-beige',name:'Navy crewneck + light blue Oxford + beige chinos',image:'',formal:3,badges:['Office','Weekend'],pieces:['navy-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
 })();
