@@ -1,1 +1,1 @@
-(()=>{const D=window.FITS_DATA;if(!D)return;(D.pieces||[]).forEach(p=>{p.status='missing'});})();
+(()=>{const D=window.FITS_DATA;if(!D)return;(D.pieces||[]).forEach(p=>{if(p.status!=='owned'&&p.status!=='missing')p.status='missing'});})();
