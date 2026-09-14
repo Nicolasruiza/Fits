@@ -1,0 +1,1 @@
+(()=>{const D=window.FITS_DATA;if(!D)return;const paths={'look-38':'assets/look-38-approved.webp?v=1','look-40':'assets/look-40-navy-polo-cream.webp?v=1'};Object.entries(paths).forEach(([id,src])=>{const l=D.looks.find(x=>x.id===id);if(l)l.image=src;});})();
