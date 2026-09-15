@@ -1,12 +1,13 @@
 (()=>{const D=window.FITS_DATA;if(!D)return;const addPiece=p=>{if(!D.pieces.some(x=>x.id===p.id))D.pieces.push(p)};const addFamily=f=>{if(!D.families.some(x=>x.id===f.id))D.families.push(f)};const addLook=l=>{if(!D.looks.some(x=>x.id===l.id))D.looks.push(l)};const addVariant=(familyId,lookId)=>{const f=D.families.find(x=>x.id===familyId);if(f&&!f.looks.includes(lookId))f.looks.push(lookId)};
 addPiece({id:'olive-trousers',name:'Olive tailored trousers',category:'Pants',status:'missing'});
+addPiece({id:'grey-crewneck',name:'Light grey crewneck sweater',category:'Top',status:'missing'});
 addPiece({id:'stone-shirt',name:'Stone button-up shirt',category:'Top',status:'missing'});
 addFamily({id:'family-white-polo-olive',name:'White polo + olive trousers',hero:'look-47',looks:['look-47']});
-addLook({id:'look-47',family:'family-white-polo-olive',name:'White polo + olive trousers + white sneakers',image:'assets/look-47-white-polo-olive.webp?v=1',formal:2,badges:['Weekend','Office','Travel'],pieces:['white-polo','olive-trousers','white-leather-sneakers']});
+addLook({id:'look-47',family:'family-white-polo-olive',name:'White polo + olive trousers + white sneakers',image:'assets/look-47-white-polo-olive.webp?v=2',formal:2,badges:['Weekend','Office','Travel'],pieces:['white-polo','olive-trousers','white-leather-sneakers']});
 addFamily({id:'family-grey-crewneck-denim',name:'Grey crewneck + denim',hero:'look-48',looks:['look-48']});
-addLook({id:'look-48',family:'family-grey-crewneck-denim',name:'Grey crewneck + dark denim + white sneakers',image:'assets/look-48-grey-sweater-denim.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['grey-crewneck','dark-denim','white-leather-sneakers']});
+addLook({id:'look-48',family:'family-grey-crewneck-denim',name:'Grey crewneck + dark denim + white sneakers',image:'assets/look-48-grey-sweater-denim.webp?v=2',formal:1,badges:['Weekend','Travel'],pieces:['grey-crewneck','dark-denim','white-leather-sneakers']});
 addFamily({id:'family-stone-shirt-denim',name:'Stone shirt + denim',hero:'look-49',looks:['look-49']});
-addLook({id:'look-49',family:'family-stone-shirt-denim',name:'Stone shirt + dark denim + brown loafers',image:'assets/look-49-stone-shirt-denim.webp?v=1',formal:2,badges:['Weekend','Office','Dinner'],pieces:['stone-shirt','dark-denim','brown-loafers','brown-belt']});
-addLook({id:'look-50',family:'family-blazer-tee',name:'Navy blazer + white tee + dark denim + white sneakers',image:'assets/look-50-navy-blazer-denim.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-tee','dark-denim','white-leather-sneakers']});
+addLook({id:'look-49',family:'family-stone-shirt-denim',name:'Stone shirt + dark denim + brown loafers',image:'assets/look-49-stone-shirt-denim.webp?v=2',formal:2,badges:['Weekend','Office','Dinner'],pieces:['stone-shirt','dark-denim','brown-loafers','brown-belt']});
+addLook({id:'look-50',family:'family-blazer-tee',name:'Navy blazer + white tee + dark denim + white sneakers',image:'assets/look-50-navy-blazer-denim.webp?v=2',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-tee','dark-denim','white-leather-sneakers']});
 addVariant('family-blazer-tee','look-50');
 })();
