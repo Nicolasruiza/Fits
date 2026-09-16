@@ -1,0 +1,38 @@
+name: Finalize generated Fits assets
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - 'staging/looks60-67/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Finalize physical assets and data
+        run: node scripts/finalize-assets.mjs
+      - name: Validate final catalog
+        run: node scripts/validate-data.mjs
+      - name: Commit finalized app
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Finalize generated looks and retire legacy images [skip ci]"
+          git push
