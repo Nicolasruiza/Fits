@@ -34,5 +34,5 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Finalize generated looks and retire legacy images [skip ci]"
+          git commit -m "Finalize generated looks and retire legacy images"
           git push
