@@ -8,7 +8,6 @@
   const upsertLook=l=>{const x=lookBy(l.id);if(x){Object.assign(x,l);return x}D.looks.push(l);return l};
   const addVariant=(familyId,lookId)=>{const f=familyBy(familyId);if(f&&!f.looks.includes(lookId))f.looks.push(lookId)};
 
-  // Canonical pieces for the new generation pipeline.
   [
     {id:'olive-overshirt',name:'Olive overshirt',category:'Outerwear'},
     {id:'black-polo',name:'Black polo',category:'Top'},
@@ -16,10 +15,11 @@
     {id:'olive-tee',name:'Olive crew-neck T-shirt',category:'Top'},
     {id:'tan-knit-sweater',name:'Tan knit sweater',category:'Top'},
     {id:'black-overcoat',name:'Black overcoat',category:'Outerwear'},
-    {id:'brown-overcoat',name:'Brown overcoat',category:'Outerwear'}
+    {id:'brown-overcoat',name:'Brown overcoat',category:'Outerwear'},
+    {id:'brown-suede-jacket',name:'Brown suede jacket',category:'Outerwear'}
   ].forEach(upsertPiece);
 
-  // Batch 16 moved here so this becomes the only data extension point going forward.
+  // Batch 16 migrated here. This is the only data extension point going forward.
   upsertFamily({id:'family-olive-overshirt-denim',name:'Olive overshirt + white tee',hero:'look-51',looks:['look-51']});
   upsertLook({id:'look-51',family:'family-olive-overshirt-denim',name:'Olive overshirt + white tee + dark denim + white sneakers',image:'assets/look-51-olive-overshirt-denim.webp?v=2',formal:1,badges:['Weekend','Travel'],pieces:['olive-overshirt','white-tee','dark-denim','white-leather-sneakers']});
 
@@ -30,15 +30,7 @@
   upsertLook({id:'look-53',family:'family-lightblue-cream-knit',name:'Light blue shirt + cream knit + cream trousers + brown loafers',image:'assets/look-53-lightblue-cream-cafe.webp?v=2',formal:3,badges:['Office','Dinner','Weekend'],pieces:['light-blue-oxford','cream-knit-sweater','cream-chinos','brown-loafers','brown-belt']});
   const look40=lookBy('look-40');if(look40)look40.image='assets/look-40-navy-polo-cream-v2.webp?v=2';
 
-  // Exact duplicate outfit formulas keep one look ID; only the photo is refreshed.
-  const replacements={
-    'look-47':'assets/look-47-white-polo-olive-v2.webp?v=1',
-    'look-48':'assets/look-48-grey-sweater-denim-v2.webp?v=1',
-    'look-49':'assets/look-49-stone-shirt-denim-v2.webp?v=1'
-  };
-  Object.entries(replacements).forEach(([id,image])=>{const l=lookBy(id);if(l)l.image=image});
-
-  // New variants and families from the boost sprint.
+  // Boost sprint: add only genuinely new outfit formulas.
   upsertLook({id:'look-54',family:'family-olive-overshirt-denim',name:'Olive overshirt + white tee + cream trousers + white sneakers',image:'assets/look-54-olive-overshirt-cream.webp?v=1',formal:2,badges:['Weekend','Office','Travel'],pieces:['olive-overshirt','white-tee','cream-chinos','white-leather-sneakers']});
   addVariant('family-olive-overshirt-denim','look-54');
 
