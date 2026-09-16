@@ -22,11 +22,6 @@ if(!D)throw new Error('FITS_DATA was not created');
 const errors=[];
 const warnings=[];
 const blocked=new Set(['look-07']);
-const legacyEmbedded=new Map([
-  ['look-35',['image-35a.js','image-35b.js','image-35c.js']],
-  ['look-36',['image-36a.js','image-36b.js','image-36c.js']]
-]);
-
 const duplicates=(arr)=>{const seen=new Set(),dups=[];for(const x of arr||[]){if(!x?.id)continue;if(seen.has(x.id))dups.push(x.id);seen.add(x.id)}return [...new Set(dups)]};
 for(const [label,arr] of [['piece',D.pieces],['look',D.looks],['family',D.families]]){
   const d=duplicates(arr);if(d.length)errors.push(`Duplicate ${label} IDs: ${d.join(', ')}`);
@@ -43,15 +38,8 @@ for(const l of D.looks||[]){
   for(const p of l.pieces||[])if(!pieceIds.has(p))errors.push(`${l.id}: missing piece ${p}`);
 
   const rawImage=String(l.image||'').trim();
-  if(!rawImage){
-    const scripts=legacyEmbedded.get(l.id);
-    if(!scripts)errors.push(`${l.id}: no image`);
-    else {
-      const missing=scripts.filter(file=>!fs.existsSync(path.join(root,file)));
-      if(missing.length)errors.push(`${l.id}: missing embedded image script(s) ${missing.join(', ')}`);
-      else warnings.push(`${l.id}: legacy embedded image payload`);
-    }
-  } else {
+  if(!rawImage)errors.push(`${l.id}: no image`);
+  else {
     const image=rawImage.split('?')[0];
     if(image.startsWith('assets/')&&!fs.existsSync(path.join(root,image)))errors.push(`${l.id}: missing asset ${image}`);
   }

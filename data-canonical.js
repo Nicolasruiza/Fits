@@ -46,4 +46,38 @@
 
   upsertFamily({id:'family-cream-knit-olive',name:'Cream knit + olive trousers',hero:'look-59',looks:['look-59']});
   upsertLook({id:'look-59',family:'family-cream-knit-olive',name:'Cream knit sweater + olive trousers + white sneakers',image:'assets/look-59-cream-knit-olive.webp?v=1',formal:2,badges:['Weekend','Office','Travel'],pieces:['cream-knit-sweater','olive-trousers','white-leather-sneakers']});
+  // Inspiration intake 2026-09-16: app-ready generated looks.
+  [
+    {id:'black-tee',name:'Black crew-neck T-shirt',category:'Top'},
+    {id:'green-buttonup',name:'Green button-up shirt',category:'Top'},
+    {id:'burgundy-knit-polo',name:'Burgundy knit polo',category:'Top'},
+    {id:'striped-blue-linen-shirt',name:'Blue striped linen shirt',category:'Top'},
+    {id:'white-linen-shorts',name:'White linen shorts',category:'Pants'},
+    {id:'tan-espadrilles',name:'Tan summer espadrilles',category:'Shoes'}
+  ].forEach(upsertPiece);
+
+  upsertFamily({id:'family-white-shirt-denim',name:'White shirt + denim',hero:'look-60',looks:['look-60']});
+  upsertLook({id:'look-60',family:'family-white-shirt-denim',name:'White shirt + dark denim + white sneakers',image:'assets/look-60-white-shirt-denim.webp?v=1',formal:2,badges:['Weekend','Office','Dinner'],pieces:['white-shirt','dark-denim','white-leather-sneakers']});
+
+  upsertFamily({id:'family-black-tee-denim',name:'Black tee + denim',hero:'look-61',looks:['look-61']});
+  upsertLook({id:'look-61',family:'family-black-tee-denim',name:'Black tee + dark denim + white sneakers',image:'assets/look-61-black-tee-denim.webp?v=1',formal:1,badges:['Weekend','Travel','Dinner'],pieces:['black-tee','dark-denim','white-leather-sneakers']});
+
+  upsertLook({id:'look-62',family:'family-lightblue-beige',name:'Light blue shirt + beige chinos + brown loafers',image:'assets/look-62-blue-shirt-beige.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['light-blue-oxford','beige-chinos','brown-loafers','brown-belt']});
+  addVariant('family-lightblue-beige','look-62');
+
+  upsertFamily({id:'family-green-shirt-tan',name:'Green shirt + tan chinos',hero:'look-63',looks:['look-63']});
+  upsertLook({id:'look-63',family:'family-green-shirt-tan',name:'Green button-up + tan chinos + brown loafers',image:'assets/look-63-green-shirt-tan.webp?v=1',formal:2,badges:['Weekend','Office','Dinner'],pieces:['green-buttonup','khaki-chinos','brown-loafers','brown-belt']});
+
+  upsertFamily({id:'family-burgundy-knit-grey',name:'Burgundy knit + grey trousers',hero:'look-64',looks:['look-64']});
+  upsertLook({id:'look-64',family:'family-burgundy-knit-grey',name:'Burgundy knit polo + grey trousers + dark loafers',image:'assets/look-64-burgundy-knit-grey.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['burgundy-knit-polo','grey-trousers','dark-loafers']});
+
+  upsertFamily({id:'family-striped-linen-summer',name:'Striped linen summer',hero:'look-65',looks:['look-65']});
+  upsertLook({id:'look-65',family:'family-striped-linen-summer',name:'Blue striped linen shirt + white linen shorts',image:'assets/look-65-striped-linen-shorts.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['striped-blue-linen-shirt','white-linen-shorts','tan-espadrilles']});
+
+  upsertLook({id:'look-66',family:'family-earth-suede',name:'Brown suede jacket + black polo + cream trousers + brown loafers',image:'assets/look-66-brown-suede-black-cream.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['brown-suede-jacket','black-polo','cream-chinos','brown-loafers']});
+  addVariant('family-earth-suede','look-66');
+
+  upsertLook({id:'look-67',family:'family-green-khaki',name:'Green polo + cream trousers + white sneakers',image:'assets/look-67-green-polo-cream.webp?v=1',formal:2,badges:['Weekend','Office','Travel'],pieces:['green-polo','cream-chinos','white-leather-sneakers']});
+  addVariant('family-green-khaki','look-67');
+
 })();
