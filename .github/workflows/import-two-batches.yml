@@ -21,7 +21,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p assets/generated-two-batches
-          base64 -d staging/two-batches/payload.b64 > /tmp/two-batches.zip
+          tr -cd 'A-Za-z0-9+/=' < staging/two-batches/payload.b64 | base64 -d > /tmp/two-batches.zip
           unzip -t /tmp/two-batches.zip
           unzip -o /tmp/two-batches.zip -d assets/generated-two-batches
           find assets/generated-two-batches -type f -maxdepth 2 -print | sort
