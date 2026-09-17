@@ -5,7 +5,7 @@
     const direct=e.target?.closest?.('.card');
     if(direct)return direct;
 
-    const p=e.changedTouches?.[0]||e.touches?.[0]||e;
+    const p=e;
     if(document.elementsFromPoint&&Number.isFinite(p.clientX)&&Number.isFinite(p.clientY)){
       for(const el of document.elementsFromPoint(p.clientX,p.clientY)){
         const card=el?.closest?.('.card');
@@ -54,19 +54,16 @@
         const smart=card.dataset.smartLook;
         if(smart)u.searchParams.set('look',smart);
         const next=u.pathname.split('/').pop()+u.search;
-        // Important: do not rewrite an unchanged href. Rewriting it from inside
-        // a MutationObserver can create a render loop on iOS Safari.
         if(next!==href)card.setAttribute('href',next);
       }catch(e){}
     });
   }
 
   const root=document.getElementById('root')||document.body;
-  // We only need to normalize newly-rendered cards. Do NOT observe href changes;
-  // normalize() itself may update href and observing attributes can self-trigger forever.
   new MutationObserver(()=>requestAnimationFrame(normalize)).observe(root,{childList:true,subtree:true});
 
-  document.addEventListener('touchend',go,true);
+  // Use the normal click lifecycle only. Listening to touchend as well made
+  // iPhone taps feel jumpy and could navigate when the user was just finishing a scroll.
   document.addEventListener('click',go,true);
   normalize();
 
