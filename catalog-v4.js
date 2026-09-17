@@ -27,5 +27,6 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'grey-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_7b50ad21-aad0-458b-92e1-0e26324e1f0b_min.webp',
 'blue-denim':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_402ecde4-7216-418f-a926-01f238d55f04_min.webp',
 'navy-leather-sneakers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214426_5888becf-d8b9-4f01-81a4-a022f60cc351_min.webp',
-'tan-suede-shoes':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214426_ef3cf42d-aaf5-40a2-855b-b1237b426bbd_min.webp'
+'tan-suede-shoes':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214426_ef3cf42d-aaf5-40a2-855b-b1237b426bbd_min.webp',
+'olive-crewneck':'assets/look-71.webp?v=1'
 });
