@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - '.github/workflows/import-two-batches.yml'
-      - 'staging/two-batches/payload.b64'
+      - 'staging/two-batches/assets.zip'
 
 permissions:
   contents: write
@@ -17,14 +17,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Decode and unpack generated assets
+      - name: Unpack generated assets
         run: |
           set -euo pipefail
           mkdir -p assets/generated-two-batches
-          tr -cd 'A-Za-z0-9+/=' < staging/two-batches/payload.b64 | base64 -d > /tmp/two-batches.zip
-          unzip -t /tmp/two-batches.zip
-          unzip -o /tmp/two-batches.zip -d assets/generated-two-batches
-          find assets/generated-two-batches -type f -maxdepth 2 -print | sort
+          unzip -t staging/two-batches/assets.zip
+          unzip -o staging/two-batches/assets.zip -d assets/generated-two-batches
+          find assets/generated-two-batches -maxdepth 1 -type f -print | sort
       - name: Commit imported assets
         run: |
           set -euo pipefail
