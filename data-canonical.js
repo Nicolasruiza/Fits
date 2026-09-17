@@ -80,4 +80,20 @@
   upsertLook({id:'look-67',family:'family-green-khaki',name:'Green polo + cream trousers + white sneakers',image:'assets/look-67-green-polo-cream.webp?v=1',formal:2,badges:['Weekend','Office','Travel'],pieces:['green-polo','cream-chinos','white-leather-sneakers']});
   addVariant('family-green-khaki','look-67');
 
+
+  // Recovered generated batch 68-73 from the original staged filenames.
+  upsertPiece({id:'olive-crewneck',name:'Olive crewneck sweater',category:'Top'});
+
+  upsertLook({id:'look-68',family:'family-blazer-polo-navy',name:'Navy jacket + white polo + grey trousers + white sneakers',image:'assets/look-68.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-polo','grey-trousers','white-leather-sneakers']});
+  addVariant('family-blazer-polo-navy','look-68');
+
+  upsertFamily({id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-69',looks:['look-69','look-70','look-73']});
+  upsertLook({id:'look-69',family:'family-navy-crewneck-shirt',name:'Navy crewneck + light blue shirt + beige chinos + white sneakers',image:'assets/look-69.webp?v=1',formal:3,badges:['Office','Weekend','Travel'],pieces:['navy-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
+  upsertLook({id:'look-70',family:'family-navy-crewneck-shirt',name:'Navy crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-70.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['navy-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
+  upsertLook({id:'look-73',family:'family-navy-crewneck-shirt',name:'Navy crewneck + white shirt + navy trousers + white sneakers',image:'assets/look-73.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['navy-crewneck','white-shirt','navy-trousers','white-leather-sneakers']});
+
+  upsertFamily({id:'family-olive-crewneck-shirt',name:'Olive crewneck + shirt',hero:'look-71',looks:['look-71','look-72']});
+  upsertLook({id:'look-71',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + beige chinos + white sneakers',image:'assets/look-71.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
+  upsertLook({id:'look-72',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-72.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
+
 })();
