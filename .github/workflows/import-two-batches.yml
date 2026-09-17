@@ -1,0 +1,40 @@
+name: Import two generated Fits batches
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - '.github/workflows/import-two-batches.yml'
+      - 'staging/two-batches/payload.b64'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Decode and unpack generated assets
+        run: |
+          set -euo pipefail
+          mkdir -p assets/generated-two-batches
+          base64 -d staging/two-batches/payload.b64 > /tmp/two-batches.zip
+          unzip -t /tmp/two-batches.zip
+          unzip -o /tmp/two-batches.zip -d assets/generated-two-batches
+          find assets/generated-two-batches -type f -maxdepth 2 -print | sort
+      - name: Commit imported assets
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf staging/two-batches
+          git add -A assets/generated-two-batches staging/two-batches
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "Import two generated Fits image batches"
+          git push
