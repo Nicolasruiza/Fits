@@ -22,6 +22,9 @@ if(!D)throw new Error('FITS_DATA was not created');
 const errors=[];
 const warnings=[];
 const blocked=new Set(['look-07']);
+const pendingPath=path.join(root,'pending-look-assets.json');
+const pendingConfig=fs.existsSync(pendingPath)?JSON.parse(fs.readFileSync(pendingPath,'utf8')):{assets:[]};
+const pendingAssets=new Set(pendingConfig.assets||[]);
 const duplicates=(arr)=>{const seen=new Set(),dups=[];for(const x of arr||[]){if(!x?.id)continue;if(seen.has(x.id))dups.push(x.id);seen.add(x.id)}return [...new Set(dups)]};
 for(const [label,arr] of [['piece',D.pieces],['look',D.looks],['family',D.families]]){
   const d=duplicates(arr);if(d.length)errors.push(`Duplicate ${label} IDs: ${d.join(', ')}`);
@@ -30,6 +33,7 @@ for(const [label,arr] of [['piece',D.pieces],['look',D.looks],['family',D.famili
 const pieceIds=new Set((D.pieces||[]).map(x=>x.id));
 const lookIds=new Set((D.looks||[]).map(x=>x.id));
 const familyIds=new Set((D.families||[]).map(x=>x.id));
+const referencedAssets=new Set();
 
 for(const l of D.looks||[]){
   if(blocked.has(l.id))continue;
@@ -41,7 +45,10 @@ for(const l of D.looks||[]){
   if(!rawImage)errors.push(`${l.id}: no image`);
   else {
     const image=rawImage.split('?')[0];
-    if(image.startsWith('assets/')&&!fs.existsSync(path.join(root,image)))errors.push(`${l.id}: missing asset ${image}`);
+    if(image.startsWith('assets/')){
+      referencedAssets.add(image);
+      if(!fs.existsSync(path.join(root,image)))errors.push(`${l.id}: missing asset ${image}`);
+    }
   }
 }
 
@@ -59,6 +66,23 @@ for(const l of D.looks||[]){
   if(!key)continue;
   const prev=signatures.get(key);
   if(prev)warnings.push(`Exact outfit duplicate: ${prev} and ${l.id}`);else signatures.set(key,l.id);
+}
+
+// Generic numbered look assets should never silently land in /assets without a
+// dataset record. Current intentionally-unassigned files must be listed in
+// pending-look-assets.json so the debt is explicit rather than invisible.
+const assetsDir=path.join(root,'assets');
+const numberedAssets=fs.readdirSync(assetsDir)
+  .filter(name=>/^look-\d+\.webp$/i.test(name))
+  .map(name=>`assets/${name}`);
+for(const asset of numberedAssets){
+  if(referencedAssets.has(asset))continue;
+  if(pendingAssets.has(asset))warnings.push(`Pending unassigned look asset: ${asset}`);
+  else errors.push(`Orphan look asset is not referenced or tracked as pending: ${asset}`);
+}
+for(const asset of pendingAssets){
+  if(!fs.existsSync(path.join(root,asset)))errors.push(`Pending look asset is missing: ${asset}`);
+  if(referencedAssets.has(asset))warnings.push(`Pending manifest is stale; asset is now referenced: ${asset}`);
 }
 
 console.log(`Fits validator: ${D.pieces.length} pieces · ${D.looks.length} looks · ${D.families.length} families`);
