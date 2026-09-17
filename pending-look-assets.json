@@ -1,0 +1,11 @@
+{
+  "assets": [
+    "assets/look-68.webp",
+    "assets/look-69.webp",
+    "assets/look-70.webp",
+    "assets/look-71.webp",
+    "assets/look-72.webp",
+    "assets/look-73.webp"
+  ],
+  "reason": "Uploaded image files are present, but the source-reference-to-outfit/pieces mapping was not committed. Keep them out of the live Fits dataset until each image can be assigned 1:1 without guessing."
+}
