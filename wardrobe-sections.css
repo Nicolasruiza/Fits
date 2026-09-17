@@ -1,0 +1,7 @@
+.ward-grid{display:block!important}
+.ward-section{margin:0 0 17px}
+.ward-section-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 7px;padding-top:2px}
+.ward-section-head h2{margin:0;font:700 16px/1.1 Georgia,serif;color:var(--w-ink)}
+.ward-section-head span{min-width:24px;height:20px;padding:0 7px;border-radius:999px;display:grid;place-items:center;background:#e3e8e5;color:#68736d;font-size:8px;font-weight:800}
+.ward-section-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.ward-section:last-child{margin-bottom:4px}
