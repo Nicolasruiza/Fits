@@ -97,16 +97,42 @@
   upsertLook({id:'look-72',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-72.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
 
   // High-quality face/look replacements (2026-09-17 housekeeping).
-  // These override low-resolution legacy assets that were as small as 240x300.
+  // Replace legacy low-resolution assets with face-consistent full-resolution renders.
   [
-    ['look-43','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_dbc3d208-7286-4834-b9d1-9ec118b74ddf.png'],
-    ['look-47','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_961e1d81-7ce7-4dee-9038-63efe130eb3b.png'],
-    ['look-68','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_760b32ba-20f0-47bd-9535-2aac315516c1.png'],
-    ['look-69','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_d4fdf621-8dac-440b-b10e-2a7824aa88ff.png'],
-    ['look-70','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_86f04556-6506-43d9-bbae-a797be65d67f.png'],
-    ['look-71','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png'],
-    ['look-72','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png'],
-    ['look-73','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_bc16abfb-b8b3-43e8-84a6-b6b8e297a65b.png']
+    ['look-40', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a8f5474e-1d27-498d-b103-25bf29a8c22d.png'],
+    ['look-41', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_1402bf26-4e35-4909-9a98-f6e94f5614d0.png'],
+    ['look-42', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a24db616-0a60-485a-8dec-868b7f30000e.png'],
+    ['look-43', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_dbc3d208-7286-4834-b9d1-9ec118b74ddf.png'],
+    ['look-44', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a7658938-ae47-40e9-a4d9-07dcc8207f8e.png'],
+    ['look-45', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_89d49b76-181a-43b2-b0fa-428a67214703.png'],
+    ['look-46', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014215_7815c766-1b8f-43f4-b0f1-5bde070c6e2b.png'],
+    ['look-47', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_961e1d81-7ce7-4dee-9038-63efe130eb3b.png'],
+    ['look-48', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_179a54a8-3da0-48f6-b03d-a291fd085be9.png'],
+    ['look-49', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_14fe41ab-6348-44f2-b1ea-34ddcd6f0604.png'],
+    ['look-50', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014238_ae827d73-7e8c-4877-ad1c-e033da4bd8e6.png'],
+    ['look-51', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014238_a660c6cf-85dd-4d42-a3be-902d398b4be0.png'],
+    ['look-52', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014238_24767755-ec53-4873-a432-a18e0bf1eced.png'],
+    ['look-53', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014239_aa4c2521-6c20-40b1-b73c-b8124d13c3f9.png'],
+    ['look-54', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_23f12e29-1b78-4b26-abcb-0f3c5d1365e8.png'],
+    ['look-55', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_2c7e9938-64c0-47f9-8c58-1608cbb2f0a3.png'],
+    ['look-56', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_e593448f-8f2d-4d8b-a3a4-be06d7987214.png'],
+    ['look-57', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_0d18b4d6-9a50-4a94-9f1d-b634bccb05bf.png'],
+    ['look-58', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_b8c71067-2867-4e8f-ac0f-c4f517e5624b.png'],
+    ['look-59', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_212bde7c-545d-438f-85e6-840fd057b0bf.png'],
+    ['look-60', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_537cb14c-56e4-4453-afb6-5887cdb23157.png'],
+    ['look-61', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_3d1ecafa-d127-4815-90b3-9c3145e84dbe.png'],
+    ['look-62', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_68640797-7c88-48a9-86dd-2fd574803a7e.png'],
+    ['look-63', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_ef9d44fb-89a1-487b-82a0-3e5568eed881.png'],
+    ['look-64', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_257d641d-013c-4385-a2e3-0a6570be2d0e.png'],
+    ['look-65', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_7c6a7eb4-6d9c-43ad-b3c6-f62715dabf57.png'],
+    ['look-66', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014406_44241971-9129-4d61-8e82-b098026b3e3b.png'],
+    ['look-67', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014407_bbdada5f-f49c-4c25-8ca6-d300a23bfffe.png'],
+    ['look-68', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_760b32ba-20f0-47bd-9535-2aac315516c1.png'],
+    ['look-69', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_d4fdf621-8dac-440b-b10e-2a7824aa88ff.png'],
+    ['look-70', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_86f04556-6506-43d9-bbae-a797be65d67f.png'],
+    ['look-71', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png'],
+    ['look-72', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png'],
+    ['look-73', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_bc16abfb-b8b3-43e8-84a6-b6b8e297a65b.png']
   ].forEach(([id,image])=>{const l=lookBy(id);if(l)l.image=image});
 
 })();
