@@ -99,6 +99,9 @@
   // High-quality face/look replacements (2026-09-17 housekeeping).
   // Replace legacy low-resolution assets with face-consistent full-resolution renders.
   [
+    ['look-35', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_163a0059-5436-4939-b1d4-e4f5bc5f231e.png'],
+    ['look-36', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_46598b57-f847-4a63-ad15-f3d3790967a9.png'],
+    ['look-38', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_35948d5c-5055-4d63-9ad4-b16eceec269c.png'],
     ['look-40', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a8f5474e-1d27-498d-b103-25bf29a8c22d.png'],
     ['look-41', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_1402bf26-4e35-4909-9a98-f6e94f5614d0.png'],
     ['look-42', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a24db616-0a60-485a-8dec-868b7f30000e.png'],
