@@ -96,4 +96,17 @@
   upsertLook({id:'look-71',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + beige chinos + white sneakers',image:'assets/look-71.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
   upsertLook({id:'look-72',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-72.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
 
+  // High-quality face/look replacements (2026-09-17 housekeeping).
+  // These override low-resolution legacy assets that were as small as 240x300.
+  [
+    ['look-43','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_dbc3d208-7286-4834-b9d1-9ec118b74ddf.png'],
+    ['look-47','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_961e1d81-7ce7-4dee-9038-63efe130eb3b.png'],
+    ['look-68','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_760b32ba-20f0-47bd-9535-2aac315516c1.png'],
+    ['look-69','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_d4fdf621-8dac-440b-b10e-2a7824aa88ff.png'],
+    ['look-70','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_86f04556-6506-43d9-bbae-a797be65d67f.png'],
+    ['look-71','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png'],
+    ['look-72','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png'],
+    ['look-73','https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_bc16abfb-b8b3-43e8-84a6-b6b8e297a65b.png']
+  ].forEach(([id,image])=>{const l=lookBy(id);if(l)l.image=image});
+
 })();
