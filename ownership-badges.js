@@ -8,7 +8,7 @@
     (D.pieces||[]).forEach(p=>{m[p.id]=raw[p.id]==='owned'||(!raw[p.id]&&p.status==='owned')});
     return m;
   }
-  function familyId(card){try{return new URL(card.getAttribute('href'),location.href).searchParams.get('family')}catch(e){return null}}
+  function familyId(card){try{return new URL(card.getAttribute('href'),location.href).searchParams.get('family')||card.dataset.family||null}catch(e){return card.dataset.family||null}}
   function bestCompleteness(f,own){
     const variants=(f.looks||[]).map(look).filter(Boolean);
     if(!variants.length)return null;
@@ -29,7 +29,7 @@
     if(document.getElementById('ownership-badge-style'))return;
     const s=document.createElement('style');s.id='ownership-badge-style';s.textContent=`
       .card .tag{display:none!important}.card .readiness-pill{display:none!important}
-      .ownership-pill{position:absolute;left:8px;top:8px;z-index:8;border-radius:999px;padding:6px 8px;font-size:7px;font-weight:850;letter-spacing:.065em;box-shadow:0 2px 9px #0002;border:1px solid transparent;backdrop-filter:blur(4px)}
+      .ownership-pill{position:absolute;left:8px;top:8px;z-index:8;border-radius:999px;padding:6px 8px;font-size:7px;font-weight:850;letter-spacing:.065em;box-shadow:0 2px 9px #0002;border:1px solid transparent;backdrop-filter:blur(4px);pointer-events:none!important}
       .ownership-pill.complete{background:#e1ece3;color:#35533d;border-color:#c5d9c9}.ownership-pill.one{background:#f2eadf;color:#765f3f;border-color:#dfd0b9}.ownership-pill.some{background:#ece9e5;color:#655e57;border-color:#d9d2cb}.ownership-pill.all{background:#eee4e4;color:#765050;border-color:#dcc6c6}`;
     document.head.appendChild(s);
   }
@@ -39,11 +39,13 @@
       const f=family(familyId(card));if(!f)return;
       const c=bestCompleteness(f,own),st=stateFor(c),visual=card.querySelector('.visual');if(!visual)return;
       let pill=visual.querySelector('.ownership-pill');if(!pill){pill=document.createElement('span');pill.className='ownership-pill';visual.appendChild(pill)}
-      pill.className=`ownership-pill ${st.cls}`;pill.textContent=st.label;
-      if(c){card.dataset.completeness=st.cls;card.dataset.missing=String(c.missing);}
+      const cls=`ownership-pill ${st.cls}`;if(pill.className!==cls)pill.className=cls;if(pill.textContent!==st.label)pill.textContent=st.label;
+      if(c){if(card.dataset.completeness!==st.cls)card.dataset.completeness=st.cls;const missing=String(c.missing);if(card.dataset.missing!==missing)card.dataset.missing=missing}
     });
   }
   let queued=false;const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})};
-  apply();new MutationObserver(schedule).observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
-  window.addEventListener('storage',schedule);
+  window.addEventListener('fits:home-enhanced',schedule);
+  window.addEventListener('storage',e=>{if(e.key==='fitsWardrobe')schedule()});
+  document.addEventListener('DOMContentLoaded',schedule);
+  schedule();
 })();
