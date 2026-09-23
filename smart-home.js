@@ -6,7 +6,7 @@
   function state(){return{wardrobe:safe('fitsWardrobe',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),weather:safe('fitsWeatherHome',null)}}
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
-    return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All'};
+    return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
   }
   const owned=(id,s)=>s.wardrobe[id]==='owned',missing=(v,s)=>(v.pieces||[]).filter(id=>!owned(id,s));
   const namesFor=v=>(v.pieces||[]).map(id=>(piece(id)?.name||id).toLowerCase()).join(' ');
@@ -43,8 +43,9 @@
     return{v,m,days,wx,score};
   }
   function bestForFamily(f,s,activeFilters){
-    const useWeatherAsHardFilter=activeFilters.season==='All';
-    const candidates=familyLooks(f).filter(v=>matchesFilters(v,activeFilters)&&(!useWeatherAsHardFilter||weatherEligible(v,s.weather)));
+    const autoSeason=activeFilters.season==='All',recommended=activeFilters.recommendedSeason||null;
+    const effectiveFilters={...activeFilters,season:autoSeason&&recommended?recommended:activeFilters.season};
+    const candidates=familyLooks(f).filter(v=>matchesFilters(v,effectiveFilters)&&(!autoSeason||weatherEligible(v,s.weather)));
     if(!candidates.length)return null;
     return candidates.map(v=>variantScore(v,s)).sort((a,b)=>b.score-a.score||(a.v.id===f.hero?-1:1))[0];
   }
@@ -114,8 +115,9 @@
     const empty=grid.querySelector('.empty');
     if(empty){if(grid.lastElementChild!==empty)grid.appendChild(empty);const visible=ranked.filter(x=>!x.card.classList.contains('hidden')&&!x.card.classList.contains('smart-hidden')).length;empty.style.display=visible?'none':'block';if(!visible)empty.textContent='No looks match the current weather and filters.'}
     let head=document.querySelector('.smart-rotation-head');if(!head){head=document.createElement('div');head.className='smart-rotation-head';grid.before(head)}
-    const filterText=[activeFilters.occasion!=='All'?activeFilters.occasion:null,activeFilters.season!=='All'?activeFilters.season:null].filter(Boolean).join(' · ');
-    const html=hasWardrobe?`<div><span>SMART ROTATION</span><strong>${readyFamilies} ready ${readyFamilies===1?'family':'families'}</strong></div><small>${filterText?filterText+' · ':''}${activeFilters.season==='All'?'weather-matched first':'manual season'} · rotates what you haven’t worn lately${savedFamilies?` · ${savedFamilies} saved`:''}</small>`:`<div><span>SMART ROTATION</span><strong>Set your wardrobe</strong></div><small>${filterText?filterText+' · ':''}${activeFilters.season==='All'?'weather and filters narrow the list first':'manual season overrides weather'}.</small>`;
+    const manualSeason=activeFilters.season!=='All',filterText=[activeFilters.occasion!=='All'?activeFilters.occasion:null,manualSeason?activeFilters.season:null].filter(Boolean).join(' · ');
+    const seasonMode=manualSeason?`manual ${activeFilters.season}`:(activeFilters.recommendedSeason?`auto ${activeFilters.recommendedSeason}`:'auto weather');
+    const html=hasWardrobe?`<div><span>SMART ROTATION</span><strong>${readyFamilies} ready ${readyFamilies===1?'family':'families'}</strong></div><small>${filterText?filterText+' · ':''}${seasonMode} · rotates what you haven’t worn lately${savedFamilies?` · ${savedFamilies} saved`:''}</small>`:`<div><span>SMART ROTATION</span><strong>Set your wardrobe</strong></div><small>${filterText?filterText+' · ':''}${seasonMode}.</small>`;
     if(head.innerHTML!==html)head.innerHTML=html;
     const visibleRanked=ranked.filter(x=>!x.card.classList.contains('hidden')&&!x.card.classList.contains('smart-hidden'));
     renderDailyPick(visibleRanked,s,hasWardrobe,head);
