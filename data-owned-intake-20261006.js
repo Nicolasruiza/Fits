@@ -23,7 +23,7 @@
     {id:'owned-navy-suede-brogue',name:'Navy blue suede brogue shoes',category:'Shoes'},
     {id:'brown-loafers',name:'Cognac brown leather loafers',category:'Shoes'},
     {id:'owned-brown-leather-captoe',name:'Brown leather cap-toe dress shoes',category:'Shoes'},
-    {id:'owned-taupe-leather-chelsea',name:'Taupe / brown leather Chelsea boots',category:'Shoes'},
+    {id:'owned-taupe-leather-chelsea',name:'Dark brown suede Chelsea boots',category:'Shoes'},
     {id:'brown-chelsea',name:'Dark brown leather Chelsea boots',category:'Shoes'},
     {id:'navy-leather-sneakers',name:'Navy blue sneakers',category:'Shoes'},
     {id:'white-leather-sneakers',name:'Banana Republic white leather sneakers',category:'Shoes'},
