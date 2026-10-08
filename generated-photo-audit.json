@@ -1,0 +1,107 @@
+{
+  "auditedMain": "47c27ca959fab34388e3de9a56aaec5d48528a81",
+  "originalArchiveCommit": "1ed48d15617496c459a5df2debdf826011a7c76c",
+  "corruptArchiveCommit": "b6e5be2f2cc7c9102c4ce6176d076e1e75f011c8",
+  "corruptArchiveSha256": "900732d7346cd3f1e7962727efc75a9f074e015e326ac1b755eee16222518893",
+  "note": "The original base64 contains [... ELLIPSIZATION ...]. The ZIP is incomplete. Listed existing replacements are NOT recovered originals from this archive. Four source images remain unavailable.",
+  "entries": [
+    {
+      "archiveEntry": "look-40-navy-polo-cream-v3.webp",
+      "lookId": "look-40",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-40",
+      "asset": "assets/look-40-hq.webp",
+      "sha256": "67f7f49dcd252893f2aaf7eb708a314668cdb9f95b5fc50185f165df61e11e11",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a8f5474e-1d27-498d-b103-25bf29a8c22d.png",
+      "reason": "Previously approved local asset is corrupt (7473 bytes versus 15924 declared). Existing HQ replacement preserved instead."
+    },
+    {
+      "archiveEntry": "look-44-camel-overcoat-v2.webp",
+      "lookId": "look-44",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-44",
+      "asset": "assets/look-44-hq.webp",
+      "sha256": "1be1cad84fb2b279a85215ff5f9c72a711138115cc93ad4e5ec880042d58d5e5",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a7658938-ae47-40e9-a4d9-07dcc8207f8e.png"
+    },
+    {
+      "archiveEntry": "look-68-navy-jacket-white-polo-grey.webp",
+      "lookId": "look-68",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-68",
+      "asset": "assets/look-68-hq.webp",
+      "sha256": "9d97a82bd47474f5d4225013c2b10ae55a2c3a5fb28e856b36de01e3846ab29a",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_760b32ba-20f0-47bd-9535-2aac315516c1.png"
+    },
+    {
+      "archiveEntry": "look-69-navy-crewneck-blue-beige.webp",
+      "lookId": "look-69",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-38",
+      "asset": "assets/look-38-hq.webp",
+      "sha256": "293061c5ede4162a724ffd90a6f318f5109d318613364fb3679ddd8d67a104cf",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_35948d5c-5055-4d63-9ad4-b16eceec269c.png",
+      "deduplicatedWith": "look-38"
+    },
+    {
+      "archiveEntry": "look-70-navy-crewneck-blue-navy.webp",
+      "lookId": "look-70",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-70",
+      "asset": "assets/look-70-hq.webp",
+      "sha256": "13a546e55c48135e7ee3e37074b93ed59e930dfcc8020cdcf02d5ac29dafe305",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_86f04556-6506-43d9-bbae-a797be65d67f.png"
+    },
+    {
+      "archiveEntry": "look-71-olive-crewneck-blue-beige.webp",
+      "lookId": "look-71",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-71",
+      "asset": "assets/look-71-hq.webp",
+      "sha256": "feaa302c6dd359fd319537ddfd9b4df86d7859680cef5a11e94c8a961ab068b7",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png"
+    },
+    {
+      "archiveEntry": "look-72-olive-crewneck-blue-navy.webp",
+      "lookId": "look-72",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-72",
+      "asset": "assets/look-72-hq.webp",
+      "sha256": "bf974d7852b42c5a1dbad106fa1146be03b5d83b8688f1a348e6ad8ca15c453c",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png"
+    },
+    {
+      "archiveEntry": "look-73-navy-crewneck-white-navy.webp",
+      "lookId": "look-73",
+      "status": "existing-replacement-localized",
+      "canonicalLookId": "look-73",
+      "asset": "assets/look-73-hq.webp",
+      "sha256": "a6ec4ad6db535dcc80a97d608bd0f2014a646e2dded07336bdb68a73e50917f1",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_bc16abfb-b8b3-43e8-84a6-b6b8e297a65b.png"
+    },
+    {
+      "archiveEntry": "look-74-olive-crewneck-white-beige.webp",
+      "lookId": "look-74",
+      "status": "source-unavailable",
+      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+    },
+    {
+      "archiveEntry": "look-75-navy-crewneck-white-beige.webp",
+      "lookId": "look-75",
+      "status": "source-unavailable",
+      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+    },
+    {
+      "archiveEntry": "look-76-tan-suede-dark-denim.webp",
+      "lookId": "look-76",
+      "status": "source-unavailable",
+      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+    },
+    {
+      "archiveEntry": "look-77-tan-overshirt-light-denim.webp",
+      "lookId": "look-77",
+      "status": "source-unavailable",
+      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+    }
+  ]
+}

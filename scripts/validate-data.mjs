@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import crypto from 'node:crypto';
 
 const root=process.cwd();
 global.window=global;
@@ -65,7 +66,7 @@ for(const l of D.looks||[]){
   const key=[...(l.pieces||[])].sort().join('|');
   if(!key)continue;
   const prev=signatures.get(key);
-  if(prev)warnings.push(`Exact outfit duplicate: ${prev} and ${l.id}`);else signatures.set(key,l.id);
+  if(prev)errors.push(`Exact outfit duplicate: ${prev} and ${l.id}`);else signatures.set(key,l.id);
 }
 
 // Generic numbered look assets should never silently land in /assets without a
@@ -84,6 +85,54 @@ for(const asset of pendingAssets){
   if(!fs.existsSync(path.join(root,asset)))errors.push(`Pending look asset is missing: ${asset}`);
   if(referencedAssets.has(asset))warnings.push(`Pending manifest is stale; asset is now referenced: ${asset}`);
 }
+
+// Verify the actual page data pipelines, including pruning and photo overrides.
+// Checking only the source batches previously missed looks dropped at runtime.
+const pages=['index.html','detail.html','wardrobe.html','unlock.html','stats.html'];
+const expected=new Set(D.looks.filter(l=>!blocked.has(l.id)&&!l.inspiration).map(l=>l.id));
+const audit=JSON.parse(fs.readFileSync(path.join(root,'generated-photo-audit.json'),'utf8'));
+for(const entry of audit.entries){
+  if(!entry.asset){
+    if(entry.status!=='source-unavailable')errors.push(`Unknown photo status: ${entry.lookId}`);
+    continue;
+  }
+  const file=path.join(root,entry.asset);
+  if(!fs.existsSync(file)){errors.push(`Photo audit: missing ${entry.asset}`);continue}
+  const bytes=fs.readFileSync(file);
+  if(bytes.subarray(0,4).toString()!=='RIFF'||bytes.subarray(8,12).toString()!=='WEBP'||bytes.readUInt32LE(4)+8!==bytes.length)errors.push(`Photo audit: invalid WebP ${entry.asset}`);
+  if(crypto.createHash('sha256').update(bytes).digest('hex')!==entry.sha256)errors.push(`Photo audit: checksum mismatch ${entry.asset}`);
+}
+for(const page of pages){
+  const html=fs.readFileSync(path.join(root,page),'utf8');
+  const scripts=[...html.matchAll(/<script src="([^"?]+)(?:\?[^"]*)?"/g)].map(m=>m[1]);
+  const end=scripts.indexOf('dataset-integrity.js');
+  if(end<0){errors.push(`${page}: missing data integrity pipeline`);continue}
+  const context={document:{body:{dataset:{}}},localStorage:{getItem:()=>null,setItem:()=>{}}};
+  context.window=context;
+  vm.createContext(context);
+  for(const file of scripts.slice(0,end+1))vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
+  const live=context.FITS_DATA,ids=new Set(live.looks.map(l=>l.id));
+  for(const id of expected)if(!ids.has(id))errors.push(`${page}: runtime silently removed ${id}`);
+  for(const look of live.looks){
+    const family=live.families.find(f=>f.id===look.family);
+    if(!family?.looks.includes(look.id))errors.push(`${page}: ${look.id} is unreachable from its family`);
+    const image=String(look.image||'').split('?')[0];
+    if(image.startsWith('assets/')&&!fs.existsSync(path.join(root,image)))errors.push(`${page}: missing runtime image ${image}`);
+  }
+  for(const family of live.families){
+    if(!family.looks.includes(family.hero))errors.push(`${page}: hero outside family ${family.id}`);
+    for(const id of family.looks)if(live.looks.find(l=>l.id===id)?.family!==family.id)errors.push(`${page}: ${id} belongs to a different family`);
+  }
+  for(const entry of audit.entries){
+    const look=live.looks.find(l=>l.id===entry.canonicalLookId);
+    if(entry.asset&&look?.image.split('?')[0]!==entry.asset)errors.push(`${page}: photo mapping drift for ${entry.lookId}`);
+    if(entry.status==='source-unavailable'&&ids.has(entry.lookId))errors.push(`${page}: unresolved photo published as ${entry.lookId}`);
+  }
+  if(context.FITS_HEALTH.removedForMissingPieces.length)errors.push(`${page}: missing wardrobe pieces dropped looks`);
+  console.log(`${page}: ${live.looks.length} live looks · ${live.families.length} families`);
+}
+if(fs.existsSync(path.join(root,'staging/two-batches/assets.zip')))errors.push('Broken two-batch staging must not be published');
+console.log(`Photo audit: ${audit.entries.filter(e=>e.asset).length} mapped entries; ${audit.entries.filter(e=>e.status==='source-unavailable').length} awaiting originals (not published)`);
 
 console.log(`Fits validator: ${D.pieces.length} pieces · ${D.looks.length} looks · ${D.families.length} families`);
 for(const w of warnings)console.warn(`WARN: ${w}`);

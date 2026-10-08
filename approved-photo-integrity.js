@@ -2,7 +2,7 @@
 const approved=[
 {id:'look-12',family:'family-blazer-white-beige',name:'Navy blazer + white shirt + beige chinos',image:'assets/look-12-approved.webp?v=3'},
 {id:'look-38',family:'family-navy-crewneck-beige',name:'Navy crewneck + light blue Oxford + beige chinos'},
-{id:'look-40',family:'family-navy-polo-cream',name:'Navy polo + cream chinos + brown loafers',image:'assets/look-40-navy-polo-cream.webp?v=3'},
+{id:'look-40',family:'family-navy-polo-cream',name:'Navy polo + cream chinos + brown loafers',image:'assets/look-40-hq.webp?v=1'},
 {id:'look-41',family:'family-cognac-suede-navy',name:'Cognac suede jacket + white tee + navy trousers',image:'assets/look-41-cognac-suede.webp?v=3'},
 {id:'look-42',family:'family-white-taupe',name:'White shirt + taupe trousers + suede loafers'},
 {id:'look-43',family:'family-white-tee-beige',name:'White tee + beige chinos + white sneakers',image:'assets/look-43-white-tee-beige.webp?v=3'},

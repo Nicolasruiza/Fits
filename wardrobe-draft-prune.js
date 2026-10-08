@@ -8,5 +8,6 @@
     'cream-linen-trousers','taupe-linen-trousers','beige-espadrilles','brown-sandals','navy-slip-ons',
     'black-leather-jacket','brown-suede-jacket','blue-denim-jacket'
   ]);
-  D.pieces=(D.pieces||[]).filter(p=>!draft.has(p.id));
+  const used=new Set((D.looks||[]).filter(l=>!l.inspiration).flatMap(l=>l.pieces||[]));
+  D.pieces=(D.pieces||[]).filter(p=>!draft.has(p.id)||used.has(p.id));
 })();

@@ -87,8 +87,7 @@
   upsertLook({id:'look-68',family:'family-blazer-polo-navy',name:'Navy jacket + white polo + grey trousers + white sneakers',image:'assets/look-68.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-polo','grey-trousers','white-leather-sneakers']});
   addVariant('family-blazer-polo-navy','look-68');
 
-  upsertFamily({id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-69',looks:['look-69','look-70','look-73']});
-  upsertLook({id:'look-69',family:'family-navy-crewneck-shirt',name:'Navy crewneck + light blue shirt + beige chinos + white sneakers',image:'assets/look-69.webp?v=1',formal:3,badges:['Office','Weekend','Travel'],pieces:['navy-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
+  upsertFamily({id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-70',looks:['look-70','look-73']});
   upsertLook({id:'look-70',family:'family-navy-crewneck-shirt',name:'Navy crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-70.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['navy-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
   upsertLook({id:'look-73',family:'family-navy-crewneck-shirt',name:'Navy crewneck + white shirt + navy trousers + white sneakers',image:'assets/look-73.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['navy-crewneck','white-shirt','navy-trousers','white-leather-sneakers']});
 
@@ -101,12 +100,12 @@
   [
     ['look-35', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_163a0059-5436-4939-b1d4-e4f5bc5f231e.png'],
     ['look-36', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_46598b57-f847-4a63-ad15-f3d3790967a9.png'],
-    ['look-38', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_35948d5c-5055-4d63-9ad4-b16eceec269c.png'],
-    ['look-40', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a8f5474e-1d27-498d-b103-25bf29a8c22d.png'],
+    ['look-38', 'assets/look-38-hq.webp?v=1'],
+    ['look-40', 'assets/look-40-hq.webp?v=1'],
     ['look-41', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_1402bf26-4e35-4909-9a98-f6e94f5614d0.png'],
     ['look-42', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a24db616-0a60-485a-8dec-868b7f30000e.png'],
     ['look-43', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_dbc3d208-7286-4834-b9d1-9ec118b74ddf.png'],
-    ['look-44', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a7658938-ae47-40e9-a4d9-07dcc8207f8e.png'],
+    ['look-44', 'assets/look-44-hq.webp?v=1'],
     ['look-45', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_89d49b76-181a-43b2-b0fa-428a67214703.png'],
     ['look-46', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014215_7815c766-1b8f-43f4-b0f1-5bde070c6e2b.png'],
     ['look-47', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_961e1d81-7ce7-4dee-9038-63efe130eb3b.png'],
@@ -130,12 +129,13 @@
     ['look-65', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_7c6a7eb4-6d9c-43ad-b3c6-f62715dabf57.png'],
     ['look-66', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014406_44241971-9129-4d61-8e82-b098026b3e3b.png'],
     ['look-67', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014407_bbdada5f-f49c-4c25-8ca6-d300a23bfffe.png'],
-    ['look-68', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_760b32ba-20f0-47bd-9535-2aac315516c1.png'],
-    ['look-69', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_d4fdf621-8dac-440b-b10e-2a7824aa88ff.png'],
-    ['look-70', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014020_86f04556-6506-43d9-bbae-a797be65d67f.png'],
-    ['look-71', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png'],
-    ['look-72', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png'],
-    ['look-73', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_bc16abfb-b8b3-43e8-84a6-b6b8e297a65b.png']
+    ['look-68', 'assets/look-68-hq.webp?v=1'],
+    ['look-70', 'assets/look-70-hq.webp?v=1'],
+    ['look-71', 'assets/look-71-hq.webp?v=1'],
+    ['look-72', 'assets/look-72-hq.webp?v=1'],
+    ['look-73', 'assets/look-73-hq.webp?v=1']
   ].forEach(([id,image])=>{const l=lookBy(id);if(l)l.image=image});
 
+  // Legacy bookmarks and rotation history resolve to the existing identical outfit.
+  D.lookAliases={'look-69':'look-38'};
 })();

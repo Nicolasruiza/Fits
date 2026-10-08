@@ -1,7 +1,8 @@
 const DATA=window.FITS_DATA, CATALOG=window.FITS_CATALOG_IMAGES||{};
 function safe(key,fallback){try{const raw=localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch(e){return fallback}}
 const q=new URLSearchParams(location.search),piece=id=>DATA.pieces.find(p=>p.id===id),look=id=>DATA.looks.find(l=>l.id===id),family=id=>DATA.families.find(f=>f.id===id);
-const fam=family(q.get('family'))||DATA.families[0],looks=fam.looks.map(look).filter(Boolean);let active=look(q.get('look'))||look(fam.hero)||looks[0];
+const requestedId=q.get('look'),requested=look(DATA.lookAliases?.[requestedId]||requestedId);
+const fam=(requested&&family(requested.family))||family(q.get('family'))||DATA.families[0],looks=fam.looks.map(look).filter(Boolean);let active=requested||look(fam.hero)||looks[0];
 let wardrobe=safe('fitsWardrobe',{}),wear=safe('fitsWearHistory',{}),saved=safe('fitsSavedVariants',{});
 DATA.pieces.forEach(p=>{if(!wardrobe[p.id])wardrobe[p.id]=p.status==='owned'?'owned':'missing';if(wardrobe[p.id]!=='owned')wardrobe[p.id]='missing'});localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));
 function isOwned(id){return wardrobe[id]==='owned'}
