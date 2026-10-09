@@ -17,7 +17,7 @@
     {id:'beige-chinos',name:'Beige chinos',category:'Pants'},
     {id:'owned-dark-green-chinos',name:'Dark green chinos',category:'Pants'},
     {id:'owned-darkbrown-suede-captoe-shoe',name:'Dark brown suede cap-toe dress shoes',category:'Shoes'},
-    {id:'owned-darkbrown-suede-laceup-boot',name:'Dark brown suede lace-up boots',category:'Shoes'},
+    {id:'owned-darkbrown-suede-italian-laceup',name:'Dark brown suede Italian lace-up shoes',category:'Shoes'},
     {id:'owned-navy-suede-chelsea',name:'Navy blue suede Chelsea boots',category:'Shoes'},
     {id:'owned-black-leather-captoe',name:'Black leather cap-toe dress shoes',category:'Shoes'},
     {id:'owned-navy-suede-brogue',name:'Navy blue suede brogue shoes',category:'Shoes'},
@@ -34,6 +34,8 @@
   // not display the same pair twice for returning users.
   const legacyChelsea=D.pieces.findIndex(p=>p.id==='owned-taupe-leather-chelsea');
   if(legacyChelsea!==-1)D.pieces.splice(legacyChelsea,1);
+  const legacyLaceupBoot=D.pieces.findIndex(p=>p.id==='owned-darkbrown-suede-laceup-boot');
+  if(legacyLaceupBoot!==-1)D.pieces.splice(legacyLaceupBoot,1);
 
   items.forEach(p=>{
     const x=D.pieces.find(v=>v.id===p.id);
