@@ -90,6 +90,21 @@ for(const asset of pendingAssets){
 // Checking only the source batches previously missed looks dropped at runtime.
 const pages=['index.html','detail.html','wardrobe.html','unlock.html','stats.html'];
 const expected=new Set(D.looks.filter(l=>!blocked.has(l.id)&&!l.inspiration).map(l=>l.id));
+const checkedWebps=new Set();
+function validateRuntimeImage(page,look){
+  const raw=String(look.image||'').trim();
+  if(!raw){errors.push(`${page}: ${look.id} has no runtime image`);return}
+  if(raw.startsWith('data:')||look.imageStatus){errors.push(`${page}: ${look.id} uses a placeholder instead of a photo`);return}
+  const image=raw.split('?')[0];
+  if(!image.startsWith('assets/'))return;
+  const file=path.join(root,image);
+  if(!fs.existsSync(file)){errors.push(`${page}: missing runtime image ${image}`);return}
+  if(!/\.webp$/i.test(image)||checkedWebps.has(image))return;
+  checkedWebps.add(image);
+  const bytes=fs.readFileSync(file);
+  const valid=bytes.length>=12&&bytes.subarray(0,4).toString()==='RIFF'&&bytes.subarray(8,12).toString()==='WEBP'&&bytes.readUInt32LE(4)+8===bytes.length;
+  if(!valid)errors.push(`${page}: corrupt runtime WebP ${image}`);
+}
 const audit=JSON.parse(fs.readFileSync(path.join(root,'generated-photo-audit.json'),'utf8'));
 for(const entry of audit.entries){
   if(!entry.asset){
@@ -116,8 +131,7 @@ for(const page of pages){
   for(const look of live.looks){
     const family=live.families.find(f=>f.id===look.family);
     if(!family?.looks.includes(look.id))errors.push(`${page}: ${look.id} is unreachable from its family`);
-    const image=String(look.image||'').split('?')[0];
-    if(image.startsWith('assets/')&&!fs.existsSync(path.join(root,image)))errors.push(`${page}: missing runtime image ${image}`);
+    validateRuntimeImage(page,look);
   }
   for(const family of live.families){
     if(!family.looks.includes(family.hero))errors.push(`${page}: hero outside family ${family.id}`);
