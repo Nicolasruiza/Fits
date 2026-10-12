@@ -103,6 +103,19 @@
   upsertFamily({id:'family-tan-overshirt-denim',name:'Tan overshirt + light denim',hero:'look-77',looks:['look-77']});
   upsertLook({id:'look-77',family:'family-tan-overshirt-denim',name:'Tan overshirt + white tee + light denim + cognac loafers',image:'assets/look-77-hq.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['tan-overshirt','white-tee','blue-denim','brown-loafers']});
 
+  // New combinations built only from confirmed owned wardrobe pieces.
+  upsertFamily({id:'family-france-blue-denim',name:'France blue henley + dark denim',hero:'look-78',looks:['look-78']});
+  upsertLook({id:'look-78',family:'family-france-blue-denim',name:'France blue henley + dark denim + cognac sneakers',image:'assets/look-78-hq.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-france-blue-henley','dark-denim','owned-br-cognac-sneakers']});
+
+  upsertFamily({id:'family-black-vneck-navy',name:'Black V-neck + navy chinos',hero:'look-79',looks:['look-79']});
+  upsertLook({id:'look-79',family:'family-black-vneck-navy',name:'Black V-neck + cream shirt + navy chinos + brown cap-toe shoes',image:'assets/look-79-hq.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['owned-black-vneck','owned-cream-buttondown','navy-trousers','owned-brown-leather-captoe']});
+
+  upsertFamily({id:'family-blue-gingham-green',name:'Blue gingham + dark green chinos',hero:'look-80',looks:['look-80']});
+  upsertLook({id:'look-80',family:'family-blue-gingham-green',name:'Blue gingham shirt + dark green chinos + white sneakers',image:'assets/look-80-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','owned-dark-green-chinos','white-leather-sneakers']});
+
+  upsertFamily({id:'family-grey-quarterzip-beige',name:'Grey quarter-zip + beige chinos',hero:'look-81',looks:['look-81']});
+  upsertLook({id:'look-81',family:'family-grey-quarterzip-beige',name:'Grey quarter-zip + beige chinos + navy suede Chelsea boots',image:'assets/look-81-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','beige-chinos','owned-navy-suede-chelsea']});
+
   // High-quality face/look replacements (2026-09-17 housekeeping).
   // Replace legacy low-resolution assets with face-consistent full-resolution renders.
   [
