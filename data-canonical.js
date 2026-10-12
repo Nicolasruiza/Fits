@@ -81,19 +81,27 @@
   addVariant('family-green-khaki','look-67');
 
 
-  // Recovered generated batch 68-73 from the original staged filenames.
-  upsertPiece({id:'olive-crewneck',name:'Olive crewneck sweater',category:'Top'});
+  // Recovered and completed generated batch 68-77.
+  upsertPiece({id:'tan-overshirt',name:'Light tan cotton overshirt',category:'Outerwear'});
 
   upsertLook({id:'look-68',family:'family-blazer-polo-navy',name:'Navy jacket + white polo + grey trousers + white sneakers',image:'assets/look-68.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-polo','grey-trousers','white-leather-sneakers']});
   addVariant('family-blazer-polo-navy','look-68');
 
-  upsertFamily({id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-70',looks:['look-70','look-73']});
+  upsertFamily({id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-70',looks:['look-70','look-73','look-75']});
   upsertLook({id:'look-70',family:'family-navy-crewneck-shirt',name:'Navy crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-70.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['navy-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
   upsertLook({id:'look-73',family:'family-navy-crewneck-shirt',name:'Navy crewneck + white shirt + navy trousers + white sneakers',image:'assets/look-73.webp?v=1',formal:3,badges:['Office','Dinner','Travel'],pieces:['navy-crewneck','white-shirt','navy-trousers','white-leather-sneakers']});
+  upsertLook({id:'look-75',family:'family-navy-crewneck-shirt',name:'Navy crewneck + cream shirt + beige chinos + white sneakers',image:'assets/look-75-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['navy-crewneck','owned-cream-buttondown','beige-chinos','white-leather-sneakers']});
 
-  upsertFamily({id:'family-olive-crewneck-shirt',name:'Olive crewneck + shirt',hero:'look-71',looks:['look-71','look-72']});
-  upsertLook({id:'look-71',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + beige chinos + white sneakers',image:'assets/look-71.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
-  upsertLook({id:'look-72',family:'family-olive-crewneck-shirt',name:'Olive crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-72.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
+  upsertFamily({id:'family-olive-crewneck-shirt',name:'Pale green crewneck + shirt',hero:'look-71',looks:['look-71','look-72','look-74']});
+  upsertLook({id:'look-71',family:'family-olive-crewneck-shirt',name:'Pale green crewneck + light blue shirt + beige chinos + white sneakers',image:'assets/look-71.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-green-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']});
+  upsertLook({id:'look-72',family:'family-olive-crewneck-shirt',name:'Pale green crewneck + light blue shirt + navy trousers + white sneakers',image:'assets/look-72.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-green-crewneck','light-blue-oxford','navy-trousers','white-leather-sneakers']});
+  upsertLook({id:'look-74',family:'family-olive-crewneck-shirt',name:'Pale green crewneck + cream shirt + beige chinos + white sneakers',image:'assets/look-74-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-green-crewneck','owned-cream-buttondown','beige-chinos','white-leather-sneakers']});
+
+  upsertFamily({id:'family-cognac-suede-denim',name:'Cognac suede + dark denim',hero:'look-76',looks:['look-76']});
+  upsertLook({id:'look-76',family:'family-cognac-suede-denim',name:'Cognac suede jacket + cream shirt + dark denim + Italian suede shoes',image:'assets/look-76-hq.webp?v=1',formal:2,badges:['Dinner','Weekend','Travel'],pieces:['cognac-suede-jacket','owned-cream-buttondown','dark-denim','owned-darkbrown-suede-italian-laceup']});
+
+  upsertFamily({id:'family-tan-overshirt-denim',name:'Tan overshirt + light denim',hero:'look-77',looks:['look-77']});
+  upsertLook({id:'look-77',family:'family-tan-overshirt-denim',name:'Tan overshirt + white tee + light denim + cognac loafers',image:'assets/look-77-hq.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['tan-overshirt','white-tee','blue-denim','brown-loafers']});
 
   // High-quality face/look replacements (2026-09-17 housekeeping).
   // Replace legacy low-resolution assets with face-consistent full-resolution renders.

@@ -58,8 +58,9 @@
       "status": "existing-replacement-localized",
       "canonicalLookId": "look-71",
       "asset": "assets/look-71-hq.webp",
-      "sha256": "feaa302c6dd359fd319537ddfd9b4df86d7859680cef5a11e94c8a961ab068b7",
-      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png"
+      "sha256": "6b856bf323577ef235cf5defe68a02fdd05ed580304d46f1c67746c95e59c19b",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_16f94ea7-f10e-47d1-8e1e-30af3d5e891d.png",
+      "reason": "Existing HQ replacement corrected to match the approved pale moss green crewneck wardrobe item."
     },
     {
       "archiveEntry": "look-72-olive-crewneck-blue-navy.webp",
@@ -67,8 +68,9 @@
       "status": "existing-replacement-localized",
       "canonicalLookId": "look-72",
       "asset": "assets/look-72-hq.webp",
-      "sha256": "bf974d7852b42c5a1dbad106fa1146be03b5d83b8688f1a348e6ad8ca15c453c",
-      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png"
+      "sha256": "8453801fdb543d9dd664e23fb75fb391133988af3c4677c152d4c1d8b5ad5059",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014107_fcdb4381-ebc6-42ae-9752-6420d1e21006.png",
+      "reason": "Existing HQ replacement corrected to match the approved pale moss green crewneck wardrobe item."
     },
     {
       "archiveEntry": "look-73-navy-crewneck-white-navy.webp",
@@ -82,26 +84,38 @@
     {
       "archiveEntry": "look-74-olive-crewneck-white-beige.webp",
       "lookId": "look-74",
-      "status": "source-unavailable",
-      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+      "status": "generated-replacement-localized",
+      "reason": "Replacement generated from the recovered outfit description and canonical wardrobe references; published after visual review.",
+      "canonicalLookId": "look-74",
+      "asset": "assets/look-74-hq.webp",
+      "sha256": "073495cf9e93e84321ef385a5a93bd9b237a5d075aa00eb728c5ac2665862e1f"
     },
     {
       "archiveEntry": "look-75-navy-crewneck-white-beige.webp",
       "lookId": "look-75",
-      "status": "source-unavailable",
-      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+      "status": "generated-replacement-localized",
+      "reason": "Replacement generated from the recovered outfit description and canonical wardrobe references; published after visual review.",
+      "canonicalLookId": "look-75",
+      "asset": "assets/look-75-hq.webp",
+      "sha256": "722bbe8100947ec2ea129189102ffecb75ad0287625a4784fb0b0a7cef2f115f"
     },
     {
       "archiveEntry": "look-76-tan-suede-dark-denim.webp",
       "lookId": "look-76",
-      "status": "source-unavailable",
-      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+      "status": "generated-replacement-localized",
+      "reason": "Replacement generated from the recovered outfit description and canonical wardrobe references; published after visual review.",
+      "canonicalLookId": "look-76",
+      "asset": "assets/look-76-hq.webp",
+      "sha256": "e740cbacacfa81f2770ceb9fe31778ff520dee5c6a9d5cba070aa12874d91ee1"
     },
     {
       "archiveEntry": "look-77-tan-overshirt-light-denim.webp",
       "lookId": "look-77",
-      "status": "source-unavailable",
-      "reason": "Original bytes are absent from the truncated ZIP and no complete source has been recovered. Not added to the live dataset."
+      "status": "generated-replacement-localized",
+      "reason": "Replacement generated from the recovered outfit description and canonical wardrobe references; published after visual review.",
+      "canonicalLookId": "look-77",
+      "asset": "assets/look-77-hq.webp",
+      "sha256": "f7f76d6ee872441d04c65b0fb9adcc8f201ed58e345f541ee701af1bd96ba12a"
     }
   ]
 }

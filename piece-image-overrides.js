@@ -40,6 +40,7 @@ Object.assign(PIECE_IMAGES,window.FITS_CATALOG_IMAGES||{}, {
   'brown-suede-jacket':'assets/catalog-brown-suede-jacket.webp?v=1',
   'olive-overshirt':'assets/catalog-olive-overshirt.webp?v=1',
   'olive-crewneck':'assets/owned-green-crewneck.webp?v=1',
+  'tan-overshirt':'assets/catalog-tan-overshirt.webp?v=1',
   'charcoal-trousers':'assets/piece-charcoal-chinos.webp?v=14',
   'navy-quarterzip':'assets/piece-navy-quarterzip.webp?v=14',
   'cream-chinos':'assets/piece-cream-chinos.webp?v=1',
