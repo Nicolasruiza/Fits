@@ -6,7 +6,7 @@ Object.assign(PIECE_IMAGES,window.FITS_CATALOG_IMAGES||{}, {
   'owned-green-crewneck':'assets/owned-green-crewneck.webp?v=1',
   'black-polo':'assets/owned-black-polo.webp?v=1',
   'navy-polo':'assets/owned-navy-polo.webp?v=1',
-  'owned-france-blue-henley':'assets/owned-france-blue-henley.webp?v=1',
+  'owned-france-blue-henley':'assets/owned-france-blue-henley.webp?v=2',
   'navy-henley':'assets/owned-navy-henley.webp?v=1',
   'owned-white-henley':'assets/owned-white-henley.webp?v=1',
   'owned-cream-buttondown':'assets/owned-cream-buttondown.webp?v=1',
