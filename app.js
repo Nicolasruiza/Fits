@@ -115,7 +115,7 @@ function renderWardrobe(){
       <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>Not in wardrobe</span></div></div>
       <div class="ward-grid">${all.map(p=>{
         const ownedNow=isOwned(p.id);
-        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}">
+        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}" data-piece-id="${p.id}">
           <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NO</span>':''}</div>
           <div class="ward-card-body">
             <div class="ward-card-copy"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div>

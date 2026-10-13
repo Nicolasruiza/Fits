@@ -3,7 +3,7 @@
   const safe=(k,f)=>{try{const r=localStorage.getItem(k);return r?JSON.parse(r):f}catch(e){return f}};
   const look=id=>D.looks.find(x=>x.id===id),piece=id=>D.pieces.find(x=>x.id===id),familyLooks=f=>(f.looks||[]).map(look).filter(Boolean);
   const daysSince=date=>{if(!date)return Infinity;const d=new Date(date+'T12:00:00');return Math.max(0,Math.floor((Date.now()-d.getTime())/86400000))};
-  function state(){return{wardrobe:safe('fitsWardrobe',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),weather:safe('fitsWeatherHome',null)}}
+  function state(){return{wardrobe:safe('fitsWardrobe',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),weather:safe('fitsWeatherHome',null),feedback:safe('fitsLookFeedback',{})}}
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
     return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
@@ -38,16 +38,15 @@
   function variantScore(v,s){
     const m=missing(v,s),history=s.wear[v.id]||[],last=history.length?history[history.length-1]:null,days=daysSince(last),wx=weatherEval(v,s.weather);let score=wx.score;
     if(!m.length)score+=1000;else score+=Math.max(0,190-m.length*55);
-    if(s.saved[v.id])score+=24;
+    if(s.saved[v.id])score+=24;if(s.feedback[v.id]==='like')score+=45;if(s.feedback[v.id]==='dislike')score-=500;
     if(days===Infinity)score+=28;else if(days>=30)score+=22;else if(days>=14)score+=14;else if(days<=0)score-=45;else if(days<=3)score-=18;
     return{v,m,days,wx,score};
   }
   function bestForFamily(f,s,activeFilters){
     const autoSeason=activeFilters.season==='All',recommended=activeFilters.recommendedSeason||null;
-    const effectiveFilters={...activeFilters,season:autoSeason&&recommended?recommended:activeFilters.season};
-    const candidates=familyLooks(f).filter(v=>matchesFilters(v,effectiveFilters)&&(!autoSeason||weatherEligible(v,s.weather)));
+    const candidates=familyLooks(f).filter(v=>matchesFilters(v,{...activeFilters,season:autoSeason?'All':activeFilters.season}));
     if(!candidates.length)return null;
-    return candidates.map(v=>variantScore(v,s)).sort((a,b)=>b.score-a.score||(a.v.id===f.hero?-1:1))[0];
+    return candidates.map(v=>{const result=variantScore(v,s);if(autoSeason&&recommended&&(v.seasons||[]).includes(recommended))result.score+=35;return result}).sort((a,b)=>b.score-a.score||(a.v.id===f.hero?-1:1))[0];
   }
   const todayKey=()=>{
     const d=new Date(),y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');
@@ -78,8 +77,9 @@
     let panel=existing;if(!panel){panel=document.createElement('section');panel.className='daily-pick';head.before(panel)}
     const stateText=!hasWardrobe?'Set your wardrobe to confirm this look':ready?(worn?'Logged for today':'Ready from your wardrobe'):`${scored.m.length} ${scored.m.length===1?'piece':'pieces'} away`;
     const action=!hasWardrobe?`<a class="daily-action primary" href="wardrobe.html">Set wardrobe</a>`:ready?`<button class="daily-action primary ${worn?'logged':''}" onclick="toggleHomeWear(event,'${v.id}')">${worn?'Worn today · undo':'I’ll wear this'}</button>`:`<a class="daily-action primary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Review pieces</a>`;
-    panel.innerHTML=`<div class="daily-heading"><span>TODAY’S PICK</span><b>${stateText}</b></div><div class="daily-body"><a class="daily-photo" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}"><img src="${v.image}" alt="${v.name}"></a><div class="daily-copy"><h2>${v.name}</h2><p>${scored.wx.reason}</p><div class="daily-actions">${action}<a class="daily-action secondary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Details</a></div></div></div>`;
+    panel.innerHTML=`<div class="daily-heading"><span>DAILY RECOMMENDATION · CHANGES EACH DAY</span><b>${stateText}</b></div><div class="daily-body"><a class="daily-photo" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}"><img src="${v.image}" alt="${v.name}"></a><div class="daily-copy"><h2>${v.name}</h2><p>${scored.wx.reason}</p><div class="daily-actions">${action}<a class="daily-action secondary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Details</a></div><div class="daily-feedback"><button class="${s.feedback[v.id]==='like'?'active':''}" onclick="toggleHomeFeedback(event,'${v.id}','like')">👍 Like</button><button class="${s.feedback[v.id]==='dislike'?'active dislike':''}" onclick="toggleHomeFeedback(event,'${v.id}','dislike')">👎 Dislike</button></div></div></div>`;
   }
+  window.toggleHomeFeedback=function(event,id,value){event?.preventDefault();event?.stopPropagation();const feedback=safe('fitsLookFeedback',{});feedback[id]=feedback[id]===value?null:value;localStorage.setItem('fitsLookFeedback',JSON.stringify(feedback));schedule()};
   window.toggleHomeWear=function(event,id){
     event?.preventDefault();event?.stopPropagation();
     const s=state(),dates=s.wear[id]||[],today=todayKey(),index=dates.indexOf(today);
@@ -111,11 +111,22 @@
       const visual=card.querySelector('.visual');if(visual){let pill=visual.querySelector('.readiness-pill');if(!pill){pill=document.createElement('span');pill.className='readiness-pill';visual.appendChild(pill)}const cls=`readiness-pill ${ready?'ready':'need'}`,text=hasWardrobe?(ready?'READY':`${best.m.length} TO GO`):'SET WARDROBE';if(pill.className!==cls)pill.className=cls;if(pill.textContent!==text)pill.textContent=text}
       ranked.push({card,score:best.score});
     });
-    ranked.sort((a,b)=>b.score-a.score).forEach(x=>grid.appendChild(x.card));
+    ranked.sort((a,b)=>b.score-a.score);
+    grid.querySelectorAll('.look-group-title').forEach(x=>x.remove());
+    const manualSeason=activeFilters.season!=='All',recommended=activeFilters.recommendedSeason||'Transitional';
+    const order=manualSeason?[activeFilters.season]:[recommended,...['Summer','Transitional','Cold'].filter(x=>x!==recommended)];
+    const assigned=new Set();
+    order.forEach(season=>{
+      const entries=ranked.filter(x=>!assigned.has(x.card)&&((x.card.dataset.seasons||'Summer').split(',').includes(season)));
+      if(!entries.length)return;
+      const title=document.createElement('div');title.className='look-group-title';title.innerHTML=`<strong>${manualSeason?season:`${season}${season===recommended?' · recommended now':''}`}</strong><span>${entries.length} ${entries.length===1?'look':'looks'}</span>`;grid.appendChild(title);
+      entries.forEach(x=>{assigned.add(x.card);grid.appendChild(x.card)});
+    });
+    ranked.filter(x=>!assigned.has(x.card)).forEach(x=>grid.appendChild(x.card));
     const empty=grid.querySelector('.empty');
     if(empty){if(grid.lastElementChild!==empty)grid.appendChild(empty);const visible=ranked.filter(x=>!x.card.classList.contains('hidden')&&!x.card.classList.contains('smart-hidden')).length;empty.style.display=visible?'none':'block';if(!visible)empty.textContent='No looks match the current weather and filters.'}
     let head=document.querySelector('.smart-rotation-head');if(!head){head=document.createElement('div');head.className='smart-rotation-head';grid.before(head)}
-    const manualSeason=activeFilters.season!=='All',filterText=[activeFilters.occasion!=='All'?activeFilters.occasion:null,manualSeason?activeFilters.season:null].filter(Boolean).join(' · ');
+    const filterText=[activeFilters.occasion!=='All'?activeFilters.occasion:null,manualSeason?activeFilters.season:null].filter(Boolean).join(' · ');
     const seasonMode=manualSeason?`manual ${activeFilters.season}`:(activeFilters.recommendedSeason?`auto ${activeFilters.recommendedSeason}`:'auto weather');
     const html=hasWardrobe?`<div><span>SMART ROTATION</span><strong>${readyFamilies} ready ${readyFamilies===1?'family':'families'}</strong></div><small>${filterText?filterText+' · ':''}${seasonMode} · rotates what you haven’t worn lately${savedFamilies?` · ${savedFamilies} saved`:''}</small>`:`<div><span>SMART ROTATION</span><strong>Set your wardrobe</strong></div><small>${filterText?filterText+' · ':''}${seasonMode}.</small>`;
     if(head.innerHTML!==html)head.innerHTML=html;
@@ -132,7 +143,7 @@
     window.render=wrapped;
   }
   window.addEventListener('fits:filters-changed',schedule);
-  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsWearHistory','fitsSavedVariants'].includes(e.key))schedule()});
+  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsWearHistory','fitsSavedVariants','fitsLookFeedback'].includes(e.key))schedule()});
   document.addEventListener('DOMContentLoaded',schedule);
   schedule();
 })();
