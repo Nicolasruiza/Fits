@@ -116,6 +116,16 @@
   upsertFamily({id:'family-grey-quarterzip-beige',name:'Grey quarter-zip + beige chinos',hero:'look-81',looks:['look-81']});
   upsertLook({id:'look-81',family:'family-grey-quarterzip-beige',name:'Grey quarter-zip + beige chinos + dark brown suede Chelsea boots',image:'assets/look-81-hq.webp?v=2',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','beige-chinos','owned-darkbrown-suede-chelsea']});
 
+  // Cognac leather sneaker rotation built from confirmed owned pieces.
+  upsertFamily({id:'family-navy-polo-beige-cognac-sneakers',name:'Navy polo + beige chinos',hero:'look-82',looks:['look-82']});
+  upsertLook({id:'look-82',family:'family-navy-polo-beige-cognac-sneakers',name:'Navy polo + beige chinos + cognac leather sneakers',image:'assets/look-82-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['navy-polo','beige-chinos','owned-br-cognac-sneakers','brown-belt']});
+
+  upsertFamily({id:'family-cream-shirt-green-cognac-sneakers',name:'Cream shirt + dark green chinos',hero:'look-83',looks:['look-83']});
+  upsertLook({id:'look-83',family:'family-cream-shirt-green-cognac-sneakers',name:'Cream shirt + dark green chinos + cognac leather sneakers',image:'assets/look-83-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-cream-buttondown','owned-dark-green-chinos','owned-br-cognac-sneakers']});
+
+  upsertFamily({id:'family-white-henley-denim-cognac-sneakers',name:'White henley + dark denim',hero:'look-84',looks:['look-84']});
+  upsertLook({id:'look-84',family:'family-white-henley-denim-cognac-sneakers',name:'White henley + dark denim + cognac leather sneakers',image:'assets/look-84-hq.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-white-henley','dark-denim','owned-br-cognac-sneakers']});
+
   // High-quality face/look replacements (2026-09-17 housekeeping).
   // Replace legacy low-resolution assets with face-consistent full-resolution renders.
   [
