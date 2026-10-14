@@ -133,7 +133,7 @@
     ['look-36', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_46598b57-f847-4a63-ad15-f3d3790967a9.png'],
     ['look-38', 'assets/look-38-hq.webp?v=1'],
     ['look-40', 'assets/look-40-hq.webp?v=1'],
-    ['look-41', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_1402bf26-4e35-4909-9a98-f6e94f5614d0.png'],
+    ['look-41', 'assets/look-41-hq.webp?v=1'],
     ['look-42', 'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a24db616-0a60-485a-8dec-868b7f30000e.png'],
     ['look-43', 'assets/look-43-hq.webp?v=1'],
     ['look-44', 'assets/look-44-hq.webp?v=1'],
