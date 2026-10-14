@@ -3,12 +3,12 @@
   const safe=(k,f)=>{try{const r=localStorage.getItem(k);return r?JSON.parse(r):f}catch(e){return f}};
   const look=id=>D.looks.find(x=>x.id===id),piece=id=>D.pieces.find(x=>x.id===id),familyLooks=f=>(f.looks||[]).map(look).filter(Boolean);
   const daysSince=date=>{if(!date)return Infinity;const d=new Date(date+'T12:00:00');return Math.max(0,Math.floor((Date.now()-d.getTime())/86400000))};
-  function state(){return{wardrobe:safe('fitsWardrobe',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),weather:safe('fitsWeatherHome',null),feedback:safe('fitsLookFeedback',{})}}
+  function state(){return{wardrobe:safe('fitsWardrobe',{}),swaps:safe('fitsClosetSwaps',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),weather:safe('fitsWeatherHome',null),feedback:safe('fitsLookFeedback',{})}}
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
     return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
   }
-  const owned=(id,s)=>s.wardrobe[id]==='owned',missing=(v,s)=>(v.pieces||[]).filter(id=>!owned(id,s));
+  const owned=(id,s)=>s.wardrobe[id]==='owned',missing=(v,s)=>window.FITS_SWAPS?FITS_SWAPS.missing(v,s.wardrobe,s.swaps):(v.pieces||[]).filter(id=>!owned(id,s)),adapted=(v,s)=>window.FITS_SWAPS?FITS_SWAPS.accepted(v,s.wardrobe,s.swaps).length:0;
   const namesFor=v=>(v.pieces||[]).map(id=>(piece(id)?.name||id).toLowerCase()).join(' ');
   function dominantColor(v){
     const ps=(v.pieces||[]).map(piece).filter(Boolean),outer=ps.find(p=>p.category==='Outerwear'),tops=ps.filter(p=>p.category==='Top');
@@ -85,7 +85,7 @@
     const v=look(entry.card.dataset.smartLook),fid=familyIdFromCard(entry.card);if(!v||!fid){existing?.remove();return}
     const scored=variantScore(v,s),ready=!scored.m.length,worn=(s.wear[v.id]||[]).includes(todayKey());
     let panel=existing;if(!panel){panel=document.createElement('section');panel.className='daily-pick';head.before(panel)}
-    const stateText=!hasWardrobe?'Set your wardrobe to confirm this look':ready?(worn?'Logged for today':'Ready from your wardrobe'):`${scored.m.length} ${scored.m.length===1?'piece':'pieces'} away`;
+    const swapCount=adapted(v,s),stateText=!hasWardrobe?'Set your wardrobe to confirm this look':ready?(worn?'Logged for today':swapCount?`Ready with ${swapCount} closet ${swapCount===1?'swap':'swaps'}`:'Ready from your wardrobe'):`${scored.m.length} ${scored.m.length===1?'piece':'pieces'} away`;
     const action=!hasWardrobe?`<a class="daily-action primary" href="wardrobe.html">Set wardrobe</a>`:ready?`<button class="daily-action primary ${worn?'logged':''}" onclick="toggleHomeWear(event,'${v.id}')">${worn?'Worn today · undo':'I’ll wear this'}</button>`:`<a class="daily-action primary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Review pieces</a>`;
     panel.innerHTML=`<div class="daily-heading"><span>DAILY RECOMMENDATION · CHANGES EACH DAY</span><b>${stateText}</b></div><div class="daily-body"><a class="daily-photo" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}"><img src="${v.image}" alt="${v.name}"></a><div class="daily-copy"><h2>${v.name}</h2><p>${scored.wx.reason}</p><div class="daily-actions">${action}<a class="daily-action secondary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Details</a></div><div class="daily-feedback"><button class="${s.feedback[v.id]==='like'?'active':''}" onclick="toggleHomeFeedback(event,'${v.id}','like')">👍 Like</button><button class="${s.feedback[v.id]==='dislike'?'active dislike':''}" onclick="toggleHomeFeedback(event,'${v.id}','dislike')">👎 Dislike</button></div></div></div>`;
   }
@@ -119,7 +119,7 @@
       setCardDestination(card,fid,best.v.id);
       const img=card.querySelector('.look-img');if(img&&best.v.image&&img.getAttribute('src')!==best.v.image){img.src=best.v.image;img.alt=best.v.name;img.style.display='block'}
       const p=card.querySelector('.body p');if(p){const text=hasWardrobe?(ready?`Ready now · ${best.wx.reason}`:`${best.m.length} ${best.m.length===1?'piece':'pieces'} away · ${best.wx.reason}`):best.wx.reason;if(p.textContent!==text)p.textContent=text}
-      const visual=card.querySelector('.visual');if(visual){let pill=visual.querySelector('.readiness-pill');if(!pill){pill=document.createElement('span');pill.className='readiness-pill';visual.appendChild(pill)}const cls=`readiness-pill ${ready?'ready':'need'}`,text=hasWardrobe?(ready?'READY':`${best.m.length} TO GO`):'SET WARDROBE';if(pill.className!==cls)pill.className=cls;if(pill.textContent!==text)pill.textContent=text}
+      const visual=card.querySelector('.visual');if(visual){let pill=visual.querySelector('.readiness-pill');if(!pill){pill=document.createElement('span');pill.className='readiness-pill';visual.appendChild(pill)}const swapCount=adapted(best.v,s),cls=`readiness-pill ${ready?'ready':'need'}`,text=hasWardrobe?(ready?(swapCount?`ADAPTED · ${swapCount}`:'READY'):`${best.m.length} TO GO`):'SET WARDROBE';if(pill.className!==cls)pill.className=cls;if(pill.textContent!==text)pill.textContent=text}
       const tier=Math.min(2,best.m.length),color=dominantColor(best.v);card.dataset.dominantColor=color;
       ranked.push({card,score:best.score,tier,color});
     });
@@ -160,7 +160,7 @@
     window.render=wrapped;
   }
   window.addEventListener('fits:filters-changed',schedule);
-  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsWearHistory','fitsSavedVariants','fitsLookFeedback'].includes(e.key))schedule()});
+  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsClosetSwaps','fitsWearHistory','fitsSavedVariants','fitsLookFeedback'].includes(e.key))schedule()});
   document.addEventListener('DOMContentLoaded',schedule);
   schedule();
 })();

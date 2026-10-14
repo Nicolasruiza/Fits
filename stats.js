@@ -5,6 +5,7 @@
   const look=id=>DATA.looks.find(item=>item.id===id);
   const family=id=>DATA.families.find(item=>item.id===id);
   const wardrobe=safe('fitsWardrobe',{});
+  const swaps=safe('fitsClosetSwaps',{});
   const saved=safe('fitsSavedVariants',{});
   let wear=safe('fitsWearHistory',{});
   const validIds=new Set(DATA.looks.map(item=>item.id));
@@ -18,7 +19,7 @@
   function monthLabel(){return new Date().toLocaleDateString(undefined,{month:'long',year:'numeric'})}
   function shortName(item){const f=family(item.family);return f?f.name.replace(' chinos','').replace(' polo',''):item.name}
   function detailHref(item){return`detail.html?family=${encodeURIComponent(item.family)}&look=${encodeURIComponent(item.id)}`}
-  function isReady(item){return Object.keys(wardrobe).length>0&&item.pieces.every(id=>wardrobe[id]==='owned')}
+  function isReady(item){return Object.keys(wardrobe).length>0&&(window.FITS_SWAPS?FITS_SWAPS.missing(item,wardrobe,swaps).length===0:item.pieces.every(id=>wardrobe[id]==='owned'))}
   function lastDate(item){const dates=(wear[item.id]||[]).slice().sort();return dates[dates.length-1]||''}
   function totalFor(item,records){return records.filter(record=>record.lookId===item.id).length}
 

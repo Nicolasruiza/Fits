@@ -1,7 +1,9 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;let season=localStorage.getItem('fitsUnlockSeason')||'All';if(!['All','Summer','Transitional','Cold'].includes(season))season='All';
   const owned=id=>typeof isOwned==='function'?isOwned(id):false;
-  const missing=l=>(l.pieces||[]).filter(id=>!owned(id));
+  const swapState=()=>{try{return JSON.parse(localStorage.getItem('fitsClosetSwaps')||'{}')}catch(e){return{}}};
+  const wardrobeState=()=>{try{return JSON.parse(localStorage.getItem('fitsWardrobe')||'{}')}catch(e){return{}}};
+  const missing=l=>window.FITS_SWAPS?FITS_SWAPS.missing(l,wardrobeState(),swapState()):(l.pieces||[]).filter(id=>!owned(id));
   const eligible=l=>season==='All'||(l.seasons||[]).includes(season);
   const catWeight=p=>{const c=(p.category||'').toLowerCase();if(c.includes('access'))return .55;if(c.includes('shoe'))return .95;if(c.includes('pant')||c.includes('trouser')||c.includes('denim'))return 1.08;if(c.includes('top'))return 1.06;if(c.includes('outer'))return 1.02;return 1};
   const familyName=id=>D.families.find(f=>f.id===id)?.name||id;
