@@ -10,6 +10,16 @@
   }
   const owned=(id,s)=>s.wardrobe[id]==='owned',missing=(v,s)=>(v.pieces||[]).filter(id=>!owned(id,s));
   const namesFor=v=>(v.pieces||[]).map(id=>(piece(id)?.name||id).toLowerCase()).join(' ');
+  function dominantColor(v){
+    const ps=(v.pieces||[]).map(piece).filter(Boolean),outer=ps.find(p=>p.category==='Outerwear'),tops=ps.filter(p=>p.category==='Top');
+    const visible=outer||tops.find(p=>/(sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck)/i.test(p.name))||tops[0],name=(visible?.name||'').toLowerCase();
+    if(/navy|blue|indigo/.test(name))return'blue';if(/green|olive/.test(name))return'green';if(/burgundy|red/.test(name))return'red';if(/brown|cognac|camel/.test(name))return'brown';if(/cream|beige|white|stone|tan/.test(name))return'light';if(/grey|gray|charcoal|black/.test(name))return'dark';return'other';
+  }
+  function colorBalanced(entries){
+    const output=[];let last=null;
+    [0,1,2].forEach(tier=>{const pool=entries.filter(x=>x.tier===tier);while(pool.length){let index=pool.findIndex(x=>x.color!==last);if(index<0)index=0;const [next]=pool.splice(index,1);output.push(next);last=next.color}});
+    return output;
+  }
   function matchesFilters(v,f){
     const badges=v.badges||[],seasons=v.seasons||['Summer'];
     return(f.occasion==='All'||badges.includes(f.occasion))&&(f.season==='All'||seasons.includes(f.season));
@@ -110,14 +120,16 @@
       const img=card.querySelector('.look-img');if(img&&best.v.image&&img.getAttribute('src')!==best.v.image){img.src=best.v.image;img.alt=best.v.name;img.style.display='block'}
       const p=card.querySelector('.body p');if(p){const text=hasWardrobe?(ready?`Ready now · ${best.wx.reason}`:`${best.m.length} ${best.m.length===1?'piece':'pieces'} away · ${best.wx.reason}`):best.wx.reason;if(p.textContent!==text)p.textContent=text}
       const visual=card.querySelector('.visual');if(visual){let pill=visual.querySelector('.readiness-pill');if(!pill){pill=document.createElement('span');pill.className='readiness-pill';visual.appendChild(pill)}const cls=`readiness-pill ${ready?'ready':'need'}`,text=hasWardrobe?(ready?'READY':`${best.m.length} TO GO`):'SET WARDROBE';if(pill.className!==cls)pill.className=cls;if(pill.textContent!==text)pill.textContent=text}
-      ranked.push({card,score:best.score});
+      const tier=Math.min(2,best.m.length),color=dominantColor(best.v);card.dataset.dominantColor=color;
+      ranked.push({card,score:best.score,tier,color});
     });
-    ranked.sort((a,b)=>b.score-a.score);
+    ranked.sort((a,b)=>a.tier-b.tier||b.score-a.score);
+    const balanced=colorBalanced(ranked);ranked.splice(0,ranked.length,...balanced);
     const manualSeason=activeFilters.season!=='All',recommended=activeFilters.recommendedSeason||'Transitional';
     const order=manualSeason?[activeFilters.season]:[recommended,...['Summer','Transitional','Cold'].filter(x=>x!==recommended)];
     const assigned=new Set();
     order.forEach(season=>{
-      const entries=ranked.filter(x=>!assigned.has(x.card)&&((x.card.dataset.seasons||'Summer').split(',').includes(season)));
+      const entries=colorBalanced(ranked.filter(x=>!assigned.has(x.card)&&((x.card.dataset.seasons||'Summer').split(',').includes(season))));
       if(!entries.length)return;
       const current=manualSeason||season===recommended,group=document.createElement('section');
       group.className=`look-group ${current?'recommended':'compact'}`;
@@ -132,7 +144,7 @@
     let head=document.querySelector('.smart-rotation-head');if(!head){head=document.createElement('div');head.className='smart-rotation-head';grid.before(head)}
     const filterText=[activeFilters.occasion!=='All'?activeFilters.occasion:null,manualSeason?activeFilters.season:null].filter(Boolean).join(' · ');
     const seasonMode=manualSeason?`manual ${activeFilters.season}`:(activeFilters.recommendedSeason?`auto ${activeFilters.recommendedSeason}`:'auto weather');
-    const html=hasWardrobe?`<div><span>SMART ROTATION</span><strong>${readyFamilies} ready ${readyFamilies===1?'family':'families'}</strong></div><small>${filterText?filterText+' · ':''}${seasonMode} · rotates what you haven’t worn lately${savedFamilies?` · ${savedFamilies} saved`:''}</small>`:`<div><span>SMART ROTATION</span><strong>Set your wardrobe</strong></div><small>${filterText?filterText+' · ':''}${seasonMode}.</small>`;
+    const html=hasWardrobe?`<div><span>SMART ROTATION</span><strong>${readyFamilies} ready ${readyFamilies===1?'family':'families'}</strong></div><small>${filterText?filterText+' · ':''}${seasonMode} · complete first · color-balanced${savedFamilies?` · ${savedFamilies} saved`:''}</small>`:`<div><span>SMART ROTATION</span><strong>Set your wardrobe</strong></div><small>${filterText?filterText+' · ':''}${seasonMode}.</small>`;
     if(head.innerHTML!==html)head.innerHTML=html;
     const visibleRanked=ranked.filter(x=>!x.card.classList.contains('hidden')&&!x.card.classList.contains('smart-hidden'));
     renderDailyPick(visibleRanked,s,hasWardrobe,head);
