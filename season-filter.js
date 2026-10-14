@@ -33,14 +33,14 @@
   function updateWeatherHint(wrap){
     let hint=wrap.querySelector('.weather-season-hint');if(!hint){hint=document.createElement('div');hint.className='weather-season-hint';wrap.appendChild(hint)}
     const wx=weatherSeason();
-    if(!wx){hint.textContent='Weather season unavailable';hint.dataset.season='';return}
+    if(!wx){hint.textContent='Recommended uses wardrobe readiness until weather is enabled.';hint.dataset.season='';return}
     const range=wx.low!=null?`${wx.high}° / ${wx.low}°`:`${wx.high}°`;
-    hint.textContent=`Weather suggests ${wx.recommended} · ${range}`;
+    hint.textContent=`Recommended for ${wx.recommended} · ${range}`;
     hint.dataset.season=wx.recommended;
   }
   function ensureStyle(){
     if(document.getElementById('weather-season-hint-style'))return;
-    const s=document.createElement('style');s.id='weather-season-hint-style';s.textContent='.weather-season-hint{margin:7px 2px 0;font-size:11px;font-weight:750;letter-spacing:.01em;color:#66716b}.weather-season-hint[data-season="Summer"]{color:#8b6a2e}.weather-season-hint[data-season="Transitional"]{color:#536d5f}.weather-season-hint[data-season="Cold"]{color:#536b7a}';document.head.appendChild(s);
+    const s=document.createElement('style');s.id='weather-season-hint-style';s.textContent='.weather-season-hint{margin:10px 0 0;padding:9px 11px;border-radius:11px;background:#e6ecef;color:#526570;font-size:10px;font-weight:700;line-height:1.35}.weather-season-hint[data-season]{color:#526570}';document.head.appendChild(s);
   }
   function apply(shouldAnnounce=true){
     let visible=0;
@@ -75,7 +75,7 @@
     let wrap=document.querySelector('.season-filter-wrap');
     if(!wrap){
       wrap=document.createElement('div');wrap.className='season-filter-wrap';
-      wrap.innerHTML=`<div class="filter-label-row"><span>Season</span><b class="filter-result-count"></b></div><div class="season-chips">${validSeason.map(x=>`<button class="chip season-choice ${x===season?'active':''}" data-season-choice="${x}"><span>${x==='All'?'All seasons':x}</span><em></em></button>`).join('')}</div>`;
+      wrap.innerHTML=`<div class="filter-label-row"><span>Season</span><b class="filter-result-count"></b></div><div class="season-chips">${validSeason.map(x=>`<button class="chip season-choice ${x===season?'active':''}" data-season-choice="${x}"><span>${x==='All'?'Recommended':x}</span><em></em></button>`).join('')}</div>`;
       occLabel.before(wrap);
       wrap.querySelectorAll('[data-season-choice]').forEach(btn=>btn.onclick=()=>{season=btn.dataset.seasonChoice;localStorage.setItem('fitsSeasonFilter',season);wrap.querySelectorAll('[data-season-choice]').forEach(x=>x.classList.toggle('active',x.dataset.seasonChoice===season));apply()});
     }else wrap.querySelectorAll('[data-season-choice]').forEach(x=>x.classList.toggle('active',x.dataset.seasonChoice===season));
