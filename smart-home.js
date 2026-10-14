@@ -93,6 +93,7 @@
   function enhance(){
     ensureStyle();
     const grid=document.querySelector('.grid');if(!grid)return;
+    grid.querySelectorAll('.look-group').forEach(group=>{group.querySelectorAll('a.card').forEach(card=>grid.appendChild(card));group.remove()});
     const s=state(),activeFilters=filters(),hasWardrobe=Object.keys(s.wardrobe||{}).length>0,cards=[...grid.querySelectorAll('a.card')],ranked=[];let readyFamilies=0,savedFamilies=0;
     cards.forEach(card=>{
       const fid=familyIdFromCard(card),f=D.families.find(x=>x.id===fid);if(!f)return;
@@ -112,15 +113,18 @@
       ranked.push({card,score:best.score});
     });
     ranked.sort((a,b)=>b.score-a.score);
-    grid.querySelectorAll('.look-group-title').forEach(x=>x.remove());
     const manualSeason=activeFilters.season!=='All',recommended=activeFilters.recommendedSeason||'Transitional';
     const order=manualSeason?[activeFilters.season]:[recommended,...['Summer','Transitional','Cold'].filter(x=>x!==recommended)];
     const assigned=new Set();
     order.forEach(season=>{
       const entries=ranked.filter(x=>!assigned.has(x.card)&&((x.card.dataset.seasons||'Summer').split(',').includes(season)));
       if(!entries.length)return;
-      const title=document.createElement('div');title.className='look-group-title';title.innerHTML=`<strong>${manualSeason?season:`${season}${season===recommended?' · recommended now':''}`}</strong><span>${entries.length} ${entries.length===1?'look':'looks'}</span>`;grid.appendChild(title);
-      entries.forEach(x=>{assigned.add(x.card);grid.appendChild(x.card)});
+      const current=manualSeason||season===recommended,group=document.createElement('section');
+      group.className=`look-group ${current?'recommended':'compact'}`;
+      group.dataset.season=season;
+      group.innerHTML=`<div class="look-group-title"><strong>${manualSeason?season:`${season}${current?' · recommended now':''}`}</strong><span>${entries.length} ${entries.length===1?'look':'looks'}</span></div><div class="look-group-rail"></div>${current?'':`<button class="look-group-more" type="button" onclick="toggleSeasonGroup(this)">See more ${season.toLowerCase()} looks</button>`}`;
+      grid.appendChild(group);const rail=group.querySelector('.look-group-rail');
+      entries.forEach(x=>{assigned.add(x.card);rail.appendChild(x.card)});
     });
     ranked.filter(x=>!assigned.has(x.card)).forEach(x=>grid.appendChild(x.card));
     const empty=grid.querySelector('.empty');
@@ -134,6 +138,7 @@
     renderDailyPick(visibleRanked,s,hasWardrobe,head);
     window.dispatchEvent(new CustomEvent('fits:home-enhanced'));
   }
+  window.toggleSeasonGroup=function(button){const group=button.closest('.look-group');if(!group)return;const expanded=group.classList.toggle('expanded');button.textContent=expanded?'Show less':`See more ${group.dataset.season.toLowerCase()} looks`};
   let scheduled=false;
   function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;enhance()})}
   const previousRender=window.render;

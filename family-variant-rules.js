@@ -2,7 +2,13 @@
   const D=window.FITS_DATA;if(!D)return;
   const pieces=new Map((D.pieces||[]).map(p=>[p.id,p]));
   const looks=new Map((D.looks||[]).map(l=>[l.id,l]));
-  const signature=l=>(l.pieces||[]).filter(id=>['Top','Pants'].includes(pieces.get(id)?.category)).sort().join('|');
+  const signature=l=>{
+    const pants=(l.pieces||[]).filter(id=>pieces.get(id)?.category==='Pants').sort();
+    const tops=(l.pieces||[]).filter(id=>pieces.get(id)?.category==='Top');
+    const sweaters=tops.filter(id=>/(sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck)/i.test(pieces.get(id)?.name||''));
+    const visibleTops=(sweaters.length?sweaters:tops).sort();
+    return [...visibleTops,...pants].join('|');
+  };
   const rebuilt=[];
   (D.families||[]).forEach(f=>{
     const groups=new Map();
