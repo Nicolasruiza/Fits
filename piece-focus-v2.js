@@ -9,8 +9,7 @@
     'black-chelsea':{src:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_224726_05c69f6b-3d8a-42a6-9be7-3ef226ad74e7_min.webp',x:50,y:91,s:2.35},
     'brown-leather-jacket':{src:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_224726_46309108-84ae-4f66-9e19-e8b05f391859_min.webp',x:50,y:36,s:2.0},
     'black-turtleneck':{src:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_224726_46309108-84ae-4f66-9e19-e8b05f391859_min.webp',x:50,y:33,s:2.3},
-    'beige-chinos':{src:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_224726_46309108-84ae-4f66-9e19-e8b05f391859_min.webp',x:50,y:64,s:2.0},
-    'brown-chelsea':{src:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_224726_46309108-84ae-4f66-9e19-e8b05f391859_min.webp',x:50,y:91,s:2.35}
+    'beige-chinos':{src:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_224726_46309108-84ae-4f66-9e19-e8b05f391859_min.webp',x:50,y:64,s:2.0}
   };
   const base=piecePhoto;
   piecePhoto=function(p){

@@ -50,11 +50,12 @@ normalizeWardrobe();
 const piece=id=>DATA.pieces.find(p=>p.id===id)||customPieces.find(p=>p.id===id);
 const look=id=>DATA.looks.find(l=>l.id===id);
 const family=id=>DATA.families.find(f=>f.id===id);
-const missingFor=l=>l.pieces.filter(id=>wardrobe[id]!=='owned');
+const swapState=()=>safeJSON('fitsClosetSwaps',{});
+const missingFor=l=>window.FITS_SWAPS?FITS_SWAPS.missing(l,wardrobe,swapState()):l.pieces.filter(id=>wardrobe[id]!=='owned');
 const familyLooks=f=>f.looks.map(look).filter(Boolean);
 
 function nav(active){
-  return `<nav class="nav"><a href="index.html"><b>▦</b>Looks</a><a href="wardrobe.html" class="${active==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="unlock.html" class="${active==='unlock'?'active':''}"><b>↗</b>Unlock</a><a href="stats.html" class="${active==='stats'?'active':''}"><b>◫</b>Stats</a></nav>`;
+  return `<nav class="nav"><a href="index.html"><b>▦</b>Looks</a><a href="wardrobe.html" class="${active==='wardrobe'?'active':''}"><b>◇</b>Wardrobe</a><a href="stats.html" class="${active==='stats'?'active':''}"><b>◫</b>Stats</a></nav>`;
 }
 
 function headerBar(title,subtitle,kicker=''){
@@ -89,6 +90,12 @@ function piecePhoto(p){
   return `<div class="piece-fallback">${initials}</div>`;
 }
 
+function wardrobeImpact(pieceId){
+  let used=0,unlocks=0;const families=new Set();
+  DATA.looks.forEach(l=>{if(!l.pieces.includes(pieceId))return;const missing=missingFor(l);if(!missing.includes(pieceId))return;used++;families.add(l.family);if(missing.length===1)unlocks++});
+  return{used,unlocks,families:families.size};
+}
+
 window.addManualItem=function(){
   const input=document.getElementById('newItemName');
   const category=document.getElementById('newItemCategory').value;
@@ -105,7 +112,7 @@ function renderWardrobe(){
   const owned=all.filter(p=>isOwned(p.id)).length;
   const missing=all.length-owned;
   document.body.innerHTML=`<div class="app wardrobe-v2">
-    ${headerBar('Wardrobe','Your visual inventory. Mark only what is actually in your closet.',`${all.length} items`)}
+    ${headerBar('Wardrobe','Everything in one place: what you own, what is missing, and which looks each piece unlocks.',`${all.length} items`)}
     <main>
       <div class="add-item compact-add">
         <div><strong>Add a piece</strong><small>Add something that hasn't appeared in an outfit yet.</small></div>
@@ -114,12 +121,14 @@ function renderWardrobe(){
       </div>
       <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>Not in wardrobe</span></div></div>
       <div class="ward-grid">${all.map(p=>{
-        const ownedNow=isOwned(p.id);
+        const ownedNow=isOwned(p.id),impact=ownedNow?null:wardrobeImpact(p.id);
         return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}" data-piece-id="${p.id}">
           <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NO</span>':''}</div>
           <div class="ward-card-body">
             <div class="ward-card-copy"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div>
+            ${!ownedNow&&impact?`<div class="ward-impact ${impact.unlocks?'ready':''}"><b>${impact.unlocks?`Unlocks ${impact.unlocks} look${impact.unlocks===1?'':'s'} now`:impact.used?`Used in ${impact.used} look${impact.used===1?'':'s'}`:'Not used in a look yet'}</b>${impact.families?`<span>${impact.families} style ${impact.families===1?'family':'families'}</span>`:''}</div>`:''}
             <div class="own-row"><span class="own-question">Own it?</span><button class="own-toggle ${ownedNow?'on':''}" aria-pressed="${ownedNow}" onclick="toggleOwned('${p.id}')"><span class="toggle-knob"></span></button><b class="own-state">${ownedNow?'Yes':'No'}</b></div>
+            ${!ownedNow?`<button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>${impact?.unlocks?`+${impact.unlocks} looks`:'↗'}</span></button>`:''}
           </div>
         </article>`;
       }).join('')}</div>
