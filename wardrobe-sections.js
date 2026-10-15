@@ -1,19 +1,17 @@
 (()=>{
   if(document.body.dataset.page!=='wardrobe')return;
-  const ORDER=['Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Outerwear','Dress Pants','Chinos','Jeans','Shorts','Shoes','Belts & Accessories','Other'];
+  const ORDER=['Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories','Other'];
   function text(card){return((card.querySelector('.ward-card-copy strong')?.textContent||'')+' '+(card.querySelector('.ward-card-copy small')?.textContent||'')).toLowerCase()}
   function kind(card){
     const t=text(card);
-    if(/belt|watch|accessor|tie|scarf|wallet/.test(t))return'Belts & Accessories';
+    if(/belt|watch|accessor|tie|scarf|wallet/.test(t))return'Accessories';
     if(/shoe|sneaker|loafer|boot|chelsea|derb|brogue|wingtip|footwear|espadrille/.test(t))return'Shoes';
     if(/t-shirt|tee|polo|henley/.test(t))return'T-Shirts & Polos';
     if(/sweater|crewneck|crew-neck|v-neck|quarter-zip|quarter zip|cardigan|turtleneck|knit/.test(t))return'Sweaters & Knitwear';
     if(/overshirt|blazer|jacket|coat|outerwear|bomber/.test(t))return'Outerwear';
     if(/shirt|button-down|button down|button-up|button up|oxford|gingham|check/.test(t))return'Dress Shirts';
     if(/short/.test(t))return'Shorts';
-    if(/denim|jean/.test(t))return'Jeans';
-    if(/chino/.test(t))return'Chinos';
-    if(/trouser|dress pant|tailored pant/.test(t))return'Dress Pants';
+    if(/denim|jean|chino|trouser|dress pant|tailored pant|pants|bottom/.test(t))return'Pants';
     return'Other';
   }
   window.FITS_WARDROBE_KIND=kind;

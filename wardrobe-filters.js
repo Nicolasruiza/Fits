@@ -2,7 +2,7 @@
   if(document.body.dataset.page!=='wardrobe')return;
   const requested=new URLSearchParams(location.search).get('status');
   let category='All',ownership=requested==='missing'?'Missing':'All',query='';
-  const CATEGORIES=['All','Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Outerwear','Dress Pants','Chinos','Jeans','Shorts','Shoes','Belts & Accessories'];
+  const CATEGORIES=['All','Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories'];
   function text(card){return((card.querySelector('.ward-card-copy strong')?.textContent||'')+' '+(card.querySelector('.ward-card-copy small')?.textContent||'')).toLowerCase()}
   function kind(card){return window.FITS_WARDROBE_KIND?FITS_WARDROBE_KIND(card):'Other'}
   function normalized(value){return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
