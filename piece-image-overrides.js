@@ -73,5 +73,11 @@ Object.assign(PIECE_IMAGES,window.FITS_CATALOG_IMAGES||{}, {
   'black-polo':'assets/wardrobe-standardized/black-polo.png?v=1',
   'black-tee':'assets/wardrobe-standardized/black-tee.png?v=1',
   'olive-trousers':'assets/wardrobe-standardized/olive-trousers.png?v=1',
+  'grey-crewneck':'assets/wardrobe-standardized/grey-crewneck.png?v=1',
+  'navy-quarterzip':'assets/wardrobe-standardized/navy-quarterzip.png?v=1',
+  'charcoal-trousers':'assets/wardrobe-standardized/charcoal-trousers.png?v=1',
+  'cream-chinos':'assets/wardrobe-standardized/cream-chinos.png?v=1',
+  'camel-overcoat':'assets/wardrobe-standardized/camel-overcoat.png?v=1',
+  'cognac-suede-jacket':'assets/wardrobe-standardized/cognac-suede-jacket.png?v=1',
 
 });
