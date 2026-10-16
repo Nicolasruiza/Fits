@@ -167,6 +167,32 @@
     ['look-73', 'assets/look-73-hq.webp?v=1']
   ].forEach(([id,image])=>{const l=lookBy(id);if(l)l.image=image});
 
+
+  // Approved individual photo intake 2026-10-16; reuse existing wardrobe IDs.
+  upsertPiece({"id": "olive-cable-knit-sweater", "name": "Olive cable-knit crewneck sweater", "category": "Top", "status": "missing"});
+  upsertPiece({"id": "beige-quarterzip", "name": "Beige quarter-zip knit sweater", "category": "Top", "status": "missing"});
+  upsertPiece({"id": "brown-ribbed-crewneck", "name": "Brown ribbed crewneck sweater", "category": "Top", "status": "missing"});
+  upsertPiece({"id": "cream-belt", "name": "Cream leather belt", "category": "Accessory", "status": "missing"});
+  upsertPiece({"id": "cognac-leather-biker-jacket", "name": "Cognac leather biker jacket", "category": "Outerwear", "status": "missing"});
+  upsertFamily({"id": "family-beige-crewneck-denim", "name": "Beige crewneck + dark denim", "hero": "look-85", "looks": ["look-85"]});
+  upsertLook({"id": "look-85", "family": "family-beige-crewneck-denim", "name": "Beige crewneck + white shirt + dark denim + suede Chelsea boots", "image": "assets/look-85-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["tan-knit-sweater", "white-shirt", "dark-denim", "owned-darkbrown-suede-chelsea"]});
+  upsertFamily({"id": "family-olive-cable-denim", "name": "Olive cable knit + dark denim", "hero": "look-86", "looks": ["look-86"]});
+  upsertLook({"id": "look-86", "family": "family-olive-cable-denim", "name": "Olive cable knit + white shirt + dark denim + tan Chelsea boots", "image": "assets/look-86-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["olive-cable-knit-sweater", "white-shirt", "dark-denim", "tan-chelsea"]});
+  upsertFamily({"id": "family-navy-crewneck-blue-denim", "name": "Navy crewneck + blue jeans", "hero": "look-87", "looks": ["look-87"]});
+  upsertLook({"id": "look-87", "family": "family-navy-crewneck-blue-denim", "name": "Navy crewneck + white shirt + blue jeans + suede Chelsea boots", "image": "assets/look-87-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["navy-crewneck", "white-shirt", "blue-denim", "owned-darkbrown-suede-chelsea"]});
+  upsertFamily({"id": "family-cream-knit-navy", "name": "Cream knit + navy chinos", "hero": "look-88", "looks": ["look-88"]});
+  upsertLook({"id": "look-88", "family": "family-cream-knit-navy", "name": "Tan overshirt + cream knit + navy chinos + white sneakers", "image": "assets/look-88-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["tan-overshirt", "cream-knit-sweater", "navy-trousers", "white-leather-sneakers"]});
+  upsertFamily({"id": "family-striped-blue-navy", "name": "Blue striped shirt + navy chinos", "hero": "look-89", "looks": ["look-89"]});
+  upsertLook({"id": "look-89", "family": "family-striped-blue-navy", "name": "Blue striped shirt + navy chinos + brown cap-toe shoes", "image": "assets/look-89-approved-intake.webp?v=1", "formal": 3, "badges": ["Office", "Dinner", "Weekend"], "pieces": ["striped-blue-linen-shirt", "navy-trousers", "brown-belt", "owned-brown-leather-captoe"]});
+  upsertFamily({"id": "family-beige-quarterzip-navy", "name": "Beige quarter-zip + navy chinos", "hero": "look-90", "looks": ["look-90"]});
+  upsertLook({"id": "look-90", "family": "family-beige-quarterzip-navy", "name": "Beige quarter-zip + white shirt + navy chinos + suede Chelsea boots", "image": "assets/look-90-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["beige-quarterzip", "white-shirt", "navy-trousers", "owned-darkbrown-suede-chelsea"]});
+  upsertFamily({"id": "family-brown-ribbed-cream", "name": "Brown ribbed knit + cream chinos", "hero": "look-91", "looks": ["look-91"]});
+  upsertLook({"id": "look-91", "family": "family-brown-ribbed-cream", "name": "Brown ribbed crewneck + cream chinos + white sneakers", "image": "assets/look-91-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["brown-ribbed-crewneck", "cream-chinos", "cream-belt", "white-leather-sneakers"]});
+  upsertLook({"id": "look-92", "family": "family-blazer-tee", "name": "Navy blazer + white tee + navy chinos + white sneakers", "image": "assets/look-92-approved-intake.webp?v=1", "formal": 3, "badges": ["Office", "Dinner", "Weekend"], "pieces": ["navy-blazer", "white-tee", "navy-trousers", "white-leather-sneakers"]});
+  addVariant("family-blazer-tee","look-92");
+  upsertLook({"id": "look-93", "family": "family-grey-crewneck-denim", "name": "Cognac biker jacket + grey crewneck + dark denim + suede Chelsea boots", "image": "assets/look-93-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["cognac-leather-biker-jacket", "grey-crewneck", "dark-denim", "owned-darkbrown-suede-chelsea"]});
+  addVariant("family-grey-crewneck-denim","look-93");
+
   // Legacy bookmarks and rotation history resolve to the existing identical outfit.
   D.lookAliases={'look-69':'look-38'};
 })();

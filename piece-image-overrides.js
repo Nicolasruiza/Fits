@@ -69,5 +69,10 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "white-leather-sneakers": "assets/owned-br-white-leather-sneakers.webp?v=1",
   "white-linen-shorts": "assets/catalog-white-linen-shorts.webp?v=1",
   "white-shirt": "assets/wardrobe-standardized/white-shirt.png?v=1",
-  "white-tee": "assets/wardrobe-standardized/white-tee.png?v=1"
+  "white-tee": "assets/wardrobe-standardized/white-tee.png?v=1",
+  "olive-cable-knit-sweater": "assets/catalog-olive-cable-knit-sweater.webp?v=1",
+  "beige-quarterzip": "assets/catalog-beige-quarterzip.webp?v=1",
+  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck.webp?v=1",
+  "cream-belt": "assets/catalog-cream-belt.webp?v=1",
+  "cognac-leather-biker-jacket": "assets/catalog-cognac-leather-biker-jacket.webp?v=1"
 });
