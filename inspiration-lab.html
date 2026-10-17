@@ -33,7 +33,9 @@ nav a{color:#cdd2d5;font-size:12px;text-decoration:none}nav a.active{color:white
 <div class="app">
 <header><div class="brand">Fits</div><span class="subtle">INSPIRATION LAB · PREVIEW</span></header>
 <section id="browse"><h1>Find your next look</h1><p class="subtle">Get inspired first. Make it yours with pieces from your wardrobe.</p>
-<div class="filters" id="filters"></div><div class="grid" id="lookGrid"></div></section>
+<div id="weatherBox" class="note" style="margin:14px 0"></div>
+<div class="subtle" style="font-weight:700;margin-top:12px">SEASON</div><div class="filters" id="seasonFilters" style="margin:8px 0 12px"></div>
+<div class="subtle" style="font-weight:700">OCCASION</div><div class="filters" id="filters" style="margin-top:8px"></div><div class="grid" id="lookGrid"></div></section>
 <section id="studio" class="hidden">
 <button class="back" id="back">← Inspiration</button><h2 id="lookName"></h2>
 <p class="subtle">Style Studio · Start with a complete look and swap any number of pieces.</p>
@@ -86,7 +88,32 @@ const D=window.FITS_DATA, $=q=>document.querySelector(q);
 if(!D||!Array.isArray(D.looks)||!Array.isArray(D.pieces)){ $('#lookGrid').innerHTML='<div class="empty">Catalog could not be loaded.</div>';return;}
 const lookup=new Map(D.pieces.map(p=>[p.id,p]));
 const categories=['All','Office','Weekend','Dinner','Travel'];
-let current=null, chosen=[], activeFilter='All', screen='browse';
+let current=null, chosen=[], activeFilter='All', activeSeason='Recommended', screen='browse';
+const seasons=['Recommended','All','Summer','Transitional','Cold'];
+const seasonName={Summer:'Summer',Transitional:'Transition',Cold:'Cold'};
+function cachedWeather(){const w=safe('fitsWeatherHome',null);return w&&Number.isFinite(Number(w.temp))&&Date.now()-Number(w.ts||0)<3*3600000?w:null}
+let weather=cachedWeather();
+function recommendedSeason(w){if(!w)return null;const t=Number(w.temp),high=Number.isFinite(Number(w.maxTemp))?Number(w.maxTemp):t;if(high<=12||(t<=8&&high<16))return'Cold';if(high>=24&&(t>=18||high>=27))return'Summer';return'Transitional'}
+function weatherBox(){
+ const category=recommendedSeason(weather);
+ $('#weatherBox').innerHTML=weather
+ ?'<div class="row"><div><b>Today · '+Math.round(weather.temp)+'°C</b><div class="subtle">'+escape(weather.location||'Local weather')+' · Suggested: '+escape(seasonName[category])+'</div></div><button class="secondary" id="weatherRefresh">↻ Update</button></div><div class="subtle" style="margin-top:7px">Weather prioritizes looks; it never hides other seasons.</div>'
+ :'<div class="row"><div><b>Dress for the weather</b><div class="subtle">Enable location to prioritize summer, transition, or cold looks.</div></div><button class="secondary" id="weatherRefresh">Use weather</button></div>';
+ $('#weatherRefresh').onclick=refreshWeather;
+}
+async function refreshWeather(){
+ const b=$('#weatherRefresh');b.disabled=true;b.textContent='Loading…';
+ if(!navigator.geolocation){b.disabled=false;b.textContent='Unavailable';return}
+ navigator.geolocation.getCurrentPosition(async pos=>{
+  try{
+   const {latitude,longitude}=pos.coords;
+   const q='https://api.open-meteo.com/v1/forecast?latitude='+encodeURIComponent(latitude)+'&longitude='+encodeURIComponent(longitude)+'&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=auto';
+   const response=await fetch(q);if(!response.ok)throw Error('weather');
+   const d=await response.json();weather={temp:d.current.temperature_2m,maxTemp:d.daily.temperature_2m_max[0],minTemp:d.daily.temperature_2m_min[0],location:'Your location',ts:Date.now()};
+   localStorage.setItem('fitsWeatherHome',JSON.stringify(weather));weatherBox();browse();
+  }catch(e){$('#weatherBox').innerHTML='<div>Could not load weather. Season filters still work.</div><button class="secondary" id="weatherRefresh">Try again</button>';$('#weatherRefresh').onclick=refreshWeather;}
+ },()=>{$('#weatherBox').innerHTML='<div>Location not enabled. Select a season manually.</div><button class="secondary" id="weatherRefresh">Try again</button>';$('#weatherRefresh').onclick=refreshWeather;},{enableHighAccuracy:false,timeout:12000,maximumAge:3600000});
+}
 const key='fitsInspirationLabVersionsV1';
 const safe=(k,defaultValue)=>{try{return JSON.parse(localStorage.getItem(k))||defaultValue}catch{return defaultValue}};
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -97,7 +124,10 @@ const image=l=>l.image;
 function show(name){screen=name;['browse','studio','savedView'].forEach(id=>$('#'+id).classList.toggle('hidden',id!==name));document.querySelectorAll('[data-screen]').forEach(a=>a.classList.toggle('active',a.dataset.screen===name));window.scrollTo(0,0);if(name==='savedView')renderSaved();}
 function browse(){
  $('#filters').innerHTML=categories.map(c=>'<button class="filter '+(c===activeFilter?'active':'')+'" data-filter="'+c+'">'+c+'</button>').join('');
- const filtered=looks.filter(l=>activeFilter==='All'||(l.badges||[]).includes(activeFilter));
+ const wx=recommendedSeason(weather);
+ $('#seasonFilters').innerHTML=seasons.map(s=>'<button class="filter '+(s===activeSeason?'active':'')+'" data-season="'+s+'">'+(s==='Recommended'&&wx?'For today · '+seasonName[wx]:s==='Transitional'?'Transition':s)+'</button>').join('');
+ $('#seasonFilters').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeSeason=b.dataset.season;browse()});
+ const filtered=looks.filter(l=>(activeFilter==='All'||(l.badges||[]).includes(activeFilter))&&(activeSeason==='All'||activeSeason==='Recommended'||(l.seasons||[]).includes(activeSeason))).sort((a,b)=>activeSeason==='Recommended'&&wx?Number((b.seasons||[]).includes(wx))-Number((a.seasons||[]).includes(wx)):0);
  $('#lookGrid').innerHTML=filtered.length?filtered.map(l=>'<button class="look" data-look="'+escape(l.id)+'"><img loading="lazy" src="'+escape(image(l))+'" alt="'+escape(l.name)+'"><div class="meta"><strong>'+escape(l.name)+'</strong><span class="pill">'+escape((l.badges||[])[0]||'Explore')+'</span></div></button>').join(''):'<div class="empty">No looks in this category.</div>';
  $('#filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;browse();});
  $('#lookGrid').querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>openLook(b.dataset.look));
@@ -123,6 +153,6 @@ $('#back').onclick=()=>show('browse');
 $('#reset').onclick=()=>{chosen=current.pieces.slice();renderSlots();$('#feedback').textContent='Restored original outfit recipe.';};
 $('#save').onclick=()=>{const rows=safe(key,[]);const signature=current.id+'|'+chosen.join('|');if(rows.some(v=>v.from+'|'+v.pieces.join('|')===signature)){$('#feedback').textContent='This version is already saved.';return;}rows.unshift({from:current.id,pieces:chosen.slice(),created:new Date().toISOString()});try{localStorage.setItem(key,JSON.stringify(rows));$('#feedback').textContent='Saved! Open My versions to revisit or edit it.';}catch(e){$('#feedback').textContent='Could not save on this device.'}};
 document.querySelectorAll('[data-screen]').forEach(a=>a.onclick=e=>{e.preventDefault();show(a.dataset.screen);});
-browse();
+weatherBox();browse();
 })();
 </script></body></html>
