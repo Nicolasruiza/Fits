@@ -38,9 +38,9 @@ nav a{color:#cdd2d5;font-size:12px;text-decoration:none}nav a.active{color:white
 <div class="subtle" style="font-weight:700">OCCASION</div><div class="filters" id="filters" style="margin-top:8px"></div><div class="grid" id="lookGrid"></div></section>
 <section id="studio" class="hidden">
 <button class="back" id="back">← Inspiration</button><h2 id="lookName"></h2>
-<p class="subtle">Style Studio · Start with a complete look and swap any number of pieces.</p>
+<p class="subtle">Start with one item. Choose a piece you own and see how your outfit recipe changes.</p>
 <img id="lookPhoto" class="hero" alt="Original FITS outfit photo">
-<div class="note"><b>Original photo.</b> Your selections below change the outfit recipe. A new model photo is <b>not</b> generated in this preview; the original image remains unchanged.</div>
+<div class="note"><b>Original FITS photo.</b> The model image remains unchanged in this preview; you can save a different clothing combination below.</div><div id="swapSummary" class="note" aria-live="polite"></div>
 <div id="slots" class="slots"></div>
 <div class="actions"><button class="secondary" id="reset">Reset</button><button class="primary" id="save">Save my version</button></div>
 <div id="feedback" role="status" aria-live="polite" class="notice"></div>
@@ -138,9 +138,12 @@ function renderSlots(){
  const count=chosen.filter((id,i)=>id!==current.pieces[i]).length;
  const grouped=new Map();
  D.pieces.forEach(p=>{if(!grouped.has(p.category))grouped.set(p.category,[]);grouped.get(p.category).push(p)});
+ $('#swapSummary').innerHTML=count
+ ?'<b>'+count+' piece'+(count===1?'':'s')+' changed</b><div style="margin-top:5px">'+chosen.map((id,i)=>id!==current.pieces[i]?'<div>✓ '+escape(lookup.get(current.pieces[i])?.name||'Original')+' → <span class="strong">'+escape(lookup.get(id)?.name||id)+'</span></div>':'').filter(Boolean).join('')+'</div>'
+ :'<b>Start here</b><div class="subtle">Tap a selector below and try changing one piece. The original stays safe.</div>';
  $('#slots').innerHTML='<div class="row"><b>Your outfit recipe</b><span class="subtle">'+count+' changed</span></div>'+current.pieces.map((id,i)=>{
   const original=lookup.get(id);const choices=(grouped.get(original.category)||[]).filter(p=>owned(p)||p.id===id||p.id===chosen[i]).sort((a,b)=>Number(owned(b))-Number(owned(a))||a.name.localeCompare(b.name));
-  const options=choices.map(p=>'<option value="'+escape(p.id)+'" '+(chosen[i]===p.id?'selected':'')+'>'+escape(p.name)+(owned(p)?' · In wardrobe':' · Inspiration')+'</option>').join('');
+  const options=choices.map(p=>'<option value="'+escape(p.id)+'" '+(chosen[i]===p.id?'selected':'')+'>'+escape(p.name)+(p.id===id?' · Original':owned(p)?' · Owned':' · Inspiration')+'</option>').join('');
   return '<div class="slot"><label for="part'+i+'">'+escape(original.category)+' · '+(chosen[i]===id?'Original':'Changed')+'</label><select id="part'+i+'" data-pos="'+i+'">'+options+'</select><div class="own">'+(owned(lookup.get(chosen[i]))?'✓ In your wardrobe':'Not marked as owned')+'</div></div>';
  }).join('');
  $('#slots').querySelectorAll('select').forEach(s=>s.onchange=()=>{chosen[Number(s.dataset.pos)]=s.value;renderSlots();$('#feedback').textContent='';});
