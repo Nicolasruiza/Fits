@@ -29,6 +29,9 @@ h1{font-size:26px;margin:8px 0 4px}h2{font-size:19px;margin:0 0 6px}p{line-heigh
 nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,480px);background:#20262a;display:flex;justify-content:space-around;padding:14px 5px env(safe-area-inset-bottom)}
 nav a{color:#cdd2d5;font-size:12px;text-decoration:none}nav a.active{color:white;font-weight:bold}
 .saved{border:1px solid #4d565a;border-radius:12px;margin:8px 0;padding:12px;background:#252c30}
+
+/* Visual-first wardrobe picker */
+.slot{padding:12px}.swap-current{display:flex;gap:10px;align-items:center;margin:9px 0 12px}.swap-current img{width:76px;height:91px;border-radius:9px;object-fit:contain;background:#e5e5e1}.swap-current .part-info{flex:1;min-width:0}.swap-current strong{display:block;font-size:13px}.piece-strip{display:flex;gap:9px;overflow-x:auto;padding:4px 2px 11px;scroll-snap-type:x proximity}.piece-card{position:relative;flex:0 0 112px;min-height:166px;border:2px solid transparent;border-radius:12px;padding:5px;background:#343a3d;text-align:left;scroll-snap-align:start}.piece-card.selected{border-color:#fff;background:#3e464b}.piece-card img{width:100%;height:108px;object-fit:contain;background:#eeefeb;border-radius:8px}.piece-card .piece-name{display:block;font-size:10px;line-height:1.25;margin-top:5px;min-height:25px}.piece-card .piece-status{display:block;font-size:9px;color:#bcc7cc;margin-top:3px}.piece-card.selected:after{content:"✓";position:absolute;top:9px;right:9px;background:#20262a;color:white;border-radius:50%;width:21px;height:21px;display:grid;place-items:center;font-weight:800}.image-missing{display:none;background:#555;color:white;font-size:10px;padding:14px}
 </style></head><body>
 <div class="app">
 <header><div class="brand">Fits</div><span class="subtle">INSPIRATION LAB · PREVIEW</span></header>
@@ -81,6 +84,14 @@ nav a{color:#cdd2d5;font-size:12px;text-decoration:none}nav a.active{color:white
 <script src="closet-swaps.js?v=1"></script>
 <script src="weather-location-cache.js?v=3"></script>
 <script src="season-filter.js?v=23"></script>
+<script src="catalog-images.js?v=2"></script>
+<script src="catalog-batch2.js?v=2"></script>
+<script src="catalog-batch3.js?v=2"></script>
+<script src="catalog-v4.js?v=3"></script>
+<script>
+const PIECE_IMAGES = Object.assign({},window.FITS_CATALOG_IMAGES||{});
+</script>
+<script src="piece-image-overrides.js?v=28"></script>
 <script>
 (()=>{
 'use strict';
@@ -134,19 +145,29 @@ function browse(){
  $('#lookGrid').querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>openLook(b.dataset.look));
 }
 function openLook(id,choices){current=looks.find(x=>x.id===id);if(!current)return;chosen=choices?.length===current.pieces.length?choices.slice():current.pieces.slice();$('#lookName').textContent=current.name;$('#lookPhoto').src=image(current);$('#lookPhoto').alt='Original outfit: '+current.name;$('#feedback').textContent='';renderSlots();show('studio');}
+function piecePhoto(id){return PIECE_IMAGES[id]||null}
+function photoHTML(id,alt){
+ const url=piecePhoto(id);
+ return url?'<img loading="lazy" src="'+escape(url)+'" alt="'+escape(alt)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'"><span class="image-missing">Image unavailable</span>':'<span class="image-missing" style="display:block">No photo yet</span>';
+}
 function renderSlots(){
  const count=chosen.filter((id,i)=>id!==current.pieces[i]).length;
  const grouped=new Map();
  D.pieces.forEach(p=>{if(!grouped.has(p.category))grouped.set(p.category,[]);grouped.get(p.category).push(p)});
  $('#swapSummary').innerHTML=count
  ?'<b>'+count+' piece'+(count===1?'':'s')+' changed</b><div style="margin-top:5px">'+chosen.map((id,i)=>id!==current.pieces[i]?'<div>✓ '+escape(lookup.get(current.pieces[i])?.name||'Original')+' → <span class="strong">'+escape(lookup.get(id)?.name||id)+'</span></div>':'').filter(Boolean).join('')+'</div>'
- :'<b>Start here</b><div class="subtle">Tap a selector below and try changing one piece. The original stays safe.</div>';
- $('#slots').innerHTML='<div class="row"><b>Your outfit recipe</b><span class="subtle">'+count+' changed</span></div>'+current.pieces.map((id,i)=>{
-  const original=lookup.get(id);const choices=(grouped.get(original.category)||[]).filter(p=>owned(p)||p.id===id||p.id===chosen[i]).sort((a,b)=>Number(owned(b))-Number(owned(a))||a.name.localeCompare(b.name));
-  const options=choices.map(p=>'<option value="'+escape(p.id)+'" '+(chosen[i]===p.id?'selected':'')+'>'+escape(p.name)+(p.id===id?' · Original':owned(p)?' · Owned':' · Inspiration')+'</option>').join('');
-  return '<div class="slot"><label for="part'+i+'">'+escape(original.category)+' · '+(chosen[i]===id?'Original':'Changed')+'</label><select id="part'+i+'" data-pos="'+i+'">'+options+'</select><div class="own">'+(owned(lookup.get(chosen[i]))?'✓ In your wardrobe':'Not marked as owned')+'</div></div>';
+ :'<b>Choose a piece below</b><div class="subtle">Each option shows its real wardrobe photo. Swipe sideways for more.</div>';
+ $('#slots').innerHTML='<div class="row"><b>Customize the outfit</b><span class="subtle">'+count+' changed</span></div>'+current.pieces.map((id,i)=>{
+  const original=lookup.get(id),selected=lookup.get(chosen[i]);
+  const candidates=(grouped.get(original.category)||[]).filter(p=>owned(p)||p.id===id||p.id===chosen[i]).sort((a,b)=>Number(owned(b))-Number(owned(a))||a.name.localeCompare(b.name));
+  const cards=candidates.map(p=>'<button type="button" class="piece-card '+(p.id===chosen[i]?'selected':'')+'" data-pos="'+i+'" data-piece="'+escape(p.id)+'" aria-label="Use '+escape(p.name)+'" aria-pressed="'+(p.id===chosen[i]?'true':'false')+'">'+photoHTML(p.id,p.name)+'<span class="piece-name">'+escape(p.name)+'</span><span class="piece-status">'+(p.id===id?'Original':owned(p)?'Your wardrobe':'Inspiration')+'</span></button>').join('');
+  return '<div class="slot"><label>'+escape(original.category)+' · '+(chosen[i]===id?'Original':'Changed')+'</label><div class="swap-current">'+photoHTML(chosen[i],selected?.name||'Selected piece')+'<div class="part-info"><strong>'+escape(selected?.name||'Unknown piece')+'</strong><span class="subtle">'+(chosen[i]===id?'Original FITS piece':owned(selected)?'✓ From your wardrobe':'Inspiration item')+'</span></div></div><div class="piece-strip" aria-label="Choose '+escape(original.category)+'">'+cards+'</div></div>';
  }).join('');
- $('#slots').querySelectorAll('select').forEach(s=>s.onchange=()=>{chosen[Number(s.dataset.pos)]=s.value;renderSlots();$('#feedback').textContent='';});
+ $('#slots').querySelectorAll('[data-piece]').forEach(button=>button.onclick=()=>{
+  chosen[Number(button.dataset.pos)]=button.dataset.piece;
+  renderSlots();
+  $('#feedback').textContent='';
+ });
 }
 function renderSaved(){
  const rows=safe(key,[]);
