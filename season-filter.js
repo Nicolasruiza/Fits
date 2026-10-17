@@ -61,7 +61,7 @@
       if(card){
         const ss=seasonsForFamily(f);card.dataset.seasons=ss.join(',');
         const body=card.querySelector('.body');
-        if(body&&!body.querySelector('.season-note')){const n=document.createElement('div');n.className='season-note';n.textContent=ss.join(' · ');body.appendChild(n)}
+        if(body&&!body.querySelector('.season-note')){const n=document.createElement('div'),layerable=(f.looks||[]).map(look).filter(Boolean).some(l=>l.winterLayerable);n.className='season-note';n.textContent=ss.join(' · ')+(layerable?' · add coat':'');body.appendChild(n)}
       }
     });
     chips.querySelectorAll('[data-filter]').forEach(btn=>{
