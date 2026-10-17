@@ -89,6 +89,7 @@ if(!D||!Array.isArray(D.looks)||!Array.isArray(D.pieces)){ $('#lookGrid').innerH
 const lookup=new Map(D.pieces.map(p=>[p.id,p]));
 const categories=['All','Office','Weekend','Dinner','Travel'];
 let current=null, chosen=[], activeFilter='All', activeSeason='Recommended', screen='browse';
+const safe=(k,defaultValue)=>{try{return JSON.parse(localStorage.getItem(k))||defaultValue}catch{return defaultValue}};
 const seasons=['Recommended','All','Summer','Transitional','Cold'];
 const seasonName={Summer:'Summer',Transitional:'Transition',Cold:'Cold'};
 function cachedWeather(){const w=safe('fitsWeatherHome',null);return w&&Number.isFinite(Number(w.temp))&&Date.now()-Number(w.ts||0)<3*3600000?w:null}
@@ -115,7 +116,7 @@ async function refreshWeather(){
  },()=>{$('#weatherBox').innerHTML='<div>Location not enabled. Select a season manually.</div><button class="secondary" id="weatherRefresh">Try again</button>';$('#weatherRefresh').onclick=refreshWeather;},{enableHighAccuracy:false,timeout:12000,maximumAge:3600000});
 }
 const key='fitsInspirationLabVersionsV1';
-const safe=(k,defaultValue)=>{try{return JSON.parse(localStorage.getItem(k))||defaultValue}catch{return defaultValue}};
+
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const wardrobe=safe('fitsWardrobe',{});
 const owned=p=>!!p&&(wardrobe[p.id]==='owned'||(!wardrobe[p.id]&&p.status==='owned'));
