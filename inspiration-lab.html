@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FITS · Inspiration Lab</title><meta name="theme-color" content="#20262a">
+<style>
+:root{--ink:#f6f6f4;--muted:#a9aeb1;--bg:#171b1d;--panel:#252c30;--accent:#ffffff;--line:#424a4f}
+*{box-sizing:border-box}html,body{margin:0;background:#101315;color:var(--ink);font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.app{max-width:480px;min-height:100dvh;margin:auto;background:var(--bg);padding:18px 14px 94px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.brand{font-size:30px;font-family:Georgia,serif;letter-spacing:-1px}.subtle{color:var(--muted);font-size:12px;line-height:1.5}
+h1{font-size:26px;margin:8px 0 4px}h2{font-size:19px;margin:0 0 6px}p{line-height:1.45}button{border:none;color:inherit}
+.filters{display:flex;gap:8px;overflow:auto;margin:18px 0 14px;padding-bottom:4px}
+.filter{padding:9px 12px;white-space:nowrap;border-radius:25px;background:#30383c}.filter.active{background:white;color:#171b1d}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.look{padding:0;background:var(--panel);text-align:left;border-radius:14px;overflow:hidden;position:relative}
+.look img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.look .meta{padding:10px;min-height:62px}.look strong{display:block;font-size:12px;line-height:1.3}.pill{display:inline-block;font-size:10px;background:#3e474b;padding:4px 8px;border-radius:18px;margin-top:5px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.back{padding:9px 0;background:none;color:#fff;margin-bottom:11px}
+.hero{width:100%;max-height:470px;object-fit:contain;background:#31383a;border-radius:13px}
+.note{font-size:11px;color:#d7dbdd;background:#30393d;border-radius:10px;padding:11px;margin:12px 0}
+.slots{display:grid;gap:9px;margin:16px 0}.slot{padding:12px;border:1px solid var(--line);background:var(--panel);border-radius:12px}
+.slot label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#afb9be;display:block;margin-bottom:7px}
+.slot select{width:100%;border:1px solid #677078;border-radius:9px;padding:11px;background:#151a1c;color:#fff}
+.own{color:#bfc8cc;font-size:11px;margin-top:5px}.strong{color:white;font-weight:650}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.primary,.secondary{padding:13px;border-radius:11px;font-weight:700}.primary{background:white;color:#101315;flex:1}.secondary{background:#343d42;color:white}
+.empty{padding:24px 12px;text-align:center;color:var(--muted)}.hidden{display:none!important}
+.notice{font-size:12px;margin-top:10px;color:#c9d8cc}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,480px);background:#20262a;display:flex;justify-content:space-around;padding:14px 5px env(safe-area-inset-bottom)}
+nav a{color:#cdd2d5;font-size:12px;text-decoration:none}nav a.active{color:white;font-weight:bold}
+.saved{border:1px solid #4d565a;border-radius:12px;margin:8px 0;padding:12px;background:#252c30}
+</style></head><body>
+<div class="app">
+<header><div class="brand">Fits</div><span class="subtle">INSPIRATION LAB · PREVIEW</span></header>
+<section id="browse"><h1>Find your next look</h1><p class="subtle">Get inspired first. Make it yours with pieces from your wardrobe.</p>
+<div class="filters" id="filters"></div><div class="grid" id="lookGrid"></div></section>
+<section id="studio" class="hidden">
+<button class="back" id="back">← Inspiration</button><h2 id="lookName"></h2>
+<p class="subtle">Style Studio · Start with a complete look and swap any number of pieces.</p>
+<img id="lookPhoto" class="hero" alt="Original FITS outfit photo">
+<div class="note"><b>Original photo.</b> Your selections below change the outfit recipe. A new model photo is <b>not</b> generated in this preview; the original image remains unchanged.</div>
+<div id="slots" class="slots"></div>
+<div class="actions"><button class="secondary" id="reset">Reset</button><button class="primary" id="save">Save my version</button></div>
+<div id="feedback" role="status" aria-live="polite" class="notice"></div>
+</section>
+<section id="savedView" class="hidden"><h1>My versions</h1><p class="subtle">Saved combinations, independent from original looks.</p><div id="savedList"></div></section>
+<nav><a href="#" data-screen="browse" class="active">✦ Inspiration</a><a href="#" data-screen="savedView">♡ My versions</a><a href="wardrobe.html">◇ Wardrobe</a><a href="index.html">⌂ FITS Home</a></nav>
+</div>
+<script src="data.js?v=3"></script>
+<script src="data-batch4.js?v=12"></script>
+<script src="data-batch5.js?v=16"></script>
+<script src="data-batch6.js?v=27"></script>
+<script src="data-batch7.js?v=24"></script>
+<script src="data-batch8.js?v=2"></script>
+<script src="data-batch9.js?v=2"></script>
+<script src="data-batch10.js?v=4"></script>
+<script src="data-batch11.js?v=2"></script>
+<script src="data-batch12.js?v=4"></script>
+<script src="data-batch13.js?v=4"></script>
+<script src="data-batch14.js?v=4"></script>
+<script src="data-batch15.js?v=2"></script>
+<script src="data-canonical.js?v=15"></script>
+<script src="data-owned-intake-20261006.js?v=2"></script>
+<script src="wardrobe-canonical-v2.js?v=1"></script>
+<script src="look-aliases.js?v=1"></script>
+<script src="wardrobe-normalize.js?v=1"></script>
+<script src="wardrobe-draft-prune.js?v=3"></script>
+<script src="approved-look-12.js?v=2"></script>
+<script src="loader-audit.js?v=3"></script>
+<script src="approved-photo-integrity.js?v=7"></script>
+<script src="family-variant-rules.js?v=2"></script>
+<script src="wardrobe-explicit-state.js?v=16"></script>
+<script src="winter-layers.js?v=1"></script>
+<script src="season-meta.js?v=26"></script>
+<script src="look-photo-overrides.js?v=2"></script>
+<script src="image-runtime-v2.js?v=14"></script>
+<script src="real-look-audit.js?v=3"></script>
+<script src="dataset-integrity.js?v=1"></script>
+<script src="closet-swaps.js?v=1"></script>
+<script src="weather-location-cache.js?v=3"></script>
+<script src="season-filter.js?v=23"></script>
+<script>
+(()=>{
+'use strict';
+const D=window.FITS_DATA, $=q=>document.querySelector(q);
+if(!D||!Array.isArray(D.looks)||!Array.isArray(D.pieces)){ $('#lookGrid').innerHTML='<div class="empty">Catalog could not be loaded.</div>';return;}
+const lookup=new Map(D.pieces.map(p=>[p.id,p]));
+const categories=['All','Office','Weekend','Dinner','Travel'];
+let current=null, chosen=[], activeFilter='All', screen='browse';
+const key='fitsInspirationLabVersionsV1';
+const safe=(k,defaultValue)=>{try{return JSON.parse(localStorage.getItem(k))||defaultValue}catch{return defaultValue}};
+const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const wardrobe=safe('fitsWardrobe',{});
+const owned=p=>!!p&&(wardrobe[p.id]==='owned'||(!wardrobe[p.id]&&p.status==='owned'));
+const looks=D.looks.filter(l=>l.image&&l.pieces?.length&&l.pieces.every(id=>lookup.has(id)));
+const image=l=>l.image;
+function show(name){screen=name;['browse','studio','savedView'].forEach(id=>$('#'+id).classList.toggle('hidden',id!==name));document.querySelectorAll('[data-screen]').forEach(a=>a.classList.toggle('active',a.dataset.screen===name));window.scrollTo(0,0);if(name==='savedView')renderSaved();}
+function browse(){
+ $('#filters').innerHTML=categories.map(c=>'<button class="filter '+(c===activeFilter?'active':'')+'" data-filter="'+c+'">'+c+'</button>').join('');
+ const filtered=looks.filter(l=>activeFilter==='All'||(l.badges||[]).includes(activeFilter));
+ $('#lookGrid').innerHTML=filtered.length?filtered.map(l=>'<button class="look" data-look="'+escape(l.id)+'"><img loading="lazy" src="'+escape(image(l))+'" alt="'+escape(l.name)+'"><div class="meta"><strong>'+escape(l.name)+'</strong><span class="pill">'+escape((l.badges||[])[0]||'Explore')+'</span></div></button>').join(''):'<div class="empty">No looks in this category.</div>';
+ $('#filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;browse();});
+ $('#lookGrid').querySelectorAll('[data-look]').forEach(b=>b.onclick=()=>openLook(b.dataset.look));
+}
+function openLook(id,choices){current=looks.find(x=>x.id===id);if(!current)return;chosen=choices?.length===current.pieces.length?choices.slice():current.pieces.slice();$('#lookName').textContent=current.name;$('#lookPhoto').src=image(current);$('#lookPhoto').alt='Original outfit: '+current.name;$('#feedback').textContent='';renderSlots();show('studio');}
+function renderSlots(){
+ const count=chosen.filter((id,i)=>id!==current.pieces[i]).length;
+ const grouped=new Map();
+ D.pieces.forEach(p=>{if(!grouped.has(p.category))grouped.set(p.category,[]);grouped.get(p.category).push(p)});
+ $('#slots').innerHTML='<div class="row"><b>Your outfit recipe</b><span class="subtle">'+count+' changed</span></div>'+current.pieces.map((id,i)=>{
+  const original=lookup.get(id);const choices=(grouped.get(original.category)||[]).filter(p=>owned(p)||p.id===id||p.id===chosen[i]).sort((a,b)=>Number(owned(b))-Number(owned(a))||a.name.localeCompare(b.name));
+  const options=choices.map(p=>'<option value="'+escape(p.id)+'" '+(chosen[i]===p.id?'selected':'')+'>'+escape(p.name)+(owned(p)?' · In wardrobe':' · Inspiration')+'</option>').join('');
+  return '<div class="slot"><label for="part'+i+'">'+escape(original.category)+' · '+(chosen[i]===id?'Original':'Changed')+'</label><select id="part'+i+'" data-pos="'+i+'">'+options+'</select><div class="own">'+(owned(lookup.get(chosen[i]))?'✓ In your wardrobe':'Not marked as owned')+'</div></div>';
+ }).join('');
+ $('#slots').querySelectorAll('select').forEach(s=>s.onchange=()=>{chosen[Number(s.dataset.pos)]=s.value;renderSlots();$('#feedback').textContent='';});
+}
+function renderSaved(){
+ const rows=safe(key,[]);
+ $('#savedList').innerHTML=rows.length?rows.map((v,i)=>{const l=looks.find(x=>x.id===v.from);return '<div class="saved"><div class="row"><div><b>'+escape(l?.name||'Outfit')+'</b><p class="subtle">'+escape(v.pieces.map(id=>lookup.get(id)?.name||id).join(' · '))+'</p></div><button class="secondary" data-edit="'+i+'">Edit</button></div></div>';}).join(''):'<div class="empty">No versions yet. Open an inspiration look and save a combination.</div>';
+ $('#savedList').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{const v=rows[Number(b.dataset.edit)];openLook(v.from,v.pieces);});
+}
+$('#back').onclick=()=>show('browse');
+$('#reset').onclick=()=>{chosen=current.pieces.slice();renderSlots();$('#feedback').textContent='Restored original outfit recipe.';};
+$('#save').onclick=()=>{const rows=safe(key,[]);const signature=current.id+'|'+chosen.join('|');if(rows.some(v=>v.from+'|'+v.pieces.join('|')===signature)){$('#feedback').textContent='This version is already saved.';return;}rows.unshift({from:current.id,pieces:chosen.slice(),created:new Date().toISOString()});try{localStorage.setItem(key,JSON.stringify(rows));$('#feedback').textContent='Saved! Open My versions to revisit or edit it.';}catch(e){$('#feedback').textContent='Could not save on this device.'}};
+document.querySelectorAll('[data-screen]').forEach(a=>a.onclick=e=>{e.preventDefault();show(a.dataset.screen);});
+browse();
+})();
+</script></body></html>
