@@ -10,24 +10,31 @@
  const readWeather=()=>{try{return JSON.parse(localStorage.getItem('fitsWeatherHome')||'null')}catch(e){return null}};
  const look=id=>(D.looks||[]).find(x=>x.id===id);
  const piece=id=>(D.pieces||[]).find(x=>x.id===id);
+ function pieceWarmth(p){
+   const name=(p?.name||'').toLowerCase(),category=p?.category||'';
+   if(category==='Shoes'||category==='Accessory')return 0;
+   if(/shorts|bermuda/.test(name))return-1.4;
+   if(/overcoat|topcoat|parka|puffer/.test(name))return 3.3;
+   if(/leather jacket|bomber|suede jacket/.test(name))return 2.25;
+   if(/overshirt|blazer|casual jacket/.test(name))return 1.65;
+   if(/turtleneck|cable.?knit|heavy sweater/.test(name))return 2.15;
+   if(/sweater|knit|crew.?neck|cardigan|quarter.?zip|v.?neck/.test(name))return 1.75;
+   if(/long.?sleeve|henley/.test(name))return .85;
+   if(/button.?down|buttonup|oxford|shirt|microcheck|gingham|linen/.test(name))return .65;
+   if(/tee|t-shirt|polo/.test(name))return-.35;
+   if(category==='Pants')return .35;
+   return .15;
+ }
  function warmth(v){
-   if(!v)return 2;
-   const names=(v.pieces||[]).map(id=>((piece(id)?.name||id)+'')).join(' ').toLowerCase();
-   let n=0;
-   if(/shorts|bermuda/.test(names))n-=2;
-   if(/tee|t-shirt|polo|short sleeve/.test(names))n-=1;
-   if(/long sleeve|button|oxford|shirt|henley/.test(names))n+=0.4;
-   if(/jeans|denim|trousers|chinos/.test(names))n+=.4;
-   if(/sweater|knit|crewneck|crew-neck|cardigan|quarter.?zip|turtleneck/.test(names))n+=2;
-   if(/overshirt|blazer|light jacket|suede jacket/.test(names))n+=1.6;
-   if(/leather jacket|bomber|jacket/.test(names))n+=1.6;
-   if(/coat|parka|puffer/.test(names))n+=2.6;
-   if(/thermal|wool|heavy/.test(names))n+=.5;
-   return n;
+   if(!v)return 1;
+   const clothes=(v.pieces||[]).map(piece).filter(Boolean),tops=clothes.filter(p=>p.category==='Top'||p.category==='Outerwear');
+   const total=clothes.reduce((sum,p)=>sum+pieceWarmth(p),0);
+   const layerBonus=Math.max(0,tops.length-1)*.55;
+   return total+layerBonus;
  }
  function levelsForSeason(s){
    // Relative scale within each season, not an absolute temperature classification.
-   return s==='Summer'?[-1.8,-.8,.0,.7,1.4]:s==='Cold'?[1.6,2.5,3.2,4.1,5.3]:[-.5,.6,1.5,2.6,3.7];
+   return s==='Summer'?[-1.4,-.45,.35,1.2,2.2]:s==='Cold'?[1.9,2.8,3.7,4.8,6]:[-.25,.75,1.7,2.8,4.1];
  }
  function weatherDefault(){
    const w=readWeather(),t=Number(w?.temp),high=Number(w?.maxTemp),goodT=Number.isFinite(t),goodHigh=Number.isFinite(high);
@@ -67,11 +74,12 @@
    button.setAttribute('aria-expanded',String(opened));
    const left=document.createElement('span');
    left.className='thermal-season-name';
-   const glyph=s==='Summer'?'☀':s==='Cold'?'❄':'◐';
-   left.textContent=glyph+'  '+labels[s];
+   const eyebrow=document.createElement('small');eyebrow.textContent=s==='Summer'?'LIGHTWEIGHT':s==='Cold'?'LAYERED':'VERSATILE';
+   const name=document.createElement('strong');name.textContent=labels[s];
+   left.append(eyebrow,name);
    const right=document.createElement('span');
    right.className='thermal-season-count';
-   right.textContent=count+' looks  '+(opened?'⌃':'⌄');
+   right.innerHTML='<b>'+count+'</b><span>LOOKS</span><i aria-hidden="true">'+(opened?'−':'+')+'</i>';
    button.append(left,right);
    button.addEventListener('click',()=>{
      if(open===s){open=null;manuallyChosen='';}
@@ -142,8 +150,10 @@
      group.querySelector('.thermal-content')?.removeAttribute('hidden');
      group.querySelector('.thermal-level-caption')?.remove();
      group.querySelector('.thermal-aside')?.remove();
-     // Preserve all cards; sort suggestions rather than excluding unmatched warmth levels.
-     cards.sort((a,b)=>score(a,s)-score(b,s));
+     // Keep the visual rail truthful: light, short-sleeve looks begin by HOT and
+     // layered knits/jackets progress toward COLD. The selected stop remains the
+     // weather or user preference and never removes looks.
+     cards.sort((a,b)=>warmth(selectedVariant(a))-warmth(selectedVariant(b))||score(a,s)-score(b,s));
      cards.forEach(card=>rail.append(card));
      if(open===s){
        group.classList.add('thermal-open');
@@ -159,9 +169,8 @@
      }else{
        group.classList.remove('thermal-open');
        const shelf=group.querySelector('.thermal-content');
-       if(shelf)shelf.hidden=false;
-       // Two preview images even for collapsed seasons; no visual dead end.
-       cards.forEach((card,i)=>card.classList.toggle('thermal-page-hidden',i>=2));
+       if(shelf)shelf.hidden=true;
+       cards.forEach(card=>card.classList.add('thermal-page-hidden'));
        group.querySelector('.thermal-load-more')?.remove();
      }
    });

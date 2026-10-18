@@ -59,19 +59,6 @@
     if(!candidates.length)return null;
     return candidates.map(v=>{const result=variantScore(v,s);if(autoSeason&&recommended&&(v.seasons||[]).includes(recommended))result.score+=35;return result}).sort((a,b)=>b.score-a.score||(a.v.id===f.hero?-1:1))[0];
   }
-  const todayKey=()=>{
-    const d=new Date(),y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');
-    return `${y}-${m}-${day}`;
-  };
-  function chosenEntry(ranked){
-    if(!ranked.length)return null;
-    const day=todayKey(),stored=safe('fitsDailyPick',null);
-    const chosen=stored&&stored.date===day?ranked.find(entry=>entry.card.dataset.smartLook===stored.lookId):null;
-    if(chosen)return chosen;
-    const next=ranked[0];
-    localStorage.setItem('fitsDailyPick',JSON.stringify({date:day,lookId:next.card.dataset.smartLook}));
-    return next;
-  }
   function familyIdFromCard(card){try{return new URL(card.getAttribute('href'),location.href).searchParams.get('family')||card.dataset.family||null}catch(e){return card.dataset.family||null}}
   function setCardDestination(card,fid,lookId){
     if(!fid)return;
@@ -80,23 +67,6 @@
     if(card.getAttribute('href')!==href)card.setAttribute('href',href);
     card.onclick=null;
   }
-  function renderDailyPick(ranked,s,hasWardrobe,head){
-    const entry=chosenEntry(ranked),existing=document.querySelector('.daily-pick');
-    if(!entry){existing?.remove();return}
-    const v=look(entry.card.dataset.smartLook),fid=familyIdFromCard(entry.card);if(!v||!fid){existing?.remove();return}
-    const scored=variantScore(v,s),ready=!scored.m.length,worn=(s.wear[v.id]||[]).includes(todayKey());
-    let panel=existing;if(!panel){panel=document.createElement('section');panel.className='daily-pick';head.before(panel)}
-    const swapCount=adapted(v,s),stateText=!hasWardrobe?'Set your wardrobe to confirm this look':ready?(worn?'Logged for today':swapCount?`Ready with ${swapCount} closet ${swapCount===1?'swap':'swaps'}`:'Ready from your wardrobe'):`${scored.m.length} ${scored.m.length===1?'piece':'pieces'} away`;
-    const action=!hasWardrobe?`<a class="daily-action primary" href="wardrobe.html">Set wardrobe</a>`:ready?`<button class="daily-action primary ${worn?'logged':''}" onclick="toggleHomeWear(event,'${v.id}')">${worn?'Worn today · undo':'I’ll wear this'}</button>`:`<a class="daily-action primary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Review pieces</a>`;
-    panel.innerHTML=`<div class="daily-heading"><span>DAILY RECOMMENDATION · CHANGES EACH DAY</span><b>${stateText}</b></div><div class="daily-body"><a class="daily-photo" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}"><img src="${v.image}" alt="${v.name}"></a><div class="daily-copy"><h2>${v.name}</h2><p>${scored.wx.reason}</p><div class="daily-actions">${action}<a class="daily-action secondary" href="detail.html?family=${encodeURIComponent(fid)}&look=${encodeURIComponent(v.id)}">Details</a></div><div class="daily-feedback"><button class="${s.feedback[v.id]==='like'?'active':''}" onclick="toggleHomeFeedback(event,'${v.id}','like')">👍 Like</button><button class="${s.feedback[v.id]==='dislike'?'active dislike':''}" onclick="toggleHomeFeedback(event,'${v.id}','dislike')">👎 Dislike</button></div></div></div>`;
-  }
-  window.toggleHomeFeedback=function(event,id,value){event?.preventDefault();event?.stopPropagation();const feedback=safe('fitsLookFeedback',{});feedback[id]=feedback[id]===value?null:value;localStorage.setItem('fitsLookFeedback',JSON.stringify(feedback));schedule()};
-  window.toggleHomeWear=function(event,id){
-    event?.preventDefault();event?.stopPropagation();
-    const s=state(),dates=s.wear[id]||[],today=todayKey(),index=dates.indexOf(today);
-    if(index>=0)dates.splice(index,1);else dates.push(today);
-    s.wear[id]=dates.sort();localStorage.setItem('fitsWearHistory',JSON.stringify(s.wear));schedule();
-  };
   function ensureStyle(){
     if(document.getElementById('fits-smart-filter-style'))return;
     const style=document.createElement('style');style.id='fits-smart-filter-style';style.textContent='.card.smart-hidden{display:none!important}';document.head.appendChild(style);
@@ -139,7 +109,18 @@
       grid.appendChild(group);const rail=group.querySelector('.look-group-rail');
       entries.forEach(x=>{assigned.add(x.card);rail.appendChild(x.card)});
     });
-    ranked.filter(x=>!assigned.has(x.card)).forEach(x=>grid.appendChild(x.card));
+    /* Keep every card inside a season rail. Hidden/filter-mismatched cards stay hidden,
+       but never fall through as orphan tiles below the accordion. */
+    cards.filter(card=>!assigned.has(card)).forEach(card=>{
+      const preferred=(card.dataset.seasons||'Transitional').split(',').find(x=>order.includes(x))||'Transitional';
+      let group=[...grid.querySelectorAll('.look-group')].find(x=>x.dataset.season===preferred);
+      if(!group){
+        group=document.createElement('section');group.className='look-group compact';group.dataset.season=preferred;
+        group.innerHTML=`<div class="look-group-title"><strong>${preferred}</strong><span>0 looks</span></div><div class="look-group-rail"></div>`;
+        grid.appendChild(group);
+      }
+      group.querySelector('.look-group-rail').appendChild(card);
+    });
     const empty=grid.querySelector('.empty');
     if(empty){if(grid.lastElementChild!==empty)grid.appendChild(empty);const visible=ranked.filter(x=>!x.card.classList.contains('hidden')&&!x.card.classList.contains('smart-hidden')).length;empty.style.display=visible?'none':'block';if(!visible)empty.textContent='No looks match the current weather and filters.'}
     let head=document.querySelector('.smart-rotation-head');if(!head){head=document.createElement('div');head.className='smart-rotation-head';grid.before(head)}
@@ -147,8 +128,7 @@
     const seasonMode=manualSeason?`manual ${activeFilters.season}`:(activeFilters.recommendedSeason?`auto ${activeFilters.recommendedSeason}`:'auto weather');
     const html=hasWardrobe?`<div><span>SMART ROTATION</span><strong>${readyFamilies} ready ${readyFamilies===1?'family':'families'}</strong></div><small>${filterText?filterText+' · ':''}${seasonMode} · complete first · color-balanced${savedFamilies?` · ${savedFamilies} saved`:''}</small>`:`<div><span>SMART ROTATION</span><strong>Set your wardrobe</strong></div><small>${filterText?filterText+' · ':''}${seasonMode}.</small>`;
     if(head.innerHTML!==html)head.innerHTML=html;
-    const visibleRanked=ranked.filter(x=>!x.card.classList.contains('hidden')&&!x.card.classList.contains('smart-hidden'));
-    renderDailyPick(visibleRanked,s,hasWardrobe,head);
+    document.querySelector('.daily-pick')?.remove();
     window.dispatchEvent(new CustomEvent('fits:home-enhanced'));
   }
   window.toggleSeasonGroup=function(button){const group=button.closest('.look-group');if(!group)return;const expanded=group.classList.toggle('expanded');button.textContent=expanded?'Show less':`See more ${group.dataset.season.toLowerCase()} looks`};

@@ -2,3 +2,12 @@
 .summary{display:none!important}.season-filter-wrap{margin:22px 0 0}.occasion-filter-label{margin-top:24px;margin-bottom:9px}.occasion-chips{margin-top:0!important;margin-bottom:20px!important}.season-choice.active{background:#415464;border-color:#415464;color:#fff}.filter-label-row{margin-bottom:9px}.weather+.season-filter-wrap{margin-top:22px}
 /* Clear variant indicator */
 .variant-count{top:8px;right:8px;z-index:7;background:#415464;color:#fff;font-size:8px;font-weight:800;letter-spacing:.02em;padding:6px 8px;box-shadow:0 3px 10px #17202538}.variant-thumb{top:40px;right:8px;width:42px;height:56px;z-index:6}
+/* Compact weather summary: current conditions and range only. */
+.weather.weather-compact{padding:12px 13px;border-radius:18px}
+.weather-compact .weather-topline{min-height:26px}
+.weather-compact .weather-btn{width:30px;height:30px;padding:7px}
+.weather-compact .weather-current{grid-template-columns:32px auto 1fr;gap:9px;margin:5px 0 0}
+.weather-compact .weather-main-icon{font-size:27px}
+.weather-compact .temp{font-size:34px}
+.weather-compact .condition strong{font-size:12px}
+.weather-compact .condition span{font-size:9px;margin-top:1px}
