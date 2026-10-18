@@ -33,13 +33,12 @@ const PIECE_IMAGES={
   'navy-blazer':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_112909_dc9051d9-9e9a-4899-82eb-fa27d3dd05f6_min.webp'
 };
 
-let customPieces=safeJSON('fitsCustomPieces',[]);
 let wearHistory=safeJSON('fitsWearHistory',{});
 const storedWardrobe=safeJSON('fitsWardrobe',{});
 let wardrobe={};
 
 function normalizeWardrobe(){
-  [...DATA.pieces,...customPieces].forEach(p=>{
+  DATA.pieces.forEach(p=>{
     const current=storedWardrobe[p.id];
     wardrobe[p.id]=(current==='owned'||(!current&&p.status==='owned'))?'owned':'missing';
   });
@@ -47,7 +46,7 @@ function normalizeWardrobe(){
 }
 normalizeWardrobe();
 
-const piece=id=>DATA.pieces.find(p=>p.id===id)||customPieces.find(p=>p.id===id);
+const piece=id=>DATA.pieces.find(p=>p.id===id);
 const look=id=>DATA.looks.find(l=>l.id===id);
 const family=id=>DATA.families.find(f=>f.id===id);
 const swapState=()=>safeJSON('fitsClosetSwaps',{});
@@ -64,7 +63,6 @@ function headerBar(title,subtitle,kicker=''){
 
 function persist(){
   localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));
-  localStorage.setItem('fitsCustomPieces',JSON.stringify(customPieces));
   localStorage.setItem('fitsWearHistory',JSON.stringify(wearHistory));
 }
 
@@ -96,36 +94,20 @@ function wardrobeImpact(pieceId){
   return{used,unlocks,families:families.size};
 }
 
-window.addManualItem=function(){
-  const input=document.getElementById('newItemName');
-  const category=document.getElementById('newItemCategory').value;
-  const name=input.value.trim();
-  if(!name)return;
-  const id='custom-'+Date.now();
-  customPieces.push({id,name,category,status:'owned',custom:true});
-  wardrobe[id]='owned';
-  saveAndRender();
-};
-
 function renderWardrobe(){
-  const all=[...DATA.pieces,...customPieces];
+  const all=DATA.pieces;
   const owned=all.filter(p=>isOwned(p.id)).length;
   const missing=all.length-owned;
   document.body.innerHTML=`<div class="app wardrobe-v2">
     ${headerBar('Wardrobe','Everything in one place: what you own, what is missing, and which looks each piece unlocks.',`${all.length} items`)}
     <main>
-      <div class="add-item compact-add">
-        <div><strong>Add a piece</strong><small>Add something that hasn't appeared in an outfit yet.</small></div>
-        <div class="add-row"><input id="newItemName" placeholder="e.g. Navy Massimo Dutti vest"><select id="newItemCategory"><option>Outerwear</option><option>Top</option><option>Pants</option><option>Shoes</option><option>Accessory</option></select></div>
-        <button onclick="addManualItem()">Add to wardrobe</button>
-      </div>
       <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>Not in wardrobe</span></div></div>
       <div class="ward-grid">${all.map(p=>{
         const ownedNow=isOwned(p.id),impact=ownedNow?null:wardrobeImpact(p.id);
         return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}" data-piece-id="${p.id}">
           <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NO</span>':''}</div>
           <div class="ward-card-body">
-            <div class="ward-card-copy"><strong>${p.name}${p.custom?' · added':''}</strong><small>${p.category}</small></div>
+            <div class="ward-card-copy"><strong>${p.name}</strong><small>${p.category}</small></div>
             ${!ownedNow&&impact?`<div class="ward-impact ${impact.unlocks?'ready':''}"><b>${impact.unlocks?`Unlocks ${impact.unlocks} look${impact.unlocks===1?'':'s'} now`:impact.used?`Used in ${impact.used} look${impact.used===1?'':'s'}`:'Not used in a look yet'}</b>${impact.families?`<span>${impact.families} style ${impact.families===1?'family':'families'}</span>`:''}</div>`:''}
             <div class="own-row"><span class="own-question">Own it?</span><button class="own-toggle ${ownedNow?'on':''}" aria-pressed="${ownedNow}" onclick="toggleOwned('${p.id}')"><span class="toggle-knob"></span></button><b class="own-state">${ownedNow?'Yes':'No'}</b></div>
             ${!ownedNow?`<button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>${impact?.unlocks?`+${impact.unlocks} looks`:'↗'}</span></button>`:''}
