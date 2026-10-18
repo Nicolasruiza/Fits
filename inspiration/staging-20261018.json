@@ -1,7 +1,7 @@
 {
   "batch": "2026-10-18",
-  "stage": "NOT_PUBLISHED_ASSETS_REQUIRED",
-  "note": "15 generated FITS-model looks. Do not expose in FITS_DATA until the matching WebP files are uploaded. Photos must be visually reviewed for identity and duplicates before replacing any existing approved photo.",
+  "stage": "ASSETS_IN_REPOSITORY_BROWSER_QA_PENDING",
+  "note": "All 15 look WebP assets confirmed in repository assets/ and referenced by FITS data-canonical.js; runtime iPhone rendering not yet verified. Existing photos have not been replaced during this reconciliation.",
   "looks": [
     {
       "id": "look-94",
@@ -13,7 +13,7 @@
         "brown-loafers",
         "brown-belt"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-95",
@@ -25,7 +25,7 @@
         "brown-loafers",
         "brown-belt"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-96",
@@ -37,7 +37,7 @@
         "brown-loafers",
         "brown-belt"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-97",
@@ -49,7 +49,7 @@
         "brown-loafers",
         "brown-belt"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-98",
@@ -61,7 +61,7 @@
         "dark-loafers",
         "dark-belt"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-99",
@@ -72,7 +72,7 @@
         "beige-chinos",
         "brown-casual-shoes"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-100",
@@ -83,7 +83,7 @@
         "dark-denim",
         "brown-casual-shoes"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-101",
@@ -94,7 +94,7 @@
         "grey-trousers",
         "white-leather-sneakers"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-102",
@@ -105,7 +105,7 @@
         "khaki-shorts",
         "beige-sneakers"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-103",
@@ -116,7 +116,7 @@
         "chocolate-trousers",
         "brown-casual-shoes"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-104",
@@ -127,7 +127,7 @@
         "grey-trousers",
         "black-sneakers"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-105",
@@ -138,7 +138,7 @@
         "olive-trousers",
         "beige-sneakers"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-106",
@@ -149,7 +149,7 @@
         "beige-chinos",
         "black-sneakers"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-107",
@@ -160,7 +160,7 @@
         "dark-denim",
         "white-leather-sneakers"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     },
     {
       "id": "look-108",
@@ -171,7 +171,7 @@
         "beige-chinos",
         "brown-casual-shoes"
       ],
-      "status": "staged_unpublished"
+      "status": "asset_present_in_repo"
     }
   ],
   "new_piece_ids": [
@@ -203,5 +203,12 @@
     "Never mark a reference piece owned by default.",
     "The existing brown-casual-shoes is not necessarily the same pair of brown sneakers.",
     "Existing burgundy-polo should be reused rather than duplicated."
-  ]
+  ],
+  "photo_uploaded": [
+    "assets/olive-buttondown.webp",
+    "assets/beige-buttondown.webp",
+    "assets/lightgrey-polo.webp",
+    "assets/burgundy-polo-new.webp"
+  ],
+  "photo_not_uploaded": []
 }
