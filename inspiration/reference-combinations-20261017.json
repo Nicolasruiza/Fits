@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "status": "reference_only_not_live",
+  "source": "Five user-supplied outfit inspiration screenshots, October 2026",
+  "requirements": [
+    "Recreate with the existing FITS model, not the person pictured in the references",
+    "Preserve FITS pose/background/consistent face",
+    "Use correct item-level photos after approved image generation",
+    "Do not expose in Looks without a matching FITS model image"
+  ],
+  "outfits": [
+    {
+      "id": "reference-olive-beige-brown",
+      "name": "Olive button-down + beige pleated trousers + dark brown loafers",
+      "colors": [
+        "olive",
+        "beige",
+        "dark brown"
+      ],
+      "items": [
+        "Olive casual button-down, sleeves rolled",
+        "Cream/beige tailored pleated trousers",
+        "Dark brown leather belt",
+        "Dark brown loafers"
+      ],
+      "seasons": [
+        "Summer",
+        "Transitional"
+      ],
+      "occasions": [
+        "Office",
+        "Dinner",
+        "Weekend"
+      ]
+    },
+    {
+      "id": "reference-burgundy-taupe-brown",
+      "name": "Burgundy polo + taupe trousers + dark brown loafers",
+      "colors": [
+        "burgundy",
+        "taupe",
+        "dark brown"
+      ],
+      "items": [
+        "Burgundy short-sleeve polo",
+        "Taupe tailored pleated trousers",
+        "Dark brown belt",
+        "Dark brown loafers"
+      ],
+      "seasons": [
+        "Summer",
+        "Transitional"
+      ],
+      "occasions": [
+        "Office",
+        "Dinner",
+        "Weekend"
+      ]
+    },
+    {
+      "id": "reference-white-cream-brown",
+      "name": "White polo + cream trousers + brown loafers",
+      "colors": [
+        "white",
+        "cream",
+        "brown"
+      ],
+      "items": [
+        "White polo",
+        "Cream tailored pleated trousers",
+        "Brown belt",
+        "Brown suede loafers"
+      ],
+      "seasons": [
+        "Summer"
+      ],
+      "occasions": [
+        "Office",
+        "Weekend",
+        "Dinner"
+      ]
+    },
+    {
+      "id": "reference-beige-chocolate-brown",
+      "name": "Beige button-down + chocolate trousers + dark brown loafers",
+      "colors": [
+        "beige",
+        "chocolate",
+        "dark brown"
+      ],
+      "items": [
+        "Light beige button-down, sleeves rolled",
+        "Chocolate brown tailored trousers",
+        "Dark brown belt",
+        "Dark brown loafers"
+      ],
+      "seasons": [
+        "Summer",
+        "Transitional"
+      ],
+      "occasions": [
+        "Office",
+        "Dinner"
+      ]
+    },
+    {
+      "id": "reference-lightgrey-charcoal-black",
+      "name": "Light grey polo + charcoal trousers + black loafers",
+      "colors": [
+        "light grey",
+        "charcoal",
+        "black"
+      ],
+      "items": [
+        "Light grey short-sleeve polo",
+        "Charcoal grey pleated trousers",
+        "Black belt",
+        "Black loafers"
+      ],
+      "seasons": [
+        "Summer",
+        "Transitional"
+      ],
+      "occasions": [
+        "Office",
+        "Dinner"
+      ]
+    }
+  ]
+}
