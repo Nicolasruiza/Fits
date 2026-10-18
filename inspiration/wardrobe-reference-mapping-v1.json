@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "purpose": "Reference-to-wardrobe mapping for approved FITS looks. Reuse actual wardrobe pieces; no duplicate item creation for cosmetic differences.",
+  "ownership_policy": "Never infer ownership from an inspiration photo. Resolve user actual ownership from FITS recorded state before displaying Owned.",
+  "mapping": [
+    {
+      "canonical": "brown-suede-jacket",
+      "label": "Brown suede jacket",
+      "sources": [
+        "dark brown suede racer jacket",
+        "camel jacket changed to dark brown suede",
+        "suede biker with stand collar"
+      ],
+      "decision": "reuse",
+      "note": "Different pockets/collars/zippers in references do not create new garment"
+    },
+    {
+      "canonical": "brown-leather-jacket",
+      "label": "Brown leather jacket",
+      "sources": [
+        "dark brown leather racer jacket",
+        "brown leather moto jacket",
+        "brown leather trucker with pockets"
+      ],
+      "decision": "reuse",
+      "note": "Use one actual leather jacket. Existing FITS look-17 already references this ID"
+    },
+    {
+      "canonical": "owned-darkbrown-suede-chelsea",
+      "label": "Dark brown suede Chelsea boots",
+      "sources": [
+        "brown Chelsea boots",
+        "dark brown Chelsea boots"
+      ],
+      "decision": "reuse_when_appropriate",
+      "note": "Do not equate automatically with brown loafers, dress shoes or brown sneakers"
+    },
+    {
+      "canonical": "white-leather-sneakers",
+      "label": "White leather sneakers",
+      "sources": [
+        "white minimalist sneakers",
+        "white low-top sneakers"
+      ],
+      "decision": "reuse"
+    },
+    {
+      "canonical": "dark-denim",
+      "label": "Dark blue denim",
+      "sources": [
+        "dark blue jeans",
+        "navy jeans"
+      ],
+      "decision": "reuse"
+    },
+    {
+      "canonical": "blue-denim",
+      "label": "Medium blue denim",
+      "sources": [
+        "blue jeans"
+      ],
+      "decision": "reuse_when_same_shade"
+    },
+    {
+      "canonical": "beige-chinos",
+      "label": "Beige chinos",
+      "sources": [
+        "beige chinos",
+        "khaki chinos",
+        "cream casual chinos"
+      ],
+      "decision": "reuse_when_same_item",
+      "note": "Cream tailored trousers can remain separately represented if materially different garment"
+    },
+    {
+      "canonical": "olive-trousers",
+      "label": "Olive pants",
+      "sources": [
+        "olive green pants",
+        "olive trousers"
+      ],
+      "decision": "reuse"
+    },
+    {
+      "canonical": "white-tee",
+      "label": "White crew-neck T-shirt",
+      "sources": [
+        "white tee",
+        "basic white crewneck"
+      ],
+      "decision": "reuse"
+    },
+    {
+      "canonical": "offwhite-tee",
+      "label": "Off-white crew-neck T-shirt",
+      "sources": [
+        "off-white T-shirt",
+        "cream tee"
+      ],
+      "decision": "reuse_if_owned_or_keep_reference_only"
+    },
+    {
+      "canonical": "brown-belt",
+      "label": "Brown belt",
+      "sources": [
+        "dark brown belt",
+        "brown leather belt"
+      ],
+      "decision": "reuse"
+    }
+  ],
+  "outerwear_looks": [
+    {
+      "id": "outwear-reference-1",
+      "description": "Brown suede jacket + white tee + beige chinos + white sneakers",
+      "pieces": [
+        "brown-suede-jacket",
+        "white-tee",
+        "beige-chinos",
+        "white-leather-sneakers"
+      ],
+      "candidate_existing": [
+        "look-57",
+        "look-66"
+      ],
+      "action": "new_visual_variant_if_distinct"
+    },
+    {
+      "id": "outwear-reference-2",
+      "description": "Beige/taupe bomber + white tee + blue jeans + brown Chelsea",
+      "pieces": [
+        "tan-overshirt",
+        "white-tee",
+        "blue-denim",
+        "owned-darkbrown-suede-chelsea"
+      ],
+      "candidate_existing": [
+        "look-77",
+        "look-88"
+      ],
+      "action": "compare_existing_first",
+      "note": "Do not claim tan overshirt and bomber are physically identical; mapping is a styling substitute only"
+    },
+    {
+      "id": "outwear-reference-3",
+      "description": "Brown leather jacket + offwhite tee + olive pants + white sneakers",
+      "pieces": [
+        "brown-leather-jacket",
+        "offwhite-tee",
+        "olive-trousers",
+        "white-leather-sneakers"
+      ],
+      "candidate_existing": [
+        "look-17"
+      ],
+      "action": "new_visual_variant_if_distinct"
+    },
+    {
+      "id": "outwear-reference-4",
+      "description": "Brown leather jacket + cream V-neck knit + blue jeans + brown Chelsea boots",
+      "pieces": [
+        "brown-leather-jacket",
+        "cream-knit-sweater",
+        "blue-denim",
+        "owned-darkbrown-suede-chelsea"
+      ],
+      "candidate_existing": [
+        "look-17",
+        "look-93"
+      ],
+      "action": "new_visual_variant_if_distinct",
+      "note": "V-neck differs from the existing crewneck; substitute for inspiration, not a claim of exact garment"
+    }
+  ],
+  "do_not_create": [
+    "new suede racer for every zipper design",
+    "new brown leather jacket for trucker/moto cut",
+    "new dark-brown dress shoe for every screenshot",
+    "new white sneaker for each styling reference"
+  ],
+  "status": "mapping_only_no_binary_assets_published"
+}
