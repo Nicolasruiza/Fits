@@ -74,6 +74,7 @@
   function enhance(){
     ensureStyle();
     const grid=document.querySelector('.grid');if(!grid)return;
+    grid.querySelectorAll('.thermal-duplicate').forEach(card=>card.remove());
     grid.querySelectorAll('.look-group').forEach(group=>{group.querySelectorAll('a.card').forEach(card=>grid.appendChild(card));group.remove()});
     const s=state(),activeFilters=filters(),hasWardrobe=Object.keys(s.wardrobe||{}).length>0,cards=[...grid.querySelectorAll('a.card')],ranked=[];let readyFamilies=0,savedFamilies=0;
     cards.forEach(card=>{

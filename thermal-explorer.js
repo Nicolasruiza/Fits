@@ -112,18 +112,43 @@
    let control=group.querySelector('.thermal-control');
    if(!control){control=document.createElement('div');control.className='thermal-control';shelf.before(control)}
    control.replaceChildren();
-   control.setAttribute('role','group');control.setAttribute('aria-label','Order looks by temperature');
+   control.setAttribute('aria-label','Order looks by temperature');
    const activeMode=modeForLevel(level);
-   modes.forEach(({label,level:modeLevel})=>{
-     const btn=document.createElement('button');
-     btn.type='button';
-     const mode=modeForLevel(modeLevel);
-     btn.className='thermal-mode'+(activeMode===mode?' selected':'');
-     btn.textContent=label;
-     btn.setAttribute('aria-pressed',String(activeMode===mode));
-     btn.addEventListener('click',()=>{level=modeLevel;manualLevel=modeLevel;update()});
-     control.append(btn);
+   const range=document.createElement('input');
+   range.type='range';range.min='0';range.max='2';range.step='1';
+   range.value=String(modes.findIndex(x=>modeForLevel(x.level)===activeMode));
+   range.className='thermal-range';range.setAttribute('aria-label','Temperature order');
+   const labels=document.createElement('div');labels.className='thermal-range-labels';
+   const paint=()=>labels.querySelectorAll('span').forEach((x,i)=>x.classList.toggle('selected',i===Number(range.value)));
+   modes.forEach(({label,level:modeLevel},index)=>{
+     const text=document.createElement('span');text.textContent=label;text.className=index===Number(range.value)?'selected':'';
+     text.addEventListener('click',()=>{range.value=String(index);level=modeLevel;manualLevel=modeLevel;update()});
+     labels.append(text);
    });
+   range.addEventListener('input',paint);
+   range.addEventListener('change',()=>{const selected=modes[Number(range.value)];level=selected.level;manualLevel=selected.level;update()});
+   control.append(range,labels);
+ }
+ function addBoundaryOverlaps(groups){
+   groups.forEach(group=>group.querySelectorAll('.thermal-duplicate').forEach(card=>card.remove()));
+   const bySeason=new Map(groups.map(group=>[group.dataset.season,group]));
+   const originals=new Map(groups.map(group=>{
+     const cards=[...group.querySelectorAll('.look-group-rail > a.card:not(.thermal-duplicate)')];
+     cards.sort((a,b)=>warmth(selectedVariant(a))-warmth(selectedVariant(b)));
+     return[group.dataset.season,cards];
+   }));
+   const copy=(cards,target)=>{
+     const rail=bySeason.get(target)?.querySelector('.look-group-rail');if(!rail)return;
+     cards.forEach(card=>{const clone=card.cloneNode(true);clone.classList.add('thermal-duplicate');clone.dataset.overlap='true';rail.append(clone)});
+   };
+   const edge=(season,side)=>{
+     const cards=originals.get(season)||[],count=Math.max(1,Math.ceil(cards.length*.15));
+     return side==='hot'?cards.slice(0,count):cards.slice(-count);
+   };
+   copy(edge('Summer','cold'),'Transitional');
+   copy(edge('Transitional','hot'),'Summer');
+   copy(edge('Transitional','cold'),'Cold');
+   copy(edge('Cold','hot'),'Transitional');
  }
  function update(){
    const grid=document.querySelector('.grid');
@@ -135,6 +160,7 @@
    else if(manuallyChosen===null){open=automatic.season;if(manualLevel===null)level=automatic.level}
    else if(manuallyChosen===''){open=null}
    if(open&&manualLevel===null)level=automatic.level;
+   addBoundaryOverlaps(groups);
    groups.forEach(group=>{
      const s=group.dataset.season;
      const rail=group.querySelector('.look-group-rail');
