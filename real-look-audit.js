@@ -1,6 +1,11 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const blocked=new Set(['look-07']); // broken legacy asset: assets/source-04.jpg
+  // Keep the original records for history, but do not publish the legacy
+  // personal-face set. Public Looks starts with the approved FITS model.
+  const blocked=new Set([
+    ...Array.from({length:34},(_,index)=>`look-${String(index+1).padStart(2,'0')}`),
+    'look-07' // broken legacy asset: assets/source-04.jpg
+  ]);
   const page=document.body?.dataset?.page||'';
   const requiresLookImage=page!=='wardrobe'&&page!=='unlock';
   const keep=l=>l&&!blocked.has(l.id)&&!l.inspiration&&!String(l.image||'').includes('inspiration-')&&(!requiresLookImage||!!String(l.image||'').trim());

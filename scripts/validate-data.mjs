@@ -23,7 +23,9 @@ const D=global.FITS_DATA;
 if(!D)throw new Error('FITS_DATA was not created');
 const errors=[];
 const warnings=[];
-const blocked=new Set(['look-07']);
+// Legacy personal-face looks are intentionally archived in source data and
+// excluded from the public runtime until they have approved FITS-model renders.
+const blocked=new Set(Array.from({length:34},(_,index)=>`look-${String(index+1).padStart(2,'0')}`));
 const pendingPath=path.join(root,'pending-look-assets.json');
 const pendingConfig=fs.existsSync(pendingPath)?JSON.parse(fs.readFileSync(pendingPath,'utf8')):{assets:[]};
 const pendingAssets=new Set(pendingConfig.assets||[]);
