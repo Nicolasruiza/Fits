@@ -32,5 +32,11 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'burgundy-polo':'assets/burgundy-polo-new.webp?v=1',
 'olive-buttondown':'assets/olive-buttondown.webp?v=1',
 'beige-buttondown':'assets/beige-buttondown.webp?v=1',
-'lightgrey-polo':'assets/lightgrey-polo.webp?v=1'
+'lightgrey-polo':'assets/lightgrey-polo.webp?v=1',
+'chocolate-trousers':'assets/chocolate-trousers.webp?v=1',
+'navy-tee':'assets/navy-tee.webp?v=1',
+'khaki-shorts':'assets/khaki-shorts.webp?v=1',
+'beige-sneakers':'assets/beige-sneakers.webp?v=1',
+'black-sneakers':'assets/black-sneakers.webp?v=1',
+'offwhite-tee':'assets/offwhite-tee.webp?v=1'
 });
