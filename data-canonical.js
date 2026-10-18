@@ -193,6 +193,63 @@
   upsertLook({"id": "look-93", "family": "family-grey-crewneck-denim", "name": "Cognac biker jacket + grey crewneck + dark denim + suede Chelsea boots", "image": "assets/look-93-approved-intake.webp?v=1", "formal": 2, "badges": ["Weekend", "Dinner", "Travel"], "pieces": ["cognac-leather-biker-jacket", "grey-crewneck", "dark-denim", "owned-darkbrown-suede-chelsea"]});
   addVariant("family-grey-crewneck-denim","look-93");
 
+  // Approved FITS-model intake 2026-10-17. Each combination remains an
+  // independent look; reference-only pieces stay missing until confirmed owned.
+  upsertPiece({id:'olive-buttondown',name:'Olive button-down shirt',category:'Top',status:'missing'});
+  upsertPiece({id:'beige-buttondown',name:'Beige button-down shirt',category:'Top',status:'missing'});
+  upsertPiece({id:'lightgrey-polo',name:'Light grey polo shirt',category:'Top',status:'missing'});
+  upsertPiece({id:'chocolate-trousers',name:'Chocolate brown trousers',category:'Pants',status:'missing'});
+  upsertPiece({id:'navy-tee',name:'Navy T-shirt',category:'Top',status:'missing'});
+  upsertPiece({id:'khaki-shorts',name:'Khaki shorts',category:'Pants',status:'missing'});
+  upsertPiece({id:'beige-sneakers',name:'Beige sneakers',category:'Shoes',status:'missing'});
+  upsertPiece({id:'black-sneakers',name:'Black sneakers',category:'Shoes',status:'missing'});
+  upsertPiece({id:'offwhite-tee',name:'Off-white crewneck T-shirt',category:'Top',status:'missing'});
+
+  upsertFamily({id:'family-olive-buttondown-cream',name:'Olive shirt + cream trousers',hero:'look-94',looks:['look-94']});
+  upsertLook({id:'look-94',family:'family-olive-buttondown-cream',name:'Olive button-down + cream trousers + brown loafers',image:'assets/look-94-olive-beige.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['olive-buttondown','cream-chinos','brown-loafers','brown-belt']});
+
+  upsertFamily({id:'family-white-polo-cream',name:'White polo + cream trousers',hero:'look-95',looks:['look-95']});
+  upsertLook({id:'look-95',family:'family-white-polo-cream',name:'White polo + cream trousers + brown loafers',image:'assets/look-95-white-cream.webp?v=1',formal:3,badges:['Office','Weekend','Dinner'],pieces:['white-polo','cream-chinos','brown-loafers','brown-belt']});
+
+  upsertFamily({id:'family-burgundy-polo-taupe',name:'Burgundy polo + taupe trousers',hero:'look-96',looks:['look-96']});
+  upsertLook({id:'look-96',family:'family-burgundy-polo-taupe',name:'Burgundy polo + taupe trousers + brown loafers',image:'assets/look-96-burgundy-taupe.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['burgundy-polo','taupe-trousers','brown-loafers','brown-belt']});
+
+  upsertFamily({id:'family-beige-shirt-chocolate',name:'Beige shirt + chocolate trousers',hero:'look-97',looks:['look-97']});
+  upsertLook({id:'look-97',family:'family-beige-shirt-chocolate',name:'Beige shirt + chocolate trousers + brown loafers',image:'assets/look-97-beige-chocolate.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['beige-buttondown','chocolate-trousers','brown-loafers','brown-belt']});
+
+  upsertFamily({id:'family-lightgrey-polo-charcoal',name:'Light grey polo + charcoal trousers',hero:'look-98',looks:['look-98']});
+  upsertLook({id:'look-98',family:'family-lightgrey-polo-charcoal',name:'Light grey polo + charcoal trousers + black loafers',image:'assets/look-98-lightgrey-charcoal.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['lightgrey-polo','charcoal-trousers','dark-loafers','dark-belt']});
+
+  upsertFamily({id:'family-white-tee-beige-cognac',name:'White tee + beige chinos',hero:'look-99',looks:['look-99']});
+  upsertLook({id:'look-99',family:'family-white-tee-beige-cognac',name:'White T-shirt + beige chinos + cognac sneakers',image:'assets/look-99-white-beige-brown-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['white-tee','beige-chinos','owned-br-cognac-sneakers']});
+
+  upsertFamily({id:'family-navy-polo-denim-cognac',name:'Navy polo + dark denim',hero:'look-100',looks:['look-100']});
+  upsertLook({id:'look-100',family:'family-navy-polo-denim-cognac',name:'Navy polo + dark jeans + cognac sneakers',image:'assets/look-100-navy-denim-brown-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['navy-polo','dark-denim','owned-br-cognac-sneakers']});
+
+  upsertFamily({id:'family-white-shirt-grey-sneakers',name:'White shirt + grey trousers',hero:'look-101',looks:['look-101']});
+  upsertLook({id:'look-101',family:'family-white-shirt-grey-sneakers',name:'White shirt + grey trousers + white sneakers',image:'assets/look-101-white-grey-white-sneakers.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['white-shirt','grey-trousers','white-leather-sneakers']});
+
+  upsertFamily({id:'family-navy-tee-khaki-shorts',name:'Navy tee + khaki shorts',hero:'look-102',looks:['look-102']});
+  upsertLook({id:'look-102',family:'family-navy-tee-khaki-shorts',name:'Navy T-shirt + khaki shorts + beige sneakers',image:'assets/look-102-navy-shorts-beige-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['navy-tee','khaki-shorts','beige-sneakers']});
+
+  upsertFamily({id:'family-white-polo-chocolate',name:'White polo + chocolate trousers',hero:'look-103',looks:['look-103']});
+  upsertLook({id:'look-103',family:'family-white-polo-chocolate',name:'White polo + chocolate trousers + cognac sneakers',image:'assets/look-103-white-polo-brown-pants.webp?v=1',formal:2,badges:['Office','Weekend'],pieces:['white-polo','chocolate-trousers','owned-br-cognac-sneakers']});
+
+  upsertFamily({id:'family-black-tee-grey',name:'Black tee + grey trousers',hero:'look-104',looks:['look-104']});
+  upsertLook({id:'look-104',family:'family-black-tee-grey',name:'Black T-shirt + grey trousers + black sneakers',image:'assets/look-104-black-grey-black-sneakers.webp?v=1',formal:2,badges:['Dinner','Weekend'],pieces:['black-tee','grey-trousers','black-sneakers']});
+
+  upsertFamily({id:'family-offwhite-tee-olive',name:'Off-white tee + olive trousers',hero:'look-105',looks:['look-105']});
+  upsertLook({id:'look-105',family:'family-offwhite-tee-olive',name:'Off-white T-shirt + olive trousers + beige sneakers',image:'assets/look-105-offwhite-olive-beige-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['offwhite-tee','olive-trousers','beige-sneakers']});
+
+  upsertFamily({id:'family-black-polo-beige-black',name:'Black polo + beige chinos',hero:'look-106',looks:['look-106']});
+  upsertLook({id:'look-106',family:'family-black-polo-beige-black',name:'Black polo + beige chinos + black sneakers',image:'assets/look-106-black-polo-beige-black-sneakers.webp?v=1',formal:2,badges:['Dinner','Office','Weekend'],pieces:['black-polo','beige-chinos','black-sneakers']});
+
+  upsertFamily({id:'family-grey-tee-denim',name:'Grey tee + dark denim',hero:'look-107',looks:['look-107']});
+  upsertLook({id:'look-107',family:'family-grey-tee-denim',name:'Grey T-shirt + dark jeans + white sneakers',image:'assets/look-107-grey-tee-denim-white-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['grey-tee','dark-denim','white-leather-sneakers']});
+
+  upsertFamily({id:'family-lightblue-beige-cognac',name:'Light blue shirt + beige chinos',hero:'look-108',looks:['look-108']});
+  upsertLook({id:'look-108',family:'family-lightblue-beige-cognac',name:'Light blue shirt + beige chinos + cognac sneakers',image:'assets/look-108-blue-shirt-beige-brown-sneakers.webp?v=1',formal:2,badges:['Office','Weekend'],pieces:['light-blue-oxford','beige-chinos','owned-br-cognac-sneakers']});
+
   // Legacy bookmarks and rotation history resolve to the existing identical outfit.
   D.lookAliases={'look-69':'look-38'};
 })();
