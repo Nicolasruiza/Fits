@@ -1,0 +1,207 @@
+{
+  "batch": "2026-10-18",
+  "stage": "NOT_PUBLISHED_ASSETS_REQUIRED",
+  "note": "15 generated FITS-model looks. Do not expose in FITS_DATA until the matching WebP files are uploaded. Photos must be visually reviewed for identity and duplicates before replacing any existing approved photo.",
+  "looks": [
+    {
+      "id": "look-94",
+      "name": "Olive button-down + cream trousers + brown loafers",
+      "image": "assets/look-94-olive-beige.webp",
+      "pieces": [
+        "olive-buttondown",
+        "cream-chinos",
+        "brown-loafers",
+        "brown-belt"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-95",
+      "name": "White polo + cream trousers + brown loafers",
+      "image": "assets/look-95-white-cream.webp",
+      "pieces": [
+        "white-polo",
+        "cream-chinos",
+        "brown-loafers",
+        "brown-belt"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-96",
+      "name": "Burgundy polo + taupe trousers + brown loafers",
+      "image": "assets/look-96-burgundy-taupe.webp",
+      "pieces": [
+        "burgundy-polo",
+        "taupe-trousers",
+        "brown-loafers",
+        "brown-belt"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-97",
+      "name": "Beige shirt + chocolate trousers + brown loafers",
+      "image": "assets/look-97-beige-chocolate.webp",
+      "pieces": [
+        "beige-buttondown",
+        "chocolate-trousers",
+        "brown-loafers",
+        "brown-belt"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-98",
+      "name": "Light grey polo + charcoal trousers + black loafers",
+      "image": "assets/look-98-lightgrey-charcoal.webp",
+      "pieces": [
+        "lightgrey-polo",
+        "charcoal-trousers",
+        "dark-loafers",
+        "dark-belt"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-99",
+      "name": "White T-shirt + beige chinos + brown sneakers",
+      "image": "assets/look-99-white-beige-brown-sneakers.webp",
+      "pieces": [
+        "white-tee",
+        "beige-chinos",
+        "brown-casual-shoes"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-100",
+      "name": "Navy polo + dark jeans + brown sneakers",
+      "image": "assets/look-100-navy-denim-brown-sneakers.webp",
+      "pieces": [
+        "navy-polo",
+        "dark-denim",
+        "brown-casual-shoes"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-101",
+      "name": "White shirt + grey trousers + white sneakers",
+      "image": "assets/look-101-white-grey-white-sneakers.webp",
+      "pieces": [
+        "white-shirt",
+        "grey-trousers",
+        "white-leather-sneakers"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-102",
+      "name": "Navy T-shirt + khaki shorts + beige sneakers",
+      "image": "assets/look-102-navy-shorts-beige-sneakers.webp",
+      "pieces": [
+        "navy-tee",
+        "khaki-shorts",
+        "beige-sneakers"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-103",
+      "name": "White polo + brown trousers + brown sneakers",
+      "image": "assets/look-103-white-polo-brown-pants.webp",
+      "pieces": [
+        "white-polo",
+        "chocolate-trousers",
+        "brown-casual-shoes"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-104",
+      "name": "Black T-shirt + grey trousers + black sneakers",
+      "image": "assets/look-104-black-grey-black-sneakers.webp",
+      "pieces": [
+        "black-tee",
+        "grey-trousers",
+        "black-sneakers"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-105",
+      "name": "Off-white T-shirt + olive trousers + beige sneakers",
+      "image": "assets/look-105-offwhite-olive-beige-sneakers.webp",
+      "pieces": [
+        "offwhite-tee",
+        "olive-trousers",
+        "beige-sneakers"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-106",
+      "name": "Black polo + beige chinos + black sneakers",
+      "image": "assets/look-106-black-polo-beige-black-sneakers.webp",
+      "pieces": [
+        "black-polo",
+        "beige-chinos",
+        "black-sneakers"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-107",
+      "name": "Grey T-shirt + dark jeans + white sneakers",
+      "image": "assets/look-107-grey-tee-denim-white-sneakers.webp",
+      "pieces": [
+        "grey-tee",
+        "dark-denim",
+        "white-leather-sneakers"
+      ],
+      "status": "staged_unpublished"
+    },
+    {
+      "id": "look-108",
+      "name": "Light blue shirt + beige chinos + brown sneakers",
+      "image": "assets/look-108-blue-shirt-beige-brown-sneakers.webp",
+      "pieces": [
+        "light-blue-oxford",
+        "beige-chinos",
+        "brown-casual-shoes"
+      ],
+      "status": "staged_unpublished"
+    }
+  ],
+  "new_piece_ids": [
+    "olive-buttondown",
+    "beige-buttondown",
+    "lightgrey-polo",
+    "chocolate-trousers",
+    "navy-tee",
+    "khaki-shorts",
+    "beige-sneakers",
+    "black-sneakers",
+    "offwhite-tee"
+  ],
+  "new_photos": [
+    "assets/olive-buttondown.webp",
+    "assets/beige-buttondown.webp",
+    "assets/lightgrey-polo.webp",
+    "assets/burgundy-polo-new.webp"
+  ],
+  "missing_photos": [
+    "chocolate-trousers",
+    "navy-tee",
+    "khaki-shorts",
+    "beige-sneakers",
+    "black-sneakers",
+    "offwhite-tee"
+  ],
+  "warnings": [
+    "Never mark a reference piece owned by default.",
+    "The existing brown-casual-shoes is not necessarily the same pair of brown sneakers.",
+    "Existing burgundy-polo should be reused rather than duplicated."
+  ]
+}
