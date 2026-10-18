@@ -5,8 +5,8 @@
  if(!D || document.body.dataset.page==='wardrobe')return;
  const seasons=['Summer','Transitional','Cold'];
  const labels={Summer:'Summer',Transitional:'Transition',Cold:'Cold'};
- const levels=['Very light','Light','Medium','Warm','Very warm'];
- let manuallyChosen=null,manualLevel=null,open=null,level=2,visibleCount=8,initialized=false;
+ const modes=[{label:'HOT',level:0},{label:'MILD',level:2},{label:'COLD',level:4}];
+ let manuallyChosen=null,manualLevel=null,open=null,level=2,initialized=false;
  const readWeather=()=>{try{return JSON.parse(localStorage.getItem('fitsWeatherHome')||'null')}catch(e){return null}};
  const look=id=>(D.looks||[]).find(x=>x.id===id);
  const piece=id=>(D.pieces||[]).find(x=>x.id===id);
@@ -85,12 +85,21 @@
      if(open===s){open=null;manuallyChosen='';}
      else{open=s;manuallyChosen=s;}
      manualLevel=null;
-     visibleCount=8;
      update();
    });
    title.append(button);
  }
- function addThermometer(group,s){
+ function modeForLevel(value){return value<=1?'hot':value>=3?'cold':'mild'}
+ function sortCards(cards,s){
+   const mode=modeForLevel(level),middle=levelsForSeason(s)[2],heat=card=>warmth(selectedVariant(card));
+   cards.sort((a,b)=>{
+     const aw=heat(a),bw=heat(b);
+     if(mode==='hot')return aw-bw||score(a,s)-score(b,s);
+     if(mode==='cold')return bw-aw||score(a,s)-score(b,s);
+     return Math.abs(aw-middle)-Math.abs(bw-middle)||aw-bw;
+   });
+ }
+ function addThermalControl(group,s){
    const rail=group.querySelector('.look-group-rail');
    if(!rail)return;
    let shelf=group.querySelector('.thermal-content');
@@ -100,31 +109,21 @@
      rail.before(shelf);
      shelf.append(rail);
    }
-   let aside=shelf.querySelector('.thermal-aside');
-   if(!aside){
-     aside=document.createElement('div');
-     aside.className='thermal-aside';
-     shelf.prepend(aside);
-   }
-   aside.replaceChildren();
-   const hot=document.createElement('span');hot.textContent='HOT';hot.className='thermal-end hot';aside.append(hot);
-   const track=document.createElement('div');track.className='thermal-track';track.setAttribute('role','group');track.setAttribute('aria-label','Outfit warmth');
-   levels.forEach((label,i)=>{
+   let control=group.querySelector('.thermal-control');
+   if(!control){control=document.createElement('div');control.className='thermal-control';shelf.before(control)}
+   control.replaceChildren();
+   control.setAttribute('role','group');control.setAttribute('aria-label','Order looks by temperature');
+   const activeMode=modeForLevel(level);
+   modes.forEach(({label,level:modeLevel})=>{
      const btn=document.createElement('button');
      btn.type='button';
-     btn.className='thermal-stop'+(level===i?' selected':'');
-     btn.setAttribute('aria-label',label+' outfits');
-     btn.setAttribute('aria-pressed',String(level===i));
-     btn.title=label;
-     btn.innerHTML='<span></span>';
-     btn.addEventListener('click',()=>{level=i;manualLevel=i;visibleCount=8;update()});
-     track.append(btn);
+     const mode=modeForLevel(modeLevel);
+     btn.className='thermal-mode'+(activeMode===mode?' selected':'');
+     btn.textContent=label;
+     btn.setAttribute('aria-pressed',String(activeMode===mode));
+     btn.addEventListener('click',()=>{level=modeLevel;manualLevel=modeLevel;update()});
+     control.append(btn);
    });
-   aside.append(track);
-   const cold=document.createElement('span');cold.textContent='COLD';cold.className='thermal-end cold';aside.append(cold);
-   let subtitle=group.querySelector('.thermal-level-caption');
-   if(!subtitle){subtitle=document.createElement('p');subtitle.className='thermal-level-caption';shelf.before(subtitle)}
-   subtitle.textContent=levels[level]+' layers · warmer outfits toward the blue';
  }
  function update(){
    const grid=document.querySelector('.grid');
@@ -148,24 +147,14 @@
      makeHeader(group,s,open===s,shown.length);
      group.querySelector('.look-group-more')?.remove();
      group.querySelector('.thermal-content')?.removeAttribute('hidden');
-     group.querySelector('.thermal-level-caption')?.remove();
-     group.querySelector('.thermal-aside')?.remove();
-     // Keep the visual rail truthful: light, short-sleeve looks begin by HOT and
-     // layered knits/jackets progress toward COLD. The selected stop remains the
-     // weather or user preference and never removes looks.
-     cards.sort((a,b)=>warmth(selectedVariant(a))-warmth(selectedVariant(b))||score(a,s)-score(b,s));
+     group.querySelector('.thermal-control')?.remove();
+     sortCards(cards,s);
      cards.forEach(card=>rail.append(card));
      if(open===s){
        group.classList.add('thermal-open');
-       addThermometer(group,s);
-       const count=shown.length;
-       cards.forEach(card=>{card.classList.toggle('thermal-page-hidden',shown.indexOf(card)>=visibleCount)});
-       let more=group.querySelector('.thermal-load-more');
-       if(count>visibleCount){
-         if(!more){more=document.createElement('button');more.type='button';more.className='thermal-load-more';group.append(more)}
-         more.textContent='Show more looks ('+(count-visibleCount)+' remaining)';
-         more.onclick=()=>{visibleCount+=8;update()};
-       }else more?.remove();
+       addThermalControl(group,s);
+       cards.forEach(card=>card.classList.remove('thermal-page-hidden'));
+       group.querySelector('.thermal-load-more')?.remove();
      }else{
        group.classList.remove('thermal-open');
        const shelf=group.querySelector('.thermal-content');
@@ -177,7 +166,8 @@
    const hint=document.querySelector('.thermal-current-note')||document.createElement('div');
    hint.className='thermal-current-note';
    const autoText=automatic.hasWeather?'Weather suggestion':'Browse by warmth';
-   hint.textContent=autoText+' · '+(open?labels[open]:'All seasons collapsed')+(open?' · '+levels[level]:'');
+   const modeLabel={hot:'Hot first',mild:'Mild first',cold:'Cold first'}[modeForLevel(level)];
+   hint.textContent=autoText+' · '+(open?labels[open]:'All seasons collapsed')+(open?' · '+modeLabel:'');
    const head=document.querySelector('.smart-rotation-head');
    if(head){head.after(hint)}
  }
