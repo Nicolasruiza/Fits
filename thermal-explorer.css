@@ -1,0 +1,33 @@
+/* FITS thermal season explorer + native system font */
+:root,html,body,button,input,select,textarea{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif!important}
+body *:not(svg):not(path){font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif!important}
+.thermal-season-button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:15px 12px;background:#f8f8f8;border:1px solid #e8e8e8;border-radius:16px;color:#111;text-align:left;cursor:pointer}
+.thermal-season-name{font-weight:650;font-size:16px;letter-spacing:-.025em}
+.thermal-season-count{font-size:11px;color:#666;white-space:nowrap}
+.look-group.thermal-group{margin:12px 0}
+.thermal-group .look-group-title{padding:0;margin:0 0 10px;border:0;display:block}
+.thermal-group .look-group-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;min-width:0}
+.thermal-group .card.thermal-page-hidden{display:none!important}
+.thermal-group .thermal-content{display:block}
+.thermal-group.thermal-open .thermal-content{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;align-items:stretch}
+.thermal-group .thermal-aside{display:flex;flex-direction:column;align-items:center;gap:7px;position:sticky;top:12px;align-self:start;height:340px}
+.thermal-group .thermal-end{font-size:8px;font-weight:700;letter-spacing:.04em}
+.thermal-group .thermal-end.hot{color:#c74432}
+.thermal-group .thermal-end.cold{color:#277fbc}
+.thermal-group .thermal-track{flex:1;width:24px;min-height:258px;display:flex;flex-direction:column;overflow:hidden;border-radius:99px;background:linear-gradient(180deg,#f05436 0%,#f2aa52 26%,#c8d1c7 50%,#81b7d2 72%,#317cba 100%)}
+.thermal-group .thermal-stop{flex:1;display:flex;align-items:center;justify-content:center;border:0;background:transparent;min-height:0;padding:0;cursor:pointer}
+.thermal-group .thermal-stop span{width:8px;height:8px;display:block;border-radius:50%;background:#ffffff80}
+.thermal-group .thermal-stop.selected span{width:19px;height:19px;background:#fff;border:3px solid #222;box-shadow:0 0 0 2px #fff}
+.thermal-level-caption{margin:0 0 10px 1px;font-size:11px;color:#666}
+.thermal-load-more{display:block;margin:12px auto 3px;width:100%;border:1px solid #dedede;border-radius:13px;background:#f5f5f5;color:#111;font-size:12px;font-weight:600;padding:13px}
+.thermal-current-note{font-size:11px;margin:7px 2px 8px;color:#666}
+.thermal-group .card .body h3{font-size:13px!important;font-weight:600!important;line-height:1.25}
+.thermal-group .card .body p{font-size:10px!important;line-height:1.35}
+.thermal-group .card .season-note{font-size:9px}
+.thermal-group .card .badge{font-size:9px}
+.thermal-group .card{min-width:0}
+.thermal-group .visual{max-width:100%}
+.thermal-group .card img{max-width:100%}
+.occasion-filter-label{margin-top:8px}
+.season-filter-wrap{display:none!important} /* replaced by three collapsible season sections */
+@media(max-width:380px){.thermal-group.thermal-open .thermal-content{grid-template-columns:32px minmax(0,1fr);gap:7px}.thermal-group .thermal-aside{height:300px}.thermal-season-name{font-size:15px}}
