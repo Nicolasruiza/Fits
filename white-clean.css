@@ -1,0 +1,32 @@
+/* FITS — White Clean theme v1. Solid, neutral UI. Layout and application logic unchanged. */
+:root{--bg:#fff;--paper:#fff;--ink:#111;--muted:#666;--line:#e5e5e5;--graphite:#111;--graphite2:#111;--green:#333;--greenBg:#f2f2f2;--warn:#444;--warnBg:#f2f2f2;--w-bg:#fff;--w-paper:#fff;--w-ink:#111;--w-muted:#666;--w-line:#e5e5e5;--w-dark:#111;--w-accent:#111;--w-green:#333;--w-need:#555;--navy:#111;--navy2:#111;--chip:#f4f4f4;--good:#333;--goodbg:#f3f3f3;--warnbg:#f3f3f3;--green-bg:#f3f3f3;--blue:#111;--espresso:#111;--walnut:#111;--leather:#555;--sand:#aaa;--olive:#555}
+html,body{background:#fff!important;color:#111!important}
+.app,.wardrobe-v2{background:#fff!important}
+.top,.topbar,.wardrobe-v2 .topbar{background:#fff!important;color:#111!important;box-shadow:none!important;border-bottom:1px solid #e8e8e8!important}
+.top .brand,.topbar .brand,.topbar .subtitle,.top .sub,.top .count,.topbar .kicker,.wardrobe-v2 .subtitle,.wardrobe-v2 .kicker{color:#111!important}
+.top .sub,.top .count,.topbar .subtitle,.topbar .kicker,.wardrobe-v2 .subtitle,.wardrobe-v2 .kicker{color:#666!important}
+.card,.look-card,.ward-card,.wardrobe-stats .stat,.compact-add,.variant,.piece,.meta,.saved,.unlock-card,.stat,.daily-pick,.insight,.wardrobe-smart-banner,.feedback-actions,.sum,.ward-impact{background:#fff!important;border-color:#e5e5e5!important;box-shadow:none!important;color:#111!important}
+.weather,.scorecard{background:#f5f5f5!important;color:#111!important;border:1px solid #e5e5e5!important;box-shadow:none!important}
+.weather .location,.weather .location-icon,.weather .temp,.weather .condition strong,.weather .condition span,.weather .timeline-head,.weather .timeline-head span,.weather .hour .time,.weather .hour .deg,.weather .hour .rain,.weather .rain,.weather .weather-advice,.weather .weather-advice span,.weather .weather-btn,.scorecard,.scorecard span,.scorecard b,.scorecard strong,.score-head span,.score-head b,.week-label span,.week-label b,.bar-day>span{color:#111!important}
+.weather-btn,.weather-advice,.hour,.hour.active,.score-grid>div,.bar-track{background:#fff!important;border:1px solid #e5e5e5!important;box-shadow:none!important}
+.weather-main-icon{filter:none!important}
+.bar-track i{background:#111!important}
+.chip,.season-choice,.filter,.status,.badge,.pill,.tag,.readiness-pill,.own-pill,.feedback-btn,.daily-feedback button,.look-group-more,.wardrobe-status-chips button,.wardrobe-filter-chip{background:#f3f3f3!important;color:#222!important;border:1px solid #dedede!important;box-shadow:none!important}
+.chip.active,.season-choice.active,.filter.active,.daily-action.primary,.btn.primary,.compact-add button,.add-item button,.wear-btn{background:#111!important;color:#fff!important;border-color:#111!important;box-shadow:none!important}
+.chip.active em{background:#444!important;color:#fff!important}
+.tag.good,.tag.caution,.readiness-pill.ready,.readiness-pill.need,.own-pill.no,.own-pill,.status.good,.status.caution,.feedback-btn.active,.feedback-btn.active.dislike,.daily-feedback button.active,.daily-feedback button.active.dislike,.ward-impact.ready,.need-badge{background:#ededed!important;color:#222!important;border-color:#ddd!important}
+.hour.active{outline:2px solid #111!important;outline-offset:-2px}
+.timeline,.score-grid,.weather-advice,.hour,.daily-pick{background-image:none!important}
+.daily-heading span,.daily-copy p,.daily-copy h2,.smart-rotation-head strong,.look-group-title strong,.look-group-title span,.section-title,.filter-label-row,.filter-label-row b,.ward-section-head h2{color:#111!important}
+.daily-action.secondary,.find-item,.find-btn,.back-to-looks,.status-btn,.btn,.look-group-more{background:#f4f4f4!important;color:#111!important;border-color:#e0e0e0!important}
+.wardrobe-v2 .nav,.nav{background:#fff!important;border-top:1px solid #e5e5e5!important;box-shadow:none!important}
+.wardrobe-v2 .nav a,.nav a{color:#666!important}
+.wardrobe-v2 .nav a.active,.nav a.active{color:#111!important;font-weight:800}
+.ward-photo,.piece-photo,.visual,.look-image,.variant-media,.daily-photo,.hero,.piece-fallback{background:#f4f4f4!important;background-image:none!important}
+.wardrobe-v2 .own-toggle.on{background:#111!important}
+.find-item,.wardrobe-v2 .find-item{color:#111!important}
+.wardrobe-v2 .ward-card.is-missing,.card.is-ready{border-color:#dedede!important}
+.ward-card.ward-focus{outline-color:#111!important;box-shadow:none!important}
+.weather-season-hint,.notice,.wardrobe-v2 .notice{background:#f5f5f5!important;color:#333!important;border-color:#e5e5e5!important}
+.scorecard .week,.scorecard .score-grid>div{border-color:#dedede!important}
+.scorecard .bar-track em{color:#111!important}
