@@ -1,18 +1,22 @@
 /* FITS thermal season explorer + native system font */
 :root,html,body,button,input,select,textarea{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif!important}
 body *:not(svg):not(path){font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif!important}
-.thermal-season-button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:92px;padding:19px 18px;background:linear-gradient(145deg,#17191b,#32363a);border:0;border-radius:24px;color:#fff;text-align:left;cursor:pointer;box-shadow:0 12px 30px rgba(18,20,22,.13);transition:transform .16s ease,box-shadow .16s ease}
-.thermal-season-button:active{transform:scale(.985)}
-.thermal-season-name{display:flex;flex-direction:column;gap:3px;min-width:0}
-.thermal-season-name small{font-size:8px;font-weight:750;letter-spacing:.16em;color:#bfc4c7}
-.thermal-season-name strong{font-size:25px;line-height:1;font-weight:690;letter-spacing:-.045em}
-.thermal-season-count{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;align-items:center;column-gap:5px;color:#fff;white-space:nowrap}
-.thermal-season-count b{grid-row:1/3;font-size:22px;line-height:1;font-weight:650}
-.thermal-season-count span{font-size:7px;letter-spacing:.12em;color:#c6cbce}
-.thermal-season-count i{grid-column:2;font-size:17px;line-height:.8;font-style:normal;color:#fff}
-.thermal-group[data-season="Summer"] .thermal-season-button{background:linear-gradient(145deg,#382e22,#766044)}
-.thermal-group[data-season="Transitional"] .thermal-season-button{background:linear-gradient(145deg,#243139,#4d626d)}
-.thermal-group[data-season="Cold"] .thermal-season-button{background:linear-gradient(145deg,#1b2934,#34536a)}
+.thermal-season-button{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:72px;padding:13px 13px 13px 18px;background:#fff;border:1px solid #e4e6e5;border-radius:18px;color:#151819;text-align:left;cursor:pointer;box-shadow:0 5px 18px rgba(19,25,28,.055);transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.thermal-season-button:before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:0 3px 3px 0;background:#78858b}
+.thermal-season-button[aria-expanded="true"]{background:#fafbfa;border-color:#d8dcda}
+.thermal-season-button:active{transform:scale(.99)}
+.thermal-season-name{display:flex;flex-direction:column-reverse;gap:3px;min-width:0}
+.thermal-season-name small{font-size:10px;font-weight:500;letter-spacing:0;color:#7a8184}
+.thermal-season-name strong{font-size:21px;line-height:1;font-weight:690;letter-spacing:-.035em}
+.thermal-season-count{display:flex;align-items:center;gap:10px;color:#60676a;white-space:nowrap}
+.thermal-season-count>span{font-size:10px}
+.thermal-season-count b{font-size:12px;color:#272c2e;font-weight:700}
+.thermal-season-count i{position:relative;width:30px;height:30px;display:block;border-radius:50%;background:#f1f3f2;border:1px solid #e2e5e3}
+.thermal-season-count i:before{content:"";position:absolute;left:10px;top:9px;width:7px;height:7px;border-right:1.5px solid #333;border-bottom:1.5px solid #333;transform:rotate(45deg);transition:transform .16s ease,top .16s ease}
+.thermal-season-count i.is-open:before{top:12px;transform:rotate(225deg)}
+.thermal-group[data-season="Summer"] .thermal-season-button:before{background:#b18b55}
+.thermal-group[data-season="Transitional"] .thermal-season-button:before{background:#617883}
+.thermal-group[data-season="Cold"] .thermal-season-button:before{background:#4f748e}
 .look-group.thermal-group{margin:14px 0}
 .thermal-group .look-group-title{padding:0;margin:0 0 12px;border:0;display:block}
 .thermal-group .look-group-rail{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;min-width:0}
@@ -39,4 +43,4 @@ body *:not(svg):not(path){font-family:-apple-system,BlinkMacSystemFont,"Helvetic
 .thermal-group .card img{max-width:100%}
 .occasion-filter-label{margin-top:8px}
 .season-filter-wrap{display:none!important} /* replaced by three collapsible season sections */
-@media(max-width:380px){.thermal-group.thermal-open .thermal-content{grid-template-columns:32px minmax(0,1fr);gap:7px}.thermal-group .thermal-aside{height:300px}.thermal-season-button{min-height:84px;padding:17px 15px}.thermal-season-name strong{font-size:22px}.thermal-group .card .visual{height:236px}}
+@media(max-width:380px){.thermal-group.thermal-open .thermal-content{grid-template-columns:32px minmax(0,1fr);gap:7px}.thermal-group .thermal-aside{height:300px}.thermal-season-button{min-height:68px;padding:12px 11px 12px 16px}.thermal-season-name strong{font-size:20px}.thermal-season-count{gap:7px}.thermal-group .card .visual{height:236px}}

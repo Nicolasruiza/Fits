@@ -74,12 +74,12 @@
    button.setAttribute('aria-expanded',String(opened));
    const left=document.createElement('span');
    left.className='thermal-season-name';
-   const eyebrow=document.createElement('small');eyebrow.textContent=s==='Summer'?'LIGHTWEIGHT':s==='Cold'?'LAYERED':'VERSATILE';
+   const eyebrow=document.createElement('small');eyebrow.textContent=s==='Summer'?'Light pieces':s==='Cold'?'Warm layers':'Easy layers';
    const name=document.createElement('strong');name.textContent=labels[s];
    left.append(eyebrow,name);
    const right=document.createElement('span');
    right.className='thermal-season-count';
-   right.innerHTML='<b>'+count+'</b><span>LOOKS</span><i aria-hidden="true">'+(opened?'−':'+')+'</i>';
+   right.innerHTML='<span><b>'+count+'</b> looks</span><i class="'+(opened?'is-open':'')+'" aria-hidden="true"></i>';
    button.append(left,right);
    button.addEventListener('click',()=>{
      if(open===s){open=null;manuallyChosen='';}
