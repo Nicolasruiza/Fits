@@ -1,0 +1,50 @@
+name: Import FITS October look assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'FITS_15_looks_assets_staging.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out FITS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify archive and import only images
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f FITS_15_looks_assets_staging.zip
+          unzip -t FITS_15_looks_assets_staging.zip
+          python3 - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import PurePosixPath
+          with ZipFile('FITS_15_looks_assets_staging.zip') as z:
+              files=[n for n in z.namelist() if n.startswith('assets/') and n.endswith('.webp')]
+              assert len(files)==19, f'Expected 19 WebP files, found {len(files)}'
+              for n in files:
+                  p=PurePosixPath(n)
+                  assert len(p.parts)==2 and p.parts[0]=='assets', n
+                  if __import__('pathlib').Path(n).exists():
+                      raise ValueError(f'Existing asset requires manual review: {n}')
+              for n in files:
+                  z.extract(n, '.')
+              print(f'Imported {len(files)} asset images')
+          PY
+      - name: Commit image assets only
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/*.webp
+          git diff --cached --quiet && exit 0
+          git commit -m "Import 15 approved FITS October looks and four garment photos"
+          git push
