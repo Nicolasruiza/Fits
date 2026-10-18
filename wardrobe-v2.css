@@ -13,3 +13,13 @@ html,body{background:#dde2e0!important;color:var(--w-ink)!important}
 @media(min-width:390px){.ward-photo{height:112px}.ward-card{grid-template-columns:112px 1fr}}
 .ward-card.ward-focus{outline:3px solid #6d8f79;outline-offset:3px;box-shadow:0 12px 30px rgba(65,96,74,.25)}
 .ward-impact{margin-top:8px;padding:7px 8px;border-radius:10px;background:#edf1f2;color:#4b606a}.ward-impact.ready{background:#e3ece5;color:#365440}.ward-impact b{display:block;font-size:9px;line-height:1.25}.ward-impact span{display:block;margin-top:2px;font-size:8px;color:inherit;opacity:.8}.ward-card .find-item{margin-top:7px}.wardrobe-status-head small{font-size:8px;letter-spacing:0;text-transform:none}.nav a{flex:1}
+.wardrobe-stats{margin:12px 0 14px!important}
+.wardrobe-stats .stat{min-height:92px;padding:14px!important;border-radius:18px!important;display:flex;flex-direction:column;justify-content:center}
+.wardrobe-stats .stat b{font-size:28px;line-height:1}
+.wardrobe-stats .stat span{color:var(--w-ink)!important;font-size:10px;margin-top:7px;line-height:1.2}
+.wardrobe-stats .stat small{color:var(--w-muted);font-size:8px;margin-top:3px}
+.wardrobe-category-head{margin-bottom:8px}
+.wardrobe-category-chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;overflow:visible;margin-bottom:12px}
+.wardrobe-category-chips .wardrobe-filter-chip{min-height:42px;border-radius:13px;padding:8px 10px;font-size:10px;font-weight:700;white-space:normal;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.wardrobe-category-chips .wardrobe-filter-chip b{font-size:8px;opacity:.62}
+.wardrobe-category-chips .wardrobe-filter-chip.active{box-shadow:0 7px 18px rgba(32,38,42,.16)}
