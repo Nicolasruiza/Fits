@@ -96,12 +96,12 @@ function wardrobeImpact(pieceId){
 
 function renderWardrobe(){
   const all=DATA.pieces;
-  const owned=all.filter(p=>isOwned(p.id)).length;
-  const missing=all.length-owned;
+  const readyLooks=DATA.looks.filter(l=>missingFor(l).length===0).length;
+  const highImpactGaps=all.filter(p=>!isOwned(p.id)&&wardrobeImpact(p.id).used>=5).length;
   document.body.innerHTML=`<div class="app wardrobe-v2">
     ${headerBar('Wardrobe','Everything in one place: what you own, what is missing, and which looks each piece unlocks.',`${all.length} items`)}
     <main>
-      <div class="stats wardrobe-stats"><div class="stat"><b>${owned}</b><span>Yes, I own it</span></div><div class="stat"><b>${missing}</b><span>Not in wardrobe</span></div></div>
+      <div class="stats wardrobe-stats"><div class="stat"><b>${readyLooks}</b><span>Looks ready now</span></div><div class="stat"><b>${highImpactGaps}</b><span>Missing pieces</span><small>Needed by 5+ looks</small></div></div>
       <div class="ward-grid">${all.map(p=>{
         const ownedNow=isOwned(p.id),impact=ownedNow?null:wardrobeImpact(p.id);
         return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}" data-piece-id="${p.id}">
