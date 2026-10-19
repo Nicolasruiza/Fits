@@ -22,6 +22,7 @@
         <div class="piece-detail-photo ward-photo">${piecePhoto(item)}<span class="piece-status-badge ${ownedNow?'owned':'missing'}">${ownedNow?'In wardrobe':'Missing'}</span></div>
         <section class="piece-detail-copy">
           <p>Wardrobe piece</p><h1>${item.name}</h1>
+          ${item.styleRole?`<div class="piece-role"><strong>${item.styleRole}</strong>${item.styleNote?`<span>${item.styleNote}</span>`:''}</div>`:''}
           <div class="piece-impact-row"><div><b>${related.length}</b><span>Styles</span></div><div><b>${ready}</b><span>Ready now</span></div><div><b>${unlocks}</b><span>Unlocks now</span></div></div>
           <div class="piece-actions">
             <button class="piece-action ${ownedNow?'active':''}" data-action="own" aria-pressed="${ownedNow}"><i>✓</i><span>${ownedNow?'Owned':'Mark owned'}</span></button>

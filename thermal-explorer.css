@@ -44,5 +44,5 @@ body *:not(svg):not(path){font-family:-apple-system,BlinkMacSystemFont,"Helvetic
 .thermal-group .visual{max-width:100%}
 .thermal-group .card img{max-width:100%}
 .occasion-filter-label{margin-top:8px}
-.season-filter-wrap{display:none!important} /* replaced by three collapsible season sections */
+.season-filter-wrap{display:none!important} /* replaced by three collapsible season sections with two warmth ranges */
 @media(max-width:380px){.thermal-season-button{min-height:68px;padding:12px 11px 12px 16px}.thermal-season-name strong{font-size:20px}.thermal-season-count{gap:7px}.thermal-group .card .visual{height:236px}}

@@ -4,8 +4,8 @@
  const D=window.FITS_DATA;
  if(!D || document.body.dataset.page==='wardrobe')return;
  const seasons=['Summer','Transitional','Cold'];
- const labels={Summer:'Summer',Transitional:'Transition',Cold:'Cold'};
- const modes=[{label:'HOT',level:0},{label:'MILD',level:2},{label:'COLD',level:4}];
+ const labels={Summer:'Summer',Transitional:'Transition',Cold:'Winter'};
+ const modes=[{label:'WARMER',level:0},{label:'COLDER',level:4}];
  let manuallyChosen=null,manualLevel=null,open=null,level=2,initialized=false;
  const readWeather=()=>{try{return JSON.parse(localStorage.getItem('fitsWeatherHome')||'null')}catch(e){return null}};
  const look=id=>(D.looks||[]).find(x=>x.id===id);
@@ -74,7 +74,7 @@
    button.setAttribute('aria-expanded',String(opened));
    const left=document.createElement('span');
    left.className='thermal-season-name';
-   const eyebrow=document.createElement('small');eyebrow.textContent=s==='Summer'?'Light pieces':s==='Cold'?'Warm layers':'Easy layers';
+   const eyebrow=document.createElement('small');eyebrow.textContent=s==='Summer'?'Light pieces':s==='Cold'?'Cold-weather layers':'Easy layers';
    const name=document.createElement('strong');name.textContent=labels[s];
    left.append(eyebrow,name);
    const right=document.createElement('span');
@@ -89,14 +89,13 @@
    });
    title.append(button);
  }
- function modeForLevel(value){return value<=1?'hot':value>=3?'cold':'mild'}
+ function modeForLevel(value){return value<=2?'warmer':'colder'}
  function sortCards(cards,s){
-   const mode=modeForLevel(level),middle=levelsForSeason(s)[2],heat=card=>warmth(selectedVariant(card));
+   const mode=modeForLevel(level),heat=card=>warmth(selectedVariant(card));
    cards.sort((a,b)=>{
      const aw=heat(a),bw=heat(b);
-     if(mode==='hot')return aw-bw||score(a,s)-score(b,s);
-     if(mode==='cold')return bw-aw||score(a,s)-score(b,s);
-     return Math.abs(aw-middle)-Math.abs(bw-middle)||aw-bw;
+     if(mode==='warmer')return aw-bw||score(a,s)-score(b,s);
+     return bw-aw||score(a,s)-score(b,s);
    });
  }
  function addThermalControl(group,s){
@@ -112,12 +111,12 @@
    let control=group.querySelector('.thermal-control');
    if(!control){control=document.createElement('div');control.className='thermal-control';shelf.before(control)}
    control.replaceChildren();
-   control.setAttribute('aria-label','Order looks by temperature');
+   control.setAttribute('aria-label','Order looks for warmer or colder weather');
    const activeMode=modeForLevel(level);
    const range=document.createElement('input');
-   range.type='range';range.min='0';range.max='2';range.step='1';
+   range.type='range';range.min='0';range.max='1';range.step='1';
    range.value=String(modes.findIndex(x=>modeForLevel(x.level)===activeMode));
-   range.className='thermal-range';range.setAttribute('aria-label','Temperature order');
+   range.className='thermal-range';range.setAttribute('aria-label','Warmer or colder weather');
    const labels=document.createElement('div');labels.className='thermal-range-labels';
    const paint=()=>labels.querySelectorAll('span').forEach((x,i)=>x.classList.toggle('selected',i===Number(range.value)));
    modes.forEach(({label,level:modeLevel},index)=>{
@@ -156,10 +155,10 @@
    const groups=[...grid.querySelectorAll(':scope > .look-group')];
    if(!groups.length)return;
    const automatic=weatherDefault();
-   if(!initialized){open=automatic.season;level=automatic.level;initialized=true}
-   else if(manuallyChosen===null){open=automatic.season;if(manualLevel===null)level=automatic.level}
+   if(!initialized){open=automatic.season;level=modeForLevel(automatic.level)==='warmer'?0:4;initialized=true}
+   else if(manuallyChosen===null){open=automatic.season;if(manualLevel===null)level=modeForLevel(automatic.level)==='warmer'?0:4}
    else if(manuallyChosen===''){open=null}
-   if(open&&manualLevel===null)level=automatic.level;
+   if(open&&manualLevel===null)level=modeForLevel(automatic.level)==='warmer'?0:4;
    addBoundaryOverlaps(groups);
    groups.forEach(group=>{
      const s=group.dataset.season;
@@ -192,7 +191,7 @@
    const hint=document.querySelector('.thermal-current-note')||document.createElement('div');
    hint.className='thermal-current-note';
    const autoText=automatic.hasWeather?'Weather suggestion':'Browse by warmth';
-   const modeLabel={hot:'Hot first',mild:'Mild first',cold:'Cold first'}[modeForLevel(level)];
+   const modeLabel={warmer:'Warmer first',colder:'Colder first'}[modeForLevel(level)];
    hint.textContent=autoText+' · '+(open?labels[open]:'All seasons collapsed')+(open?' · '+modeLabel:'');
    const head=document.querySelector('.smart-rotation-head');
    if(head){head.after(hint)}
