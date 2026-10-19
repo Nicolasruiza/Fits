@@ -42,6 +42,23 @@ html,body{background:#dde2e0!important;color:var(--w-ink)!important}
 .closet-label{min-width:0}.closet-label strong{display:block;font-size:11px;line-height:1.12}.closet-label small{display:block;margin-top:5px;color:#8c7d70;font-size:7.5px;line-height:1.1;white-space:nowrap}.closet-section.active .closet-label small{color:#cfc3b8}
 .closet-check{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#302b27;font-size:9px;font-weight:900;opacity:0;transform:scale(.7);transition:.16s}.closet-section.active .closet-check{opacity:1;transform:scale(1)}
 .wardrobe-filterbar .wardrobe-search{margin-top:0}
-.wardrobe-status-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px;border:1px solid var(--w-line);border-radius:14px;background:#e8ece9}
+.wardrobe-status-chips{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:3px;border:1px solid var(--w-line);border-radius:14px;background:#e8ece9}
 .wardrobe-status-chips .wardrobe-filter-chip{min-height:36px;border:0;border-radius:11px;background:transparent;padding:7px 8px;font-size:9px;font-weight:750}
 .wardrobe-status-chips .wardrobe-filter-chip.active{background:#fff;border:0;color:var(--w-ink);box-shadow:0 2px 8px rgba(20,32,38,.08)}
+.closet-browser{border-color:#d7dddc;background:linear-gradient(145deg,#f3f5f4,#e6ebea);box-shadow:0 10px 28px rgba(21,32,39,.07),inset 0 1px #fff}
+.closet-browser-head small{color:#778286}.closet-browser-head strong{color:#20262a}.closet-view-all{border-color:#cbd3d1;background:rgba(255,255,255,.62);color:#566166}.closet-view-all.active{background:#20262a;border-color:#20262a;color:#fff}
+.closet-rail{background:#879397}.closet-rail i{border-color:#879397}
+.closet-browser .closet-section{border-color:#d4dbd9!important;background:rgba(255,255,255,.91)!important;color:#20262a!important;box-shadow:0 4px 11px rgba(21,32,39,.045)}
+.closet-browser .closet-section.active{background:#20262a!important;border-color:#20262a!important;color:#fff!important;box-shadow:0 9px 20px rgba(21,32,39,.18)}
+.closet-icon{color:#66777d}.closet-section.active .closet-icon{color:#cbd5d7}.closet-label small{color:#7a8589}.closet-section.active .closet-label small{color:#c3cdcf}.closet-check{color:#20262a}
+.ward-section-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ward-card{position:relative;display:block;min-width:0;padding:0;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 7px 20px rgba(21,32,39,.065);transition:transform .16s ease,box-shadow .16s ease}
+.ward-card:active{transform:scale(.985)}.ward-card:focus-visible{outline:3px solid rgba(24,59,91,.26);outline-offset:2px}
+.ward-photo{width:100%;height:auto;aspect-ratio:4/5;border-radius:0;background:#edf0ee}
+.ward-photo img{width:100%;height:100%;object-fit:cover}
+.style-count-badge{position:absolute;left:8px;bottom:8px;z-index:4;min-height:25px;padding:0 8px;border-radius:999px;display:flex;align-items:center;background:rgba(20,25,28,.84);color:#fff;font-size:8px;font-weight:800;letter-spacing:.02em;backdrop-filter:blur(8px)}
+.own-checkbox{position:absolute;right:8px;top:8px;z-index:5;width:32px;height:32px;padding:0;border:1.5px solid rgba(32,38,42,.28);border-radius:10px;background:rgba(255,255,255,.9);color:transparent;display:grid;place-items:center;box-shadow:0 3px 10px rgba(21,32,39,.1);backdrop-filter:blur(8px)}
+.own-checkbox span{font-size:15px;font-weight:900;line-height:1}.own-checkbox.on{background:#20262a;border-color:#20262a;color:#fff}.own-checkbox:focus-visible{outline:3px solid rgba(24,59,91,.28);outline-offset:2px}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.ward-card.is-hidden{opacity:.58;filter:saturate(.35)}
+@media(min-width:390px){.ward-photo{height:auto}.ward-card{grid-template-columns:none}}
