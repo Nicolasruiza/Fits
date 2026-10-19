@@ -37,9 +37,10 @@
   }
   function weatherEval(v,w){
     if(!w)return{score:0,reason:'Weather will refine this recommendation.'};
-    const names=namesFor(v),t=Math.round(w.temp),rain=w.currentRain||w.maxRain>=40,outer=/blazer|jacket|vest|coat|sweater|cardigan|quarter[- ]?zip|turtleneck/.test(names),dress=/loafer|derbies|dress shoe|chelsea/.test(names),sneakers=/sneaker/.test(names);
+    const names=namesFor(v),t=Math.round(w.temp),high=Number.isFinite(w.maxTemp)?Math.round(w.maxTemp):t,rain=w.currentRain||w.maxRain>=40,outer=/blazer|jacket|vest|coat|overshirt|bomber|sweater|cardigan|quarter[- ]?zip|turtleneck/.test(names),outerPiece=(v.pieces||[]).map(piece).find(p=>/blazer|jacket|coat|overshirt|bomber/i.test(p?.name||'')),dress=/loafer|derbies|dress shoe|chelsea/.test(names),sneakers=/sneaker/.test(names),winterCold=high<=7||(t<=4&&high<=13);
     if(t>=25&&outer)return{score:-24,reason:'The extra layer may feel warm later.'};
-    if(t<=12&&v.winterLayerable){const coat=window.FITS_WINTER_LAYERS?.selected(v)||window.FITS_WINTER_LAYERS?.ownedCoats()[0];return{score:coat?12:2,reason:coat?`Add your ${coat.name.toLowerCase()} for cold weather.`:'Add an overcoat to make this winter-ready.'}}
+    if(t<=12&&outerPiece)return{score:12,reason:`The ${outerPiece.name.toLowerCase()} already provides the outer layer.`};
+    if(winterCold&&v.winterLayerable){const coat=window.FITS_WINTER_LAYERS?.selected(v)||window.FITS_WINTER_LAYERS?.ownedCoats()[0];return{score:coat?12:2,reason:coat?`Add your ${coat.name.toLowerCase()} for winter weather.`:'Add an overcoat to make this winter-ready.'}}
     if(t<=12&&!outer)return{score:-20,reason:'You may want another layer.'};
     if(rain&&dress&&!sneakers)return{score:-16,reason:'The shoes are less practical if rain arrives.'};
     if(t>=22&&!outer)return{score:18,reason:'The lighter combination suits today.'};

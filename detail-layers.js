@@ -17,7 +17,7 @@
       existing?.remove();
       let badge=row.querySelector('[data-season="Cold"]');if(!badge){badge=document.createElement('span');badge.className='status season-status';badge.dataset.season='Cold';row.prepend(badge)}
       badge.classList.add('layered-season-status');
-      if(badge.textContent!=='Cold · coat included')badge.textContent='Cold · coat included';return;
+      if(badge.textContent!=='Winter · coat included')badge.textContent='Winter · coat included';return;
     }
     let panel=existing;if(!panel){panel=document.createElement('section');panel.className='winter-layer-panel';actions.after(panel)}
     const options=owned.map(p=>coatCard(p,selected?.id===p.id)).join('');
@@ -26,7 +26,7 @@
     if(panel.dataset.layerState!==state){panel.dataset.layerState=state;panel.innerHTML=`<div class="winter-layer-head"><div><span>${selected?'WINTER VERSION':'MAKE IT WINTER'}</span><h2>${selected?'Coat added':'Add a coat'}</h2></div>${selected?'<button type="button" onclick="chooseWinterLayer(null)">Remove</button>':''}</div><p>${selected?`${escape(active.name)} + ${escape(selected.name)}`:'Keep this base look and add one of your coats. It stays one look, with a warmer version.'}</p>${options?`<div class="coat-options">${options}</div>`:`<a class="set-coats" href="wardrobe.html">Choose your coats in Wardrobe →</a>`}`}
     let badge=row.querySelector('[data-season="Cold"]');
     if(!badge){badge=document.createElement('span');badge.className='status season-status';badge.dataset.season='Cold';row.prepend(badge)}
-    badge.classList.toggle('layered-season-status',!!selected);const label=selected?'Cold · layered':'Cold · add coat';if(badge.textContent!==label)badge.textContent=label;
+    badge.classList.toggle('layered-season-status',!!selected);const label=selected?'Winter · layered':'Winter · add coat';if(badge.textContent!==label)badge.textContent=label;
   }
   let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance()})}).observe(document.getElementById('root')||document.body,{childList:true,subtree:true});
   window.addEventListener('fits:winter-layer-changed',enhance);document.addEventListener('DOMContentLoaded',enhance);enhance();
