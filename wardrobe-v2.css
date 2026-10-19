@@ -41,7 +41,7 @@ html,body{background:#dde2e0!important;color:var(--w-ink)!important}
 .closet-section.active .closet-icon{color:#d9c3ab}
 .closet-label{min-width:0}.closet-label strong{display:block;font-size:11px;line-height:1.12}.closet-label small{display:block;margin-top:5px;color:#8c7d70;font-size:7.5px;line-height:1.1;white-space:nowrap}.closet-section.active .closet-label small{color:#cfc3b8}
 .closet-check{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#302b27;font-size:9px;font-weight:900;opacity:0;transform:scale(.7);transition:.16s}.closet-section.active .closet-check{opacity:1;transform:scale(1)}
-.wardrobe-filterbar .wardrobe-search{margin-top:0}
+.wardrobe-status-head{margin-top:0}
 .wardrobe-status-chips{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:3px;border:1px solid var(--w-line);border-radius:14px;background:#e8ece9}
 .wardrobe-status-chips .wardrobe-filter-chip{min-height:36px;border:0;border-radius:11px;background:transparent;padding:7px 8px;font-size:9px;font-weight:750}
 .wardrobe-status-chips .wardrobe-filter-chip.active{background:#fff;border:0;color:var(--w-ink);box-shadow:0 2px 8px rgba(20,32,38,.08)}
