@@ -3,7 +3,12 @@
   const safe=(k,f)=>{try{const r=localStorage.getItem(k);return r?JSON.parse(r):f}catch(e){return f}};
   const look=id=>D.looks.find(x=>x.id===id),piece=id=>D.pieces.find(x=>x.id===id),familyLooks=f=>(f.looks||[]).map(look).filter(Boolean);
   const daysSince=date=>{if(!date)return Infinity;const d=new Date(date+'T12:00:00');return Math.max(0,Math.floor((Date.now()-d.getTime())/86400000))};
-  function state(){return{wardrobe:safe('fitsWardrobe',{}),swaps:safe('fitsClosetSwaps',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),hidden:new Set(safe('fitsHiddenLooks',[])),weather:safe('fitsWeatherHome',null),feedback:safe('fitsLookFeedback',{})}}
+  function state(){
+    const saved=safe('fitsSavedVariants',{}),hidden=new Set(safe('fitsHiddenLooks',[])),legacy=safe('fitsLookFeedback',{});let changed=false;
+    Object.entries(legacy).forEach(([id,value])=>{if(value==='like'&&!saved[id]){saved[id]=true;changed=true}if(value==='dislike'&&!hidden.has(id)){hidden.add(id);changed=true}});
+    if(changed){localStorage.setItem('fitsSavedVariants',JSON.stringify(saved));localStorage.setItem('fitsHiddenLooks',JSON.stringify([...hidden]))}
+    return{wardrobe:safe('fitsWardrobe',{}),swaps:safe('fitsClosetSwaps',{}),wear:safe('fitsWearHistory',{}),saved,hidden,weather:safe('fitsWeatherHome',null)}
+  }
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
     return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
@@ -52,7 +57,7 @@
   function variantScore(v,s){
     const m=missing(v,s),history=s.wear[v.id]||[],last=history.length?history[history.length-1]:null,days=daysSince(last),wx=weatherEval(v,s.weather);let score=wx.score;
     if(!m.length)score+=1000;else score+=Math.max(0,190-m.length*55);
-    if(s.saved[v.id])score+=24;if(s.feedback[v.id]==='like')score+=45;if(s.feedback[v.id]==='dislike')score-=500;
+    if(s.saved[v.id])score+=24;
     if(days===Infinity)score+=28;else if(days>=30)score+=22;else if(days>=14)score+=14;else if(days<=0)score-=45;else if(days<=3)score-=18;
     return{v,m,days,wx,score};
   }
