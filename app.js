@@ -76,6 +76,12 @@ window.toggleOwned=function(id){
   saveAndRender();
 };
 
+window.toggleWishlist=function(id){
+  wishlistPieces.has(id)?wishlistPieces.delete(id):wishlistPieces.add(id);
+  localStorage.setItem('fitsWishlistPieces',JSON.stringify([...wishlistPieces]));
+  renderCurrent();
+};
+
 window.searchItem=function(id){
   const p=piece(id);
   if(!p)return;
@@ -100,16 +106,17 @@ function stylesForPiece(pieceId){return DATA.looks.filter(l=>(l.pieces||[]).incl
 
 function renderWardrobe(){
   const all=DATA.pieces,visible=all.filter(p=>!hiddenPieces.has(p.id));
-  const readyLooks=DATA.looks.filter(l=>missingFor(l).length===0).length;
   const highImpactGaps=visible.filter(p=>!isOwned(p.id)&&wardrobeImpact(p.id).used>=5).length;
+  const showingImpact=(Number(new URLSearchParams(location.search).get('impact'))||0)>=5;
   document.body.innerHTML=`<div class="app wardrobe-v2">
     ${headerBar('Wardrobe','Everything in one place: what you own, what is missing, and which looks each piece unlocks.',`${visible.length} items`)}
     <main>
-      <div class="stats wardrobe-stats"><div class="stat"><b>${readyLooks}</b><span>Looks ready now</span></div><div class="stat"><b>${highImpactGaps}</b><span>Missing pieces</span><small>Needed by 5+ looks</small></div></div>
+      <a class="wardrobe-impact-cta ${showingImpact?'active':''}" href="${showingImpact?'wardrobe.html?status=missing':'wardrobe.html?impact=5'}" aria-label="${showingImpact?'Show all missing pieces':`View ${highImpactGaps} missing pieces used by five or more looks`}"><span class="impact-cta-icon" aria-hidden="true">${showingImpact?'✓':'＋'}</span><b>${showingImpact?'5+ look priorities':`${highImpactGaps} pieces used in 5+ looks`}</b><i aria-hidden="true">›</i></a>
       <div class="ward-grid">${all.map(p=>{
-        const ownedNow=isOwned(p.id),styleCount=stylesForPiece(p.id).length;
-        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'} ${wishlistPieces.has(p.id)?'is-wishlist':''} ${hiddenPieces.has(p.id)?'is-hidden':''}" data-piece-id="${p.id}" role="link" tabindex="0" aria-label="Open ${p.name}" onclick="location.href='piece.html?id=${encodeURIComponent(p.id)}'" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='piece.html?id=${encodeURIComponent(p.id)}'}">
-          <div class="ward-photo">${piecePhoto(p)}<span class="style-count-badge">${styleCount} ${styleCount===1?'style':'styles'}</span><button class="own-checkbox ${ownedNow?'on':''}" aria-label="${ownedNow?'Remove from':'Add to'} wardrobe: ${p.name}" aria-pressed="${ownedNow}" onclick="event.stopPropagation();toggleOwned('${p.id}')" onkeydown="event.stopPropagation()"><span>✓</span></button></div>
+        const ownedNow=isOwned(p.id),styleCount=stylesForPiece(p.id).length,impact=ownedNow?{used:0,unlocks:0}:wardrobeImpact(p.id),impactCount=impact.used;
+        const badge=showingImpact?(impact.unlocks?`${impact.unlocks} now · ${impactCount} looks`:`Needs more · ${impactCount} looks`):`${styleCount} ${styleCount===1?'style':'styles'}`;
+        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'} ${wishlistPieces.has(p.id)?'is-wishlist':''} ${hiddenPieces.has(p.id)?'is-hidden':''}" data-piece-id="${p.id}" data-impact-count="${impactCount}" role="link" tabindex="0" aria-label="Open ${p.name}" onclick="location.href='piece.html?id=${encodeURIComponent(p.id)}'" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='piece.html?id=${encodeURIComponent(p.id)}'}">
+          <div class="ward-photo">${piecePhoto(p)}<span class="style-count-badge ${showingImpact?'impact':''}">${badge}</span><button class="wish-checkbox ${wishlistPieces.has(p.id)?'on':''}" aria-label="${wishlistPieces.has(p.id)?'Remove from':'Add to'} favorites: ${p.name}" aria-pressed="${wishlistPieces.has(p.id)}" onclick="event.stopPropagation();toggleWishlist('${p.id}')" onkeydown="event.stopPropagation()"><span>${wishlistPieces.has(p.id)?'★':'☆'}</span></button><button class="own-checkbox ${ownedNow?'on':''}" aria-label="${ownedNow?'Remove from':'Add to'} wardrobe: ${p.name}" aria-pressed="${ownedNow}" onclick="event.stopPropagation();toggleOwned('${p.id}')" onkeydown="event.stopPropagation()"><span>✓</span></button></div>
           <div class="ward-card-copy visually-hidden"><strong>${p.name}</strong><small>${p.category}</small></div>
         </article>`;
       }).join('')}</div>

@@ -3,11 +3,13 @@
 
   const params=new URLSearchParams(location.search);
   const CATEGORIES=['Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories','Other'];
+  const impactMin=Math.max(0,Number(params.get('impact'))||0);
   const requestedCategory=params.get('category');
-  let category=requestedCategory==='All'||CATEGORIES.includes(requestedCategory)?requestedCategory:'Dress Shirts';
+  let category=requestedCategory==='All'||CATEGORIES.includes(requestedCategory)?requestedCategory:(impactMin?'All':'Dress Shirts');
   const requestedStatus=params.get('status');
-  let ownership={missing:'Missing',owned:'Owned',wishlist:'Wishlist',hidden:'Hidden'}[requestedStatus]||'All';
+  let ownership=impactMin?'Missing':({missing:'Missing',owned:'Owned',wishlist:'Wishlist',hidden:'Hidden'}[requestedStatus]||'All');
   const META={
+    'All':{label:'All',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="28" y="8" width="12" height="12" rx="2"/><rect x="8" y="28" width="12" height="12" rx="2"/><rect x="28" y="28" width="12" height="12" rx="2"/></svg>'},
     'Dress Shirts':{label:'Shirts',place:'Hanging',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 13 8 18l4 8 4-2v14h16V24l4 2 4-8-7-5-4 4H19l-4-4Z"/><path d="m19 13 5 6 5-6M24 19v19"/></svg>'},
     'T-Shirts & Polos':{label:'Tees & polos',place:'Hanging',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m17 13-9 5 4 9 5-2v13h14V25l5 2 4-9-9-5c-1 4-13 4-14 0Z"/></svg>'},
     'Sweaters & Knitwear':{label:'Knitwear',place:'Folded',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="13" width="30" height="10" rx="3"/><rect x="7" y="25" width="34" height="11" rx="3"/><path d="M16 18h16M15 30h18"/></svg>'},
@@ -18,6 +20,13 @@
     'Accessories':{label:'Accessories',place:'Drawer',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="25" rx="3"/><path d="M8 21h32M20 17h8M20 29h8"/></svg>'},
     'Other':{label:'Other',place:'Closet',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12a4 4 0 1 1 4 4l-4 3-15 9h30l-15-9"/></svg>'}
   };
+  const STATUS_META={
+    All:{label:'All',icon:META.All.icon},
+    Owned:{label:'Owned',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m12 25 8 8 17-18"/></svg>'},
+    Missing:{label:'Missing',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M24 15v11M24 33h.1"/></svg>'},
+    Wishlist:{label:'Favs',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 8 4.8 9.8 10.8 1.6-7.8 7.6 1.8 10.7-9.6-5.1-9.6 5.1L16.2 27l-7.8-7.6 10.8-1.6L24 8Z"/></svg>'},
+    Hidden:{label:'Hidden',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 7l36 34M20 20a6 6 0 0 0 8 8M18 10a22 22 0 0 1 6-1c11 0 19 10 19 10a31 31 0 0 1-7 7M12 13C7 16 5 20 5 20s8 10 19 10c2 0 4-.3 6-.8"/></svg>'}
+  };
 
   function text(card){
     return((card.querySelector('.ward-card-copy strong')?.textContent||'')+' '+(card.querySelector('.ward-card-copy small')?.textContent||'')).toLowerCase();
@@ -26,6 +35,7 @@
   function updateUrl(){
     const next=new URLSearchParams({category});
     if(ownership!=='All')next.set('status',ownership.toLowerCase());
+    if(impactMin)next.set('impact',String(impactMin));
     history.replaceState(null,'',`wardrobe.html?${next}`);
   }
   function apply(){
@@ -33,9 +43,10 @@
     let shown=0;
     cards.forEach(card=>{
       const categoryMatch=category==='All'||kind(card)===category;
+      const impactMatch=!impactMin||Number(card.dataset.impactCount)>=impactMin;
       const hidden=card.classList.contains('is-hidden');
       const ownershipMatch=ownership==='Hidden'?hidden:!hidden&&(ownership==='All'||ownership==='Owned'&&card.classList.contains('is-owned')||ownership==='Missing'&&card.classList.contains('is-missing')||ownership==='Wishlist'&&card.classList.contains('is-wishlist'));
-      const show=categoryMatch&&ownershipMatch;
+      const show=categoryMatch&&impactMatch&&ownershipMatch;
       card.style.display=show?'':'none';
       if(show)shown++;
     });
@@ -47,9 +58,9 @@
   }
   function chip(label,type){
     const active=(type==='category'?category:ownership)===label;
-    if(type!=='category')return`<button class="wardrobe-filter-chip ${active?'active':''}" data-${type}="${label}" aria-pressed="${active}"><span>${label}</span></button>`;
-    const count=[...document.querySelectorAll('.ward-card')].filter(card=>kind(card)===label&&!card.classList.contains('is-hidden')).length,meta=META[label];
-    return`<button class="wardrobe-filter-chip closet-section ${active?'active':''}" data-${type}="${label}" aria-pressed="${active}"><span class="closet-icon">${meta.icon}</span><span class="closet-label"><strong>${meta.label}</strong><small>${meta.place} · ${count}</small></span><span class="closet-check" aria-hidden="true">✓</span></button>`;
+    if(type!=='category'){const meta=STATUS_META[label];return`<button class="wardrobe-filter-chip ${active?'active':''}" data-${type}="${label}" aria-label="${meta.label}" aria-pressed="${active}"><span class="filter-symbol">${meta.icon}</span><span class="filter-name">${meta.label}</span></button>`}
+    const count=label==='All'?[...document.querySelectorAll('.ward-card')].filter(card=>!card.classList.contains('is-hidden')).length:[...document.querySelectorAll('.ward-card')].filter(card=>kind(card)===label&&!card.classList.contains('is-hidden')).length,meta=META[label];
+    return`<button class="wardrobe-filter-chip closet-section ${active?'active':''}" data-${type}="${label}" aria-label="${meta.label}, ${count} items" aria-pressed="${active}"><span class="closet-icon">${meta.icon}</span><span class="closet-label"><strong>${meta.label}</strong></span></button>`;
   }
   function enhance(){
     const grid=document.querySelector('.ward-grid');
@@ -60,16 +71,11 @@
     if(!bar){
       bar=document.createElement('div');
       bar.className='wardrobe-filterbar';
-      const total=[...document.querySelectorAll('.ward-card')].filter(card=>!card.classList.contains('is-hidden')).length;
-      bar.innerHTML=`<section class="closet-browser" aria-label="Wardrobe sections"><div class="closet-browser-head"><div><small>Your closet</small><strong>Choose a section</strong></div><button class="closet-view-all ${category==='All'?'active':''}" data-category="All" aria-pressed="${category==='All'}">${category==='All'?'Viewing all':`View all ${total}`}</button></div><div class="closet-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wardrobe-filter-chips wardrobe-category-chips">${availableCategories.map(x=>chip(x,'category')).join('')}</div></section><div class="wardrobe-filter-head wardrobe-status-head"><span>Show</span><b class="wardrobe-filter-count"></b></div><div class="wardrobe-filter-chips wardrobe-status-chips">${['All','Owned','Missing','Wishlist','Hidden'].map(x=>chip(x,'ownership')).join('')}</div>`;
+      bar.innerHTML=`<section class="closet-browser" aria-label="Wardrobe categories"><div class="wardrobe-filter-chips wardrobe-category-chips">${['All',...availableCategories].map(x=>chip(x,'category')).join('')}</div></section><div class="wardrobe-filter-head wardrobe-status-head"><span>Show</span><b class="wardrobe-filter-count"></b></div><div class="wardrobe-filter-chips wardrobe-status-chips">${['All','Owned','Missing','Wishlist','Hidden'].map(x=>chip(x,'ownership')).join('')}</div>`;
       grid.before(bar);
       bar.querySelectorAll('[data-category]').forEach(btn=>btn.onclick=()=>{
         category=btn.dataset.category;
         bar.querySelectorAll('[data-category]').forEach(x=>{const active=x.dataset.category===category;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});
-        const viewAll=bar.querySelector('.closet-view-all');
-        viewAll.classList.toggle('active',category==='All');
-        viewAll.setAttribute('aria-pressed',category==='All');
-        viewAll.textContent=category==='All'?'Viewing all':`View all ${[...document.querySelectorAll('.ward-card')].filter(card=>!card.classList.contains('is-hidden')).length}`;
         updateUrl();
         apply();
       });
