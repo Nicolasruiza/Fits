@@ -34,6 +34,8 @@ const PIECE_IMAGES={
 };
 
 let wearHistory=safeJSON('fitsWearHistory',{});
+const hiddenPieces=new Set(safeJSON('fitsHiddenPieces',[]));
+const wishlistPieces=new Set(safeJSON('fitsWishlistPieces',[]));
 const storedWardrobe=safeJSON('fitsWardrobe',{});
 let wardrobe={};
 
@@ -94,24 +96,21 @@ function wardrobeImpact(pieceId){
   return{used,unlocks,families:families.size};
 }
 
+function stylesForPiece(pieceId){return DATA.looks.filter(l=>(l.pieces||[]).includes(pieceId))}
+
 function renderWardrobe(){
-  const all=DATA.pieces;
+  const all=DATA.pieces,visible=all.filter(p=>!hiddenPieces.has(p.id));
   const readyLooks=DATA.looks.filter(l=>missingFor(l).length===0).length;
-  const highImpactGaps=all.filter(p=>!isOwned(p.id)&&wardrobeImpact(p.id).used>=5).length;
+  const highImpactGaps=visible.filter(p=>!isOwned(p.id)&&wardrobeImpact(p.id).used>=5).length;
   document.body.innerHTML=`<div class="app wardrobe-v2">
-    ${headerBar('Wardrobe','Everything in one place: what you own, what is missing, and which looks each piece unlocks.',`${all.length} items`)}
+    ${headerBar('Wardrobe','Everything in one place: what you own, what is missing, and which looks each piece unlocks.',`${visible.length} items`)}
     <main>
       <div class="stats wardrobe-stats"><div class="stat"><b>${readyLooks}</b><span>Looks ready now</span></div><div class="stat"><b>${highImpactGaps}</b><span>Missing pieces</span><small>Needed by 5+ looks</small></div></div>
       <div class="ward-grid">${all.map(p=>{
-        const ownedNow=isOwned(p.id),impact=ownedNow?null:wardrobeImpact(p.id);
-        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'}" data-piece-id="${p.id}">
-          <div class="ward-photo">${piecePhoto(p)}${!ownedNow?'<span class="need-badge">NO</span>':''}</div>
-          <div class="ward-card-body">
-            <div class="ward-card-copy"><strong>${p.name}</strong><small>${p.category}</small></div>
-            ${!ownedNow&&impact?`<div class="ward-impact ${impact.unlocks?'ready':''}"><b>${impact.unlocks?`Unlocks ${impact.unlocks} look${impact.unlocks===1?'':'s'} now`:impact.used?`Used in ${impact.used} look${impact.used===1?'':'s'}`:'Not used in a look yet'}</b>${impact.families?`<span>${impact.families} style ${impact.families===1?'family':'families'}</span>`:''}</div>`:''}
-            <div class="own-row"><span class="own-question">Own it?</span><button class="own-toggle ${ownedNow?'on':''}" aria-pressed="${ownedNow}" onclick="toggleOwned('${p.id}')"><span class="toggle-knob"></span></button><b class="own-state">${ownedNow?'Yes':'No'}</b></div>
-            ${!ownedNow?`<button class="find-item" onclick="searchItem('${p.id}')">⌕ Find item to buy <span>${impact?.unlocks?`+${impact.unlocks} looks`:'↗'}</span></button>`:''}
-          </div>
+        const ownedNow=isOwned(p.id),styleCount=stylesForPiece(p.id).length;
+        return `<article class="ward-card ${ownedNow?'is-owned':'is-missing'} ${wishlistPieces.has(p.id)?'is-wishlist':''} ${hiddenPieces.has(p.id)?'is-hidden':''}" data-piece-id="${p.id}" role="link" tabindex="0" aria-label="Open ${p.name}" onclick="location.href='piece.html?id=${encodeURIComponent(p.id)}'" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='piece.html?id=${encodeURIComponent(p.id)}'}">
+          <div class="ward-photo">${piecePhoto(p)}<span class="style-count-badge">${styleCount} ${styleCount===1?'style':'styles'}</span><button class="own-checkbox ${ownedNow?'on':''}" aria-label="${ownedNow?'Remove from':'Add to'} wardrobe: ${p.name}" aria-pressed="${ownedNow}" onclick="event.stopPropagation();toggleOwned('${p.id}')" onkeydown="event.stopPropagation()"><span>✓</span></button></div>
+          <div class="ward-card-copy visually-hidden"><strong>${p.name}</strong><small>${p.category}</small></div>
         </article>`;
       }).join('')}</div>
     </main>${nav('wardrobe')}
@@ -119,7 +118,7 @@ function renderWardrobe(){
 }
 
 function renderUnlock(){
-  const items=DATA.pieces.filter(p=>!isOwned(p.id)).map(p=>{
+  const items=DATA.pieces.filter(p=>!isOwned(p.id)&&!hiddenPieces.has(p.id)).map(p=>{
     let used=0,completes=0;
     const familiesHelped=new Set();
     DATA.looks.forEach(l=>{
