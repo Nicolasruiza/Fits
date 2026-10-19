@@ -3,7 +3,7 @@
   const safe=(k,f)=>{try{const r=localStorage.getItem(k);return r?JSON.parse(r):f}catch(e){return f}};
   const look=id=>D.looks.find(x=>x.id===id),piece=id=>D.pieces.find(x=>x.id===id),familyLooks=f=>(f.looks||[]).map(look).filter(Boolean);
   const daysSince=date=>{if(!date)return Infinity;const d=new Date(date+'T12:00:00');return Math.max(0,Math.floor((Date.now()-d.getTime())/86400000))};
-  function state(){return{wardrobe:safe('fitsWardrobe',{}),swaps:safe('fitsClosetSwaps',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),weather:safe('fitsWeatherHome',null),feedback:safe('fitsLookFeedback',{})}}
+  function state(){return{wardrobe:safe('fitsWardrobe',{}),swaps:safe('fitsClosetSwaps',{}),wear:safe('fitsWearHistory',{}),saved:safe('fitsSavedVariants',{}),hidden:new Set(safe('fitsHiddenLooks',[])),weather:safe('fitsWeatherHome',null),feedback:safe('fitsLookFeedback',{})}}
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
     return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
@@ -22,7 +22,8 @@
   }
   function matchesFilters(v,f,s){
     const badges=v.badges||[],seasons=v.seasons||['Summer'];
-    const occasionMatch=f.occasion==='All'||f.occasion==='Favorites'&&!!s.saved[v.id]||badges.includes(f.occasion);
+    const isHidden=s.hidden.has(v.id);
+    const occasionMatch=f.occasion==='Hidden'?isHidden:!isHidden&&(f.occasion==='All'||f.occasion==='Favorites'&&!!s.saved[v.id]||badges.includes(f.occasion));
     return occasionMatch&&(f.season==='All'||seasons.includes(f.season));
   }
   function weatherEligible(v,w){
@@ -82,6 +83,7 @@
     cards.forEach(card=>{
       const fid=familyIdFromCard(card),f=D.families.find(x=>x.id===fid);if(!f)return;
       const familySaved=familyLooks(f).some(v=>s.saved[v.id]);card.dataset.saved=familySaved?'yes':'no';
+      const familyHidden=familyLooks(f).some(v=>s.hidden.has(v.id));card.dataset.hidden=familyHidden?'yes':'no';
       const best=bestForFamily(f,s,activeFilters);
       card.classList.toggle('smart-hidden',!best);
       if(!best){
@@ -140,7 +142,7 @@
     window.render=wrapped;
   }
   window.addEventListener('fits:filters-changed',schedule);
-  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsClosetSwaps','fitsWearHistory','fitsSavedVariants','fitsLookFeedback'].includes(e.key))schedule()});
+  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsClosetSwaps','fitsWearHistory','fitsSavedVariants','fitsHiddenLooks','fitsLookFeedback'].includes(e.key))schedule()});
   document.addEventListener('DOMContentLoaded',schedule);
   schedule();
 })();

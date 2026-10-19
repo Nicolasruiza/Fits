@@ -160,6 +160,15 @@
    else if(manuallyChosen===''){open=null}
    if(open&&manualLevel===null)level=modeForLevel(automatic.level)==='warmer'?0:4;
    addBoundaryOverlaps(groups);
+   const activeFilters=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
+   if(activeFilters&&['Favorites','Hidden'].includes(activeFilters.occasion)){
+     const openGroup=groups.find(group=>group.dataset.season===open);
+     const hasVisible=group=>[...group.querySelectorAll('.look-group-rail > a.card')].some(card=>!card.classList.contains('hidden')&&!card.classList.contains('smart-hidden'));
+     if(!openGroup||!hasVisible(openGroup)){
+       const firstVisible=groups.find(hasVisible);
+       if(firstVisible)open=firstVisible.dataset.season;
+     }
+   }
    groups.forEach(group=>{
      const s=group.dataset.season;
      const rail=group.querySelector('.look-group-rail');

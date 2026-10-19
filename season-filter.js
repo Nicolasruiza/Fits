@@ -1,6 +1,15 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const validOcc=['All','Favorites','Office','Weekend','Dinner','Travel'],validSeason=['All','Summer','Transitional','Cold'];
+  const validOcc=['All','Favorites','Hidden','Office','Weekend','Dinner','Travel'],validSeason=['All','Summer','Transitional','Cold'];
+  const icon=name=>({
+    All:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>',
+    Favorites:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg>',
+    Hidden:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 4.3A10.8 10.8 0 0 1 12 4c5.4 0 9 5 9 5s-1.2 1.7-3.2 3.1M6.2 6.2C4.2 7.4 3 9 3 9s3.6 5 9 5c.8 0 1.5-.1 2.2-.3"/></svg>',
+    Office:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 12h18M10 12v2h4v-2"/></svg>',
+    Weekend:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>',
+    Dinner:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v7M9 3v7M4 3v5a3 3 0 0 0 6 0V3M7 10v11M16 3v18M16 3c3 2 4 5 4 8h-4"/></svg>',
+    Travel:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 14 7-2 4-8 2 1-2 7 6 2c1 .3 1 1.7 0 2l-6 1-3 4-1-1 1-4-5 1-3-3Z"/></svg>'
+  })[name]||'';
   let occasion=localStorage.getItem('fitsOccasionFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All';
   if(!validOcc.includes(occasion))occasion='All';
   if(!validSeason.includes(season))season='All';
@@ -10,7 +19,7 @@
   function allCards(){return[...document.querySelectorAll('a.card')]}
   function matches(card,occ=occasion,sea=season){
     const tags=(card.dataset.tags||'').split(',').filter(Boolean),ss=(card.dataset.seasons||'').split(',').filter(Boolean);
-    const occasionMatch=occ==='All'||occ==='Favorites'&&card.dataset.saved==='yes'||tags.includes(occ);
+    const occasionMatch=occ==='All'||occ==='Favorites'&&card.dataset.saved==='yes'||occ==='Hidden'&&card.dataset.hidden==='yes'||tags.includes(occ);
     return occasionMatch&&(sea==='All'||ss.includes(sea));
   }
   function weatherSeason(){
@@ -47,7 +56,7 @@
     let visible=0;
     allCards().forEach(card=>{const show=matches(card);card.classList.toggle('hidden',!show);if(show)visible++});
     const empty=document.querySelector('.empty');
-    if(empty){empty.style.display=visible?'none':'block';empty.textContent=occasion==='Favorites'?'No favorite looks yet.':`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'looks':occasion.toLowerCase()+' looks'} yet.`}
+    if(empty){empty.style.display=visible?'none':'block';empty.textContent=occasion==='Favorites'?'No favorite looks yet.':occasion==='Hidden'?'No hidden looks.':`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'looks':occasion.toLowerCase()+' looks'} yet.`}
     const count=document.querySelector('.filter-result-count');if(count)count.textContent=`${visible} ${visible===1?'family':'families'}`;
     updateChipCounts();
     const wrap=document.querySelector('.season-filter-wrap');if(wrap)updateWeatherHint(wrap);
@@ -61,6 +70,10 @@
       const button=document.createElement('button');button.className='chip';button.dataset.filter='Favorites';button.innerHTML='<span>★ Favorites</span><em></em>';
       const all=chips.querySelector('[data-filter="All"]');all?.after(button);
     }
+    if(!chips.querySelector('[data-filter="Hidden"]')){
+      const button=document.createElement('button');button.className='chip';button.dataset.filter='Hidden';
+      const favorites=chips.querySelector('[data-filter="Favorites"]');favorites?.after(button);
+    }
     D.families.forEach(f=>{
       const card=allCards().find(c=>{try{return new URL(c.getAttribute('href'),location.href).searchParams.get('family')===f.id}catch(e){return false}});
       if(card){
@@ -71,9 +84,10 @@
     });
     chips.querySelectorAll('[data-filter]').forEach(btn=>{
       const name=btn.dataset.filter;
-      if(!btn.querySelector('em'))btn.innerHTML=`<span>${name}</span><em></em>`;
+      if(!btn.querySelector('.filter-symbol'))btn.innerHTML=`<span class="filter-symbol">${icon(name)}</span><span class="filter-name">${name==='Favorites'?'Favs':name}</span><em></em>`;
+      btn.setAttribute('aria-label',name);btn.setAttribute('aria-pressed',String(name===occasion));
       btn.classList.toggle('active',name===occasion);
-      btn.onclick=e=>{e.preventDefault();occasion=name;localStorage.setItem('fitsOccasionFilter',occasion);chips.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter===occasion));apply()};
+      btn.onclick=e=>{e.preventDefault();occasion=name;localStorage.setItem('fitsOccasionFilter',occasion);chips.querySelectorAll('[data-filter]').forEach(x=>{const active=x.dataset.filter===occasion;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});apply()};
     });
     let occLabel=document.querySelector('.occasion-filter-label');
     if(!occLabel){occLabel=document.createElement('div');occLabel.className='filter-label-row occasion-filter-label';occLabel.innerHTML='<span>Show</span><b>filter looks</b>';chips.before(occLabel)}
