@@ -7,7 +7,6 @@
   let category=requestedCategory==='All'||CATEGORIES.includes(requestedCategory)?requestedCategory:'Dress Shirts';
   const requestedStatus=params.get('status');
   let ownership={missing:'Missing',owned:'Owned',wishlist:'Wishlist',hidden:'Hidden'}[requestedStatus]||'All';
-  let query='';
   const META={
     'Dress Shirts':{label:'Shirts',place:'Hanging',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 13 8 18l4 8 4-2v14h16V24l4 2 4-8-7-5-4 4H19l-4-4Z"/><path d="m19 13 5 6 5-6M24 19v19"/></svg>'},
     'T-Shirts & Polos':{label:'Tees & polos',place:'Hanging',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m17 13-9 5 4 9 5-2v13h14V25l5 2 4-9-9-5c-1 4-13 4-14 0Z"/></svg>'},
@@ -24,21 +23,19 @@
     return((card.querySelector('.ward-card-copy strong')?.textContent||'')+' '+(card.querySelector('.ward-card-copy small')?.textContent||'')).toLowerCase();
   }
   function kind(card){return window.FITS_WARDROBE_KIND?FITS_WARDROBE_KIND(card):'Other'}
-  function normalized(value){return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
   function updateUrl(){
     const next=new URLSearchParams({category});
     if(ownership!=='All')next.set('status',ownership.toLowerCase());
     history.replaceState(null,'',`wardrobe.html?${next}`);
   }
   function apply(){
-    const cards=[...document.querySelectorAll('.ward-card')],needle=normalized(query);
+    const cards=[...document.querySelectorAll('.ward-card')];
     let shown=0;
     cards.forEach(card=>{
       const categoryMatch=category==='All'||kind(card)===category;
       const hidden=card.classList.contains('is-hidden');
       const ownershipMatch=ownership==='Hidden'?hidden:!hidden&&(ownership==='All'||ownership==='Owned'&&card.classList.contains('is-owned')||ownership==='Missing'&&card.classList.contains('is-missing')||ownership==='Wishlist'&&card.classList.contains('is-wishlist'));
-      const searchMatch=!needle||normalized(text(card)).includes(needle);
-      const show=categoryMatch&&ownershipMatch&&searchMatch;
+      const show=categoryMatch&&ownershipMatch;
       card.style.display=show?'':'none';
       if(show)shown++;
     });
@@ -47,8 +44,6 @@
     });
     const count=document.querySelector('.wardrobe-filter-count');
     if(count)count.textContent=`${shown} ${shown===1?'item':'items'}`;
-    const empty=document.querySelector('.wardrobe-search-empty');
-    if(empty)empty.hidden=shown!==0;
   }
   function chip(label,type){
     const active=(type==='category'?category:ownership)===label;
@@ -66,15 +61,11 @@
       bar=document.createElement('div');
       bar.className='wardrobe-filterbar';
       const total=[...document.querySelectorAll('.ward-card')].filter(card=>!card.classList.contains('is-hidden')).length;
-      bar.innerHTML=`<section class="closet-browser" aria-label="Wardrobe sections"><div class="closet-browser-head"><div><small>Your closet</small><strong>Choose a section</strong></div><button class="closet-view-all ${category==='All'?'active':''}" data-category="All" aria-pressed="${category==='All'}">${category==='All'?'Viewing all':`View all ${total}`}</button></div><div class="closet-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wardrobe-filter-chips wardrobe-category-chips">${availableCategories.map(x=>chip(x,'category')).join('')}</div></section><label class="wardrobe-search"><span aria-hidden="true">⌕</span><input type="search" placeholder="${category==='All'?'Search all wardrobe':`Search in ${META[category]?.label||category}`}" aria-label="Search selected wardrobe category"><button type="button" aria-label="Clear search" hidden>×</button></label><div class="wardrobe-filter-head wardrobe-status-head"><span>Show</span><b class="wardrobe-filter-count"></b></div><div class="wardrobe-filter-chips wardrobe-status-chips">${['All','Owned','Missing','Wishlist','Hidden'].map(x=>chip(x,'ownership')).join('')}</div><div class="wardrobe-search-empty" hidden>No items match this search.</div>`;
+      bar.innerHTML=`<section class="closet-browser" aria-label="Wardrobe sections"><div class="closet-browser-head"><div><small>Your closet</small><strong>Choose a section</strong></div><button class="closet-view-all ${category==='All'?'active':''}" data-category="All" aria-pressed="${category==='All'}">${category==='All'?'Viewing all':`View all ${total}`}</button></div><div class="closet-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wardrobe-filter-chips wardrobe-category-chips">${availableCategories.map(x=>chip(x,'category')).join('')}</div></section><div class="wardrobe-filter-head wardrobe-status-head"><span>Show</span><b class="wardrobe-filter-count"></b></div><div class="wardrobe-filter-chips wardrobe-status-chips">${['All','Owned','Missing','Wishlist','Hidden'].map(x=>chip(x,'ownership')).join('')}</div>`;
       grid.before(bar);
-      const input=bar.querySelector('input'),clear=bar.querySelector('.wardrobe-search button');
-      input.addEventListener('input',()=>{query=input.value;clear.hidden=!query;apply()});
-      clear.addEventListener('click',()=>{query='';input.value='';clear.hidden=true;input.focus();apply()});
       bar.querySelectorAll('[data-category]').forEach(btn=>btn.onclick=()=>{
         category=btn.dataset.category;
         bar.querySelectorAll('[data-category]').forEach(x=>{const active=x.dataset.category===category;x.classList.toggle('active',active);x.setAttribute('aria-pressed',active)});
-        input.placeholder=category==='All'?'Search all wardrobe':`Search in ${META[category]?.label||category}`;
         const viewAll=bar.querySelector('.closet-view-all');
         viewAll.classList.toggle('active',category==='All');
         viewAll.setAttribute('aria-pressed',category==='All');
