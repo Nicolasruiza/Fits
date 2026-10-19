@@ -5,7 +5,8 @@
   const CATEGORIES=['Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories','Other'];
   const requestedCategory=params.get('category');
   let category=requestedCategory==='All'||CATEGORIES.includes(requestedCategory)?requestedCategory:'Dress Shirts';
-  let ownership=params.get('status')==='missing'?'Missing':'All';
+  const requestedStatus=params.get('status');
+  let ownership={missing:'Missing',owned:'Owned',wishlist:'Wishlist',hidden:'Hidden'}[requestedStatus]||'All';
   let query='';
   const META={
     'Dress Shirts':{label:'Shirts',place:'Hanging',icon:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 13 8 18l4 8 4-2v14h16V24l4 2 4-8-7-5-4 4H19l-4-4Z"/><path d="m19 13 5 6 5-6M24 19v19"/></svg>'},
@@ -26,7 +27,7 @@
   function normalized(value){return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
   function updateUrl(){
     const next=new URLSearchParams({category});
-    if(ownership==='Missing')next.set('status','missing');
+    if(ownership!=='All')next.set('status',ownership.toLowerCase());
     history.replaceState(null,'',`wardrobe.html?${next}`);
   }
   function apply(){
@@ -34,7 +35,8 @@
     let shown=0;
     cards.forEach(card=>{
       const categoryMatch=category==='All'||kind(card)===category;
-      const ownershipMatch=ownership==='All'||ownership==='Owned'&&card.classList.contains('is-owned')||ownership==='Missing'&&card.classList.contains('is-missing');
+      const hidden=card.classList.contains('is-hidden');
+      const ownershipMatch=ownership==='Hidden'?hidden:!hidden&&(ownership==='All'||ownership==='Owned'&&card.classList.contains('is-owned')||ownership==='Missing'&&card.classList.contains('is-missing')||ownership==='Wishlist'&&card.classList.contains('is-wishlist'));
       const searchMatch=!needle||normalized(text(card)).includes(needle);
       const show=categoryMatch&&ownershipMatch&&searchMatch;
       card.style.display=show?'':'none';
@@ -51,7 +53,7 @@
   function chip(label,type){
     const active=(type==='category'?category:ownership)===label;
     if(type!=='category')return`<button class="wardrobe-filter-chip ${active?'active':''}" data-${type}="${label}" aria-pressed="${active}"><span>${label}</span></button>`;
-    const count=[...document.querySelectorAll('.ward-card')].filter(card=>kind(card)===label).length,meta=META[label];
+    const count=[...document.querySelectorAll('.ward-card')].filter(card=>kind(card)===label&&!card.classList.contains('is-hidden')).length,meta=META[label];
     return`<button class="wardrobe-filter-chip closet-section ${active?'active':''}" data-${type}="${label}" aria-pressed="${active}"><span class="closet-icon">${meta.icon}</span><span class="closet-label"><strong>${meta.label}</strong><small>${meta.place} · ${count}</small></span><span class="closet-check" aria-hidden="true">✓</span></button>`;
   }
   function enhance(){
@@ -63,8 +65,8 @@
     if(!bar){
       bar=document.createElement('div');
       bar.className='wardrobe-filterbar';
-      const total=document.querySelectorAll('.ward-card').length;
-      bar.innerHTML=`<section class="closet-browser" aria-label="Wardrobe sections"><div class="closet-browser-head"><div><small>Your closet</small><strong>Choose a section</strong></div><button class="closet-view-all ${category==='All'?'active':''}" data-category="All" aria-pressed="${category==='All'}">${category==='All'?'Viewing all':`View all ${total}`}</button></div><div class="closet-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wardrobe-filter-chips wardrobe-category-chips">${availableCategories.map(x=>chip(x,'category')).join('')}</div></section><label class="wardrobe-search"><span aria-hidden="true">⌕</span><input type="search" placeholder="${category==='All'?'Search all wardrobe':`Search in ${META[category]?.label||category}`}" aria-label="Search selected wardrobe category"><button type="button" aria-label="Clear search" hidden>×</button></label><div class="wardrobe-filter-head wardrobe-status-head"><span>Show</span><b class="wardrobe-filter-count"></b></div><div class="wardrobe-filter-chips wardrobe-status-chips">${['All','Owned','Missing'].map(x=>chip(x,'ownership')).join('')}</div><div class="wardrobe-search-empty" hidden>No items match this search.</div>`;
+      const total=[...document.querySelectorAll('.ward-card')].filter(card=>!card.classList.contains('is-hidden')).length;
+      bar.innerHTML=`<section class="closet-browser" aria-label="Wardrobe sections"><div class="closet-browser-head"><div><small>Your closet</small><strong>Choose a section</strong></div><button class="closet-view-all ${category==='All'?'active':''}" data-category="All" aria-pressed="${category==='All'}">${category==='All'?'Viewing all':`View all ${total}`}</button></div><div class="closet-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wardrobe-filter-chips wardrobe-category-chips">${availableCategories.map(x=>chip(x,'category')).join('')}</div></section><label class="wardrobe-search"><span aria-hidden="true">⌕</span><input type="search" placeholder="${category==='All'?'Search all wardrobe':`Search in ${META[category]?.label||category}`}" aria-label="Search selected wardrobe category"><button type="button" aria-label="Clear search" hidden>×</button></label><div class="wardrobe-filter-head wardrobe-status-head"><span>Show</span><b class="wardrobe-filter-count"></b></div><div class="wardrobe-filter-chips wardrobe-status-chips">${['All','Owned','Missing','Wishlist','Hidden'].map(x=>chip(x,'ownership')).join('')}</div><div class="wardrobe-search-empty" hidden>No items match this search.</div>`;
       grid.before(bar);
       const input=bar.querySelector('input'),clear=bar.querySelector('.wardrobe-search button');
       input.addEventListener('input',()=>{query=input.value;clear.hidden=!query;apply()});
@@ -76,7 +78,7 @@
         const viewAll=bar.querySelector('.closet-view-all');
         viewAll.classList.toggle('active',category==='All');
         viewAll.setAttribute('aria-pressed',category==='All');
-        viewAll.textContent=category==='All'?'Viewing all':`View all ${document.querySelectorAll('.ward-card').length}`;
+        viewAll.textContent=category==='All'?'Viewing all':`View all ${[...document.querySelectorAll('.ward-card')].filter(card=>!card.classList.contains('is-hidden')).length}`;
         updateUrl();
         apply();
       });
