@@ -42,11 +42,11 @@
    const cur=goodT?t:high,peak=goodHigh?high:cur;
    let season='Transitional';
    if(peak>=25 && cur>=18)season='Summer';
-   else if(peak<=11 || (cur<=2&&peak<=13))season='Cold';
+   else if(peak<=7 || (cur<=4&&peak<=13))season='Cold';
    let selected;
-   if(season==='Summer')selected=cur>=28?0:cur>=24?1:cur>=21?2:cur>=18?3:4;
-   else if(season==='Cold')selected=cur>=11?0:cur>=8?1:cur>=4?2:cur>=0?3:4;
-   else selected=cur>=21?0:cur>=17?1:cur>=12?2:cur>=4?3:4;
+   if(season==='Summer')selected=cur>=24?0:4;
+   else if(season==='Cold')selected=cur>=3?0:4;
+   else selected=cur>=15?0:4;
    return{season,level:selected,hasWeather:true,temp:cur,high:peak};
  }
  function selectedVariant(card){
