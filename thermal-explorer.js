@@ -194,7 +194,7 @@
    const modeLabel={warmer:'Warmer first',colder:'Colder first'}[modeForLevel(level)];
    hint.textContent=autoText+' · '+(open?labels[open]:'All seasons collapsed')+(open?' · '+modeLabel:'');
    const head=document.querySelector('.smart-rotation-head');
-   if(head){head.after(hint)}
+   if(head)head.after(hint);else grid.before(hint);
  }
  // Existing smart-home repaints cards and groups; enhance only after it has finished.
  window.addEventListener('fits:home-enhanced',()=>requestAnimationFrame(update));

@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const validOcc=['All','Office','Weekend','Dinner','Travel'],validSeason=['All','Summer','Transitional','Cold'];
+  const validOcc=['All','Favorites','Office','Weekend','Dinner','Travel'],validSeason=['All','Summer','Transitional','Cold'];
   let occasion=localStorage.getItem('fitsOccasionFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All';
   if(!validOcc.includes(occasion))occasion='All';
   if(!validSeason.includes(season))season='All';
@@ -10,7 +10,8 @@
   function allCards(){return[...document.querySelectorAll('a.card')]}
   function matches(card,occ=occasion,sea=season){
     const tags=(card.dataset.tags||'').split(',').filter(Boolean),ss=(card.dataset.seasons||'').split(',').filter(Boolean);
-    return(occ==='All'||tags.includes(occ))&&(sea==='All'||ss.includes(sea));
+    const occasionMatch=occ==='All'||occ==='Favorites'&&card.dataset.saved==='yes'||tags.includes(occ);
+    return occasionMatch&&(sea==='All'||ss.includes(sea));
   }
   function weatherSeason(){
     const w=read('fitsWeatherHome',null);if(!w)return null;
@@ -46,7 +47,7 @@
     let visible=0;
     allCards().forEach(card=>{const show=matches(card);card.classList.toggle('hidden',!show);if(show)visible++});
     const empty=document.querySelector('.empty');
-    if(empty){empty.style.display=visible?'none':'block';empty.textContent=`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'looks':occasion.toLowerCase()+' looks'} yet.`}
+    if(empty){empty.style.display=visible?'none':'block';empty.textContent=occasion==='Favorites'?'No favorite looks yet.':`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'looks':occasion.toLowerCase()+' looks'} yet.`}
     const count=document.querySelector('.filter-result-count');if(count)count.textContent=`${visible} ${visible===1?'family':'families'}`;
     updateChipCounts();
     const wrap=document.querySelector('.season-filter-wrap');if(wrap)updateWeatherHint(wrap);
@@ -56,6 +57,10 @@
     ensureStyle();
     const chips=document.querySelector('.chips');if(!chips)return;
     chips.classList.add('occasion-chips');
+    if(!chips.querySelector('[data-filter="Favorites"]')){
+      const button=document.createElement('button');button.className='chip';button.dataset.filter='Favorites';button.innerHTML='<span>★ Favorites</span><em></em>';
+      const all=chips.querySelector('[data-filter="All"]');all?.after(button);
+    }
     D.families.forEach(f=>{
       const card=allCards().find(c=>{try{return new URL(c.getAttribute('href'),location.href).searchParams.get('family')===f.id}catch(e){return false}});
       if(card){
@@ -71,7 +76,7 @@
       btn.onclick=e=>{e.preventDefault();occasion=name;localStorage.setItem('fitsOccasionFilter',occasion);chips.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter===occasion));apply()};
     });
     let occLabel=document.querySelector('.occasion-filter-label');
-    if(!occLabel){occLabel=document.createElement('div');occLabel.className='filter-label-row occasion-filter-label';occLabel.innerHTML='<span>Occasion</span><b>combine with season</b>';chips.before(occLabel)}
+    if(!occLabel){occLabel=document.createElement('div');occLabel.className='filter-label-row occasion-filter-label';occLabel.innerHTML='<span>Show</span><b>filter looks</b>';chips.before(occLabel)}
     let wrap=document.querySelector('.season-filter-wrap');
     if(!wrap){
       wrap=document.createElement('div');wrap.className='season-filter-wrap';
@@ -84,5 +89,6 @@
   }
   const original=window.render;
   if(typeof original==='function')window.render=function(...args){const out=original.apply(this,args);enhance();announce();return out};
+  window.addEventListener('fits:home-enhanced',()=>apply(false));
   enhance();announce();
 })();
