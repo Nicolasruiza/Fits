@@ -45,7 +45,6 @@ These already exist: download them from the original generation history and add 
 - `brown-derbies` — Brown derbies (missing) · looks: none
 - `dark-loafers` — Black loafers (missing) · looks: look-64, look-98
 - `brown-casual-shoes` — Brown casual shoes (missing) · looks: look-36
-- `tan-suede-shoes` — Tan suede casual shoes (missing) · looks: none
 - `brown-belt` — Brown belt (owned) · looks: look-40, look-42, look-49, look-53, look-62, look-63, look-82, look-89, look-94, look-95, look-96, look-97, look-110, look-111, look-116
 - `dark-belt` — Dark belt (owned) · looks: look-98, look-113, look-115
 - `navy-blazer` — Navy blazer (missing) · looks: look-50, look-68, look-92
@@ -91,7 +90,6 @@ Fallback prompt if an original cannot be recovered (use the approved reference, 
 - `brown-derbies` (Brown derbies) ↔ `brown-casual-shoes` (Brown casual shoes) ↔ `owned-darkbrown-suede-italian-laceup` (Dark brown suede Italian lace-up shoes) ↔ `owned-brown-leather-captoe` (Brown leather cap-toe dress shoes) ↔ `darkbrown-suede-loafers` (Dark brown suede loafers)
 - `dark-loafers` (Black loafers) ↔ `black-sneakers` (Black sneakers) ↔ `owned-black-leather-captoe` (Black leather cap-toe dress shoes)
 - `navy-leather-sneakers` (Navy blue sneakers) ↔ `owned-navy-suede-brogue` (Navy blue suede brogue shoes)
-- `tan-suede-derbies` (Tan suede derby shoes) ↔ `tan-suede-shoes` (Tan suede casual shoes)
 - `brown-leather-jacket` (Brown leather jacket) ↔ `brown-suede-jacket` (Brown suede jacket)
 - `black-polo` (Black polo) ↔ `black-tee` (Black crew-neck T-shirt)
 - `cream-knit-sweater` (Cream knit sweater) ↔ `cream-crewneck-sweater` (Cream crewneck sweater)

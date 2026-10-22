@@ -2,18 +2,18 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 97,
+  "pieces": 95,
   "owned": 31,
-  "missing": 66,
+  "missing": 64,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 84,
-  "externalPieceImages": 12,
+  "localPieceImages": 83,
+  "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
-  "orphanPieces": 17,
-  "unusedAssets": 63,
-  "needsReviewGroups": 14
+  "orphanPieces": 15,
+  "unusedAssets": 64,
+  "needsReviewGroups": 13
  },
  "climateConfig": {
   "comfort": {
@@ -543,17 +543,6 @@
    ]
   },
   {
-   "id": "tan-suede-derbies",
-   "name": "Tan suede derby shoes",
-   "category": "Shoes",
-   "ownership": "missing",
-   "class": "shoes",
-   "image": "assets/wardrobe-standardized/tan-suede-derbies.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
-  },
-  {
    "id": "taupe-suede-shoes",
    "name": "Taupe suede casual shoes",
    "category": "Shoes",
@@ -565,17 +554,6 @@
    "looks": [
     "look-42"
    ]
-  },
-  {
-   "id": "tan-suede-shoes",
-   "name": "Tan suede casual shoes",
-   "category": "Shoes",
-   "ownership": "missing",
-   "class": "shoes",
-   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214426_ef3cf42d-aaf5-40a2-855b-b1237b426bbd_min.webp",
-   "imageKind": "external",
-   "hasAlpha": null,
-   "looks": []
   },
   {
    "id": "brown-belt",
@@ -3909,14 +3887,6 @@
    "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
   },
   {
-   "key": "Shoes|shoes|tan",
-   "ids": [
-    "tan-suede-derbies",
-    "tan-suede-shoes"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
    "key": "Outerwear|leather-jacket|brown",
    "ids": [
     "brown-leather-jacket",
@@ -3958,7 +3928,6 @@
    "brown-derbies",
    "dark-loafers",
    "brown-casual-shoes",
-   "tan-suede-shoes",
    "brown-belt",
    "dark-belt",
    "navy-blazer",
@@ -4002,8 +3971,6 @@
    "olive-henley",
    "brown-derbies",
    "navy-leather-sneakers",
-   "tan-suede-derbies",
-   "tan-suede-shoes",
    "beige-blazer",
    "navy-bomber",
    "navy-cardigan",
@@ -4078,7 +4045,8 @@
    "assets/piece-cream-chinos.webp",
    "assets/piece-navy-quarterzip.webp",
    "assets/wardrobe-standardized/charcoal-trousers.png",
-   "assets/wardrobe-standardized/khaki-chinos.png"
+   "assets/wardrobe-standardized/khaki-chinos.png",
+   "assets/wardrobe-standardized/tan-suede-derbies.png"
   ]
  }
 }

@@ -63,4 +63,6 @@
   // Cream leather belt was removed at the user's request; looks that used it simply have no belt.
   D.looks.forEach(l=>{if((l.pieces||[]).includes('cream-belt'))l.pieces=l.pieces.filter(id=>id!=='cream-belt')});
   D.pieces=D.pieces.filter(p=>p.id!=='cream-belt');
+  // Two tan suede derby-style shoes with no looks were removed at the user's request.
+  D.pieces=D.pieces.filter(p=>!['tan-suede-shoes','tan-suede-derbies'].includes(p.id));
 })();

@@ -72,7 +72,6 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "tan-espadrilles": "assets/catalog-tan-espadrilles.webp?v=1",
   "tan-knit-sweater": "assets/catalog-tan-knit-sweater.webp?v=1",
   "tan-overshirt": "assets/catalog-tan-overshirt.webp?v=1",
-  "tan-suede-derbies": "assets/wardrobe-standardized/tan-suede-derbies.png?v=1",
   "taupe-suede-shoes": "assets/wardrobe-standardized/taupe-suede-shoes.png?v=1",
   "white-leather-sneakers": "assets/owned-br-white-leather-sneakers.webp?v=1",
   "white-linen-shorts": "assets/catalog-white-linen-shorts.webp?v=1",
