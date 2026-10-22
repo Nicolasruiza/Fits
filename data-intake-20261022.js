@@ -36,4 +36,18 @@
     if(!D.families.some(f=>f.id===family))D.families.push({id:family,name,hero:id,looks:[id]});
     if(!D.looks.some(l=>l.id===id))D.looks.push({id,family,name,image:image+'?v=1',formal,badges,pieces:ids});
   });
+  // The three olive-shirt looks are variants of one outfit idea (same shirt, belt and loafers/oxfords,
+  // different trousers or shoes), so they share a family instead of showing as near-duplicate cards.
+  const merged=D.families.find(f=>f.id==='family-olive-buttondown-cream');
+  if(merged){
+    merged.name='Olive shirt + chinos';
+    ['look-63','look-110'].forEach(id=>{
+      const look=D.looks.find(l=>l.id===id);
+      if(!look)return;
+      const old=D.families.find(f=>f.id===look.family);
+      look.family=merged.id;
+      if(!merged.looks.includes(id))merged.looks.push(id);
+      if(old&&old!==merged){old.looks=old.looks.filter(x=>x!==id);if(!old.looks.length)D.families=D.families.filter(f=>f!==old)}
+    });
+  }
 })();
