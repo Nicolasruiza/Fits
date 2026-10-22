@@ -30,16 +30,9 @@
     "Navy Quarter-Zip Knit Pullover.png": "navy-quarterzip already has a valid transparent image; not replaced"
   },
   "pendingIdentification": {
-    "reason": "Seven look photos sit in Downloads but were not in the chat attachments. Sweater types and shoes need confirmation before they get canonical piece IDs.",
-    "files": [
-      "Refined Urban Gentleman in Motion.png (cream sweater, charcoal trousers, black shoes)",
-      "Polished Urban Stroll in Navy and Khaki.png (navy crewneck, khaki chinos, brown shoes)",
-      "Urban Elegance in Motion(2).png (black crewneck, charcoal trousers, brown shoes)",
-      "Polished Urban Editorial Portrait.png (black V-neck, khaki chinos, brown shoes)",
-      "Urban Elegance on a Wet Sidewalk.png (beige crewneck, grey trousers, black shoes)",
-      "Elegant Urban Walk in Soft Light.png (charcoal quarter-zip, grey trousers, black shoes)",
-      "Elegant Stroll on a Stone Street.png (black sweater, khaki chinos, brown shoes)"
-    ]
+    "table": "audit/pending-photos-20261022.md",
+    "published": false,
+    "note": "Original prompts unrecoverable; identified visually, nothing published."
   },
   "needsReview": [
     {
@@ -65,7 +58,20 @@
     {
       "item": "new looks formal/badges",
       "why": "occasion badges and formality level were chosen from the outfit, not supplied by the user"
+    },
+    {
+      "item": "camel ribbed crewneck vs brown-ribbed-crewneck",
+      "why": "ChatGPT could not confirm they are the same sweater; kept as separate pieces"
     }
   ],
-  "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match."
+  "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match.",
+  "confirmedRules": [
+    "Navy V-neck is not a crewneck",
+    "Light-blue sweater is a crewneck",
+    "Cream sweater has no zip and is not the beige quarter-zip",
+    "Charcoal quarter-zip is distinct from the light-grey one",
+    "Light-blue striped shirt is distinct from plain Oxford and from checked shirts",
+    "Black chinos are distinct from black dress trousers",
+    "Dark-brown suede loafers are distinct from Oxfords and Chelseas"
+  ]
 }
