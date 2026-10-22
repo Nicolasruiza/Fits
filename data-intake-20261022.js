@@ -56,4 +56,6 @@
   D.looks=D.looks.filter(l=>l.id!=='look-93');
   D.families.forEach(f=>{f.looks=(f.looks||[]).filter(id=>id!=='look-93');if(f.hero==='look-93')f.hero=f.looks[0]});
   D.families=D.families.filter(f=>f.looks.length);
+  // Charcoal polo (no looks) was removed at the user's request.
+  D.pieces=D.pieces.filter(p=>p.id!=='charcoal-polo');
 })();

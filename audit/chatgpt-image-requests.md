@@ -57,7 +57,6 @@ These already exist: download them from the original generation history and add 
 ### Pieces
 
 - `white-polo` — White polo (owned) · looks: look-47, look-68, look-95, look-103
-- `charcoal-polo` — Charcoal polo (missing) · looks: none
 - `grey-polo` — Grey polo (missing) · looks: none
 - `navy-trousers` — Navy chinos (owned) · looks: look-41, look-70, look-73, look-72, look-88, look-89, look-90, look-92, look-109, look-113, look-114, look-117
 - `grey-trousers` — Grey chinos (owned) · looks: look-64, look-68, look-79, look-101, look-104, look-115, look-121, look-123

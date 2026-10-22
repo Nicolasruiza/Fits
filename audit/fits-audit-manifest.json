@@ -2,16 +2,16 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 104,
+  "pieces": 103,
   "owned": 31,
-  "missing": 73,
+  "missing": 72,
   "looks": 85,
   "families": 79,
   "localPieceImages": 86,
-  "externalPieceImages": 15,
+  "externalPieceImages": 14,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
-  "orphanPieces": 20,
+  "orphanPieces": 19,
   "unusedAssets": 59,
   "needsReviewGroups": 14
  },
@@ -105,17 +105,6 @@
     "look-82",
     "look-100"
    ]
-  },
-  {
-   "id": "charcoal-polo",
-   "name": "Charcoal polo",
-   "category": "Top",
-   "ownership": "missing",
-   "class": "tee",
-   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114356_1763426c-0396-4132-843d-7222cb2ecaf0_min.webp",
-   "imageKind": "external",
-   "hasAlpha": null,
-   "looks": []
   },
   {
    "id": "grey-polo",
@@ -4077,7 +4066,6 @@
  "knownDebt": {
   "externalImages": [
    "white-polo",
-   "charcoal-polo",
    "grey-polo",
    "navy-trousers",
    "grey-trousers",
@@ -4128,7 +4116,6 @@
    "darkbrown-suede-loafers"
   ],
   "orphanPieces": [
-   "charcoal-polo",
    "grey-polo",
    "navy-henley",
    "olive-henley",

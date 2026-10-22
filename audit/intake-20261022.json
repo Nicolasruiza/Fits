@@ -103,6 +103,7 @@
   "removed": {
     "dark-crewneck": "removed on user request (2026-10-22); look-122 now uses owned-black-vneck",
     "look-124": "not published: with the black V-neck it duplicates look-119 exactly; photo kept as assets/look-124-dark-crew-white-beige-brown.jpg (unused)",
-    "cognac-leather-biker-jacket": "removed on user request (2026-10-22) together with look-93; image files kept in assets/ (unused)"
+    "cognac-leather-biker-jacket": "removed on user request (2026-10-22) together with look-93; image files kept in assets/ (unused)",
+    "charcoal-polo": "removed on user request (2026-10-22); it was not used by any look"
   }
 }
