@@ -11,7 +11,9 @@
       "look-114": "Refined Walk on a Rain-Kissed Street.png",
       "look-115": "Urban Elegance in Navy and Gray.png",
       "look-116": "Urban Elegance in Warm Stone Light.png",
-      "look-117": "Urban Elegance in Camel and Navy.png"
+      "look-117": "Urban Elegance in Camel and Navy.png",
+      "look-118": "Polished Urban Stroll in Navy and Khaki.png",
+      "look-119": "Polished Urban Editorial Portrait.png"
     },
     "pieceImages": {
       "navy-vneck-sweater": "Navy V-Neck Sweater Cutout.png",
@@ -31,8 +33,15 @@
   },
   "pendingIdentification": {
     "table": "audit/pending-photos-20261022.md",
-    "published": false,
-    "note": "Original prompts unrecoverable; identified visually, nothing published."
+    "published": "2 of 7 (look-118, look-119)",
+    "held": [
+      "Refined Urban Gentleman in Motion.png",
+      "Urban Elegance in Motion(2).png",
+      "Urban Elegance on a Wet Sidewalk.png",
+      "Elegant Urban Walk in Soft Light.png",
+      "Elegant Stroll on a Stone Street.png"
+    ],
+    "note": "Held photos stay Needs review; no pieces were created or merged for them."
   },
   "needsReview": [
     {
@@ -62,6 +71,10 @@
     {
       "item": "camel ribbed crewneck vs brown-ribbed-crewneck",
       "why": "ChatGPT could not confirm they are the same sweater; kept as separate pieces"
+    },
+    {
+      "item": "photo 6 charcoal quarter-zip",
+      "why": "ChatGPT proposed owned-grey-quarterzip, which is light grey; charcoal-quarterzip kept separate"
     }
   ],
   "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match.",

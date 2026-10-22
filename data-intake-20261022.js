@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  // Intake 2026-10-22: nine approved FITS-model looks and the garment cut-outs that came with them.
+  // Intake 2026-10-22: approved FITS-model looks (117-119) and the garment cut-outs that came with them.
   // New pieces are Missing until ownership is confirmed; nothing here is inferred as Owned.
   const pieces=[
     {id:'navy-vneck-sweater',name:'Navy V-neck sweater',category:'Top'},
@@ -22,7 +22,9 @@
     ['look-114','Light blue crewneck + white shirt + navy chinos + black cap-toe shoes','assets/look-114-lightblue-crew-navy-black.jpg',3,['Office'],['light-blue-crewneck','white-shirt','navy-trousers','owned-black-leather-captoe']],
     ['look-115','Navy V-neck + white shirt + grey chinos + black cap-toe shoes','assets/look-115-navy-vneck-grey-black.jpg',3,['Office','Dinner'],['navy-vneck-sweater','white-shirt','grey-trousers','dark-belt','owned-black-leather-captoe']],
     ['look-116','Light blue shirt + khaki chinos + dark brown suede loafers','assets/look-116-lightblue-khaki-suede-loafers.jpg',3,['Office','Weekend'],['light-blue-oxford','khaki-chinos','brown-belt','darkbrown-suede-loafers']],
-    ['look-117','Camel ribbed crewneck + light blue shirt + navy chinos + black cap-toe shoes','assets/look-117-camel-ribbed-navy-black.jpg',3,['Office','Dinner'],['camel-ribbed-crewneck','light-blue-oxford','navy-trousers','dark-belt','owned-black-leather-captoe']]
+    ['look-117','Camel ribbed crewneck + light blue shirt + navy chinos + black cap-toe shoes','assets/look-117-camel-ribbed-navy-black.jpg',3,['Office','Dinner'],['camel-ribbed-crewneck','light-blue-oxford','navy-trousers','dark-belt','owned-black-leather-captoe']],
+    ['look-118','Navy crewneck + light blue shirt + beige chinos + brown cap-toe shoes','assets/look-118-navy-crew-lightblue-beige-brown.jpg',2,['Office','Weekend'],['navy-crewneck','light-blue-oxford','beige-chinos','owned-brown-leather-captoe']],
+    ['look-119','Black V-neck + white shirt + beige chinos + brown cap-toe shoes','assets/look-119-black-vneck-white-beige-brown.jpg',3,['Office','Dinner'],['owned-black-vneck','white-shirt','beige-chinos','owned-brown-leather-captoe']]
   ];
   looks.forEach(([id,name,image,formal,badges,ids])=>{
     const family='family-'+id;

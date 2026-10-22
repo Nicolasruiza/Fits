@@ -5,8 +5,8 @@
   "pieces": 106,
   "owned": 31,
   "missing": 75,
-  "looks": 80,
-  "families": 75,
+  "looks": 82,
+  "families": 77,
   "localPieceImages": 87,
   "externalPieceImages": 16,
   "pieceImagesWithoutAlpha": 4,
@@ -146,7 +146,8 @@
     "look-108",
     "look-113",
     "look-116",
-    "look-117"
+    "look-117",
+    "look-118"
    ]
   },
   {
@@ -170,7 +171,8 @@
     "look-101",
     "look-111",
     "look-114",
-    "look-115"
+    "look-115",
+    "look-119"
    ]
   },
   {
@@ -233,7 +235,8 @@
     "look-70",
     "look-73",
     "look-75",
-    "look-87"
+    "look-87",
+    "look-118"
    ]
   },
   {
@@ -404,7 +407,9 @@
     "look-82",
     "look-99",
     "look-106",
-    "look-108"
+    "look-108",
+    "look-118",
+    "look-119"
    ]
   },
   {
@@ -1287,7 +1292,8 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
-    "look-79"
+    "look-79",
+    "look-119"
    ]
   },
   {
@@ -1453,7 +1459,9 @@
    "looks": [
     "look-89",
     "look-110",
-    "look-111"
+    "look-111",
+    "look-118",
+    "look-119"
    ]
   },
   {
@@ -3810,6 +3818,61 @@
     13.3
    ],
    "warmth": 2.65,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-118",
+   "name": "Navy crewneck + light blue shirt + beige chinos + brown cap-toe shoes",
+   "pieces": [
+    "navy-crewneck",
+    "light-blue-oxford",
+    "beige-chinos",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "navy-crewneck",
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-118-navy-crew-lightblue-beige-brown.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-119",
+   "name": "Black V-neck + white shirt + beige chinos + brown cap-toe shoes",
+   "pieces": [
+    "owned-black-vneck",
+    "white-shirt",
+    "beige-chinos",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "white-shirt"
+   ],
+   "image": "assets/look-119-black-vneck-white-beige-brown.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
    "winterLayerable": true
   }
  ],
