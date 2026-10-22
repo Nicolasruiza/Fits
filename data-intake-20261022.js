@@ -60,4 +60,7 @@
   D.pieces=D.pieces.filter(p=>p.id!=='camel-ribbed-crewneck');
   D.looks=D.looks.filter(l=>l.id!=='look-117');
   D.families=D.families.filter(f=>f.id!=='family-look-117');
+  // Cream leather belt was removed at the user's request; looks that used it simply have no belt.
+  D.looks.forEach(l=>{if((l.pieces||[]).includes('cream-belt'))l.pieces=l.pieces.filter(id=>id!=='cream-belt')});
+  D.pieces=D.pieces.filter(p=>p.id!=='cream-belt');
 })();

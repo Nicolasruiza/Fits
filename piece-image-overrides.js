@@ -79,6 +79,5 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "white-shirt": "assets/wardrobe-standardized/white-shirt.png?v=1",
   "white-tee": "assets/wardrobe-standardized/white-tee.png?v=1",
   "olive-cable-knit-sweater": "assets/catalog-olive-cable-knit-sweater.webp?v=1",
-  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck.webp?v=1",
-  "cream-belt": "assets/catalog-cream-belt.webp?v=1"
+  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck.webp?v=1"
 });

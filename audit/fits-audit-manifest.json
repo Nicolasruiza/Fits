@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 98,
+  "pieces": 97,
   "owned": 31,
-  "missing": 67,
+  "missing": 66,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 85,
+  "localPieceImages": 84,
   "externalPieceImages": 12,
-  "pieceImagesWithoutAlpha": 3,
+  "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
   "orphanPieces": 17,
-  "unusedAssets": 62,
+  "unusedAssets": 63,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -1032,19 +1032,6 @@
    "ownership": "missing",
    "class": "heavy-knit",
    "image": "assets/catalog-brown-ribbed-crewneck.webp",
-   "imageKind": "local",
-   "hasAlpha": false,
-   "looks": [
-    "look-91"
-   ]
-  },
-  {
-   "id": "cream-belt",
-   "name": "Cream leather belt",
-   "category": "Accessory",
-   "ownership": "missing",
-   "class": "accessory",
-   "image": "assets/catalog-cream-belt.webp",
    "imageKind": "local",
    "hasAlpha": false,
    "looks": [
@@ -2983,13 +2970,11 @@
    "pieces": [
     "brown-ribbed-crewneck",
     "cream-chinos",
-    "cream-belt",
     "white-leather-sneakers"
    ],
    "missingPieces": [
     "brown-ribbed-crewneck",
-    "cream-chinos",
-    "cream-belt"
+    "cream-chinos"
    ],
    "image": "assets/look-91-approved-intake.webp",
    "imageKind": "local",
@@ -4003,8 +3988,7 @@
   ],
   "noAlpha": [
    "olive-cable-knit-sweater",
-   "brown-ribbed-crewneck",
-   "cream-belt"
+   "brown-ribbed-crewneck"
   ],
   "opaqueBackground": [
    "white-shirt"
@@ -4035,6 +4019,7 @@
    "assets/beige-buttondown.webp",
    "assets/catalog-beige-quarterzip.webp",
    "assets/catalog-cognac-leather-biker-jacket.webp",
+   "assets/catalog-cream-belt.webp",
    "assets/catalog-green-buttonup.webp",
    "assets/catalog-stone-shirt.webp",
    "assets/look-117-camel-ribbed-navy-black.jpg",
