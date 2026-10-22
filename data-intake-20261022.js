@@ -51,4 +51,9 @@
   }
   // The old "Dark crewneck" item was removed at the user's request; its looks point at the black V-neck.
   D.pieces=D.pieces.filter(p=>p.id!=='dark-crewneck');
+  // Cognac leather biker jacket and its only look (look-93) were removed at the user's request.
+  D.pieces=D.pieces.filter(p=>p.id!=='cognac-leather-biker-jacket');
+  D.looks=D.looks.filter(l=>l.id!=='look-93');
+  D.families.forEach(f=>{f.looks=(f.looks||[]).filter(id=>id!=='look-93');if(f.hero==='look-93')f.hero=f.looks[0]});
+  D.families=D.families.filter(f=>f.looks.length);
 })();

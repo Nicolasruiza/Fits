@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 105,
+  "pieces": 104,
   "owned": 31,
-  "missing": 74,
-  "looks": 86,
+  "missing": 73,
+  "looks": 85,
   "families": 79,
-  "localPieceImages": 87,
+  "localPieceImages": 86,
   "externalPieceImages": 15,
-  "pieceImagesWithoutAlpha": 4,
+  "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
   "orphanPieces": 20,
-  "unusedAssets": 58,
+  "unusedAssets": 59,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -442,7 +442,6 @@
     "look-84",
     "look-85",
     "look-86",
-    "look-93",
     "look-100",
     "look-107"
    ]
@@ -861,8 +860,7 @@
    "hasAlpha": true,
    "looks": [
     "look-44",
-    "look-48",
-    "look-93"
+    "look-48"
    ]
   },
   {
@@ -1114,19 +1112,6 @@
    "hasAlpha": false,
    "looks": [
     "look-91"
-   ]
-  },
-  {
-   "id": "cognac-leather-biker-jacket",
-   "name": "Cognac leather biker jacket",
-   "category": "Outerwear",
-   "ownership": "missing",
-   "class": "leather-jacket",
-   "image": "assets/catalog-cognac-leather-biker-jacket.webp",
-   "imageKind": "local",
-   "hasAlpha": false,
-   "looks": [
-    "look-93"
    ]
   },
   {
@@ -1479,8 +1464,7 @@
     "look-81",
     "look-85",
     "look-87",
-    "look-90",
-    "look-93"
+    "look-90"
    ]
   },
   {
@@ -3127,35 +3111,6 @@
    "winterLayerable": false
   },
   {
-   "id": "look-93",
-   "name": "Cognac biker jacket + grey crewneck + dark denim + suede Chelsea boots",
-   "pieces": [
-    "cognac-leather-biker-jacket",
-    "grey-crewneck",
-    "dark-denim",
-    "owned-darkbrown-suede-chelsea"
-   ],
-   "missingPieces": [
-    "cognac-leather-biker-jacket",
-    "grey-crewneck"
-   ],
-   "image": "assets/look-93-approved-intake.webp",
-   "imageKind": "local",
-   "seasons": [
-    "Transition",
-    "Winter"
-   ],
-   "thermal": [
-    "Colder"
-   ],
-   "comfortC": [
-    3.5,
-    12.5
-   ],
-   "warmth": 2.75,
-   "winterLayerable": false
-  },
-  {
    "id": "look-94",
    "name": "Olive button-down + cream trousers + brown loafers",
    "pieces": [
@@ -4162,8 +4117,7 @@
   "noAlpha": [
    "olive-cable-knit-sweater",
    "brown-ribbed-crewneck",
-   "cream-belt",
-   "cognac-leather-biker-jacket"
+   "cream-belt"
   ],
   "opaqueBackground": [
    "white-shirt"
@@ -4198,6 +4152,7 @@
   "unusedAssets": [
    "assets/beige-buttondown.webp",
    "assets/catalog-beige-quarterzip.webp",
+   "assets/catalog-cognac-leather-biker-jacket.webp",
    "assets/catalog-green-buttonup.webp",
    "assets/catalog-stone-shirt.webp",
    "assets/look-12-hq.webp",
