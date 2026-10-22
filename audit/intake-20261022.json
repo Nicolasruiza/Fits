@@ -65,10 +65,6 @@
       "why": "ChatGPT proposed owned-grey-quarterzip, which is light grey; charcoal-quarterzip kept separate"
     },
     {
-      "item": "look-120 and look-121 sweater",
-      "why": "user confirmed it is the darker of cream/tan: tan-knit-sweater"
-    },
-    {
       "item": "look-120 trousers black-chinos; look-121 trousers grey-trousers",
       "why": "photos show black / mid-grey trousers; chino cut is 'probably', not confirmed"
     },
@@ -79,6 +75,10 @@
     {
       "item": "look-122 sweater",
       "why": "photo shows a black crewneck; linked to owned-black-vneck at user request"
+    },
+    {
+      "item": "look-120 and look-121 sweater",
+      "why": "relinked from tan-knit-sweater to cream-crewneck-sweater on user request (2026-10-22)"
     }
   ],
   "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match.",

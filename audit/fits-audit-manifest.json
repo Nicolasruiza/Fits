@@ -11,7 +11,7 @@
   "externalPieceImages": 12,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
-  "orphanPieces": 18,
+  "orphanPieces": 17,
   "unusedAssets": 62,
   "needsReviewGroups": 14
  },
@@ -888,9 +888,7 @@
    "hasAlpha": true,
    "looks": [
     "look-58",
-    "look-85",
-    "look-120",
-    "look-121"
+    "look-85"
    ]
   },
   {
@@ -1461,7 +1459,10 @@
    "image": "assets/wardrobe-standardized/cream-crewneck-sweater.png",
    "imageKind": "local",
    "hasAlpha": true,
-   "looks": []
+   "looks": [
+    "look-120",
+    "look-121"
+   ]
   },
   {
    "id": "charcoal-quarterzip",
@@ -3727,15 +3728,15 @@
   },
   {
    "id": "look-120",
-   "name": "Tan knit sweater + light blue shirt + black chinos + black cap-toe shoes",
+   "name": "Cream crewneck sweater + light blue shirt + black chinos + black cap-toe shoes",
    "pieces": [
-    "tan-knit-sweater",
+    "cream-crewneck-sweater",
     "light-blue-oxford",
     "black-chinos",
     "owned-black-leather-captoe"
    ],
    "missingPieces": [
-    "tan-knit-sweater",
+    "cream-crewneck-sweater",
     "light-blue-oxford",
     "black-chinos"
    ],
@@ -3756,15 +3757,15 @@
   },
   {
    "id": "look-121",
-   "name": "Tan knit sweater + white shirt + grey chinos + black cap-toe shoes",
+   "name": "Cream crewneck sweater + white shirt + grey chinos + black cap-toe shoes",
    "pieces": [
-    "tan-knit-sweater",
+    "cream-crewneck-sweater",
     "white-shirt",
     "grey-trousers",
     "owned-black-leather-captoe"
    ],
    "missingPieces": [
-    "tan-knit-sweater",
+    "cream-crewneck-sweater",
     "white-shirt"
    ],
    "image": "assets/look-121-tan-knit-white-grey-black.jpg",
@@ -4028,7 +4029,6 @@
    "owned-rwb-check-shirt",
    "owned-navy-suede-chelsea",
    "owned-navy-suede-brogue",
-   "cream-crewneck-sweater",
    "sky-blue-striped-dress-shirt"
   ],
   "unusedAssets": [
