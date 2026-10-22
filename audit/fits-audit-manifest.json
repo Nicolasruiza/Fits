@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 102,
+  "pieces": 101,
   "owned": 31,
-  "missing": 71,
+  "missing": 70,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 87,
+  "localPieceImages": 86,
   "externalPieceImages": 14,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
   "orphanPieces": 19,
-  "unusedAssets": 60,
+  "unusedAssets": 61,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -284,21 +284,6 @@
    ]
   },
   {
-   "id": "charcoal-trousers",
-   "name": "Charcoal chinos",
-   "category": "Pants",
-   "ownership": "missing",
-   "class": "trousers",
-   "image": "assets/wardrobe-standardized/charcoal-trousers.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": [
-    "look-55",
-    "look-56",
-    "look-98"
-   ]
-  },
-  {
    "id": "navy-trousers",
    "name": "Navy chinos",
    "category": "Pants",
@@ -404,7 +389,10 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
-    "look-44"
+    "look-44",
+    "look-55",
+    "look-56",
+    "look-98"
    ]
   },
   {
@@ -2068,11 +2056,11 @@
    "name": "Black polo + charcoal trousers + black Chelsea boots",
    "pieces": [
     "black-polo",
-    "charcoal-trousers",
+    "dark-chinos",
     "black-chelsea"
    ],
    "missingPieces": [
-    "charcoal-trousers",
+    "dark-chinos",
     "black-chelsea"
    ],
    "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_2c7e9938-64c0-47f9-8c58-1608cbb2f0a3.png",
@@ -2096,13 +2084,13 @@
    "name": "Black turtleneck + charcoal trousers + black overcoat",
    "pieces": [
     "black-turtleneck",
-    "charcoal-trousers",
+    "dark-chinos",
     "black-overcoat",
     "black-chelsea"
    ],
    "missingPieces": [
     "black-turtleneck",
-    "charcoal-trousers",
+    "dark-chinos",
     "black-overcoat",
     "black-chelsea"
    ],
@@ -3201,13 +3189,13 @@
    "name": "Light grey polo + charcoal trousers + black loafers",
    "pieces": [
     "lightgrey-polo",
-    "charcoal-trousers",
+    "dark-chinos",
     "dark-loafers",
     "dark-belt"
    ],
    "missingPieces": [
     "lightgrey-polo",
-    "charcoal-trousers",
+    "dark-chinos",
     "dark-loafers"
    ],
    "image": "assets/look-98-lightgrey-charcoal.webp",
@@ -4146,7 +4134,8 @@
    "assets/piece-charcoal-chinos.webp",
    "assets/piece-cognac-suede-jacket.webp",
    "assets/piece-cream-chinos.webp",
-   "assets/piece-navy-quarterzip.webp"
+   "assets/piece-navy-quarterzip.webp",
+   "assets/wardrobe-standardized/charcoal-trousers.png"
   ]
  }
 }

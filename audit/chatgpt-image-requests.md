@@ -72,8 +72,8 @@ These already exist: download them from the original generation history and add 
 - `look-52` — Black polo + dark denim + white sneakers · pieces: black-polo, dark-denim, white-leather-sneakers
 - `look-53` — Light blue shirt + cream knit + cream trousers + brown loafers · pieces: light-blue-oxford, cream-knit-sweater, cream-chinos, brown-loafers, brown-belt
 - `look-54` — Olive overshirt + white tee + cream trousers + white sneakers · pieces: olive-overshirt, white-tee, cream-chinos, white-leather-sneakers
-- `look-55` — Black polo + charcoal trousers + black Chelsea boots · pieces: black-polo, charcoal-trousers, black-chelsea
-- `look-56` — Black turtleneck + charcoal trousers + black overcoat · pieces: black-turtleneck, charcoal-trousers, black-overcoat, black-chelsea
+- `look-55` — Black polo + charcoal trousers + black Chelsea boots · pieces: black-polo, dark-chinos, black-chelsea
+- `look-56` — Black turtleneck + charcoal trousers + black overcoat · pieces: black-turtleneck, dark-chinos, black-overcoat, black-chelsea
 - `look-58` — Brown overcoat + tan knit + olive trousers + brown boots · pieces: brown-overcoat, tan-knit-sweater, olive-trousers, owned-brown-buckle-chelsea
 - `look-59` — Cream knit sweater + olive trousers + white sneakers · pieces: cream-knit-sweater, olive-trousers, white-leather-sneakers
 - `look-60` — White shirt + dark denim + white sneakers · pieces: white-shirt, dark-denim, white-leather-sneakers
