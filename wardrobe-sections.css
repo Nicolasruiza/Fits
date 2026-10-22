@@ -5,3 +5,5 @@
 .ward-section-head span{min-width:24px;height:20px;padding:0 7px;border-radius:999px;display:grid;place-items:center;background:#e3e8e5;color:#68736d;font-size:8px;font-weight:800}
 .ward-section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .ward-section:last-child{margin-bottom:4px}
+
+.ward-photo .linked-badge{position:absolute;right:8px;bottom:8px;z-index:2;padding:5px 9px;border-radius:999px;background:#fff;color:#20262a;box-shadow:0 0 0 1px #cdd5d2;font-size:9px;font-weight:800;letter-spacing:.02em}.ward-photo .linked-badge::before{content:'⇄ '}
