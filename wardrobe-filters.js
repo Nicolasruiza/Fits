@@ -3,6 +3,7 @@
 
   const params=new URLSearchParams(location.search);
   const CATEGORIES=['Dress Shirts','T-Shirts & Polos','Sweaters & Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories','Other'];
+  try{if(location.search)sessionStorage.setItem('fitsWardrobeUrl','wardrobe.html'+location.search)}catch(e){}
   const impactMin=Math.max(0,Number(params.get('impact'))||0);
   const requestedCategory=params.get('category');
   let category=requestedCategory==='All'||CATEGORIES.includes(requestedCategory)?requestedCategory:(impactMin?'All':'Dress Shirts');
@@ -37,6 +38,7 @@
     if(ownership!=='All')next.set('status',ownership.toLowerCase());
     if(impactMin)next.set('impact',String(impactMin));
     history.replaceState(null,'',`wardrobe.html?${next}`);
+    try{sessionStorage.setItem('fitsWardrobeUrl',`wardrobe.html?${next}`)}catch(e){}
   }
   function apply(){
     const cards=[...document.querySelectorAll('.ward-card')];

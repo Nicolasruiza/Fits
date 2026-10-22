@@ -4,6 +4,15 @@
   const item=piece(id);
   if(!item){document.body.innerHTML='<main class="piece-error"><a href="wardrobe.html">← Wardrobe</a><h1>Piece not found</h1></main>';return}
 
+  // Back returns to the exact Wardrobe view (category, status, scroll) the piece was opened from.
+  let backUrl='wardrobe.html';
+  try{backUrl=sessionStorage.getItem('fitsWardrobeUrl')||backUrl}catch(e){}
+  document.addEventListener('click',e=>{
+    const back=e.target.closest?.('.piece-back');if(!back)return;
+    back.setAttribute('href',backUrl);
+    if(/wardrobe\.html/.test(document.referrer)&&history.length>1){e.preventDefault();history.back()}
+  });
+
   let wishlist=new Set(safeJSON('fitsWishlistPieces',[]));
   let hidden=new Set(safeJSON('fitsHiddenPieces',[]));
   const related=stylesForPiece(id).sort((a,b)=>missingFor(a).length-missingFor(b).length||a.name.localeCompare(b.name));
@@ -18,7 +27,7 @@
     const ownedNow=isOwned(id),saved=wishlist.has(id),isHidden=hidden.has(id);
     document.body.innerHTML=`<div class="app wardrobe-v2 piece-detail-app">
       <main class="piece-detail-main">
-        <div class="piece-detail-top"><a class="piece-back" href="wardrobe.html" aria-label="Back to wardrobe">←</a><span>${item.category}</span></div>
+        <div class="piece-detail-top"><a class="piece-back" href="${backUrl}" aria-label="Back to wardrobe">←</a><span>${item.category}</span></div>
         <div class="piece-detail-photo ward-photo">${piecePhoto(item)}<span class="piece-status-badge ${ownedNow?'owned':'missing'}">${ownedNow?'In wardrobe':'Missing'}</span></div>
         <section class="piece-detail-copy">
           <p>Wardrobe piece</p><h1>${item.name}</h1>
