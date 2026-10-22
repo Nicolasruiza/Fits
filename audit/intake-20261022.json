@@ -15,7 +15,10 @@
       "look-118": "Polished Urban Stroll in Navy and Khaki.png",
       "look-119": "Polished Urban Editorial Portrait.png",
       "look-120": "Refined Urban Gentleman in Motion.png",
-      "look-121": "Urban Elegance on a Wet Sidewalk.png"
+      "look-121": "Urban Elegance on a Wet Sidewalk.png",
+      "look-122": "Urban Elegance in Motion(2).png",
+      "look-123": "Elegant Urban Walk in Soft Light.png",
+      "look-124": "Elegant Stroll on a Stone Street.png"
     },
     "pieceImages": {
       "navy-vneck-sweater": "Navy V-Neck Sweater Cutout.png",
@@ -35,13 +38,8 @@
   },
   "pendingIdentification": {
     "table": "audit/pending-photos-20261022.md",
-    "published": "4 of 7 (look-118, 119, 120, 121)",
-    "held": [
-      "Urban Elegance in Motion(2).png",
-      "Elegant Urban Walk in Soft Light.png",
-      "Elegant Stroll on a Stone Street.png"
-    ],
-    "note": "Held photos stay Needs review; no pieces were created or merged for them."
+    "published": "all 7 (look-118 to look-124)",
+    "held": []
   },
   "needsReview": [
     {
@@ -83,6 +81,14 @@
     {
       "item": "look-120 trousers black-chinos; look-121 trousers grey-trousers",
       "why": "photos show black / mid-grey trousers; chino cut is 'probably', not confirmed"
+    },
+    {
+      "item": "look-122 and look-124 dark-crewneck",
+      "why": "user believes the black crewneck is already registered; dark-crewneck is the only candidate and its colour (black vs navy/charcoal) could not be checked because its image is hosted externally"
+    },
+    {
+      "item": "look-123 charcoal-quarterzip",
+      "why": "ChatGPT proposed owned-grey-quarterzip (light grey); the charcoal piece added from the user's cut-out was used instead; trousers grey-trousers are probable"
     }
   ],
   "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match.",

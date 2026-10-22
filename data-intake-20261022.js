@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  // Intake 2026-10-22: approved FITS-model looks (117-121) and the garment cut-outs that came with them.
+  // Intake 2026-10-22: approved FITS-model looks (117-124) and the garment cut-outs that came with them.
   // New pieces are Missing until ownership is confirmed; nothing here is inferred as Owned.
   const pieces=[
     {id:'navy-vneck-sweater',name:'Navy V-neck sweater',category:'Top'},
@@ -26,7 +26,10 @@
     ['look-118','Navy crewneck + light blue shirt + beige chinos + brown cap-toe shoes','assets/look-118-navy-crew-lightblue-beige-brown.jpg',2,['Office','Weekend'],['navy-crewneck','light-blue-oxford','beige-chinos','owned-brown-leather-captoe']],
     ['look-119','Black V-neck + white shirt + beige chinos + brown cap-toe shoes','assets/look-119-black-vneck-white-beige-brown.jpg',3,['Office','Dinner'],['owned-black-vneck','white-shirt','beige-chinos','owned-brown-leather-captoe']],
     ['look-120','Tan knit sweater + light blue shirt + black chinos + black cap-toe shoes','assets/look-120-tan-knit-lightblue-black-black.jpg',3,['Office','Dinner'],['tan-knit-sweater','light-blue-oxford','black-chinos','owned-black-leather-captoe']],
-    ['look-121','Tan knit sweater + white shirt + grey chinos + black cap-toe shoes','assets/look-121-tan-knit-white-grey-black.jpg',3,['Office','Dinner'],['tan-knit-sweater','white-shirt','grey-trousers','owned-black-leather-captoe']]
+    ['look-121','Tan knit sweater + white shirt + grey chinos + black cap-toe shoes','assets/look-121-tan-knit-white-grey-black.jpg',3,['Office','Dinner'],['tan-knit-sweater','white-shirt','grey-trousers','owned-black-leather-captoe']],
+    ['look-122','Dark crewneck + light blue shirt + black chinos + brown cap-toe shoes','assets/look-122-dark-crew-lightblue-black-brown.jpg',3,['Office','Dinner'],['dark-crewneck','light-blue-oxford','black-chinos','owned-brown-leather-captoe']],
+    ['look-123','Charcoal quarter-zip + white shirt + grey chinos + black cap-toe shoes','assets/look-123-charcoal-qz-white-grey-black.jpg',3,['Office','Weekend'],['charcoal-quarterzip','white-shirt','grey-trousers','owned-black-leather-captoe']],
+    ['look-124','Dark crewneck + white shirt + beige chinos + brown cap-toe shoes','assets/look-124-dark-crew-white-beige-brown.jpg',3,['Office','Dinner'],['dark-crewneck','white-shirt','beige-chinos','owned-brown-leather-captoe']]
   ];
   looks.forEach(([id,name,image,formal,badges,ids])=>{
     const family='family-'+id;
