@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 100,
+  "pieces": 99,
   "owned": 31,
-  "missing": 69,
+  "missing": 68,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 85,
+  "localPieceImages": 84,
   "externalPieceImages": 14,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
-  "orphanPieces": 19,
-  "unusedAssets": 62,
+  "orphanPieces": 18,
+  "unusedAssets": 63,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -324,17 +324,6 @@
     "look-42",
     "look-96"
    ]
-  },
-  {
-   "id": "light-grey-trousers",
-   "name": "Light grey chinos",
-   "category": "Pants",
-   "ownership": "missing",
-   "class": "trousers",
-   "image": "assets/wardrobe-standardized/light-grey-trousers.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
   },
   {
    "id": "beige-chinos",
@@ -4042,7 +4031,6 @@
    "grey-polo",
    "navy-henley",
    "olive-henley",
-   "light-grey-trousers",
    "brown-derbies",
    "navy-leather-sneakers",
    "tan-suede-derbies",
@@ -4121,7 +4109,8 @@
    "assets/piece-cream-chinos.webp",
    "assets/piece-navy-quarterzip.webp",
    "assets/wardrobe-standardized/charcoal-trousers.png",
-   "assets/wardrobe-standardized/khaki-chinos.png"
+   "assets/wardrobe-standardized/khaki-chinos.png",
+   "assets/wardrobe-standardized/light-grey-trousers.png"
   ]
  }
 }
