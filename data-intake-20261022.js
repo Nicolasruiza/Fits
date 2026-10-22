@@ -67,4 +67,6 @@
   D.pieces=D.pieces.filter(p=>!['tan-suede-shoes','tan-suede-derbies'].includes(p.id));
   // Beige blazer (no looks) was removed at the user's request.
   D.pieces=D.pieces.filter(p=>p.id!=='beige-blazer');
+  // "Jackets" was a one-piece category (cognac suede jacket). It is outerwear, so it can be linked with the other jackets.
+  D.pieces.forEach(p=>{if(p.category==='Jackets')p.category='Outerwear'});
 })();

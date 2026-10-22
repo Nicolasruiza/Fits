@@ -33,7 +33,7 @@ if(!D||!C)throw new Error('FITS_DATA or FITS_CLIMATE missing from the runtime pi
 const errors=[],warnings=[];
 const err=m=>errors.push(m),warn=m=>warnings.push(m);
 const validStatus=new Set(['owned','missing']);
-const validCategory=new Set(['Top','Pants','Shoes','Outerwear','Jackets','Accessory']);
+const validCategory=new Set(['Top','Pants','Shoes','Outerwear','Accessory']);
 const clean=src=>String(src||'').split('?')[0];
 const isExternal=src=>/^https?:/i.test(src);
 
