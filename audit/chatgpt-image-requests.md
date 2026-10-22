@@ -79,7 +79,7 @@ These already exist: download them from the original generation history and add 
 - `look-60` — White shirt + dark denim + white sneakers · pieces: white-shirt, dark-denim, white-leather-sneakers
 - `look-61` — Black tee + dark denim + white sneakers · pieces: black-tee, dark-denim, white-leather-sneakers
 - `look-62` — Light blue micro-check shirt + beige chinos + brown loafers · pieces: owned-lightblue-microcheck-shirt, beige-chinos, brown-loafers, brown-belt
-- `look-63` — Olive button-down + tan chinos + brown loafers · pieces: olive-buttondown, khaki-chinos, brown-loafers, brown-belt
+- `look-63` — Olive button-down + tan chinos + brown loafers · pieces: olive-buttondown, beige-chinos, brown-loafers, brown-belt
 - `look-64` — Burgundy knit polo + grey trousers + dark loafers · pieces: burgundy-knit-polo, grey-trousers, dark-loafers
 - `look-65` — Blue striped linen shirt + white linen shorts · pieces: striped-blue-linen-shirt, white-linen-shorts, tan-espadrilles
 - `look-67` — Green polo + cream trousers + white sneakers · pieces: green-polo, cream-chinos, white-leather-sneakers

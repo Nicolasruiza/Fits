@@ -97,6 +97,7 @@
     "cognac-leather-biker-jacket": "removed on user request (2026-10-22) together with look-93; image files kept in assets/ (unused)",
     "charcoal-polo": "removed on user request (2026-10-22); it was not used by any look",
     "camel-ribbed-crewneck": "removed on user request (2026-10-22) together with look-117; photo kept as assets/look-117-camel-ribbed-navy-black.jpg (unused)",
-    "charcoal-trousers": "merged into dark-chinos (Dark charcoal chinos) on user request (2026-10-22): same garment photographed twice; the straight-posed image is kept. Image file assets/wardrobe-standardized/charcoal-trousers.png kept, unused."
+    "charcoal-trousers": "merged into dark-chinos (Dark charcoal chinos) on user request (2026-10-22): same garment photographed twice; the straight-posed image is kept. Image file assets/wardrobe-standardized/charcoal-trousers.png kept, unused.",
+    "khaki-chinos": "merged into beige-chinos (Beige chinos, Owned) on user request (2026-10-22); taupe-trousers kept separate (greyer tone). Pending user merges: grey-trousers + light-grey-trousers; cream chinos under review."
   }
 }

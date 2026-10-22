@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const aliases={'brown-chelsea':'owned-brown-buckle-chelsea','owned-darkbrown-suede-captoe-shoe':'owned-darkbrown-suede-italian-laceup','charcoal-trousers':'dark-chinos'};
+  const aliases={'brown-chelsea':'owned-brown-buckle-chelsea','owned-darkbrown-suede-captoe-shoe':'owned-darkbrown-suede-italian-laceup','charcoal-trousers':'dark-chinos','khaki-chinos':'beige-chinos'};
   Object.entries(aliases).forEach(([from,to])=>{
     D.looks.forEach(look=>{if(Array.isArray(look.pieces))look.pieces=[...new Set(look.pieces.map(id=>id===from?to:id))]});
     const oldPiece=D.pieces.find(p=>p.id===from),kept=D.pieces.find(p=>p.id===to);

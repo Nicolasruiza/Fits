@@ -128,6 +128,12 @@ for(const look of D.looks){
   if(!slots.includes('bottom'))warn(`${look.id}: no trousers or shorts linked`);
   if(!slots.includes('shoes'))warn(`${look.id}: no shoes linked`);
 }
+const outfitSignatures=new Map();
+for(const look of D.looks){
+  const key=[...(look.pieces||[])].sort().join('|');
+  if(outfitSignatures.has(key))err(`Exact outfit duplicate at runtime: ${outfitSignatures.get(key)} and ${look.id}`);
+  else outfitSignatures.set(key,look.id);
+}
 const orphanPieces=D.pieces.filter(p=>!looksByPiece.get(p.id).length).map(p=>p.id);
 for(const id of orphanPieces)if(!baseline.orphanPieces.includes(id))warn(`${id}: not used by any look`);
 

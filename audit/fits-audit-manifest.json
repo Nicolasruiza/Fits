@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 101,
+  "pieces": 100,
   "owned": 31,
-  "missing": 70,
+  "missing": 69,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 86,
+  "localPieceImages": 85,
   "externalPieceImages": 14,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
   "orphanPieces": 19,
-  "unusedAssets": 61,
+  "unusedAssets": 62,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -269,21 +269,6 @@
    "looks": []
   },
   {
-   "id": "khaki-chinos",
-   "name": "Khaki chinos",
-   "category": "Pants",
-   "ownership": "missing",
-   "class": "trousers",
-   "image": "assets/wardrobe-standardized/khaki-chinos.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": [
-    "look-63",
-    "look-110",
-    "look-116"
-   ]
-  },
-  {
    "id": "navy-trousers",
    "name": "Navy chinos",
    "category": "Pants",
@@ -366,6 +351,7 @@
     "look-45",
     "look-57",
     "look-62",
+    "look-63",
     "look-75",
     "look-71",
     "look-74",
@@ -375,6 +361,8 @@
     "look-99",
     "look-106",
     "look-108",
+    "look-110",
+    "look-116",
     "look-118",
     "look-119"
    ]
@@ -2279,13 +2267,12 @@
    "name": "Olive button-down + tan chinos + brown loafers",
    "pieces": [
     "olive-buttondown",
-    "khaki-chinos",
+    "beige-chinos",
     "brown-loafers",
     "brown-belt"
    ],
    "missingPieces": [
-    "olive-buttondown",
-    "khaki-chinos"
+    "olive-buttondown"
    ],
    "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_ef9d44fb-89a1-487b-82a0-3e5568eed881.png",
    "imageKind": "external",
@@ -3511,13 +3498,12 @@
    "name": "Olive corduroy shirt + khaki chinos + brown cap-toe shoes",
    "pieces": [
     "olive-buttondown",
-    "khaki-chinos",
+    "beige-chinos",
     "brown-belt",
     "owned-brown-leather-captoe"
    ],
    "missingPieces": [
-    "olive-buttondown",
-    "khaki-chinos"
+    "olive-buttondown"
    ],
    "image": "assets/look-110-olive-cord-khaki-brown.jpg",
    "imageKind": "local",
@@ -3684,13 +3670,12 @@
    "name": "Light blue shirt + khaki chinos + dark brown suede loafers",
    "pieces": [
     "light-blue-oxford",
-    "khaki-chinos",
+    "beige-chinos",
     "brown-belt",
     "darkbrown-suede-loafers"
    ],
    "missingPieces": [
     "light-blue-oxford",
-    "khaki-chinos",
     "darkbrown-suede-loafers"
    ],
    "image": "assets/look-116-lightblue-khaki-suede-loafers.jpg",
@@ -4135,7 +4120,8 @@
    "assets/piece-cognac-suede-jacket.webp",
    "assets/piece-cream-chinos.webp",
    "assets/piece-navy-quarterzip.webp",
-   "assets/wardrobe-standardized/charcoal-trousers.png"
+   "assets/wardrobe-standardized/charcoal-trousers.png",
+   "assets/wardrobe-standardized/khaki-chinos.png"
   ]
  }
 }
