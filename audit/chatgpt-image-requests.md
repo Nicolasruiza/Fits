@@ -47,7 +47,6 @@ These already exist: download them from the original generation history and add 
 - `white-polo` — White polo (owned) · looks: look-47, look-68, look-95, look-103
 - `grey-polo` — Grey polo (missing) · looks: none
 - `navy-trousers` — Navy chinos (owned) · looks: look-41, look-70, look-73, look-72, look-88, look-89, look-90, look-92, look-109, look-113, look-114
-- `taupe-trousers` — Taupe chinos (missing) · looks: look-42, look-96
 - `dark-denim` — Dark indigo jeans (owned) · looks: look-48, look-49, look-50, look-51, look-52, look-60, look-61, look-76, look-78, look-84, look-85, look-86, look-100, look-107
 - `brown-derbies` — Brown derbies (missing) · looks: none
 - `dark-loafers` — Black loafers (missing) · looks: look-64, look-98
@@ -62,7 +61,7 @@ These already exist: download them from the original generation history and add 
 
 - `look-35` — Navy polo + blue denim + white sneakers · pieces: navy-polo, blue-denim, white-leather-sneakers
 - `look-36` — Charcoal cardigan + grey henley + blue denim · pieces: charcoal-cardigan, grey-henley, blue-denim, brown-casual-shoes
-- `look-42` — White shirt + taupe trousers + suede loafers · pieces: white-shirt, taupe-trousers, taupe-suede-shoes, brown-belt
+- `look-42` — White shirt + taupe trousers + suede loafers · pieces: white-shirt, beige-chinos, taupe-suede-shoes, brown-belt
 - `look-45` — Navy sweater + beige chinos + white sneakers · pieces: navy-crewneck, beige-chinos, white-leather-sneakers
 - `look-48` — Grey crewneck + dark denim + white sneakers · pieces: grey-crewneck, dark-denim, white-leather-sneakers
 - `look-49` — Cream shirt + dark denim + brown loafers · pieces: owned-cream-buttondown, dark-denim, brown-loafers, brown-belt

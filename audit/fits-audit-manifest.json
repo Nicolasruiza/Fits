@@ -2,13 +2,13 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 99,
+  "pieces": 98,
   "owned": 31,
-  "missing": 68,
+  "missing": 67,
   "looks": 84,
   "families": 78,
   "localPieceImages": 85,
-  "externalPieceImages": 13,
+  "externalPieceImages": 12,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
   "orphanPieces": 18,
@@ -312,20 +312,6 @@
    ]
   },
   {
-   "id": "taupe-trousers",
-   "name": "Taupe chinos",
-   "category": "Pants",
-   "ownership": "missing",
-   "class": "trousers",
-   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113338_91868b0a-8f8f-439b-a424-653c056430d9_min.webp",
-   "imageKind": "external",
-   "hasAlpha": null,
-   "looks": [
-    "look-42",
-    "look-96"
-   ]
-  },
-  {
    "id": "beige-chinos",
    "name": "Beige chinos",
    "category": "Pants",
@@ -336,6 +322,7 @@
    "hasAlpha": true,
    "looks": [
     "look-38",
+    "look-42",
     "look-43",
     "look-45",
     "look-57",
@@ -347,6 +334,7 @@
     "look-80",
     "look-81",
     "look-82",
+    "look-96",
     "look-99",
     "look-106",
     "look-108",
@@ -1673,13 +1661,12 @@
    "name": "White shirt + taupe trousers + suede loafers",
    "pieces": [
     "white-shirt",
-    "taupe-trousers",
+    "beige-chinos",
     "taupe-suede-shoes",
     "brown-belt"
    ],
    "missingPieces": [
     "white-shirt",
-    "taupe-trousers",
     "taupe-suede-shoes"
    ],
    "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a24db616-0a60-485a-8dec-868b7f30000e.png",
@@ -3108,13 +3095,12 @@
    "name": "Burgundy polo + taupe trousers + brown loafers",
    "pieces": [
     "burgundy-polo",
-    "taupe-trousers",
+    "beige-chinos",
     "brown-loafers",
     "brown-belt"
    ],
    "missingPieces": [
-    "burgundy-polo",
-    "taupe-trousers"
+    "burgundy-polo"
    ],
    "image": "assets/look-96-burgundy-taupe.webp",
    "imageKind": "local",
@@ -3982,7 +3968,6 @@
    "white-polo",
    "grey-polo",
    "navy-trousers",
-   "taupe-trousers",
    "dark-denim",
    "brown-derbies",
    "dark-loafers",
