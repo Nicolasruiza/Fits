@@ -23,6 +23,12 @@
     localStorage.setItem('fitsWishlistPieces',JSON.stringify([...wishlist]));
     localStorage.setItem('fitsHiddenPieces',JSON.stringify([...hidden]));
   }
+  function swapSection(){
+    const S=window.FITS_SWAPS;if(!S)return'';
+    const linked=S.interchangeable(id).map(piece).filter(Boolean);
+    const options=(window.FITS_DATA.pieces||[]).filter(p=>p.category===item.category&&p.id!==id&&!linked.some(l=>l.id===p.id)).sort((a,b)=>a.name.localeCompare(b.name));
+    return`<section class="piece-swaps"><small>Interchangeable with</small><div class="swap-chips">${linked.length?linked.map(p=>`<span class="swap-chip"><b>${p.name}</b><i>${isOwned(p.id)?'Owned':'Missing'}</i><button type="button" data-unlink="${p.id}" aria-label="Remove ${p.name}">×</button></span>`).join(''):'<p>Nothing yet. If another piece can stand in for this one, add it and Looks will suggest the swap.</p>'}</div>${options.length?`<div class="swap-add"><select data-swap-select aria-label="Add an interchangeable piece"><option value="">Add a piece…</option>${options.map(p=>`<option value="${p.id}">${p.name}</option>`).join('')}</select><button type="button" data-swap-add>Add</button></div>`:''}</section>`;
+  }
   function render(){
     const ownedNow=isOwned(id),saved=wishlist.has(id),isHidden=hidden.has(id);
     document.body.innerHTML=`<div class="app wardrobe-v2 piece-detail-app">
@@ -41,6 +47,7 @@
           </div>
           ${isHidden?'<div class="piece-hidden-note">Hidden from Wardrobe and future shopping suggestions.</div>':''}
         </section>
+        ${swapSection()}
         <section class="piece-styles"><div class="piece-styles-head"><div><small>Works with</small><h2>${related.length} styles</h2></div><span>Tap to open</span></div><div class="piece-look-grid">${related.length?related.map(l=>{const missing=missingFor(l);return`<a class="piece-look-card" href="detail.html?look=${encodeURIComponent(l.id)}&family=${encodeURIComponent(l.family)}" aria-label="Open ${l.name}"><img src="${l.image}" alt="${l.name}" loading="lazy"><span class="${missing.length?'missing':'ready'}">${missing.length?`${missing.length} missing`:'Ready'}</span></a>`}).join(''):'<div class="piece-no-styles">No styles use this piece yet.</div>'}</div></section>
       </main>${nav('wardrobe')}
     </div>`;
@@ -50,6 +57,9 @@
     document.querySelector('[data-action="own"]').onclick=()=>{wardrobe[id]=isOwned(id)?'missing':'owned';persist();render()};
     document.querySelector('[data-action="wishlist"]').onclick=()=>{wishlist.has(id)?wishlist.delete(id):wishlist.add(id);saveSets();render()};
     document.querySelector('[data-action="buy"]').onclick=()=>searchItem(id);
+    document.querySelectorAll('[data-unlink]').forEach(btn=>btn.onclick=()=>{window.FITS_SWAPS.unlink(id,btn.dataset.unlink);render()});
+    const add=document.querySelector('[data-swap-add]');
+    if(add)add.onclick=()=>{const pick=document.querySelector('[data-swap-select]').value;if(!pick)return;window.FITS_SWAPS.link(id,pick);render()};
     document.querySelector('[data-action="hide"]').onclick=()=>{hidden.has(id)?hidden.delete(id):hidden.add(id);saveSets();render()};
   }
   document.addEventListener('DOMContentLoaded',render);

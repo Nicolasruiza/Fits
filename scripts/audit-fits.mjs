@@ -192,6 +192,31 @@ if(C.weatherContext({temp:3,apparent:-4}).thermal!=='Colder')err('Apparent tempe
 if(C.weatherContext(mild).thermal!=='Mild')err('15°C should be Mild');
 if(C.weatherContext({temp:15,apparent:8},{indoor:true}).feelsC<=8)err('Indoor use must raise the effective temperature');
 
+// Interchangeable pieces: both ways, same category only, owned replacement only, never guessed.
+{
+  const SW=context.FITS_SWAPS,store={};
+  if(!SW)err('FITS_SWAPS missing from the runtime pipeline');
+  else{
+    const realGet=context.localStorage.getItem,realSet=context.localStorage.setItem;
+    context.localStorage.getItem=k=>store[k]??null;context.localStorage.setItem=(k,v)=>{store[k]=v};
+    const shoes=D.pieces.filter(p=>p.category==='Shoes'),pants=D.pieces.find(p=>p.category==='Pants');
+    const look=D.looks.find(l=>(l.pieces||[]).some(id=>pieceById.get(id)?.category==='Shoes'));
+    const original=pieceById.get(look.pieces.find(id=>pieceById.get(id)?.category==='Shoes'));
+    const other=shoes.find(p=>p.id!==original.id&&!look.pieces.includes(p.id));
+    const wardrobe={[original.id]:'missing',[other.id]:'owned'};
+    if(SW.suggest(look,original.id,wardrobe,{})!==null)err('Swaps must not be suggested before the user links pieces');
+    SW.link(original.id,other.id);
+    if(!SW.interchangeable(other.id).includes(original.id))err('Interchangeable links must work both ways');
+    if(SW.suggest(look,original.id,wardrobe,{})?.piece.id!==other.id)err('Linked owned piece must be suggested as the swap');
+    if(SW.suggest(look,original.id,{[original.id]:'missing',[other.id]:'missing'},{})!==null)err('A missing piece must not be suggested as a replacement');
+    SW.link(original.id,pants.id);
+    if(SW.interchangeable(original.id).includes(pants.id))err('Pieces from different categories must not be linkable');
+    SW.unlink(original.id,other.id);
+    if(SW.interchangeable(original.id).length||SW.interchangeable(other.id).length)err('Unlinking must remove both directions');
+    context.localStorage.getItem=realGet;context.localStorage.setItem=realSet;
+  }
+}
+
 // ---- Ownership and reviews -----------------------------------------------------------------
 const colorOf=name=>{const m=name.toLowerCase().match(/\b(off-?white|light grey|light gr[ae]y|charcoal|dark charcoal|navy|white|black|grey|gray|olive|green|cream|beige|tan|taupe|khaki|brown|cognac|camel|burgundy|chocolate|blue|red)\b/);return m?m[1].replace(/dark |light |off-?|gr[ae]y/,x=>x.trim()==='grey'||x.trim()==='gray'?'grey':x.trim()):'?'};
 const groups=new Map();
