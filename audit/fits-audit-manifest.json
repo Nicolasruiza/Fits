@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 106,
+  "pieces": 105,
   "owned": 31,
-  "missing": 75,
-  "looks": 87,
-  "families": 80,
+  "missing": 74,
+  "looks": 86,
+  "families": 79,
   "localPieceImages": 87,
-  "externalPieceImages": 16,
+  "externalPieceImages": 15,
   "pieceImagesWithoutAlpha": 4,
   "externalLookImages": 22,
   "orphanPieces": 20,
-  "unusedAssets": 57,
+  "unusedAssets": 58,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -176,8 +176,7 @@
     "look-115",
     "look-119",
     "look-121",
-    "look-123",
-    "look-124"
+    "look-123"
    ]
   },
   {
@@ -212,20 +211,6 @@
    "looks": [
     "look-107",
     "look-109"
-   ]
-  },
-  {
-   "id": "dark-crewneck",
-   "name": "Dark crewneck",
-   "category": "Top",
-   "ownership": "missing",
-   "class": "knit",
-   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214140_4b409df5-4a81-4679-b39f-6429587e94d0_min.webp",
-   "imageKind": "external",
-   "hasAlpha": null,
-   "looks": [
-    "look-122",
-    "look-124"
    ]
   },
   {
@@ -419,8 +404,7 @@
     "look-106",
     "look-108",
     "look-118",
-    "look-119",
-    "look-124"
+    "look-119"
    ]
   },
   {
@@ -1306,7 +1290,8 @@
    "hasAlpha": true,
    "looks": [
     "look-79",
-    "look-119"
+    "look-119",
+    "look-122"
    ]
   },
   {
@@ -1478,8 +1463,7 @@
     "look-111",
     "look-118",
     "look-119",
-    "look-122",
-    "look-124"
+    "look-122"
    ]
   },
   {
@@ -3956,15 +3940,14 @@
   },
   {
    "id": "look-122",
-   "name": "Dark crewneck + light blue shirt + black chinos + brown cap-toe shoes",
+   "name": "Black V-neck + light blue shirt + black chinos + brown cap-toe shoes",
    "pieces": [
-    "dark-crewneck",
+    "owned-black-vneck",
     "light-blue-oxford",
     "black-chinos",
     "owned-brown-leather-captoe"
    ],
    "missingPieces": [
-    "dark-crewneck",
     "light-blue-oxford",
     "black-chinos"
    ],
@@ -3997,34 +3980,6 @@
     "white-shirt"
    ],
    "image": "assets/look-123-charcoal-qz-white-grey-black.jpg",
-   "imageKind": "local",
-   "seasons": [
-    "Transition"
-   ],
-   "thermal": [
-    "Mild"
-   ],
-   "comfortC": [
-    7.5,
-    16.5
-   ],
-   "warmth": 2.25,
-   "winterLayerable": true
-  },
-  {
-   "id": "look-124",
-   "name": "Dark crewneck + white shirt + beige chinos + brown cap-toe shoes",
-   "pieces": [
-    "dark-crewneck",
-    "white-shirt",
-    "beige-chinos",
-    "owned-brown-leather-captoe"
-   ],
-   "missingPieces": [
-    "dark-crewneck",
-    "white-shirt"
-   ],
-   "image": "assets/look-124-dark-crew-white-beige-brown.jpg",
    "imageKind": "local",
    "seasons": [
     "Transition"
@@ -4169,7 +4124,6 @@
    "white-polo",
    "charcoal-polo",
    "grey-polo",
-   "dark-crewneck",
    "navy-trousers",
    "grey-trousers",
    "taupe-trousers",
@@ -4247,6 +4201,7 @@
    "assets/catalog-green-buttonup.webp",
    "assets/catalog-stone-shirt.webp",
    "assets/look-12-hq.webp",
+   "assets/look-124-dark-crew-white-beige-brown.jpg",
    "assets/look-28-lightblue-beige-v2.webp",
    "assets/look-35-navy-denim.webp",
    "assets/look-36-cardigan-henley-denim.webp",
