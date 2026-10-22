@@ -17,6 +17,21 @@
   window.FITS_WARDROBE_KIND=kind;
   // Dark to light by colour family, so similar colours sit together. First matching rule wins.
   const COLOR_RULES=[[/red, white and blue/,9],[/light[- ]blue|sky blue/,9.2],[/light[- ]?gr[ae]y/,9],[/off-?white|cream|ivory/,12],[/\bwhite\b/,13],[/black/,0],[/dark brown|chocolate|espresso/,3],[/dark green/,4.5],[/charcoal|\bdark\b/,1],[/navy|indigo/,2],[/burgundy|\bred\b/,4],[/olive|green/,5],[/blue/,6],[/brown|cognac/,7],[/gr[ae]y/,8],[/taupe|\btan\b|camel|khaki|stone/,10],[/beige/,11]];
+  // Within each section, pieces are grouped by type first (all polos together, all Chelsea boots together...),
+  // then ordered dark to light inside each type. First matching rule wins; the number is the type's position.
+  const TYPE_RULES={
+    'T-Shirts & Polos':[[/polo/,0],[/henley/,2],[/t-shirt|tee/,1]],
+    'Dress Shirts':[[/stripe/,2],[/gingham|check/,1],[/./,0]],
+    'Sweaters & Knitwear':[[/quarter[- ]?zip/,2],[/v-neck/,1],[/turtleneck/,3],[/cardigan/,4],[/crew[- ]?neck|sweater|knit/,0]],
+    'Pants':[[/jean|denim/,1],[/trouser/,2],[/chino/,0]],
+    'Outerwear':[[/overcoat|topcoat|coat/,0],[/blazer/,1],[/leather|suede|biker/,2],[/overshirt/,4],[/jacket|bomber/,3]],
+    'Shoes':[[/chelsea/,4],[/sneaker/,0],[/loafer/,1],[/espadrille|casual/,2],[/derb|brogue|cap-toe|dress|lace-up|oxford/,3]],
+    'Shorts':[[/./,0]],
+    'Accessories':[[/belt/,0]]
+  };
+  const typeRankFor=(section,name)=>{const hit=(TYPE_RULES[section]||[]).find(([re])=>re.test(String(name).toLowerCase()));return hit?hit[1]:99};
+  window.FITS_TYPE_RANK=typeRankFor;
+  function cardName(card){return card.querySelector('.ward-card-copy strong')?.textContent||''}
   function colorRank(card){const name=(card.querySelector('.ward-card-copy strong')?.textContent||'').toLowerCase();const hit=COLOR_RULES.find(([re])=>re.test(name));return hit?hit[1]:8.5}
   window.FITS_COLOR_RANK=name=>{const hit=COLOR_RULES.find(([re])=>re.test(String(name).toLowerCase()));return hit?hit[1]:8.5};
   // Interchangeable pieces stay separate cards (each can still be owned or wishlisted) but sit next to each
@@ -39,7 +54,7 @@
     return out;
   }
   let scheduled=false,observer;
-  function groupWardrobe(){const grid=document.querySelector('.ward-grid');if(!grid||grid.dataset.sectioned==='yes')return;const cards=[...grid.querySelectorAll('.ward-card')];if(!cards.length)return;observer?.disconnect();const groups=new Map(ORDER.map(k=>[k,[]]));cards.forEach(card=>groups.get(kind(card)).push(card));const frag=document.createDocumentFragment();ORDER.forEach(label=>{const items=groups.get(label);if(!items?.length)return;items.sort((a,b)=>colorRank(a)-colorRank(b)||(a.querySelector('.ward-card-copy strong')?.textContent||'').localeCompare(b.querySelector('.ward-card-copy strong')?.textContent||''));const section=document.createElement('section');section.className='ward-section';section.dataset.wardSection=label;section.innerHTML=`<div class="ward-section-head"><h2>${label}</h2><span>${items.length}</span></div><div class="ward-section-grid"></div>`;const inner=section.querySelector('.ward-section-grid');clusterLinked(items).forEach(card=>inner.appendChild(card));frag.appendChild(section)});grid.replaceChildren(frag);grid.dataset.sectioned='yes';observe()}
+  function groupWardrobe(){const grid=document.querySelector('.ward-grid');if(!grid||grid.dataset.sectioned==='yes')return;const cards=[...grid.querySelectorAll('.ward-card')];if(!cards.length)return;observer?.disconnect();const groups=new Map(ORDER.map(k=>[k,[]]));cards.forEach(card=>groups.get(kind(card)).push(card));const frag=document.createDocumentFragment();ORDER.forEach(label=>{const items=groups.get(label);if(!items?.length)return;items.sort((a,b)=>typeRankFor(label,cardName(a))-typeRankFor(label,cardName(b))||colorRank(a)-colorRank(b)||(a.querySelector('.ward-card-copy strong')?.textContent||'').localeCompare(b.querySelector('.ward-card-copy strong')?.textContent||''));const section=document.createElement('section');section.className='ward-section';section.dataset.wardSection=label;section.innerHTML=`<div class="ward-section-head"><h2>${label}</h2><span>${items.length}</span></div><div class="ward-section-grid"></div>`;const inner=section.querySelector('.ward-section-grid');clusterLinked(items).forEach(card=>inner.appendChild(card));frag.appendChild(section)});grid.replaceChildren(frag);grid.dataset.sectioned='yes';observe()}
   function observe(){observer?.observe(document.body,{childList:true,subtree:true})}function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;groupWardrobe()})}
   observer=new MutationObserver(schedule);observe();document.addEventListener('DOMContentLoaded',schedule);schedule();
 })();
