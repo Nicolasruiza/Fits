@@ -7,7 +7,7 @@
   "missing": 71,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 86,
+  "localPieceImages": 87,
   "externalPieceImages": 14,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
@@ -1540,9 +1540,9 @@
    "category": "Pants",
    "ownership": "missing",
    "class": "trousers",
-   "image": null,
-   "imageKind": "none",
-   "hasAlpha": null,
+   "image": "assets/black-chinos.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
    "looks": [
     "look-112",
     "look-120",
@@ -4063,7 +4063,6 @@
    "white-shirt"
   ],
   "pendingImages": [
-   "black-chinos",
    "darkbrown-suede-loafers"
   ],
   "orphanPieces": [
