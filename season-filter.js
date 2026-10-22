@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const validOcc=['All','Favorites','Hidden','Office','Weekend','Dinner','Travel'],validSeason=['All','Summer','Transitional','Cold'];
+  const validOcc=['All','Office','Weekend','Dinner','Travel'],validStatus=['All','Favorites','Hidden','Complete','Almost','Missing'],validSeason=['All','Summer','Transitional','Cold'];
   const icon=name=>({
     All:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>',
     Favorites:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg>',
@@ -10,17 +10,21 @@
     Dinner:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v7M9 3v7M4 3v5a3 3 0 0 0 6 0V3M7 10v11M16 3v18M16 3c3 2 4 5 4 8h-4"/></svg>',
     Travel:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 14 7-2 4-8 2 1-2 7 6 2c1 .3 1 1.7 0 2l-6 1-3 4-1-1 1-4-5 1-3-3Z"/></svg>'
   })[name]||'';
-  let occasion=localStorage.getItem('fitsOccasionFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All';
+  let occasion=localStorage.getItem('fitsOccasionFilter')||'All',status=localStorage.getItem('fitsLookStatusFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All';
+  // Favorites and Hidden used to live in the occasion row; they are a separate "status" filter now.
+  if(['Favorites','Hidden'].includes(occasion)){status=occasion;occasion='All';localStorage.setItem('fitsOccasionFilter',occasion);localStorage.setItem('fitsLookStatusFilter',status)}
   if(!validOcc.includes(occasion))occasion='All';
+  if(!validStatus.includes(status))status='All';
   if(!validSeason.includes(season))season='All';
   const look=id=>D.looks.find(l=>l.id===id);
   const seasonsForFamily=f=>[...new Set((f.looks||[]).map(look).filter(Boolean).flatMap(l=>l.seasons||['Summer']))];
   const read=(k,f=null)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}};
   function allCards(){return[...document.querySelectorAll('a.card')]}
-  function matches(card,occ=occasion,sea=season){
-    const tags=(card.dataset.tags||'').split(',').filter(Boolean),ss=(card.dataset.seasons||'').split(',').filter(Boolean);
-    const occasionMatch=occ==='All'||occ==='Favorites'&&card.dataset.saved==='yes'||occ==='Hidden'&&card.dataset.hidden==='yes'||tags.includes(occ);
-    return occasionMatch&&(sea==='All'||ss.includes(sea));
+  function matches(card,occ=occasion,sea=season,st=status){
+    const tags=(card.dataset.tags||'').split(',').filter(Boolean),ss=(card.dataset.seasons||'').split(',').filter(Boolean),done=card.dataset.completeness;
+    const occasionMatch=occ==='All'||tags.includes(occ);
+    const statusMatch=st==='All'||st==='Favorites'&&card.dataset.saved==='yes'||st==='Hidden'&&card.dataset.hidden==='yes'||st==='Complete'&&['complete','adapted'].includes(done)||st==='Almost'&&done==='one'||st==='Missing'&&['some','all'].includes(done);
+    return occasionMatch&&statusMatch&&(sea==='All'||ss.includes(sea));
   }
   function weatherSeason(){
     const w=read('fitsWeatherHome',null);if(!w)return null;
@@ -32,13 +36,12 @@
     return{recommended,temp:Number.isFinite(t)?Math.round(t):null,high:Math.round(high),low:Number.isFinite(low)?Math.round(low):null};
   }
   window.getFitsWeatherSeason=()=>weatherSeason()?.recommended||null;
-  function current(){return{occasion,season,recommendedSeason:weatherSeason()?.recommended||null}}
+  function current(){return{occasion,status,season,recommendedSeason:weatherSeason()?.recommended||null}}
   window.getFitsActiveFilters=current;
   function announce(){window.dispatchEvent(new CustomEvent('fits:filters-changed',{detail:current()}))}
   function updateChipCounts(){
     const cards=allCards();
-    document.querySelectorAll('[data-season-choice]').forEach(btn=>{const s=btn.dataset.seasonChoice,n=cards.filter(c=>matches(c,occasion,s)).length;btn.querySelector('em')?.replaceChildren(document.createTextNode(String(n)))});
-    document.querySelectorAll('[data-filter]').forEach(btn=>{const o=btn.dataset.filter,n=cards.filter(c=>matches(c,o,season)).length;btn.querySelector('em')?.replaceChildren(document.createTextNode(String(n)))});
+    document.querySelectorAll('[data-season-choice]').forEach(btn=>{const s=btn.dataset.seasonChoice,n=cards.filter(c=>matches(c,occasion,s,status)).length;btn.querySelector('em')?.replaceChildren(document.createTextNode(String(n)))});
   }
   function updateWeatherHint(wrap){
     let hint=wrap.querySelector('.weather-season-hint');if(!hint){hint=document.createElement('div');hint.className='weather-season-hint';wrap.appendChild(hint)}
@@ -56,7 +59,7 @@
     let visible=0;
     allCards().forEach(card=>{const show=matches(card);card.classList.toggle('hidden',!show);if(show)visible++});
     const empty=document.querySelector('.empty');
-    if(empty){empty.style.display=visible?'none':'block';empty.textContent=occasion==='Favorites'?'No favorite looks yet.':occasion==='Hidden'?'No hidden looks.':`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'looks':occasion.toLowerCase()+' looks'} yet.`}
+    if(empty){empty.style.display=visible?'none':'block';empty.textContent=status==='Favorites'?'No favorite looks yet.':status==='Hidden'?'No hidden looks.':`No ${season==='All'?'':season.toLowerCase()+' '}${occasion==='All'?'':occasion.toLowerCase()+' '}looks${status==='Complete'?' you can wear now':status==='Almost'?' that are one piece away':status==='Missing'?' with several pieces missing':''} yet.`}
     const count=document.querySelector('.filter-result-count');if(count)count.textContent=`${visible} ${visible===1?'family':'families'}`;
     updateChipCounts();
     const wrap=document.querySelector('.season-filter-wrap');if(wrap)updateWeatherHint(wrap);
@@ -65,15 +68,22 @@
   function enhance(){
     ensureStyle();
     const chips=document.querySelector('.chips');if(!chips)return;
-    chips.classList.add('occasion-chips');
-    if(!chips.querySelector('[data-filter="Favorites"]')){
-      const button=document.createElement('button');button.className='chip';button.dataset.filter='Favorites';button.innerHTML='<span>★ Favorites</span><em></em>';
-      const all=chips.querySelector('[data-filter="All"]');all?.after(button);
-    }
-    if(!chips.querySelector('[data-filter="Hidden"]')){
-      const button=document.createElement('button');button.className='chip';button.dataset.filter='Hidden';
-      const favorites=chips.querySelector('[data-filter="Favorites"]');favorites?.after(button);
-    }
+    chips.classList.add('occasion-chips','occasion-row');
+    const OCC=['Office','Weekend','Dinner','Travel'],STATUS=[['All','All','All'],['Favorites','Favs','Favorites'],['Hidden','Hidden','Hidden'],['Complete','Complete','Complete'],['Almost','Almost','Almost complete (one piece missing)'],['Missing','Missing','Missing some']];
+    const statusIcon={Complete:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',Almost:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16a8 8 0 0 1 0-16Z"/></svg>',Missing:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v5M12 16h.01"/></svg>'};
+    const chipHTML=(group,key,label,aria,active,svg)=>`<button class="chip" data-${group}="${key}" aria-label="${aria}" aria-pressed="${active}"><span class="filter-symbol">${svg}</span><span class="filter-name">${label}</span></button>`;
+    // Row 1: occasions (tap the active one again to clear it). Row 2: favourites, hidden and how complete a look is.
+    chips.innerHTML=OCC.map(o=>chipHTML('occasion-choice',o,o,o,o===occasion,icon(o))).join('');
+    let statusRow=document.querySelector('.status-chips');
+    if(!statusRow){statusRow=document.createElement('div');statusRow.className='chips occasion-chips status-chips';chips.after(statusRow)}
+    statusRow.innerHTML=STATUS.map(([key,label,aria])=>chipHTML('status-choice',key,label,aria,key===status,key==='All'?icon('All'):key==='Favorites'?icon('Favorites'):key==='Hidden'?icon('Hidden'):statusIcon[key])).join('');
+    const paint=()=>{
+      chips.querySelectorAll('[data-occasion-choice]').forEach(x=>{const on=x.dataset.occasionChoice===occasion;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
+      statusRow.querySelectorAll('[data-status-choice]').forEach(x=>{const on=x.dataset.statusChoice===status;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
+    };
+    chips.querySelectorAll('[data-occasion-choice]').forEach(btn=>btn.onclick=e=>{e.preventDefault();const pick=btn.dataset.occasionChoice;occasion=occasion===pick?'All':pick;localStorage.setItem('fitsOccasionFilter',occasion);paint();apply()});
+    statusRow.querySelectorAll('[data-status-choice]').forEach(btn=>btn.onclick=e=>{e.preventDefault();status=btn.dataset.statusChoice;localStorage.setItem('fitsLookStatusFilter',status);paint();apply()});
+    paint();
     D.families.forEach(f=>{
       const card=allCards().find(c=>{try{return new URL(c.getAttribute('href'),location.href).searchParams.get('family')===f.id}catch(e){return false}});
       if(card){
@@ -81,13 +91,6 @@
         const body=card.querySelector('.body');
         if(body&&!body.querySelector('.season-note')){const n=document.createElement('div'),layerable=(f.looks||[]).map(look).filter(Boolean).some(l=>l.winterLayerable);n.className='season-note';n.textContent=ss.join(' · ')+(layerable?' · add coat':'');body.appendChild(n)}
       }
-    });
-    chips.querySelectorAll('[data-filter]').forEach(btn=>{
-      const name=btn.dataset.filter;
-      if(!btn.querySelector('.filter-symbol'))btn.innerHTML=`<span class="filter-symbol">${icon(name)}</span><span class="filter-name">${name==='Favorites'?'Favs':name}</span><em></em>`;
-      btn.setAttribute('aria-label',name);btn.setAttribute('aria-pressed',String(name===occasion));
-      btn.classList.toggle('active',name===occasion);
-      btn.onclick=e=>{e.preventDefault();occasion=name;localStorage.setItem('fitsOccasionFilter',occasion);chips.querySelectorAll('[data-filter]').forEach(x=>{const active=x.dataset.filter===occasion;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});apply()};
     });
     let occLabel=document.querySelector('.occasion-filter-label');
     if(!occLabel){occLabel=document.createElement('div');occLabel.className='filter-label-row occasion-filter-label';occLabel.innerHTML='<span>Show</span><b>filter looks</b>';chips.before(occLabel)}
@@ -104,5 +107,6 @@
   const original=window.render;
   if(typeof original==='function')window.render=function(...args){const out=original.apply(this,args);enhance();announce();return out};
   window.addEventListener('fits:home-enhanced',()=>apply(false));
+  window.addEventListener('fits:completeness-updated',()=>apply(false));
   enhance();announce();
 })();

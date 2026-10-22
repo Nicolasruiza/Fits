@@ -11,7 +11,7 @@
   }
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
-    return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
+    return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',status:localStorage.getItem('fitsLookStatusFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
   }
   const owned=(id,s)=>s.wardrobe[id]==='owned',missing=(v,s)=>window.FITS_SWAPS?FITS_SWAPS.missing(v,s.wardrobe,s.swaps):(v.pieces||[]).filter(id=>!owned(id,s)),adapted=(v,s)=>window.FITS_SWAPS?FITS_SWAPS.accepted(v,s.wardrobe,s.swaps).length:0;
   const namesFor=v=>(v.pieces||[]).map(id=>(piece(id)?.name||id).toLowerCase()).join(' ');
@@ -28,7 +28,9 @@
   function matchesFilters(v,f,s){
     const badges=v.badges||[],seasons=v.seasons||['Summer'];
     const isHidden=s.hidden.has(v.id);
-    const occasionMatch=f.occasion==='Hidden'?isHidden:!isHidden&&(f.occasion==='All'||f.occasion==='Favorites'&&!!s.saved[v.id]||badges.includes(f.occasion));
+    const st=f.status||'All',gap=missing(v,s).length;
+    const statusMatch=st==='Hidden'?isHidden:!isHidden&&(st==='All'||st==='Favorites'&&!!s.saved[v.id]||st==='Complete'&&gap===0||st==='Almost'&&gap===1||st==='Missing'&&gap>=2);
+    const occasionMatch=statusMatch&&(f.occasion==='All'||badges.includes(f.occasion));
     return occasionMatch&&(f.season==='All'||seasons.includes(f.season));
   }
   function weatherEligible(v,w){

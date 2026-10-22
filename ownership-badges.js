@@ -44,6 +44,7 @@
       const cls=`ownership-pill ${st.cls}`;if(pill.className!==cls)pill.className=cls;if(pill.textContent!==st.label)pill.textContent=st.label;
       if(c){if(card.dataset.completeness!==st.cls)card.dataset.completeness=st.cls;const missing=String(c.missing);if(card.dataset.missing!==missing)card.dataset.missing=missing}
     });
+    window.dispatchEvent(new CustomEvent('fits:completeness-updated'));
   }
   let queued=false;const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;apply()})};
   window.addEventListener('fits:home-enhanced',schedule);

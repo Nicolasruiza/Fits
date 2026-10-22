@@ -134,7 +134,7 @@
    if(open&&manualLevel===null)level=modeForLevel(automatic.level)==='warmer'?0:4;
    addBoundaryOverlaps(groups);
    const activeFilters=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
-   if(activeFilters&&['Favorites','Hidden'].includes(activeFilters.occasion)){
+   if(activeFilters&&['Favorites','Hidden','Complete','Almost','Missing'].includes(activeFilters.status)){
      const openGroup=groups.find(group=>group.dataset.season===open);
      const hasVisible=group=>[...group.querySelectorAll('.look-group-rail > a.card')].some(card=>!card.classList.contains('hidden')&&!card.classList.contains('smart-hidden'));
      if(!openGroup||!hasVisible(openGroup)){
