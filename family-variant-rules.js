@@ -2,7 +2,11 @@
   const D=window.FITS_DATA;if(!D)return;
   const pieces=new Map((D.pieces||[]).map(p=>[p.id,p]));
   const looks=new Map((D.looks||[]).map(l=>[l.id,l]));
+  // Looks listed together always share a card, even when their trousers differ.
+  const keepTogether=[['look-63','look-94','look-110']];
   const signature=l=>{
+    const group=keepTogether.findIndex(ids=>ids.includes(l.id));
+    if(group>=0)return `together-${group}`;
     const pants=(l.pieces||[]).filter(id=>pieces.get(id)?.category==='Pants').sort();
     const tops=(l.pieces||[]).filter(id=>pieces.get(id)?.category==='Top');
     const sweaters=tops.filter(id=>/(sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck)/i.test(pieces.get(id)?.name||''));
