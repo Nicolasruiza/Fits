@@ -35,6 +35,7 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "navy-leather-sneakers": "assets/owned-navy-leather-sneakers.webp?v=1",
   "navy-polo": "assets/owned-navy-polo.webp?v=1",
   "black-chinos": "assets/black-chinos.webp?v=1",
+  "grey-trousers": "assets/wardrobe-standardized/light-grey-trousers.png?v=1",
   "navy-vneck-sweater": "assets/wardrobe-standardized/navy-vneck-sweater.png?v=1",
   "light-blue-crewneck": "assets/wardrobe-standardized/light-blue-crewneck.png?v=1",
   "cream-crewneck-sweater": "assets/wardrobe-standardized/cream-crewneck-sweater.png?v=1",

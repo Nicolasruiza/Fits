@@ -7,12 +7,12 @@
   "missing": 68,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 84,
-  "externalPieceImages": 14,
+  "localPieceImages": 85,
+  "externalPieceImages": 13,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
   "orphanPieces": 18,
-  "unusedAssets": 63,
+  "unusedAssets": 62,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -297,9 +297,9 @@
    "category": "Pants",
    "ownership": "owned",
    "class": "trousers",
-   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113337_ab582b82-31b8-4eb7-a594-6bccaff5b0a7_min.webp",
-   "imageKind": "external",
-   "hasAlpha": null,
+   "image": "assets/wardrobe-standardized/light-grey-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
    "looks": [
     "look-64",
     "look-68",
@@ -3982,7 +3982,6 @@
    "white-polo",
    "grey-polo",
    "navy-trousers",
-   "grey-trousers",
    "taupe-trousers",
    "dark-denim",
    "brown-derbies",
@@ -4109,8 +4108,7 @@
    "assets/piece-cream-chinos.webp",
    "assets/piece-navy-quarterzip.webp",
    "assets/wardrobe-standardized/charcoal-trousers.png",
-   "assets/wardrobe-standardized/khaki-chinos.png",
-   "assets/wardrobe-standardized/light-grey-trousers.png"
+   "assets/wardrobe-standardized/khaki-chinos.png"
   ]
  }
 }

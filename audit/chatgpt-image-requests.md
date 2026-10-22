@@ -47,7 +47,6 @@ These already exist: download them from the original generation history and add 
 - `white-polo` — White polo (owned) · looks: look-47, look-68, look-95, look-103
 - `grey-polo` — Grey polo (missing) · looks: none
 - `navy-trousers` — Navy chinos (owned) · looks: look-41, look-70, look-73, look-72, look-88, look-89, look-90, look-92, look-109, look-113, look-114
-- `grey-trousers` — Grey chinos (owned) · looks: look-64, look-68, look-79, look-101, look-104, look-115, look-121, look-123
 - `taupe-trousers` — Taupe chinos (missing) · looks: look-42, look-96
 - `dark-denim` — Dark indigo jeans (owned) · looks: look-48, look-49, look-50, look-51, look-52, look-60, look-61, look-76, look-78, look-84, look-85, look-86, look-100, look-107
 - `brown-derbies` — Brown derbies (missing) · looks: none
