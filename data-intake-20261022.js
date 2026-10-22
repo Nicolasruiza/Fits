@@ -14,11 +14,11 @@
   ];
   pieces.forEach(p=>{if(!D.pieces.some(x=>x.id===p.id))D.pieces.push({...p,status:'missing'})});
   const looks=[
-    ['look-109','Olive corduroy shirt + khaki chinos + brown cap-toe shoes','assets/look-109-olive-cord-khaki-cognac.jpg',2,['Weekend','Dinner'],['olive-buttondown','khaki-chinos','brown-belt','owned-brown-leather-captoe']],
-    ['look-110','Light blue shirt + navy chinos + black cap-toe shoes','assets/look-110-lightblue-navy-black.jpg',3,['Office','Dinner'],['light-blue-oxford','navy-trousers','dark-belt','owned-black-leather-captoe']],
-    ['look-111','Grey T-shirt + navy chinos + black cap-toe shoes','assets/look-111-grey-tee-navy-black.jpg',1,['Weekend','Travel'],['grey-tee','navy-trousers','owned-black-leather-captoe']],
+    ['look-109','Grey T-shirt + navy chinos + black cap-toe shoes','assets/look-109-grey-tee-navy-black.jpg',1,['Weekend','Travel'],['grey-tee','navy-trousers','owned-black-leather-captoe']],
+    ['look-110','Olive corduroy shirt + khaki chinos + brown cap-toe shoes','assets/look-110-olive-cord-khaki-brown.jpg',2,['Weekend','Dinner'],['olive-buttondown','khaki-chinos','brown-belt','owned-brown-leather-captoe']],
+    ['look-111','Navy V-neck + white shirt + olive trousers + brown cap-toe shoes','assets/look-111-navy-vneck-olive-brown.jpg',3,['Office','Dinner'],['navy-vneck-sweater','white-shirt','olive-trousers','brown-belt','owned-brown-leather-captoe']],
     ['look-112','Black T-shirt + black chinos + black cap-toe shoes','assets/look-112-black-tee-black-black.jpg',2,['Dinner','Weekend'],['black-tee','black-chinos','owned-black-leather-captoe']],
-    ['look-113','Navy V-neck + white shirt + olive trousers + brown cap-toe shoes','assets/look-113-navy-vneck-olive-brown.jpg',3,['Office','Dinner'],['navy-vneck-sweater','white-shirt','olive-trousers','brown-belt','owned-brown-leather-captoe']],
+    ['look-113','Light blue shirt + navy chinos + black cap-toe shoes','assets/look-113-lightblue-navy-black.jpg',3,['Office','Dinner'],['light-blue-oxford','navy-trousers','dark-belt','owned-black-leather-captoe']],
     ['look-114','Light blue crewneck + white shirt + navy chinos + black cap-toe shoes','assets/look-114-lightblue-crew-navy-black.jpg',3,['Office'],['light-blue-crewneck','white-shirt','navy-trousers','owned-black-leather-captoe']],
     ['look-115','Navy V-neck + white shirt + grey chinos + black cap-toe shoes','assets/look-115-navy-vneck-grey-black.jpg',3,['Office','Dinner'],['navy-vneck-sweater','white-shirt','grey-trousers','dark-belt','owned-black-leather-captoe']],
     ['look-116','Light blue shirt + khaki chinos + dark brown suede loafers','assets/look-116-lightblue-khaki-suede-loafers.jpg',3,['Office','Weekend'],['light-blue-oxford','khaki-chinos','brown-belt','darkbrown-suede-loafers']],

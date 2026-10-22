@@ -42,12 +42,30 @@
     ]
   },
   "needsReview": [
-    {"item": "look-109 olive-buttondown", "why": "photo shows an olive corduroy shirt; the existing piece is a generic olive button-down"},
-    {"item": "look-113 olive-trousers", "why": "photo shows olive chinos; the existing piece is named olive tailored trousers"},
-    {"item": "look-117 camel-ribbed-crewneck", "why": "new piece; brown-ribbed-crewneck may be the same sweater in a different colour name"},
-    {"item": "cream-crewneck-sweater", "why": "may be the same item as cream-knit-sweater or tan-knit-sweater"},
-    {"item": "black cap-toe shoes", "why": "photos show black lace-up oxfords; matched to owned-black-leather-captoe by appearance only"},
-    {"item": "new looks formal/badges", "why": "occasion badges and formality level were chosen from the outfit, not supplied by the user"}
+    {
+      "item": "look-109 olive-buttondown",
+      "why": "photo shows an olive corduroy shirt; the existing piece is a generic olive button-down"
+    },
+    {
+      "item": "look-113 olive-trousers",
+      "why": "photo shows olive chinos; the existing piece is named olive tailored trousers"
+    },
+    {
+      "item": "look-117 camel-ribbed-crewneck",
+      "why": "new piece; brown-ribbed-crewneck may be the same sweater in a different colour name"
+    },
+    {
+      "item": "cream-crewneck-sweater",
+      "why": "may be the same item as cream-knit-sweater or tan-knit-sweater"
+    },
+    {
+      "item": "black cap-toe shoes",
+      "why": "photos show black lace-up oxfords; matched to owned-black-leather-captoe by appearance only"
+    },
+    {
+      "item": "new looks formal/badges",
+      "why": "occasion badges and formality level were chosen from the outfit, not supplied by the user"
+    }
   ],
   "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match."
 }

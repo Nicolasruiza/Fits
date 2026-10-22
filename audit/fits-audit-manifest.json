@@ -144,7 +144,7 @@
     "look-71",
     "look-72",
     "look-108",
-    "look-110",
+    "look-113",
     "look-116",
     "look-117"
    ]
@@ -168,7 +168,7 @@
     "look-87",
     "look-90",
     "look-101",
-    "look-113",
+    "look-111",
     "look-114",
     "look-115"
    ]
@@ -204,7 +204,7 @@
    "hasAlpha": true,
    "looks": [
     "look-107",
-    "look-111"
+    "look-109"
    ]
   },
   {
@@ -295,7 +295,7 @@
    "hasAlpha": true,
    "looks": [
     "look-63",
-    "look-109",
+    "look-110",
     "look-116"
    ]
   },
@@ -332,8 +332,8 @@
     "look-89",
     "look-90",
     "look-92",
-    "look-110",
-    "look-111",
+    "look-109",
+    "look-113",
     "look-114",
     "look-117"
    ]
@@ -660,8 +660,8 @@
     "look-95",
     "look-96",
     "look-97",
-    "look-109",
-    "look-113",
+    "look-110",
+    "look-111",
     "look-116"
    ]
   },
@@ -676,7 +676,7 @@
    "hasAlpha": null,
    "looks": [
     "look-98",
-    "look-110",
+    "look-113",
     "look-115",
     "look-117"
    ]
@@ -879,7 +879,7 @@
     "look-58",
     "look-59",
     "look-105",
-    "look-113"
+    "look-111"
    ]
   },
   {
@@ -1139,7 +1139,7 @@
    "looks": [
     "look-63",
     "look-94",
-    "look-109"
+    "look-110"
    ]
   },
   {
@@ -1422,9 +1422,9 @@
    "hasAlpha": true,
    "looks": [
     "look-79",
-    "look-110",
-    "look-111",
+    "look-109",
     "look-112",
+    "look-113",
     "look-114",
     "look-115",
     "look-117"
@@ -1452,8 +1452,8 @@
    "hasAlpha": true,
    "looks": [
     "look-89",
-    "look-109",
-    "look-113"
+    "look-110",
+    "look-111"
    ]
   },
   {
@@ -1503,7 +1503,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
-    "look-113",
+    "look-111",
     "look-115"
    ]
   },
@@ -3553,6 +3553,32 @@
   },
   {
    "id": "look-109",
+   "name": "Grey T-shirt + navy chinos + black cap-toe shoes",
+   "pieces": [
+    "grey-tee",
+    "navy-trousers",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "grey-tee"
+   ],
+   "image": "assets/look-109-grey-tee-navy-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-110",
    "name": "Olive corduroy shirt + khaki chinos + brown cap-toe shoes",
    "pieces": [
     "olive-buttondown",
@@ -3564,36 +3590,7 @@
     "olive-buttondown",
     "khaki-chinos"
    ],
-   "image": "assets/look-109-olive-cord-khaki-cognac.jpg",
-   "imageKind": "local",
-   "seasons": [
-    "Summer",
-    "Transition"
-   ],
-   "thermal": [
-    "Mild",
-    "Warmer"
-   ],
-   "comfortC": [
-    16.7,
-    25.7
-   ],
-   "warmth": 1.1,
-   "winterLayerable": false
-  },
-  {
-   "id": "look-110",
-   "name": "Light blue shirt + navy chinos + black cap-toe shoes",
-   "pieces": [
-    "light-blue-oxford",
-    "navy-trousers",
-    "dark-belt",
-    "owned-black-leather-captoe"
-   ],
-   "missingPieces": [
-    "light-blue-oxford"
-   ],
-   "image": "assets/look-110-lightblue-navy-black.jpg",
+   "image": "assets/look-110-olive-cord-khaki-brown.jpg",
    "imageKind": "local",
    "seasons": [
     "Summer",
@@ -3612,29 +3609,33 @@
   },
   {
    "id": "look-111",
-   "name": "Grey T-shirt + navy chinos + black cap-toe shoes",
+   "name": "Navy V-neck + white shirt + olive trousers + brown cap-toe shoes",
    "pieces": [
-    "grey-tee",
-    "navy-trousers",
-    "owned-black-leather-captoe"
+    "navy-vneck-sweater",
+    "white-shirt",
+    "olive-trousers",
+    "brown-belt",
+    "owned-brown-leather-captoe"
    ],
    "missingPieces": [
-    "grey-tee"
+    "navy-vneck-sweater",
+    "white-shirt",
+    "olive-trousers"
    ],
-   "image": "assets/look-111-grey-tee-navy-black.jpg",
+   "image": "assets/look-111-navy-vneck-olive-brown.jpg",
    "imageKind": "local",
    "seasons": [
-    "Summer"
+    "Transition"
    ],
    "thermal": [
-    "Warmer"
+    "Mild"
    ],
    "comfortC": [
-    19.1,
-    28.1
+    7.5,
+    16.5
    ],
-   "warmth": 0.8,
-   "winterLayerable": false
+   "warmth": 2.25,
+   "winterLayerable": true
   },
   {
    "id": "look-112",
@@ -3665,33 +3666,32 @@
   },
   {
    "id": "look-113",
-   "name": "Navy V-neck + white shirt + olive trousers + brown cap-toe shoes",
+   "name": "Light blue shirt + navy chinos + black cap-toe shoes",
    "pieces": [
-    "navy-vneck-sweater",
-    "white-shirt",
-    "olive-trousers",
-    "brown-belt",
-    "owned-brown-leather-captoe"
+    "light-blue-oxford",
+    "navy-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
    ],
    "missingPieces": [
-    "navy-vneck-sweater",
-    "white-shirt",
-    "olive-trousers"
+    "light-blue-oxford"
    ],
-   "image": "assets/look-113-navy-vneck-olive-brown.jpg",
+   "image": "assets/look-113-lightblue-navy-black.jpg",
    "imageKind": "local",
    "seasons": [
+    "Summer",
     "Transition"
    ],
    "thermal": [
-    "Mild"
+    "Mild",
+    "Warmer"
    ],
    "comfortC": [
-    7.5,
-    16.5
+    16.7,
+    25.7
    ],
-   "warmth": 2.25,
-   "winterLayerable": true
+   "warmth": 1.1,
+   "winterLayerable": false
   },
   {
    "id": "look-114",
