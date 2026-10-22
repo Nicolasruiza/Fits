@@ -13,7 +13,9 @@
       "look-116": "Urban Elegance in Warm Stone Light.png",
       "look-117": "Urban Elegance in Camel and Navy.png",
       "look-118": "Polished Urban Stroll in Navy and Khaki.png",
-      "look-119": "Polished Urban Editorial Portrait.png"
+      "look-119": "Polished Urban Editorial Portrait.png",
+      "look-120": "Refined Urban Gentleman in Motion.png",
+      "look-121": "Urban Elegance on a Wet Sidewalk.png"
     },
     "pieceImages": {
       "navy-vneck-sweater": "Navy V-Neck Sweater Cutout.png",
@@ -33,11 +35,9 @@
   },
   "pendingIdentification": {
     "table": "audit/pending-photos-20261022.md",
-    "published": "2 of 7 (look-118, look-119)",
+    "published": "4 of 7 (look-118, 119, 120, 121)",
     "held": [
-      "Refined Urban Gentleman in Motion.png",
       "Urban Elegance in Motion(2).png",
-      "Urban Elegance on a Wet Sidewalk.png",
       "Elegant Urban Walk in Soft Light.png",
       "Elegant Stroll on a Stone Street.png"
     ],
@@ -75,6 +75,14 @@
     {
       "item": "photo 6 charcoal quarter-zip",
       "why": "ChatGPT proposed owned-grey-quarterzip, which is light grey; charcoal-quarterzip kept separate"
+    },
+    {
+      "item": "look-120 and look-121 sweater",
+      "why": "user confirmed it is the darker of cream/tan: tan-knit-sweater"
+    },
+    {
+      "item": "look-120 trousers black-chinos; look-121 trousers grey-trousers",
+      "why": "photos show black / mid-grey trousers; chino cut is 'probably', not confirmed"
     }
   ],
   "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match.",

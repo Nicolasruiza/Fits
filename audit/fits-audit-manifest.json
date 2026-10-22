@@ -5,8 +5,8 @@
   "pieces": 106,
   "owned": 31,
   "missing": 75,
-  "looks": 82,
-  "families": 77,
+  "looks": 84,
+  "families": 79,
   "localPieceImages": 87,
   "externalPieceImages": 16,
   "pieceImagesWithoutAlpha": 4,
@@ -147,7 +147,8 @@
     "look-113",
     "look-116",
     "look-117",
-    "look-118"
+    "look-118",
+    "look-120"
    ]
   },
   {
@@ -172,7 +173,8 @@
     "look-111",
     "look-114",
     "look-115",
-    "look-119"
+    "look-119",
+    "look-121"
    ]
   },
   {
@@ -356,7 +358,8 @@
     "look-79",
     "look-101",
     "look-104",
-    "look-115"
+    "look-115",
+    "look-121"
    ]
   },
   {
@@ -956,7 +959,9 @@
    "hasAlpha": true,
    "looks": [
     "look-58",
-    "look-85"
+    "look-85",
+    "look-120",
+    "look-121"
    ]
   },
   {
@@ -1433,7 +1438,9 @@
     "look-113",
     "look-114",
     "look-115",
-    "look-117"
+    "look-117",
+    "look-120",
+    "look-121"
    ]
   },
   {
@@ -1584,7 +1591,8 @@
    "imageKind": "none",
    "hasAlpha": null,
    "looks": [
-    "look-112"
+    "look-112",
+    "look-120"
    ]
   },
   {
@@ -3861,6 +3869,63 @@
     "white-shirt"
    ],
    "image": "assets/look-119-black-vneck-white-beige-brown.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-120",
+   "name": "Tan knit sweater + light blue shirt + black chinos + black cap-toe shoes",
+   "pieces": [
+    "tan-knit-sweater",
+    "light-blue-oxford",
+    "black-chinos",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "tan-knit-sweater",
+    "light-blue-oxford",
+    "black-chinos"
+   ],
+   "image": "assets/look-120-tan-knit-lightblue-black-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-121",
+   "name": "Tan knit sweater + white shirt + grey chinos + black cap-toe shoes",
+   "pieces": [
+    "tan-knit-sweater",
+    "white-shirt",
+    "grey-trousers",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "tan-knit-sweater",
+    "white-shirt"
+   ],
+   "image": "assets/look-121-tan-knit-white-grey-black.jpg",
    "imageKind": "local",
    "seasons": [
     "Transition"
