@@ -7,7 +7,7 @@
   "missing": 64,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 83,
+  "localPieceImages": 84,
   "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
@@ -1474,9 +1474,9 @@
    "category": "Shoes",
    "ownership": "missing",
    "class": "shoes",
-   "image": null,
-   "imageKind": "none",
-   "hasAlpha": null,
+   "image": "assets/wardrobe-standardized/darkbrown-suede-loafers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
    "looks": [
     "look-116"
    ]
@@ -3962,9 +3962,7 @@
   "opaqueBackground": [
    "white-shirt"
   ],
-  "pendingImages": [
-   "darkbrown-suede-loafers"
-  ],
+  "pendingImages": [],
   "orphanPieces": [
    "grey-polo",
    "navy-henley",
