@@ -12,13 +12,13 @@
     for(let i=startIdx;i<d.hourly.time.length;i+=step)hours.push({time:d.hourly.time[i],temp:d.hourly.temperature_2m[i],rain:d.hourly.precipitation_probability[i]||0,code:d.hourly.weather_code[i]});
     const last=d.hourly.time.length-1;
     if(last>=startIdx&&!hours.some(h=>h.time===d.hourly.time[last]))hours.push({time:d.hourly.time[last],temp:d.hourly.temperature_2m[last],rain:d.hourly.precipitation_probability[last]||0,code:d.hourly.weather_code[last]});
-    return {temp:c.temperature_2m,code:c.weather_code,currentRain:(c.rain||c.precipitation)>0,maxRain:Math.max(0,...d.hourly.precipitation_probability.map(v=>v||0)),maxTemp:d.daily?.temperature_2m_max?.[0],minTemp:d.daily?.temperature_2m_min?.[0],hours,location:location||'Your location',ts:Date.now()};
+    return {temp:c.temperature_2m,apparent:c.apparent_temperature,humidity:c.relative_humidity_2m,wind:c.wind_speed_10m,code:c.weather_code,currentRain:(c.rain||c.precipitation)>0,maxRain:Math.max(0,...d.hourly.precipitation_probability.map(v=>v||0)),maxTemp:d.daily?.temperature_2m_max?.[0],minTemp:d.daily?.temperature_2m_min?.[0],hours,location:location||'Your location',ts:Date.now()};
   }
 
   async function refreshAt(lat,lon,knownLocation){
     setLoading(true);
     try{
-      const weatherPromise=fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation,rain,weather_code&hourly=temperature_2m,precipitation_probability,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&forecast_days=1&temperature_unit=celsius&timezone=auto`).then(r=>r.json());
+      const weatherPromise=fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,rain,weather_code&hourly=temperature_2m,precipitation_probability,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&forecast_days=1&temperature_unit=celsius&timezone=auto`).then(r=>r.json());
       const locationPromise=knownLocation?Promise.resolve(knownLocation):(typeof resolveLocation==='function'?resolveLocation(lat,lon):Promise.resolve('Your location'));
       const [d,location]=await Promise.all([weatherPromise,locationPromise]);
       const w=buildWeather(d,location);

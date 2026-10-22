@@ -17,3 +17,5 @@ jobs:
           node-version: '20'
       - name: Validate catalog
         run: node scripts/validate-data.mjs
+      - name: Audit wardrobe, looks, images and climate rules
+        run: node scripts/audit-fits.mjs

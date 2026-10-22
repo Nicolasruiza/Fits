@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-22",
+  "source": "User-supplied PNGs from ~/Downloads (ChatGPT generations)",
+  "published": {
+    "looks": {
+      "look-109": "Urban Elegance on Wet Stone.png",
+      "look-110": "Elegant Urban Street Style.png",
+      "look-111": "Urban Elegance in Motion(1).png",
+      "look-112": "Monochrome Stroll by the Stone Facade.png",
+      "look-113": "Confident Stroll Through Elegant City Streets.png",
+      "look-114": "Refined Walk on a Rain-Kissed Street.png",
+      "look-115": "Urban Elegance in Navy and Gray.png",
+      "look-116": "Urban Elegance in Warm Stone Light.png",
+      "look-117": "Urban Elegance in Camel and Navy.png"
+    },
+    "pieceImages": {
+      "navy-vneck-sweater": "Navy V-Neck Sweater Cutout.png",
+      "light-blue-crewneck": "Light Blue Knit Crewneck Sweater(1).png",
+      "cream-crewneck-sweater": "Cream Knit Crewneck Sweater Cutout.png",
+      "charcoal-quarterzip": "Charcoal Gray Quarter-Zip Sweater.png",
+      "beige-quarterzip": "Cream Knit Quarter-Zip Sweater.png (replaces catalog-beige-quarterzip.webp, which had no alpha channel)",
+      "sky-blue-striped-dress-shirt": "Sky Blue Striped Dress Shirt.png"
+    }
+  },
+  "rejectedGarmentImages": {
+    "Striped Blue Dress Shirt Cutout.png": "RGB PNG with a checkerboard drawn into the pixels, not real transparency",
+    "Blue-and-White Striped Dress Shirt.png": "RGB PNG with a checkerboard drawn into the pixels, not real transparency",
+    "Navy V-Neck Sweater Flat Lay.png": "opaque beige background",
+    "Navy V-Neck Sweater Mockup.png": "duplicate of the published navy V-neck cut-out",
+    "Navy Quarter-Zip Knit Pullover.png": "navy-quarterzip already has a valid transparent image; not replaced"
+  },
+  "pendingIdentification": {
+    "reason": "Seven look photos sit in Downloads but were not in the chat attachments. Sweater types and shoes need confirmation before they get canonical piece IDs.",
+    "files": [
+      "Refined Urban Gentleman in Motion.png (cream sweater, charcoal trousers, black shoes)",
+      "Polished Urban Stroll in Navy and Khaki.png (navy crewneck, khaki chinos, brown shoes)",
+      "Urban Elegance in Motion(2).png (black crewneck, charcoal trousers, brown shoes)",
+      "Polished Urban Editorial Portrait.png (black V-neck, khaki chinos, brown shoes)",
+      "Urban Elegance on a Wet Sidewalk.png (beige crewneck, grey trousers, black shoes)",
+      "Elegant Urban Walk in Soft Light.png (charcoal quarter-zip, grey trousers, black shoes)",
+      "Elegant Stroll on a Stone Street.png (black sweater, khaki chinos, brown shoes)"
+    ]
+  },
+  "needsReview": [
+    {"item": "look-109 olive-buttondown", "why": "photo shows an olive corduroy shirt; the existing piece is a generic olive button-down"},
+    {"item": "look-113 olive-trousers", "why": "photo shows olive chinos; the existing piece is named olive tailored trousers"},
+    {"item": "look-117 camel-ribbed-crewneck", "why": "new piece; brown-ribbed-crewneck may be the same sweater in a different colour name"},
+    {"item": "cream-crewneck-sweater", "why": "may be the same item as cream-knit-sweater or tan-knit-sweater"},
+    {"item": "black cap-toe shoes", "why": "photos show black lace-up oxfords; matched to owned-black-leather-captoe by appearance only"},
+    {"item": "new looks formal/badges", "why": "occasion badges and formality level were chosen from the outfit, not supplied by the user"}
+  ],
+  "ownership": "All new pieces are Missing until confirmed. Looks reuse existing Owned shoes, belts and trousers only where they match."
+}

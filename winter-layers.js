@@ -5,7 +5,7 @@
   const text=p=>`${p?.name||''} ${p?.category||''}`.toLowerCase();
   const isWinterCoat=p=>/overcoat|topcoat|wool coat|winter coat|parka|puffer|trench|gab[aá]n/.test(text(p));
   const isOuterLayer=p=>/overcoat|topcoat|coat|parka|puffer|trench|gab[aá]n|jacket|blazer|overshirt|bomber/.test(text(p));
-  const isWarmBase=p=>/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|knit|cardigan|turtleneck/.test(text(p));
+  const isWarmBase=p=>{const C=window.FITS_CLIMATE;return C?['knit','heavy-knit','cardigan'].includes(C.classify(p).cls):/sweater|v-neck|quarter[- ]?zip|knit|cardigan|turtleneck/.test(text(p))};
   const wardrobe=()=>safe('fitsWardrobe',{});
   const owned=(p,w=wardrobe())=>w[p.id]==='owned'||(!w[p.id]&&p.status==='owned');
   const piecesFor=look=>(look?.pieces||[]).map(piece).filter(Boolean);

@@ -1,0 +1,4079 @@
+{
+ "generatedBy": "scripts/audit-fits.mjs --write",
+ "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
+ "summary": {
+  "pieces": 106,
+  "owned": 31,
+  "missing": 75,
+  "looks": 80,
+  "families": 75,
+  "localPieceImages": 87,
+  "externalPieceImages": 16,
+  "pieceImagesWithoutAlpha": 4,
+  "externalLookImages": 22,
+  "orphanPieces": 22,
+  "unusedAssets": 57,
+  "needsReviewGroups": 14
+ },
+ "climateConfig": {
+  "comfort": {
+   "baseC": 30,
+   "perWarmthC": 8,
+   "halfRangeC": 4.5
+  },
+  "thermal": {
+   "Colder": {
+    "max": 10
+   },
+   "Mild": {
+    "min": 10,
+    "max": 20
+   },
+   "Warmer": {
+    "min": 20
+   }
+  },
+  "seasons": {
+   "Winter": {
+    "max": 10
+   },
+   "Transition": {
+    "min": 6,
+    "max": 22
+   },
+   "Summer": {
+    "min": 21
+   }
+  },
+  "minOverlapC": 3.2
+ },
+ "pieces": [
+  {
+   "id": "green-polo",
+   "name": "Green polo",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/wardrobe-standardized/green-polo.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-67"
+   ]
+  },
+  {
+   "id": "burgundy-polo",
+   "name": "Burgundy polo",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/burgundy-polo-new.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-96"
+   ]
+  },
+  {
+   "id": "white-polo",
+   "name": "White polo",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "tee",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114356_6d6cdd61-1ffc-46d3-b3d6-e896250c8b0d_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-47",
+    "look-68",
+    "look-95",
+    "look-103"
+   ]
+  },
+  {
+   "id": "navy-polo",
+   "name": "Navy blue polo",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "tee",
+   "image": "assets/owned-navy-polo.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-35",
+    "look-40",
+    "look-82",
+    "look-100"
+   ]
+  },
+  {
+   "id": "charcoal-polo",
+   "name": "Charcoal polo",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114356_1763426c-0396-4132-843d-7222cb2ecaf0_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": []
+  },
+  {
+   "id": "grey-polo",
+   "name": "Grey polo",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_7b50ad21-aad0-458b-92e1-0e26324e1f0b_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": []
+  },
+  {
+   "id": "light-blue-oxford",
+   "name": "Light blue Oxford shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "shirt",
+   "image": "assets/wardrobe-standardized/light-blue-oxford.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-38",
+    "look-53",
+    "look-70",
+    "look-71",
+    "look-72",
+    "look-108",
+    "look-110",
+    "look-116",
+    "look-117"
+   ]
+  },
+  {
+   "id": "white-shirt",
+   "name": "White button-up shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "shirt",
+   "image": "assets/wardrobe-standardized/white-shirt.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-42",
+    "look-46",
+    "look-60",
+    "look-73",
+    "look-85",
+    "look-86",
+    "look-87",
+    "look-90",
+    "look-101",
+    "look-113",
+    "look-114",
+    "look-115"
+   ]
+  },
+  {
+   "id": "white-tee",
+   "name": "White crew-neck T-shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/wardrobe-standardized/white-tee.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-41",
+    "look-43",
+    "look-50",
+    "look-51",
+    "look-54",
+    "look-77",
+    "look-92",
+    "look-99"
+   ]
+  },
+  {
+   "id": "grey-tee",
+   "name": "Light grey crew-neck T-shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/wardrobe-standardized/grey-tee.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-107",
+    "look-111"
+   ]
+  },
+  {
+   "id": "dark-crewneck",
+   "name": "Dark crewneck",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214140_4b409df5-4a81-4679-b39f-6429587e94d0_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": []
+  },
+  {
+   "id": "navy-crewneck",
+   "name": "Navy crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/navy-crewneck.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-38",
+    "look-45",
+    "look-70",
+    "look-73",
+    "look-75",
+    "look-87"
+   ]
+  },
+  {
+   "id": "black-turtleneck",
+   "name": "Black turtleneck",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "heavy-knit",
+   "image": "assets/wardrobe-standardized/black-turtleneck.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-56"
+   ]
+  },
+  {
+   "id": "navy-henley",
+   "name": "Navy blue short-sleeve henley",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "tee",
+   "image": "assets/wardrobe-standardized/navy-henley.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "grey-henley",
+   "name": "Grey henley",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "long-sleeve-light",
+   "image": "assets/wardrobe-standardized/grey-henley.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-36"
+   ]
+  },
+  {
+   "id": "olive-henley",
+   "name": "Olive henley",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "long-sleeve-light",
+   "image": "assets/wardrobe-standardized/olive-henley.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "khaki-chinos",
+   "name": "Khaki chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/khaki-chinos.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-63",
+    "look-109",
+    "look-116"
+   ]
+  },
+  {
+   "id": "charcoal-trousers",
+   "name": "Charcoal chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/charcoal-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-55",
+    "look-56",
+    "look-98"
+   ]
+  },
+  {
+   "id": "navy-trousers",
+   "name": "Navy chinos",
+   "category": "Pants",
+   "ownership": "owned",
+   "class": "trousers",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113338_31d9ca44-f60a-4836-b98a-88e3fdf750fa_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-41",
+    "look-70",
+    "look-73",
+    "look-72",
+    "look-88",
+    "look-89",
+    "look-90",
+    "look-92",
+    "look-110",
+    "look-111",
+    "look-114",
+    "look-117"
+   ]
+  },
+  {
+   "id": "grey-trousers",
+   "name": "Grey chinos",
+   "category": "Pants",
+   "ownership": "owned",
+   "class": "trousers",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113337_ab582b82-31b8-4eb7-a594-6bccaff5b0a7_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-64",
+    "look-68",
+    "look-79",
+    "look-101",
+    "look-104",
+    "look-115"
+   ]
+  },
+  {
+   "id": "taupe-trousers",
+   "name": "Taupe chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113338_91868b0a-8f8f-439b-a424-653c056430d9_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-42",
+    "look-96"
+   ]
+  },
+  {
+   "id": "light-grey-trousers",
+   "name": "Light grey chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/light-grey-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "beige-chinos",
+   "name": "Beige chinos",
+   "category": "Pants",
+   "ownership": "owned",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/beige-chinos.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-38",
+    "look-43",
+    "look-45",
+    "look-57",
+    "look-62",
+    "look-75",
+    "look-71",
+    "look-74",
+    "look-80",
+    "look-81",
+    "look-82",
+    "look-99",
+    "look-106",
+    "look-108"
+   ]
+  },
+  {
+   "id": "dark-chinos",
+   "name": "Dark charcoal chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/dark-chinos.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-44"
+   ]
+  },
+  {
+   "id": "dark-denim",
+   "name": "Dark indigo jeans",
+   "category": "Pants",
+   "ownership": "owned",
+   "class": "trousers",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114530_5659d85f-1214-4995-a981-c85b8c450139_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-48",
+    "look-49",
+    "look-50",
+    "look-51",
+    "look-52",
+    "look-60",
+    "look-61",
+    "look-76",
+    "look-78",
+    "look-84",
+    "look-85",
+    "look-86",
+    "look-93",
+    "look-100",
+    "look-107"
+   ]
+  },
+  {
+   "id": "blue-denim",
+   "name": "Blue jeans",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/blue-denim.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-35",
+    "look-36",
+    "look-77",
+    "look-87"
+   ]
+  },
+  {
+   "id": "brown-loafers",
+   "name": "Cognac brown leather loafers",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-cognac-brown-loafers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-40",
+    "look-46",
+    "look-49",
+    "look-53",
+    "look-62",
+    "look-63",
+    "look-66",
+    "look-77",
+    "look-80",
+    "look-94",
+    "look-95",
+    "look-96",
+    "look-97"
+   ]
+  },
+  {
+   "id": "brown-derbies",
+   "name": "Brown derbies",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114435_4380b5ac-1ab1-4218-9b42-dc5baaa57dbd_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": []
+  },
+  {
+   "id": "dark-loafers",
+   "name": "Black loafers",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114434_224e5e9b-c9b3-422c-90b4-a816019e281e_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-64",
+    "look-98"
+   ]
+  },
+  {
+   "id": "brown-casual-shoes",
+   "name": "Brown casual shoes",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114435_c4e2601f-50e8-4fb1-b8d2-7b3a51f2f98d_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-36"
+   ]
+  },
+  {
+   "id": "white-leather-sneakers",
+   "name": "Banana Republic white leather sneakers",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-br-white-leather-sneakers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-35",
+    "look-38",
+    "look-43",
+    "look-45",
+    "look-47",
+    "look-48",
+    "look-50",
+    "look-51",
+    "look-52",
+    "look-54",
+    "look-59",
+    "look-60",
+    "look-61",
+    "look-67",
+    "look-68",
+    "look-70",
+    "look-73",
+    "look-75",
+    "look-71",
+    "look-72",
+    "look-74",
+    "look-88",
+    "look-91",
+    "look-92",
+    "look-101",
+    "look-107"
+   ]
+  },
+  {
+   "id": "navy-leather-sneakers",
+   "name": "Navy blue sneakers",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-navy-leather-sneakers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "tan-chelsea",
+   "name": "Tan suede Chelsea boots",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "boots",
+   "image": "assets/wardrobe-standardized/tan-chelsea.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-86"
+   ]
+  },
+  {
+   "id": "black-chelsea",
+   "name": "Black leather Chelsea boots",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "boots",
+   "image": "assets/wardrobe-standardized/black-chelsea.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-44",
+    "look-55",
+    "look-56"
+   ]
+  },
+  {
+   "id": "tan-suede-derbies",
+   "name": "Tan suede derby shoes",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "assets/wardrobe-standardized/tan-suede-derbies.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "taupe-suede-shoes",
+   "name": "Taupe suede casual shoes",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "assets/wardrobe-standardized/taupe-suede-shoes.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-42"
+   ]
+  },
+  {
+   "id": "tan-suede-shoes",
+   "name": "Tan suede casual shoes",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214426_ef3cf42d-aaf5-40a2-855b-b1237b426bbd_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": []
+  },
+  {
+   "id": "brown-belt",
+   "name": "Brown belt",
+   "category": "Accessory",
+   "ownership": "owned",
+   "class": "accessory",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114505_8bcaf56f-157b-4531-8ece-3e12da5647a1_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-40",
+    "look-42",
+    "look-49",
+    "look-53",
+    "look-62",
+    "look-63",
+    "look-82",
+    "look-89",
+    "look-94",
+    "look-95",
+    "look-96",
+    "look-97",
+    "look-109",
+    "look-113",
+    "look-116"
+   ]
+  },
+  {
+   "id": "dark-belt",
+   "name": "Dark belt",
+   "category": "Accessory",
+   "ownership": "owned",
+   "class": "accessory",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114505_c5d37098-7977-450c-bb8f-9576bbe6b23c_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-98",
+    "look-110",
+    "look-115",
+    "look-117"
+   ]
+  },
+  {
+   "id": "navy-blazer",
+   "name": "Navy blazer",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "blazer",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114505_03488242-3dea-43d7-902b-d44cb8ef8794_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-50",
+    "look-68",
+    "look-92"
+   ]
+  },
+  {
+   "id": "grey-blazer",
+   "name": "Grey blazer",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "blazer",
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_ed74ae11-a2ed-4871-94a9-92fcf3522c0d_min.webp",
+   "imageKind": "external",
+   "hasAlpha": null,
+   "looks": [
+    "look-46"
+   ]
+  },
+  {
+   "id": "beige-blazer",
+   "name": "Beige blazer",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "blazer",
+   "image": "assets/wardrobe-standardized/beige-blazer.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "navy-bomber",
+   "name": "Navy casual jacket",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "casual-jacket",
+   "image": "assets/wardrobe-standardized/navy-bomber.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "charcoal-cardigan",
+   "name": "Charcoal cardigan",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "cardigan",
+   "image": "assets/wardrobe-standardized/charcoal-cardigan.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-36"
+   ]
+  },
+  {
+   "id": "navy-cardigan",
+   "name": "Navy cardigan",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "cardigan",
+   "image": "assets/wardrobe-standardized/navy-cardigan.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "charcoal-overcoat",
+   "name": "Charcoal overcoat",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "overcoat",
+   "image": "assets/wardrobe-standardized/charcoal-overcoat.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "brown-leather-jacket",
+   "name": "Brown leather jacket",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "leather-jacket",
+   "image": "assets/wardrobe-standardized/brown-leather-jacket.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "navy-quarterzip",
+   "name": "Navy quarter-zip",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/navy-quarterzip.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "brown-suede-jacket",
+   "name": "Brown suede jacket",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "leather-jacket",
+   "image": "assets/catalog-brown-suede-jacket.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-57",
+    "look-66"
+   ]
+  },
+  {
+   "id": "cream-chinos",
+   "name": "Cream chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/cream-chinos.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-40",
+    "look-46",
+    "look-53",
+    "look-54",
+    "look-66",
+    "look-67",
+    "look-91",
+    "look-94",
+    "look-95"
+   ]
+  },
+  {
+   "id": "cognac-suede-jacket",
+   "name": "Cognac suede jacket",
+   "category": "Jackets",
+   "ownership": "missing",
+   "class": "leather-jacket",
+   "image": "assets/wardrobe-standardized/cognac-suede-jacket.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-41",
+    "look-76"
+   ]
+  },
+  {
+   "id": "camel-overcoat",
+   "name": "Camel overcoat",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "overcoat",
+   "image": "assets/wardrobe-standardized/camel-overcoat.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-44"
+   ]
+  },
+  {
+   "id": "grey-crewneck",
+   "name": "Grey crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/grey-crewneck.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-44",
+    "look-48",
+    "look-93"
+   ]
+  },
+  {
+   "id": "olive-trousers",
+   "name": "Olive tailored trousers",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/wardrobe-standardized/olive-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-47",
+    "look-58",
+    "look-59",
+    "look-105",
+    "look-113"
+   ]
+  },
+  {
+   "id": "olive-overshirt",
+   "name": "Olive overshirt",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "overshirt",
+   "image": "assets/catalog-olive-overshirt.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-51",
+    "look-54"
+   ]
+  },
+  {
+   "id": "black-polo",
+   "name": "Black polo",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "tee",
+   "image": "assets/wardrobe-standardized/black-polo.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-52",
+    "look-55",
+    "look-66",
+    "look-106"
+   ]
+  },
+  {
+   "id": "cream-knit-sweater",
+   "name": "Cream knit sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/catalog-cream-knit-sweater.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-53",
+    "look-59",
+    "look-88"
+   ]
+  },
+  {
+   "id": "olive-tee",
+   "name": "Olive crew-neck T-shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/catalog-olive-tee.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-57"
+   ]
+  },
+  {
+   "id": "tan-knit-sweater",
+   "name": "Tan knit sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/catalog-tan-knit-sweater.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-58",
+    "look-85"
+   ]
+  },
+  {
+   "id": "black-overcoat",
+   "name": "Black overcoat",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "overcoat",
+   "image": "assets/catalog-black-overcoat.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-56"
+   ]
+  },
+  {
+   "id": "brown-overcoat",
+   "name": "Brown overcoat",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "overcoat",
+   "image": "assets/catalog-brown-overcoat.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-58"
+   ]
+  },
+  {
+   "id": "black-tee",
+   "name": "Black crew-neck T-shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/wardrobe-standardized/black-tee.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-61",
+    "look-104",
+    "look-112"
+   ]
+  },
+  {
+   "id": "burgundy-knit-polo",
+   "name": "Burgundy knit polo",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit-polo",
+   "image": "assets/catalog-burgundy-knit-polo.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-64"
+   ]
+  },
+  {
+   "id": "striped-blue-linen-shirt",
+   "name": "Blue striped linen shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "shirt",
+   "image": "assets/catalog-striped-blue-linen-shirt.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-65",
+    "look-89"
+   ]
+  },
+  {
+   "id": "white-linen-shorts",
+   "name": "White linen shorts",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "shorts",
+   "image": "assets/catalog-white-linen-shorts.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-65"
+   ]
+  },
+  {
+   "id": "tan-espadrilles",
+   "name": "Tan summer espadrilles",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "open-shoes",
+   "image": "assets/catalog-tan-espadrilles.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-65"
+   ]
+  },
+  {
+   "id": "tan-overshirt",
+   "name": "Light tan cotton overshirt",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "overshirt",
+   "image": "assets/catalog-tan-overshirt.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-77",
+    "look-88"
+   ]
+  },
+  {
+   "id": "olive-cable-knit-sweater",
+   "name": "Olive cable-knit crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "heavy-knit",
+   "image": "assets/catalog-olive-cable-knit-sweater.webp",
+   "imageKind": "local",
+   "hasAlpha": false,
+   "looks": [
+    "look-86"
+   ]
+  },
+  {
+   "id": "beige-quarterzip",
+   "name": "Beige quarter-zip knit sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/cream-quarterzip.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-90"
+   ]
+  },
+  {
+   "id": "brown-ribbed-crewneck",
+   "name": "Brown ribbed crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "heavy-knit",
+   "image": "assets/catalog-brown-ribbed-crewneck.webp",
+   "imageKind": "local",
+   "hasAlpha": false,
+   "looks": [
+    "look-91"
+   ]
+  },
+  {
+   "id": "cream-belt",
+   "name": "Cream leather belt",
+   "category": "Accessory",
+   "ownership": "missing",
+   "class": "accessory",
+   "image": "assets/catalog-cream-belt.webp",
+   "imageKind": "local",
+   "hasAlpha": false,
+   "looks": [
+    "look-91"
+   ]
+  },
+  {
+   "id": "cognac-leather-biker-jacket",
+   "name": "Cognac leather biker jacket",
+   "category": "Outerwear",
+   "ownership": "missing",
+   "class": "leather-jacket",
+   "image": "assets/catalog-cognac-leather-biker-jacket.webp",
+   "imageKind": "local",
+   "hasAlpha": false,
+   "looks": [
+    "look-93"
+   ]
+  },
+  {
+   "id": "olive-buttondown",
+   "name": "Olive button-down shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "shirt",
+   "image": "assets/olive-buttondown.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-63",
+    "look-94",
+    "look-109"
+   ]
+  },
+  {
+   "id": "lightgrey-polo",
+   "name": "Light grey polo shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/lightgrey-polo.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-98"
+   ]
+  },
+  {
+   "id": "chocolate-trousers",
+   "name": "Chocolate brown trousers",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/chocolate-trousers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-97",
+    "look-103"
+   ]
+  },
+  {
+   "id": "navy-tee",
+   "name": "Navy T-shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/navy-tee.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-102"
+   ]
+  },
+  {
+   "id": "khaki-shorts",
+   "name": "Khaki shorts",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "shorts",
+   "image": "assets/khaki-shorts.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-102"
+   ]
+  },
+  {
+   "id": "beige-sneakers",
+   "name": "Beige sneakers",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "assets/beige-sneakers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-102",
+    "look-105"
+   ]
+  },
+  {
+   "id": "black-sneakers",
+   "name": "Black sneakers",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": "assets/black-sneakers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-104",
+    "look-106"
+   ]
+  },
+  {
+   "id": "offwhite-tee",
+   "name": "Off-white crewneck T-shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "tee",
+   "image": "assets/offwhite-tee.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-105"
+   ]
+  },
+  {
+   "id": "owned-grey-quarterzip",
+   "name": "Light grey quarter-zip knit sweater",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "knit",
+   "image": "assets/owned-grey-quarterzip.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-81"
+   ]
+  },
+  {
+   "id": "owned-brown-buckle-chelsea",
+   "name": "Dark brown leather Chelsea boots with buckle detail",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "boots",
+   "image": "assets/owned-brown-buckle-chelsea.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-41",
+    "look-57",
+    "look-58"
+   ]
+  },
+  {
+   "id": "owned-lightblue-microcheck-shirt",
+   "name": "Light blue micro-check button-down shirt",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "shirt",
+   "image": "assets/owned-lightblue-microcheck-shirt.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-62"
+   ]
+  },
+  {
+   "id": "owned-black-vneck",
+   "name": "Black V-neck sweater",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "knit",
+   "image": "assets/owned-black-vneck.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-79"
+   ]
+  },
+  {
+   "id": "owned-green-crewneck",
+   "name": "Green crew-neck sweater",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "knit",
+   "image": "assets/owned-green-crewneck.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-71",
+    "look-72",
+    "look-74"
+   ]
+  },
+  {
+   "id": "owned-france-blue-henley",
+   "name": "Bright France blue short-sleeve henley",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "tee",
+   "image": "assets/owned-france-blue-henley.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-78"
+   ]
+  },
+  {
+   "id": "owned-white-henley",
+   "name": "White short-sleeve henley",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "tee",
+   "image": "assets/owned-white-henley.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-84"
+   ]
+  },
+  {
+   "id": "owned-cream-buttondown",
+   "name": "Cream / light beige button-down shirt",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "shirt",
+   "image": "assets/owned-cream-buttondown.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-49",
+    "look-75",
+    "look-74",
+    "look-76",
+    "look-79",
+    "look-83",
+    "look-97"
+   ]
+  },
+  {
+   "id": "owned-blue-gingham-shirt",
+   "name": "Blue gingham button-down shirt",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "shirt",
+   "image": "assets/owned-blue-gingham-shirt.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-80"
+   ]
+  },
+  {
+   "id": "owned-rwb-check-shirt",
+   "name": "Red, white and blue check button-down shirt",
+   "category": "Top",
+   "ownership": "owned",
+   "class": "shirt",
+   "image": "assets/owned-rwb-microcheck-shirt.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "owned-dark-green-chinos",
+   "name": "Dark green chinos",
+   "category": "Pants",
+   "ownership": "owned",
+   "class": "trousers",
+   "image": "assets/owned-dark-green-chinos.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-83"
+   ]
+  },
+  {
+   "id": "owned-darkbrown-suede-italian-laceup",
+   "name": "Dark brown suede Italian lace-up shoes",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-darkbrown-suede-italian-laceup.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-76"
+   ]
+  },
+  {
+   "id": "owned-navy-suede-chelsea",
+   "name": "Navy blue suede Chelsea boots",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "boots",
+   "image": "assets/owned-navy-suede-chelsea.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "owned-black-leather-captoe",
+   "name": "Black leather cap-toe dress shoes",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-black-leather-captoe.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-79",
+    "look-110",
+    "look-111",
+    "look-112",
+    "look-114",
+    "look-115",
+    "look-117"
+   ]
+  },
+  {
+   "id": "owned-navy-suede-brogue",
+   "name": "Navy blue suede brogue shoes",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-navy-suede-brogue.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "owned-brown-leather-captoe",
+   "name": "Brown leather cap-toe dress shoes",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-brown-leather-captoe.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-89",
+    "look-109",
+    "look-113"
+   ]
+  },
+  {
+   "id": "owned-darkbrown-suede-chelsea",
+   "name": "Dark brown suede Chelsea boots",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "boots",
+   "image": "assets/owned-darkbrown-suede-chelsea.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-81",
+    "look-85",
+    "look-87",
+    "look-90",
+    "look-93"
+   ]
+  },
+  {
+   "id": "owned-br-cognac-sneakers",
+   "name": "Banana Republic cognac brown leather sneakers",
+   "category": "Shoes",
+   "ownership": "owned",
+   "class": "shoes",
+   "image": "assets/owned-br-cognac-sneakers.webp",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-78",
+    "look-82",
+    "look-83",
+    "look-84",
+    "look-99",
+    "look-100",
+    "look-103",
+    "look-108"
+   ]
+  },
+  {
+   "id": "navy-vneck-sweater",
+   "name": "Navy V-neck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/navy-vneck-sweater.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-113",
+    "look-115"
+   ]
+  },
+  {
+   "id": "light-blue-crewneck",
+   "name": "Light blue crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/light-blue-crewneck.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-114"
+   ]
+  },
+  {
+   "id": "cream-crewneck-sweater",
+   "name": "Cream crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/cream-crewneck-sweater.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "charcoal-quarterzip",
+   "name": "Charcoal quarter-zip sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/wardrobe-standardized/charcoal-quarterzip.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "sky-blue-striped-dress-shirt",
+   "name": "Sky blue striped dress shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "shirt",
+   "image": "assets/wardrobe-standardized/sky-blue-striped-dress-shirt.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": []
+  },
+  {
+   "id": "camel-ribbed-crewneck",
+   "name": "Camel ribbed crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "heavy-knit",
+   "image": null,
+   "imageKind": "none",
+   "hasAlpha": null,
+   "looks": [
+    "look-117"
+   ]
+  },
+  {
+   "id": "black-chinos",
+   "name": "Black chinos",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": null,
+   "imageKind": "none",
+   "hasAlpha": null,
+   "looks": [
+    "look-112"
+   ]
+  },
+  {
+   "id": "darkbrown-suede-loafers",
+   "name": "Dark brown suede loafers",
+   "category": "Shoes",
+   "ownership": "missing",
+   "class": "shoes",
+   "image": null,
+   "imageKind": "none",
+   "hasAlpha": null,
+   "looks": [
+    "look-116"
+   ]
+  }
+ ],
+ "looks": [
+  {
+   "id": "look-35",
+   "name": "Navy polo + blue denim + white sneakers",
+   "pieces": [
+    "navy-polo",
+    "blue-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "blue-denim"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_163a0059-5436-4939-b1d4-e4f5bc5f231e.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-36",
+   "name": "Charcoal cardigan + grey henley + blue denim",
+   "pieces": [
+    "charcoal-cardigan",
+    "grey-henley",
+    "blue-denim",
+    "brown-casual-shoes"
+   ],
+   "missingPieces": [
+    "charcoal-cardigan",
+    "grey-henley",
+    "blue-denim",
+    "brown-casual-shoes"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014636_46598b57-f847-4a63-ad15-f3d3790967a9.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    8.3,
+    17.3
+   ],
+   "warmth": 2.15,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-38",
+   "name": "Navy crewneck + light blue Oxford + beige chinos",
+   "pieces": [
+    "navy-crewneck",
+    "light-blue-oxford",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-crewneck",
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-38-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-40",
+   "name": "Navy polo + cream chinos + brown loafers",
+   "pieces": [
+    "navy-polo",
+    "cream-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "cream-chinos"
+   ],
+   "image": "assets/look-40-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-41",
+   "name": "Cognac suede jacket + white tee + navy trousers",
+   "pieces": [
+    "cognac-suede-jacket",
+    "white-tee",
+    "navy-trousers",
+    "owned-brown-buckle-chelsea"
+   ],
+   "missingPieces": [
+    "cognac-suede-jacket",
+    "white-tee"
+   ],
+   "image": "assets/look-41-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    9.1,
+    18.1
+   ],
+   "warmth": 2.05,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-42",
+   "name": "White shirt + taupe trousers + suede loafers",
+   "pieces": [
+    "white-shirt",
+    "taupe-trousers",
+    "taupe-suede-shoes",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "white-shirt",
+    "taupe-trousers",
+    "taupe-suede-shoes"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014154_a24db616-0a60-485a-8dec-868b7f30000e.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-43",
+   "name": "White tee + beige chinos + white sneakers",
+   "pieces": [
+    "white-tee",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "white-tee"
+   ],
+   "image": "assets/look-43-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-44",
+   "name": "Camel overcoat + grey crewneck + dark chinos",
+   "pieces": [
+    "camel-overcoat",
+    "grey-crewneck",
+    "dark-chinos",
+    "black-chelsea"
+   ],
+   "missingPieces": [
+    "camel-overcoat",
+    "grey-crewneck",
+    "dark-chinos",
+    "black-chelsea"
+   ],
+   "image": "assets/look-44-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    -3.7,
+    5.3
+   ],
+   "warmth": 3.65,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-45",
+   "name": "Navy sweater + beige chinos + white sneakers",
+   "pieces": [
+    "navy-crewneck",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-crewneck"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_89d49b76-181a-43b2-b0fa-428a67214703.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.5,
+    22.5
+   ],
+   "warmth": 1.5,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-46",
+   "name": "Grey blazer + white shirt + cream trousers + brown loafers",
+   "pieces": [
+    "grey-blazer",
+    "white-shirt",
+    "cream-chinos",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "grey-blazer",
+    "white-shirt",
+    "cream-chinos"
+   ],
+   "image": "assets/look-46-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-47",
+   "name": "White polo + olive trousers + white sneakers",
+   "pieces": [
+    "white-polo",
+    "olive-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "olive-trousers"
+   ],
+   "image": "assets/look-47-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-48",
+   "name": "Grey crewneck + dark denim + white sneakers",
+   "pieces": [
+    "grey-crewneck",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "grey-crewneck"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_179a54a8-3da0-48f6-b03d-a291fd085be9.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.5,
+    22.5
+   ],
+   "warmth": 1.5,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-49",
+   "name": "Cream shirt + dark denim + brown loafers",
+   "pieces": [
+    "owned-cream-buttondown",
+    "dark-denim",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014216_14fe41ab-6348-44f2-b1ea-34ddcd6f0604.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-50",
+   "name": "Navy blazer + white tee + dark denim + white sneakers",
+   "pieces": [
+    "navy-blazer",
+    "white-tee",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "white-tee"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014238_ae827d73-7e8c-4877-ad1c-e033da4bd8e6.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-51",
+   "name": "Olive overshirt + white tee + dark denim + white sneakers",
+   "pieces": [
+    "olive-overshirt",
+    "white-tee",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "olive-overshirt",
+    "white-tee"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014238_a660c6cf-85dd-4d42-a3be-902d398b4be0.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-52",
+   "name": "Black polo + dark denim + white sneakers",
+   "pieces": [
+    "black-polo",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014238_24767755-ec53-4873-a432-a18e0bf1eced.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-53",
+   "name": "Light blue shirt + cream knit + cream trousers + brown loafers",
+   "pieces": [
+    "light-blue-oxford",
+    "cream-knit-sweater",
+    "cream-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "light-blue-oxford",
+    "cream-knit-sweater",
+    "cream-chinos"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014239_aa4c2521-6c20-40b1-b73c-b8124d13c3f9.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-54",
+   "name": "Olive overshirt + white tee + cream trousers + white sneakers",
+   "pieces": [
+    "olive-overshirt",
+    "white-tee",
+    "cream-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "olive-overshirt",
+    "white-tee",
+    "cream-chinos"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_23f12e29-1b78-4b26-abcb-0f3c5d1365e8.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-55",
+   "name": "Black polo + charcoal trousers + black Chelsea boots",
+   "pieces": [
+    "black-polo",
+    "charcoal-trousers",
+    "black-chelsea"
+   ],
+   "missingPieces": [
+    "charcoal-trousers",
+    "black-chelsea"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_2c7e9938-64c0-47f9-8c58-1608cbb2f0a3.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    17.5,
+    26.5
+   ],
+   "warmth": 1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-56",
+   "name": "Black turtleneck + charcoal trousers + black overcoat",
+   "pieces": [
+    "black-turtleneck",
+    "charcoal-trousers",
+    "black-overcoat",
+    "black-chelsea"
+   ],
+   "missingPieces": [
+    "black-turtleneck",
+    "charcoal-trousers",
+    "black-overcoat",
+    "black-chelsea"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014300_e593448f-8f2d-4d8b-a3a4-be06d7987214.png",
+   "imageKind": "external",
+   "seasons": [
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    -6.9,
+    2.1
+   ],
+   "warmth": 4.05,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-57",
+   "name": "Brown suede jacket + olive tee + beige chinos + brown boots",
+   "pieces": [
+    "brown-suede-jacket",
+    "olive-tee",
+    "beige-chinos",
+    "owned-brown-buckle-chelsea"
+   ],
+   "missingPieces": [
+    "brown-suede-jacket",
+    "olive-tee"
+   ],
+   "image": "assets/look-57-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    9.1,
+    18.1
+   ],
+   "warmth": 2.05,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-58",
+   "name": "Brown overcoat + tan knit + olive trousers + brown boots",
+   "pieces": [
+    "brown-overcoat",
+    "tan-knit-sweater",
+    "olive-trousers",
+    "owned-brown-buckle-chelsea"
+   ],
+   "missingPieces": [
+    "brown-overcoat",
+    "tan-knit-sweater",
+    "olive-trousers"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_b8c71067-2867-4e8f-ac0f-c4f517e5624b.png",
+   "imageKind": "external",
+   "seasons": [
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    -3.7,
+    5.3
+   ],
+   "warmth": 3.65,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-59",
+   "name": "Cream knit sweater + olive trousers + white sneakers",
+   "pieces": [
+    "cream-knit-sweater",
+    "olive-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "cream-knit-sweater",
+    "olive-trousers"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_212bde7c-545d-438f-85e6-840fd057b0bf.png",
+   "imageKind": "external",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.5,
+    22.5
+   ],
+   "warmth": 1.5,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-60",
+   "name": "White shirt + dark denim + white sneakers",
+   "pieces": [
+    "white-shirt",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "white-shirt"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_537cb14c-56e4-4453-afb6-5887cdb23157.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-61",
+   "name": "Black tee + dark denim + white sneakers",
+   "pieces": [
+    "black-tee",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "black-tee"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014322_3d1ecafa-d127-4815-90b3-9c3145e84dbe.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-62",
+   "name": "Light blue micro-check shirt + beige chinos + brown loafers",
+   "pieces": [
+    "owned-lightblue-microcheck-shirt",
+    "beige-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_68640797-7c88-48a9-86dd-2fd574803a7e.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-63",
+   "name": "Olive button-down + tan chinos + brown loafers",
+   "pieces": [
+    "olive-buttondown",
+    "khaki-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "olive-buttondown",
+    "khaki-chinos"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_ef9d44fb-89a1-487b-82a0-3e5568eed881.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-64",
+   "name": "Burgundy knit polo + grey trousers + dark loafers",
+   "pieces": [
+    "burgundy-knit-polo",
+    "grey-trousers",
+    "dark-loafers"
+   ],
+   "missingPieces": [
+    "burgundy-knit-polo",
+    "dark-loafers"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_257d641d-013c-4385-a2e3-0a6570be2d0e.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-65",
+   "name": "Blue striped linen shirt + white linen shorts",
+   "pieces": [
+    "striped-blue-linen-shirt",
+    "white-linen-shorts",
+    "tan-espadrilles"
+   ],
+   "missingPieces": [
+    "striped-blue-linen-shirt",
+    "white-linen-shorts",
+    "tan-espadrilles"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014345_7c6a7eb4-6d9c-43ad-b3c6-f62715dabf57.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.9,
+    28.9
+   ],
+   "warmth": 0.7,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-66",
+   "name": "Brown suede jacket + black polo + cream trousers + brown loafers",
+   "pieces": [
+    "brown-suede-jacket",
+    "black-polo",
+    "cream-chinos",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "brown-suede-jacket",
+    "cream-chinos"
+   ],
+   "image": "assets/look-66-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-67",
+   "name": "Green polo + cream trousers + white sneakers",
+   "pieces": [
+    "green-polo",
+    "cream-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "green-polo",
+    "cream-chinos"
+   ],
+   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260918_014407_bbdada5f-f49c-4c25-8ca6-d300a23bfffe.png",
+   "imageKind": "external",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-68",
+   "name": "Navy jacket + white polo + grey trousers + white sneakers",
+   "pieces": [
+    "navy-blazer",
+    "white-polo",
+    "grey-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-blazer"
+   ],
+   "image": "assets/look-68-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-70",
+   "name": "Navy crewneck + light blue shirt + navy trousers + white sneakers",
+   "pieces": [
+    "navy-crewneck",
+    "light-blue-oxford",
+    "navy-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-crewneck",
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-70-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-73",
+   "name": "Navy crewneck + white shirt + navy trousers + white sneakers",
+   "pieces": [
+    "navy-crewneck",
+    "white-shirt",
+    "navy-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-crewneck",
+    "white-shirt"
+   ],
+   "image": "assets/look-73-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-75",
+   "name": "Navy crewneck + cream shirt + beige chinos + white sneakers",
+   "pieces": [
+    "navy-crewneck",
+    "owned-cream-buttondown",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-crewneck"
+   ],
+   "image": "assets/look-75-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-71",
+   "name": "Pale green crewneck + light blue shirt + beige chinos + white sneakers",
+   "pieces": [
+    "owned-green-crewneck",
+    "light-blue-oxford",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-71-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-72",
+   "name": "Pale green crewneck + light blue shirt + navy trousers + white sneakers",
+   "pieces": [
+    "owned-green-crewneck",
+    "light-blue-oxford",
+    "navy-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-72-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-74",
+   "name": "Pale green crewneck + cream shirt + beige chinos + white sneakers",
+   "pieces": [
+    "owned-green-crewneck",
+    "owned-cream-buttondown",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-74-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-76",
+   "name": "Cognac suede jacket + cream shirt + dark denim + Italian suede shoes",
+   "pieces": [
+    "cognac-suede-jacket",
+    "owned-cream-buttondown",
+    "dark-denim",
+    "owned-darkbrown-suede-italian-laceup"
+   ],
+   "missingPieces": [
+    "cognac-suede-jacket"
+   ],
+   "image": "assets/look-76-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    8.3,
+    17.3
+   ],
+   "warmth": 2.15,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-77",
+   "name": "Tan overshirt + white tee + light denim + cognac loafers",
+   "pieces": [
+    "tan-overshirt",
+    "white-tee",
+    "blue-denim",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "tan-overshirt",
+    "white-tee",
+    "blue-denim"
+   ],
+   "image": "assets/look-77-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-78",
+   "name": "France blue henley + dark denim + cognac sneakers",
+   "pieces": [
+    "owned-france-blue-henley",
+    "dark-denim",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-78-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-79",
+   "name": "Black V-neck + cream shirt + grey chinos + black cap-toe shoes",
+   "pieces": [
+    "owned-black-vneck",
+    "owned-cream-buttondown",
+    "grey-trousers",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-79-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-80",
+   "name": "Blue gingham shirt + beige chinos + cognac loafers",
+   "pieces": [
+    "owned-blue-gingham-shirt",
+    "beige-chinos",
+    "brown-loafers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-80-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-81",
+   "name": "Grey quarter-zip + beige chinos + dark brown suede Chelsea boots",
+   "pieces": [
+    "owned-grey-quarterzip",
+    "beige-chinos",
+    "owned-darkbrown-suede-chelsea"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-81-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    11.9,
+    20.9
+   ],
+   "warmth": 1.7,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-82",
+   "name": "Navy polo + beige chinos + cognac leather sneakers",
+   "pieces": [
+    "navy-polo",
+    "beige-chinos",
+    "owned-br-cognac-sneakers",
+    "brown-belt"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-82-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-83",
+   "name": "Cream shirt + dark green chinos + cognac leather sneakers",
+   "pieces": [
+    "owned-cream-buttondown",
+    "owned-dark-green-chinos",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-83-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-84",
+   "name": "White henley + dark denim + cognac leather sneakers",
+   "pieces": [
+    "owned-white-henley",
+    "dark-denim",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-84-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-85",
+   "name": "Beige crewneck + white shirt + dark denim + suede Chelsea boots",
+   "pieces": [
+    "tan-knit-sweater",
+    "white-shirt",
+    "dark-denim",
+    "owned-darkbrown-suede-chelsea"
+   ],
+   "missingPieces": [
+    "tan-knit-sweater",
+    "white-shirt"
+   ],
+   "image": "assets/look-85-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition",
+    "Winter"
+   ],
+   "thermal": [
+    "Colder",
+    "Mild"
+   ],
+   "comfortC": [
+    5.9,
+    14.9
+   ],
+   "warmth": 2.45,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-86",
+   "name": "Olive cable knit + white shirt + dark denim + tan Chelsea boots",
+   "pieces": [
+    "olive-cable-knit-sweater",
+    "white-shirt",
+    "dark-denim",
+    "tan-chelsea"
+   ],
+   "missingPieces": [
+    "olive-cable-knit-sweater",
+    "white-shirt",
+    "tan-chelsea"
+   ],
+   "image": "assets/look-86-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition",
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    2.7,
+    11.7
+   ],
+   "warmth": 2.85,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-87",
+   "name": "Navy crewneck + white shirt + blue jeans + suede Chelsea boots",
+   "pieces": [
+    "navy-crewneck",
+    "white-shirt",
+    "blue-denim",
+    "owned-darkbrown-suede-chelsea"
+   ],
+   "missingPieces": [
+    "navy-crewneck",
+    "white-shirt",
+    "blue-denim"
+   ],
+   "image": "assets/look-87-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition",
+    "Winter"
+   ],
+   "thermal": [
+    "Colder",
+    "Mild"
+   ],
+   "comfortC": [
+    5.9,
+    14.9
+   ],
+   "warmth": 2.45,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-88",
+   "name": "Tan overshirt + cream knit + navy chinos + white sneakers",
+   "pieces": [
+    "tan-overshirt",
+    "cream-knit-sweater",
+    "navy-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "tan-overshirt",
+    "cream-knit-sweater"
+   ],
+   "image": "assets/look-88-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-89",
+   "name": "Blue striped shirt + navy chinos + brown cap-toe shoes",
+   "pieces": [
+    "striped-blue-linen-shirt",
+    "navy-trousers",
+    "brown-belt",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "striped-blue-linen-shirt"
+   ],
+   "image": "assets/look-89-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-90",
+   "name": "Beige quarter-zip + white shirt + navy chinos + suede Chelsea boots",
+   "pieces": [
+    "beige-quarterzip",
+    "white-shirt",
+    "navy-trousers",
+    "owned-darkbrown-suede-chelsea"
+   ],
+   "missingPieces": [
+    "beige-quarterzip",
+    "white-shirt"
+   ],
+   "image": "assets/look-90-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition",
+    "Winter"
+   ],
+   "thermal": [
+    "Colder",
+    "Mild"
+   ],
+   "comfortC": [
+    5.9,
+    14.9
+   ],
+   "warmth": 2.45,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-91",
+   "name": "Brown ribbed crewneck + cream chinos + white sneakers",
+   "pieces": [
+    "brown-ribbed-crewneck",
+    "cream-chinos",
+    "cream-belt",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "brown-ribbed-crewneck",
+    "cream-chinos",
+    "cream-belt"
+   ],
+   "image": "assets/look-91-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.3,
+    19.3
+   ],
+   "warmth": 1.9,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-92",
+   "name": "Navy blazer + white tee + navy chinos + white sneakers",
+   "pieces": [
+    "navy-blazer",
+    "white-tee",
+    "navy-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "white-tee"
+   ],
+   "image": "assets/look-92-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-93",
+   "name": "Cognac biker jacket + grey crewneck + dark denim + suede Chelsea boots",
+   "pieces": [
+    "cognac-leather-biker-jacket",
+    "grey-crewneck",
+    "dark-denim",
+    "owned-darkbrown-suede-chelsea"
+   ],
+   "missingPieces": [
+    "cognac-leather-biker-jacket",
+    "grey-crewneck"
+   ],
+   "image": "assets/look-93-approved-intake.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition",
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    3.5,
+    12.5
+   ],
+   "warmth": 2.75,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-94",
+   "name": "Olive button-down + cream trousers + brown loafers",
+   "pieces": [
+    "olive-buttondown",
+    "cream-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "olive-buttondown",
+    "cream-chinos"
+   ],
+   "image": "assets/look-94-olive-beige.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-95",
+   "name": "White polo + cream trousers + brown loafers",
+   "pieces": [
+    "white-polo",
+    "cream-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "cream-chinos"
+   ],
+   "image": "assets/look-95-white-cream.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-96",
+   "name": "Burgundy polo + taupe trousers + brown loafers",
+   "pieces": [
+    "burgundy-polo",
+    "taupe-trousers",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "burgundy-polo",
+    "taupe-trousers"
+   ],
+   "image": "assets/look-96-burgundy-taupe.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-97",
+   "name": "Cream shirt + chocolate trousers + brown loafers",
+   "pieces": [
+    "owned-cream-buttondown",
+    "chocolate-trousers",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "chocolate-trousers"
+   ],
+   "image": "assets/look-97-beige-chocolate.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-98",
+   "name": "Light grey polo + charcoal trousers + black loafers",
+   "pieces": [
+    "lightgrey-polo",
+    "charcoal-trousers",
+    "dark-loafers",
+    "dark-belt"
+   ],
+   "missingPieces": [
+    "lightgrey-polo",
+    "charcoal-trousers",
+    "dark-loafers"
+   ],
+   "image": "assets/look-98-lightgrey-charcoal.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-99",
+   "name": "White T-shirt + beige chinos + cognac sneakers",
+   "pieces": [
+    "white-tee",
+    "beige-chinos",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [
+    "white-tee"
+   ],
+   "image": "assets/look-99-white-beige-brown-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-100",
+   "name": "Navy polo + dark jeans + cognac sneakers",
+   "pieces": [
+    "navy-polo",
+    "dark-denim",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-100-navy-denim-brown-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-101",
+   "name": "White shirt + grey trousers + white sneakers",
+   "pieces": [
+    "white-shirt",
+    "grey-trousers",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "white-shirt"
+   ],
+   "image": "assets/look-101-white-grey-white-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-102",
+   "name": "Navy T-shirt + khaki shorts + beige sneakers",
+   "pieces": [
+    "navy-tee",
+    "khaki-shorts",
+    "beige-sneakers"
+   ],
+   "missingPieces": [
+    "navy-tee",
+    "khaki-shorts",
+    "beige-sneakers"
+   ],
+   "image": "assets/look-102-navy-shorts-beige-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    21.5,
+    30.5
+   ],
+   "warmth": 0.5,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-103",
+   "name": "White polo + chocolate trousers + cognac sneakers",
+   "pieces": [
+    "white-polo",
+    "chocolate-trousers",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [
+    "chocolate-trousers"
+   ],
+   "image": "assets/look-103-white-polo-brown-pants.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-104",
+   "name": "Black T-shirt + grey trousers + black sneakers",
+   "pieces": [
+    "black-tee",
+    "grey-trousers",
+    "black-sneakers"
+   ],
+   "missingPieces": [
+    "black-tee",
+    "black-sneakers"
+   ],
+   "image": "assets/look-104-black-grey-black-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-105",
+   "name": "Off-white T-shirt + olive trousers + beige sneakers",
+   "pieces": [
+    "offwhite-tee",
+    "olive-trousers",
+    "beige-sneakers"
+   ],
+   "missingPieces": [
+    "offwhite-tee",
+    "olive-trousers",
+    "beige-sneakers"
+   ],
+   "image": "assets/look-105-offwhite-olive-beige-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-106",
+   "name": "Black polo + beige chinos + black sneakers",
+   "pieces": [
+    "black-polo",
+    "beige-chinos",
+    "black-sneakers"
+   ],
+   "missingPieces": [
+    "black-sneakers"
+   ],
+   "image": "assets/look-106-black-polo-beige-black-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-107",
+   "name": "Grey T-shirt + dark jeans + white sneakers",
+   "pieces": [
+    "grey-tee",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "grey-tee"
+   ],
+   "image": "assets/look-107-grey-tee-denim-white-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-108",
+   "name": "Light blue shirt + beige chinos + cognac sneakers",
+   "pieces": [
+    "light-blue-oxford",
+    "beige-chinos",
+    "owned-br-cognac-sneakers"
+   ],
+   "missingPieces": [
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-108-blue-shirt-beige-brown-sneakers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-109",
+   "name": "Olive corduroy shirt + khaki chinos + brown cap-toe shoes",
+   "pieces": [
+    "olive-buttondown",
+    "khaki-chinos",
+    "brown-belt",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "olive-buttondown",
+    "khaki-chinos"
+   ],
+   "image": "assets/look-109-olive-cord-khaki-cognac.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-110",
+   "name": "Light blue shirt + navy chinos + black cap-toe shoes",
+   "pieces": [
+    "light-blue-oxford",
+    "navy-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-110-lightblue-navy-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-111",
+   "name": "Grey T-shirt + navy chinos + black cap-toe shoes",
+   "pieces": [
+    "grey-tee",
+    "navy-trousers",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "grey-tee"
+   ],
+   "image": "assets/look-111-grey-tee-navy-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-112",
+   "name": "Black T-shirt + black chinos + black cap-toe shoes",
+   "pieces": [
+    "black-tee",
+    "black-chinos",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "black-tee",
+    "black-chinos"
+   ],
+   "image": "assets/look-112-black-tee-black-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-113",
+   "name": "Navy V-neck + white shirt + olive trousers + brown cap-toe shoes",
+   "pieces": [
+    "navy-vneck-sweater",
+    "white-shirt",
+    "olive-trousers",
+    "brown-belt",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "navy-vneck-sweater",
+    "white-shirt",
+    "olive-trousers"
+   ],
+   "image": "assets/look-113-navy-vneck-olive-brown.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-114",
+   "name": "Light blue crewneck + white shirt + navy chinos + black cap-toe shoes",
+   "pieces": [
+    "light-blue-crewneck",
+    "white-shirt",
+    "navy-trousers",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "light-blue-crewneck",
+    "white-shirt"
+   ],
+   "image": "assets/look-114-lightblue-crew-navy-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-115",
+   "name": "Navy V-neck + white shirt + grey chinos + black cap-toe shoes",
+   "pieces": [
+    "navy-vneck-sweater",
+    "white-shirt",
+    "grey-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "navy-vneck-sweater",
+    "white-shirt"
+   ],
+   "image": "assets/look-115-navy-vneck-grey-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-116",
+   "name": "Light blue shirt + khaki chinos + dark brown suede loafers",
+   "pieces": [
+    "light-blue-oxford",
+    "khaki-chinos",
+    "brown-belt",
+    "darkbrown-suede-loafers"
+   ],
+   "missingPieces": [
+    "light-blue-oxford",
+    "khaki-chinos",
+    "darkbrown-suede-loafers"
+   ],
+   "image": "assets/look-116-lightblue-khaki-suede-loafers.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-117",
+   "name": "Camel ribbed crewneck + light blue shirt + navy chinos + black cap-toe shoes",
+   "pieces": [
+    "camel-ribbed-crewneck",
+    "light-blue-oxford",
+    "navy-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "camel-ribbed-crewneck",
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-117-camel-ribbed-navy-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition",
+    "Winter"
+   ],
+   "thermal": [
+    "Colder",
+    "Mild"
+   ],
+   "comfortC": [
+    4.3,
+    13.3
+   ],
+   "warmth": 2.65,
+   "winterLayerable": true
+  }
+ ],
+ "needsReview": [
+  {
+   "key": "Top|tee|white",
+   "ids": [
+    "white-polo",
+    "white-tee",
+    "owned-white-henley"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Top|tee|navy",
+   "ids": [
+    "navy-polo",
+    "navy-henley",
+    "navy-tee"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Top|shirt|blue",
+   "ids": [
+    "light-blue-oxford",
+    "striped-blue-linen-shirt",
+    "owned-lightblue-microcheck-shirt",
+    "owned-blue-gingham-shirt",
+    "sky-blue-striped-dress-shirt"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Top|tee|lightgrey",
+   "ids": [
+    "grey-tee",
+    "lightgrey-polo"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Top|knit|navy",
+   "ids": [
+    "navy-crewneck",
+    "navy-quarterzip",
+    "navy-vneck-sweater"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Shoes|shoes|cognac",
+   "ids": [
+    "brown-loafers",
+    "owned-br-cognac-sneakers"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Shoes|shoes|brown",
+   "ids": [
+    "brown-derbies",
+    "brown-casual-shoes",
+    "owned-darkbrown-suede-italian-laceup",
+    "owned-brown-leather-captoe",
+    "darkbrown-suede-loafers"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Shoes|shoes|black",
+   "ids": [
+    "dark-loafers",
+    "black-sneakers",
+    "owned-black-leather-captoe"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Shoes|shoes|navy",
+   "ids": [
+    "navy-leather-sneakers",
+    "owned-navy-suede-brogue"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Shoes|shoes|tan",
+   "ids": [
+    "tan-suede-derbies",
+    "tan-suede-shoes"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Outerwear|leather-jacket|brown",
+   "ids": [
+    "brown-leather-jacket",
+    "brown-suede-jacket"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Top|tee|black",
+   "ids": [
+    "black-polo",
+    "black-tee"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Top|knit|cream",
+   "ids": [
+    "cream-knit-sweater",
+    "cream-crewneck-sweater"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Shoes|boots|brown",
+   "ids": [
+    "owned-brown-buckle-chelsea",
+    "owned-darkbrown-suede-chelsea"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  }
+ ],
+ "knownDebt": {
+  "externalImages": [
+   "white-polo",
+   "charcoal-polo",
+   "grey-polo",
+   "dark-crewneck",
+   "navy-trousers",
+   "grey-trousers",
+   "taupe-trousers",
+   "dark-denim",
+   "brown-derbies",
+   "dark-loafers",
+   "brown-casual-shoes",
+   "tan-suede-shoes",
+   "brown-belt",
+   "dark-belt",
+   "navy-blazer",
+   "grey-blazer",
+   "look-35",
+   "look-36",
+   "look-42",
+   "look-45",
+   "look-48",
+   "look-49",
+   "look-50",
+   "look-51",
+   "look-52",
+   "look-53",
+   "look-54",
+   "look-55",
+   "look-56",
+   "look-58",
+   "look-59",
+   "look-60",
+   "look-61",
+   "look-62",
+   "look-63",
+   "look-64",
+   "look-65",
+   "look-67"
+  ],
+  "noAlpha": [
+   "olive-cable-knit-sweater",
+   "brown-ribbed-crewneck",
+   "cream-belt",
+   "cognac-leather-biker-jacket"
+  ],
+  "opaqueBackground": [
+   "white-shirt"
+  ],
+  "pendingImages": [
+   "camel-ribbed-crewneck",
+   "black-chinos",
+   "darkbrown-suede-loafers"
+  ],
+  "orphanPieces": [
+   "charcoal-polo",
+   "grey-polo",
+   "dark-crewneck",
+   "navy-henley",
+   "olive-henley",
+   "light-grey-trousers",
+   "brown-derbies",
+   "navy-leather-sneakers",
+   "tan-suede-derbies",
+   "tan-suede-shoes",
+   "beige-blazer",
+   "navy-bomber",
+   "navy-cardigan",
+   "charcoal-overcoat",
+   "brown-leather-jacket",
+   "navy-quarterzip",
+   "owned-rwb-check-shirt",
+   "owned-navy-suede-chelsea",
+   "owned-navy-suede-brogue",
+   "cream-crewneck-sweater",
+   "charcoal-quarterzip",
+   "sky-blue-striped-dress-shirt"
+  ],
+  "unusedAssets": [
+   "assets/beige-buttondown.webp",
+   "assets/catalog-beige-quarterzip.webp",
+   "assets/catalog-green-buttonup.webp",
+   "assets/catalog-stone-shirt.webp",
+   "assets/look-12-hq.webp",
+   "assets/look-28-lightblue-beige-v2.webp",
+   "assets/look-35-navy-denim.webp",
+   "assets/look-36-cardigan-henley-denim.webp",
+   "assets/look-38-navy-crewneck-beige.webp",
+   "assets/look-40-navy-polo-cream-v2.webp",
+   "assets/look-40-navy-polo-cream.webp",
+   "assets/look-41-cognac-suede.webp",
+   "assets/look-42-white-taupe.webp",
+   "assets/look-43-white-tee-beige.webp",
+   "assets/look-44-camel-overcoat.webp",
+   "assets/look-45-navy-sweater-beige.webp",
+   "assets/look-46-grey-blazer-cream.webp",
+   "assets/look-47-white-polo-olive.webp",
+   "assets/look-48-grey-sweater-denim.webp",
+   "assets/look-49-stone-shirt-denim.webp",
+   "assets/look-50-navy-blazer-denim.webp",
+   "assets/look-51-olive-overshirt-denim.webp",
+   "assets/look-52-black-polo-denim.webp",
+   "assets/look-53-lightblue-cream-cafe.webp",
+   "assets/look-54-olive-overshirt-cream.webp",
+   "assets/look-55-black-polo-charcoal.webp",
+   "assets/look-56-black-turtleneck-overcoat.webp",
+   "assets/look-57-brown-suede-olive-beige.webp",
+   "assets/look-58-brown-overcoat-tan-olive.webp",
+   "assets/look-59-cream-knit-olive.webp",
+   "assets/look-60-white-shirt-denim.webp",
+   "assets/look-61-black-tee-denim.webp",
+   "assets/look-62-blue-shirt-beige.webp",
+   "assets/look-63-green-shirt-tan.webp",
+   "assets/look-64-burgundy-knit-grey.webp",
+   "assets/look-65-striped-linen-shorts.webp",
+   "assets/look-66-brown-suede-black-cream.webp",
+   "assets/look-67-green-polo-cream.webp",
+   "assets/look-burgundy-charcoal-v1.webp",
+   "assets/look-charcoal-lightgrey-v1.webp",
+   "assets/look-charcoal-navy-v1.webp",
+   "assets/look-green-khaki-loafers.webp",
+   "assets/look-green-khaki-v2.webp",
+   "assets/look-navy-blazer-grey.webp",
+   "assets/look-navy-denim-v1.webp",
+   "assets/look-navy-grey-loafers.webp",
+   "assets/look-navy-taupe-v1.webp",
+   "assets/look-white-navy-sneakers.webp",
+   "assets/owned-beige-chinos.webp",
+   "assets/owned-black-polo.webp",
+   "assets/owned-darkbrown-leather-chelsea.webp",
+   "assets/owned-darkbrown-suede-captoe-shoe.webp",
+   "assets/owned-navy-henley.webp",
+   "assets/piece-charcoal-chinos.webp",
+   "assets/piece-cognac-suede-jacket.webp",
+   "assets/piece-cream-chinos.webp",
+   "assets/piece-navy-quarterzip.webp"
+  ]
+ }
+}

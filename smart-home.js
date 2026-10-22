@@ -33,14 +33,7 @@
   }
   function weatherEligible(v,w){
     if(!w)return true;
-    const seasons=v.seasons||['Summer'],names=namesFor(v),high=Number.isFinite(w.maxTemp)?w.maxTemp:w.temp,t=Number.isFinite(w.temp)?w.temp:high;
-    const heavy=/overcoat|heavy sweater|turtleneck/.test(names),outer=/blazer|jacket|vest|coat|sweater|cardigan|quarter[- ]?zip|turtleneck/.test(names);
-    if(high>=18&&!seasons.includes('Summer')&&!seasons.includes('Transitional'))return false;
-    if(high<18&&!seasons.includes('Transitional')&&!seasons.includes('Cold'))return false;
-    if(high>=24&&heavy)return false;
-    if(t>=27&&outer)return false;
-    if(high<=12&&!outer&&seasons.includes('Summer')&&!seasons.includes('Transitional'))return false;
-    return true;
+    return window.FITS_CLIMATE?FITS_CLIMATE.eligible(v,w):true;
   }
   function weatherEval(v,w){
     if(!w)return{score:0,reason:'Weather will refine this recommendation.'};

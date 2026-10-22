@@ -10,44 +10,17 @@
  const readWeather=()=>{try{return JSON.parse(localStorage.getItem('fitsWeatherHome')||'null')}catch(e){return null}};
  const look=id=>(D.looks||[]).find(x=>x.id===id);
  const piece=id=>(D.pieces||[]).find(x=>x.id===id);
- function pieceWarmth(p){
-   const name=(p?.name||'').toLowerCase(),category=p?.category||'';
-   if(category==='Shoes'||category==='Accessory')return 0;
-   if(/shorts|bermuda/.test(name))return-1.4;
-   if(/overcoat|topcoat|parka|puffer/.test(name))return 3.3;
-   if(/leather jacket|bomber|suede jacket/.test(name))return 2.25;
-   if(/overshirt|blazer|casual jacket/.test(name))return 1.65;
-   if(/turtleneck|cable.?knit|heavy sweater/.test(name))return 2.15;
-   if(/sweater|knit|crew.?neck|cardigan|quarter.?zip|v.?neck/.test(name))return 1.75;
-   if(/long.?sleeve|henley/.test(name))return .85;
-   if(/button.?down|buttonup|oxford|shirt|microcheck|gingham|linen/.test(name))return .65;
-   if(/tee|t-shirt|polo/.test(name))return-.35;
-   if(category==='Pants')return .35;
-   return .15;
- }
- function warmth(v){
-   if(!v)return 1;
-   const clothes=(v.pieces||[]).map(piece).filter(Boolean),tops=clothes.filter(p=>p.category==='Top'||p.category==='Outerwear');
-   const total=clothes.reduce((sum,p)=>sum+pieceWarmth(p),0);
-   const layerBonus=Math.max(0,tops.length-1)*.55;
-   return total+layerBonus;
- }
+ function pieceWarmth(p){return window.FITS_CLIMATE.pieceWarmth(p)}
+ function warmth(v){return v?window.FITS_CLIMATE.lookWarmth(v):1}
  function levelsForSeason(s){
-   // Relative scale within each season, not an absolute temperature classification.
-   return s==='Summer'?[-1.4,-.45,.35,1.2,2.2]:s==='Cold'?[1.9,2.8,3.7,4.8,6]:[-.25,.75,1.7,2.8,4.1];
+   const key={Summer:'Summer',Transitional:'Transition',Cold:'Winter'}[s]||'Transition';
+   return window.FITS_CLIMATE.levelsForSeason(key);
  }
  function weatherDefault(){
-   const w=readWeather(),t=Number(w?.temp),high=Number(w?.maxTemp),goodT=Number.isFinite(t),goodHigh=Number.isFinite(high);
-   if(!goodT&&!goodHigh)return{season:'Transitional',level:2,hasWeather:false};
-   const cur=goodT?t:high,peak=goodHigh?high:cur;
-   let season='Transitional';
-   if(peak>=25 && cur>=18)season='Summer';
-   else if(peak<=7 || (cur<=4&&peak<=13))season='Cold';
-   let selected;
-   if(season==='Summer')selected=cur>=24?0:4;
-   else if(season==='Cold')selected=cur>=3?0:4;
-   else selected=cur>=15?0:4;
-   return{season,level:selected,hasWeather:true,temp:cur,high:peak};
+   const ctx=window.FITS_CLIMATE.weatherContext(readWeather());
+   if(!ctx.hasWeather)return{season:'Transitional',level:2,hasWeather:false};
+   const season={Summer:'Summer',Transition:'Transitional',Winter:'Cold'}[ctx.season];
+   return{season,level:ctx.thermal==='Colder'?4:0,hasWeather:true,temp:ctx.feelsC};
  }
  function selectedVariant(card){
    const id=card.dataset.smartLook;
