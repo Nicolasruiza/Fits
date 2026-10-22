@@ -86,7 +86,7 @@ Fallback prompt if an original cannot be recovered (use the approved reference, 
 - `light-blue-oxford` (Light blue Oxford shirt) ↔ `striped-blue-linen-shirt` (Blue striped linen shirt) ↔ `owned-lightblue-microcheck-shirt` (Light blue micro-check button-down shirt) ↔ `owned-blue-gingham-shirt` (Blue gingham button-down shirt) ↔ `sky-blue-striped-dress-shirt` (Sky blue striped dress shirt)
 - `grey-tee` (Light grey crew-neck T-shirt) ↔ `lightgrey-polo` (Light grey polo shirt)
 - `navy-crewneck` (Navy crewneck sweater) ↔ `navy-quarterzip` (Navy quarter-zip) ↔ `navy-vneck-sweater` (Navy V-neck sweater)
-- `brown-loafers` (Cognac brown leather loafers) ↔ `owned-br-cognac-sneakers` (Banana Republic cognac brown leather sneakers)
+- `brown-loafers` (Cognac brown leather loafers) ↔ `owned-br-cognac-sneakers` (Cognac brown leather sneakers)
 - `brown-derbies` (Brown derbies) ↔ `brown-casual-shoes` (Brown casual shoes) ↔ `owned-darkbrown-suede-italian-laceup` (Dark brown suede Italian lace-up shoes) ↔ `owned-brown-leather-captoe` (Brown leather cap-toe dress shoes) ↔ `darkbrown-suede-loafers` (Dark brown suede loafers)
 - `dark-loafers` (Black loafers) ↔ `black-sneakers` (Black sneakers) ↔ `owned-black-leather-captoe` (Black leather cap-toe dress shoes)
 - `navy-leather-sneakers` (Navy blue sneakers) ↔ `owned-navy-suede-brogue` (Navy blue suede brogue shoes)

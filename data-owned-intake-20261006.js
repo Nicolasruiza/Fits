@@ -26,8 +26,8 @@
     {id:'owned-darkbrown-suede-chelsea',name:'Dark brown suede Chelsea boots',category:'Shoes'},
     {id:'brown-chelsea',name:'Dark brown leather Chelsea boots',category:'Shoes'},
     {id:'navy-leather-sneakers',name:'Navy blue sneakers',category:'Shoes'},
-    {id:'white-leather-sneakers',name:'Banana Republic white leather sneakers',category:'Shoes'},
-    {id:'owned-br-cognac-sneakers',name:'Banana Republic cognac brown leather sneakers',category:'Shoes'}
+    {id:'white-leather-sneakers',name:'White leather sneakers',category:'Shoes'},
+    {id:'owned-br-cognac-sneakers',name:'Cognac brown leather sneakers',category:'Shoes'}
   ];
   // This item was initially stored under a taupe/leather id even though the
   // actual pair is dark brown suede. Migrate the old key so the Wardrobe does

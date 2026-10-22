@@ -23,11 +23,13 @@
     localStorage.setItem('fitsWishlistPieces',JSON.stringify([...wishlist]));
     localStorage.setItem('fitsHiddenPieces',JSON.stringify([...hidden]));
   }
+  let swapPickerOpen=false;
+  function swapTile(p,extra=''){return`<span class="swap-photo ward-photo">${piecePhoto(p)}</span><span class="swap-name">${p.name}</span><span class="swap-state ${isOwned(p.id)?'owned':'missing'}">${isOwned(p.id)?'Owned':'Missing'}</span>${extra}`}
   function swapSection(){
     const S=window.FITS_SWAPS;if(!S)return'';
     const linked=S.interchangeable(id).map(piece).filter(Boolean);
-    const options=(window.FITS_DATA.pieces||[]).filter(p=>p.category===item.category&&p.id!==id&&!linked.some(l=>l.id===p.id)).sort((a,b)=>a.name.localeCompare(b.name));
-    return`<section class="piece-swaps"><small>Interchangeable with</small><div class="swap-chips">${linked.length?linked.map(p=>`<span class="swap-chip"><b>${p.name}</b><i>${isOwned(p.id)?'Owned':'Missing'}</i><button type="button" data-unlink="${p.id}" aria-label="Remove ${p.name}">×</button></span>`).join(''):'<p>Nothing yet. If another piece can stand in for this one, add it and Looks will suggest the swap.</p>'}</div>${options.length?`<div class="swap-add"><select data-swap-select aria-label="Add an interchangeable piece"><option value="">Add a piece…</option>${options.map(p=>`<option value="${p.id}">${p.name}</option>`).join('')}</select><button type="button" data-swap-add>Add</button></div>`:''}</section>`;
+    const options=(window.FITS_DATA.pieces||[]).filter(p=>p.category===item.category&&p.id!==id&&!linked.some(l=>l.id===p.id)).sort((a,b)=>Number(isOwned(b.id))-Number(isOwned(a.id))||a.name.localeCompare(b.name));
+    return`<section class="piece-swaps"><small>Interchangeable with</small>${linked.length?`<div class="swap-grid">${linked.map(p=>`<div class="swap-tile">${swapTile(p,`<button type="button" class="swap-remove" data-unlink="${p.id}" aria-label="Remove ${p.name}">×</button>`)}</div>`).join('')}</div>`:'<p class="swap-empty">Nothing yet. If another piece can stand in for this one, add it and Looks will suggest the swap.</p>'}${options.length?`<button type="button" class="swap-toggle" data-swap-toggle aria-expanded="${swapPickerOpen}">${swapPickerOpen?'Close':'Add an interchangeable piece'}</button>${swapPickerOpen?`<div class="swap-grid swap-picker">${options.map(p=>`<button type="button" class="swap-tile pick" data-pick="${p.id}" aria-label="Add ${p.name}">${swapTile(p)}</button>`).join('')}</div>`:''}`:''}</section>`;
   }
   function render(){
     const ownedNow=isOwned(id),saved=wishlist.has(id),isHidden=hidden.has(id);
@@ -58,8 +60,9 @@
     document.querySelector('[data-action="wishlist"]').onclick=()=>{wishlist.has(id)?wishlist.delete(id):wishlist.add(id);saveSets();render()};
     document.querySelector('[data-action="buy"]').onclick=()=>searchItem(id);
     document.querySelectorAll('[data-unlink]').forEach(btn=>btn.onclick=()=>{window.FITS_SWAPS.unlink(id,btn.dataset.unlink);render()});
-    const add=document.querySelector('[data-swap-add]');
-    if(add)add.onclick=()=>{const pick=document.querySelector('[data-swap-select]').value;if(!pick)return;window.FITS_SWAPS.link(id,pick);render()};
+    const toggle=document.querySelector('[data-swap-toggle]');
+    if(toggle)toggle.onclick=()=>{swapPickerOpen=!swapPickerOpen;render()};
+    document.querySelectorAll('[data-pick]').forEach(btn=>btn.onclick=()=>{window.FITS_SWAPS.link(id,btn.dataset.pick);render()});
     document.querySelector('[data-action="hide"]').onclick=()=>{hidden.has(id)?hidden.delete(id):hidden.add(id);saveSets();render()};
   }
   document.addEventListener('DOMContentLoaded',render);
