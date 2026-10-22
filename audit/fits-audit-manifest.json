@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 103,
+  "pieces": 102,
   "owned": 31,
-  "missing": 72,
-  "looks": 85,
-  "families": 79,
+  "missing": 71,
+  "looks": 84,
+  "families": 78,
   "localPieceImages": 86,
   "externalPieceImages": 14,
   "pieceImagesWithoutAlpha": 3,
   "externalLookImages": 22,
   "orphanPieces": 19,
-  "unusedAssets": 59,
+  "unusedAssets": 60,
   "needsReviewGroups": 14
  },
  "climateConfig": {
@@ -135,7 +135,6 @@
     "look-108",
     "look-113",
     "look-116",
-    "look-117",
     "look-118",
     "look-120",
     "look-122"
@@ -319,8 +318,7 @@
     "look-92",
     "look-109",
     "look-113",
-    "look-114",
-    "look-117"
+    "look-114"
    ]
   },
   {
@@ -665,8 +663,7 @@
    "looks": [
     "look-98",
     "look-113",
-    "look-115",
-    "look-117"
+    "look-115"
    ]
   },
   {
@@ -1405,7 +1402,6 @@
     "look-113",
     "look-114",
     "look-115",
-    "look-117",
     "look-120",
     "look-121",
     "look-123"
@@ -1537,19 +1533,6 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": []
-  },
-  {
-   "id": "camel-ribbed-crewneck",
-   "name": "Camel ribbed crewneck sweater",
-   "category": "Top",
-   "ownership": "missing",
-   "class": "heavy-knit",
-   "image": null,
-   "imageKind": "none",
-   "hasAlpha": null,
-   "looks": [
-    "look-117"
-   ]
   },
   {
    "id": "black-chinos",
@@ -3740,37 +3723,6 @@
    "winterLayerable": false
   },
   {
-   "id": "look-117",
-   "name": "Camel ribbed crewneck + light blue shirt + navy chinos + black cap-toe shoes",
-   "pieces": [
-    "camel-ribbed-crewneck",
-    "light-blue-oxford",
-    "navy-trousers",
-    "dark-belt",
-    "owned-black-leather-captoe"
-   ],
-   "missingPieces": [
-    "camel-ribbed-crewneck",
-    "light-blue-oxford"
-   ],
-   "image": "assets/look-117-camel-ribbed-navy-black.jpg",
-   "imageKind": "local",
-   "seasons": [
-    "Transition",
-    "Winter"
-   ],
-   "thermal": [
-    "Colder",
-    "Mild"
-   ],
-   "comfortC": [
-    4.3,
-    13.3
-   ],
-   "warmth": 2.65,
-   "winterLayerable": true
-  },
-  {
    "id": "look-118",
    "name": "Navy crewneck + light blue shirt + beige chinos + brown cap-toe shoes",
    "pieces": [
@@ -4111,7 +4063,6 @@
    "white-shirt"
   ],
   "pendingImages": [
-   "camel-ribbed-crewneck",
    "black-chinos",
    "darkbrown-suede-loafers"
   ],
@@ -4142,6 +4093,7 @@
    "assets/catalog-cognac-leather-biker-jacket.webp",
    "assets/catalog-green-buttonup.webp",
    "assets/catalog-stone-shirt.webp",
+   "assets/look-117-camel-ribbed-navy-black.jpg",
    "assets/look-12-hq.webp",
    "assets/look-124-dark-crew-white-beige-brown.jpg",
    "assets/look-28-lightblue-beige-v2.webp",

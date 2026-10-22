@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  // Intake 2026-10-22: approved FITS-model looks (117-123) and the garment cut-outs that came with them.
+  // Intake 2026-10-22: approved FITS-model looks (118-123) and the garment cut-outs that came with them.
   // New pieces are Missing until ownership is confirmed; nothing here is inferred as Owned.
   const pieces=[
     {id:'navy-vneck-sweater',name:'Navy V-neck sweater',category:'Top'},
@@ -8,7 +8,6 @@
     {id:'cream-crewneck-sweater',name:'Cream crewneck sweater',category:'Top'},
     {id:'charcoal-quarterzip',name:'Charcoal quarter-zip sweater',category:'Top'},
     {id:'sky-blue-striped-dress-shirt',name:'Sky blue striped dress shirt',category:'Top'},
-    {id:'camel-ribbed-crewneck',name:'Camel ribbed crewneck sweater',category:'Top'},
     {id:'black-chinos',name:'Black chinos',category:'Pants'},
     {id:'darkbrown-suede-loafers',name:'Dark brown suede loafers',category:'Shoes'}
   ];
@@ -22,7 +21,6 @@
     ['look-114','Light blue crewneck + white shirt + navy chinos + black cap-toe shoes','assets/look-114-lightblue-crew-navy-black.jpg',3,['Office'],['light-blue-crewneck','white-shirt','navy-trousers','owned-black-leather-captoe']],
     ['look-115','Navy V-neck + white shirt + grey chinos + black cap-toe shoes','assets/look-115-navy-vneck-grey-black.jpg',3,['Office','Dinner'],['navy-vneck-sweater','white-shirt','grey-trousers','dark-belt','owned-black-leather-captoe']],
     ['look-116','Light blue shirt + khaki chinos + dark brown suede loafers','assets/look-116-lightblue-khaki-suede-loafers.jpg',3,['Office','Weekend'],['light-blue-oxford','khaki-chinos','brown-belt','darkbrown-suede-loafers']],
-    ['look-117','Camel ribbed crewneck + light blue shirt + navy chinos + black cap-toe shoes','assets/look-117-camel-ribbed-navy-black.jpg',3,['Office','Dinner'],['camel-ribbed-crewneck','light-blue-oxford','navy-trousers','dark-belt','owned-black-leather-captoe']],
     ['look-118','Navy crewneck + light blue shirt + beige chinos + brown cap-toe shoes','assets/look-118-navy-crew-lightblue-beige-brown.jpg',2,['Office','Weekend'],['navy-crewneck','light-blue-oxford','beige-chinos','owned-brown-leather-captoe']],
     ['look-119','Black V-neck + white shirt + beige chinos + brown cap-toe shoes','assets/look-119-black-vneck-white-beige-brown.jpg',3,['Office','Dinner'],['owned-black-vneck','white-shirt','beige-chinos','owned-brown-leather-captoe']],
     ['look-120','Tan knit sweater + light blue shirt + black chinos + black cap-toe shoes','assets/look-120-tan-knit-lightblue-black-black.jpg',3,['Office','Dinner'],['tan-knit-sweater','light-blue-oxford','black-chinos','owned-black-leather-captoe']],
@@ -58,4 +56,8 @@
   D.families=D.families.filter(f=>f.looks.length);
   // Charcoal polo (no looks) was removed at the user's request.
   D.pieces=D.pieces.filter(p=>p.id!=='charcoal-polo');
+  // Camel ribbed crewneck and its only look (look-117) were removed at the user's request.
+  D.pieces=D.pieces.filter(p=>p.id!=='camel-ribbed-crewneck');
+  D.looks=D.looks.filter(l=>l.id!=='look-117');
+  D.families=D.families.filter(f=>f.id!=='family-look-117');
 })();
