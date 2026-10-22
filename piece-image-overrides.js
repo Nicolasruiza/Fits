@@ -1,5 +1,4 @@
 Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
-  "beige-blazer": "assets/wardrobe-standardized/beige-blazer.png?v=1",
   "beige-chinos": "assets/wardrobe-standardized/beige-chinos.png?v=1",
   "black-chelsea": "assets/wardrobe-standardized/black-chelsea.png?v=1",
   "black-overcoat": "assets/catalog-black-overcoat.webp?v=1",

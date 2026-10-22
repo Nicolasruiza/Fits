@@ -2,17 +2,17 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 95,
+  "pieces": 94,
   "owned": 31,
-  "missing": 64,
+  "missing": 63,
   "looks": 84,
   "families": 78,
-  "localPieceImages": 84,
+  "localPieceImages": 83,
   "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
-  "orphanPieces": 15,
-  "unusedAssets": 64,
+  "orphanPieces": 14,
+  "unusedAssets": 65,
   "needsReviewGroups": 13
  },
  "climateConfig": {
@@ -624,17 +624,6 @@
    "looks": [
     "look-46"
    ]
-  },
-  {
-   "id": "beige-blazer",
-   "name": "Beige blazer",
-   "category": "Outerwear",
-   "ownership": "missing",
-   "class": "blazer",
-   "image": "assets/wardrobe-standardized/beige-blazer.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
   },
   {
    "id": "navy-bomber",
@@ -3969,7 +3958,6 @@
    "olive-henley",
    "brown-derbies",
    "navy-leather-sneakers",
-   "beige-blazer",
    "navy-bomber",
    "navy-cardigan",
    "charcoal-overcoat",
@@ -4042,6 +4030,7 @@
    "assets/piece-cognac-suede-jacket.webp",
    "assets/piece-cream-chinos.webp",
    "assets/piece-navy-quarterzip.webp",
+   "assets/wardrobe-standardized/beige-blazer.png",
    "assets/wardrobe-standardized/charcoal-trousers.png",
    "assets/wardrobe-standardized/khaki-chinos.png",
    "assets/wardrobe-standardized/tan-suede-derbies.png"

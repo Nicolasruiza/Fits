@@ -65,4 +65,6 @@
   D.pieces=D.pieces.filter(p=>p.id!=='cream-belt');
   // Two tan suede derby-style shoes with no looks were removed at the user's request.
   D.pieces=D.pieces.filter(p=>!['tan-suede-shoes','tan-suede-derbies'].includes(p.id));
+  // Beige blazer (no looks) was removed at the user's request.
+  D.pieces=D.pieces.filter(p=>p.id!=='beige-blazer');
 })();
