@@ -9,6 +9,20 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Fits</title>
+  <script>
+    // GitHub Pages may serve a stale cached entry document on repeat visits.
+    // Give the entry URL a daily cache key while preserving existing query parameters.
+    (() => {
+      const url = new URL(window.location.href);
+      if (!url.searchParams.has('entry')) {
+        const now = new Date();
+        const day = [now.getUTCFullYear(), String(now.getUTCMonth() + 1).padStart(2, '0'), String(now.getUTCDate()).padStart(2, '0')].join('');
+        url.searchParams.set('entry', day);
+        window.location.replace(url.toString());
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="home-v2.css?v=26">
   <link rel="stylesheet" href="smart-home.css?v=25">
   <link rel="stylesheet" href="ios-layout-fix.css?v=1">
