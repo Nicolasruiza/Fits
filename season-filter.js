@@ -69,20 +69,24 @@
     ensureStyle();
     const chips=document.querySelector('.chips');if(!chips)return;
     chips.classList.add('occasion-chips','occasion-row');
-    const OCC=['Office','Weekend','Dinner','Travel'],STATUS=[['All','All','All'],['Favorites','Favs','Favorites'],['Hidden','Hidden','Hidden'],['Complete','Complete','Complete'],['Almost','Almost','Almost complete (one piece missing)'],['Missing','Missing','Missing some']];
+    const OCC=['Office','Weekend','Dinner','Travel'],STATUS=[['Favorites','Favs','Favorites'],['Hidden','Hidden','Hidden'],['Complete','Complete','Complete'],['Almost','Almost','Almost complete (one piece missing)'],['Missing','Missing','Missing some']];
     const statusIcon={Complete:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',Almost:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16a8 8 0 0 1 0-16Z"/></svg>',Missing:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v5M12 16h.01"/></svg>'};
     const chipHTML=(group,key,label,aria,active,svg)=>`<button class="chip" data-${group}="${key}" aria-label="${aria}" aria-pressed="${active}"><span class="filter-symbol">${svg}</span><span class="filter-name">${label}</span></button>`;
     // Row 1: occasions (tap the active one again to clear it). Row 2: favourites, hidden and how complete a look is.
     chips.innerHTML=OCC.map(o=>chipHTML('occasion-choice',o,o,o,o===occasion,icon(o))).join('');
     let statusRow=document.querySelector('.status-chips');
     if(!statusRow){statusRow=document.createElement('div');statusRow.className='chips occasion-chips status-chips';chips.after(statusRow)}
-    statusRow.innerHTML=STATUS.map(([key,label,aria])=>chipHTML('status-choice',key,label,aria,key===status,key==='All'?icon('All'):key==='Favorites'?icon('Favorites'):key==='Hidden'?icon('Hidden'):statusIcon[key])).join('');
+    statusRow.innerHTML=STATUS.map(([key,label,aria])=>chipHTML('status-choice',key,label,aria,key===status,key==='Favorites'?icon('Favorites'):key==='Hidden'?icon('Hidden'):statusIcon[key])).join('');
+    let showAll=document.querySelector('.show-all-btn');
+    if(!showAll){showAll=document.createElement('button');showAll.type='button';showAll.className='show-all-btn';showAll.textContent='Show all';statusRow.after(showAll)}
     const paint=()=>{
+      const none=occasion==='All'&&status==='All';showAll.classList.toggle('active',none);showAll.setAttribute('aria-pressed',String(none));
       chips.querySelectorAll('[data-occasion-choice]').forEach(x=>{const on=x.dataset.occasionChoice===occasion;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
       statusRow.querySelectorAll('[data-status-choice]').forEach(x=>{const on=x.dataset.statusChoice===status;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
     };
     chips.querySelectorAll('[data-occasion-choice]').forEach(btn=>btn.onclick=e=>{e.preventDefault();const pick=btn.dataset.occasionChoice;occasion=occasion===pick?'All':pick;localStorage.setItem('fitsOccasionFilter',occasion);paint();apply()});
-    statusRow.querySelectorAll('[data-status-choice]').forEach(btn=>btn.onclick=e=>{e.preventDefault();status=btn.dataset.statusChoice;localStorage.setItem('fitsLookStatusFilter',status);paint();apply()});
+    statusRow.querySelectorAll('[data-status-choice]').forEach(btn=>btn.onclick=e=>{e.preventDefault();const pick=btn.dataset.statusChoice;status=status===pick?'All':pick;localStorage.setItem('fitsLookStatusFilter',status);paint();apply()});
+    showAll.onclick=()=>{occasion='All';status='All';localStorage.setItem('fitsOccasionFilter',occasion);localStorage.setItem('fitsLookStatusFilter',status);paint();apply()};
     paint();
     D.families.forEach(f=>{
       const card=allCards().find(c=>{try{return new URL(c.getAttribute('href'),location.href).searchParams.get('family')===f.id}catch(e){return false}});
