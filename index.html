@@ -13,6 +13,14 @@
     // GitHub Pages may serve a stale cached entry document on repeat visits.
     // Give the entry URL a daily cache key while preserving existing query parameters.
     (() => {
+      // Keep one public address while GitHub Pages remains the deployment origin.
+      if (window.location.hostname === 'nicolasruiza.github.io') {
+        const canonical = new URL('https://nicolasruiz.net/fits');
+        canonical.search = window.location.search;
+        canonical.hash = window.location.hash;
+        window.location.replace(canonical.toString());
+        return;
+      }
       const url = new URL(window.location.href);
       if (!url.searchParams.has('entry')) {
         const now = new Date();
