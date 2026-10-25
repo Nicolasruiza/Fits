@@ -15,10 +15,10 @@
     'data.js?v=3',
     'data-batch4.js?v=12','data-batch5.js?v=16','data-batch6.js?v=27','data-batch7.js?v=24','data-batch8.js?v=2',
     'data-batch9.js?v=2','data-batch10.js?v=4','data-batch11.js?v=2','data-batch12.js?v=4','data-batch13.js?v=4',
-    'data-batch14.js?v=4','data-batch15.js?v=2','data-batch16.js?v=1',
+    'data-batch14.js?v=4','data-batch15.js?v=2','data-batch16.js?v=1','data-batch17.js?v=1',
     'data-canonical.js?v=16',
     'data-owned-intake-20261006.js?v=4',
-    'data-intake-20261022.js?v=8',
+    'data-intake-20261022.js?v=9',
     // Wardrobe cleanup
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
