@@ -11,10 +11,12 @@
   }
   function filters(){
     const fromUI=typeof window.getFitsActiveFilters==='function'?window.getFitsActiveFilters():null;
-    return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',status:localStorage.getItem('fitsLookStatusFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
+    return fromUI||{occasion:localStorage.getItem('fitsOccasionFilter')||'All',status:localStorage.getItem('fitsLookStatusFilter')||'All',season:localStorage.getItem('fitsSeasonFilter')||'All',garment:localStorage.getItem('fitsGarmentFilter')||'All',recommendedSeason:typeof window.getFitsWeatherSeason==='function'?window.getFitsWeatherSeason():null};
   }
   const owned=(id,s)=>s.wardrobe[id]==='owned',missing=(v,s)=>window.FITS_SWAPS?FITS_SWAPS.missing(v,s.wardrobe,s.swaps):(v.pieces||[]).filter(id=>!owned(id,s)),adapted=(v,s)=>window.FITS_SWAPS?FITS_SWAPS.accepted(v,s.wardrobe,s.swaps).length:0;
   const namesFor=v=>(v.pieces||[]).map(id=>(piece(id)?.name||id).toLowerCase()).join(' ');
+  function garmentKind(p){const name=(p?.name||'').toLowerCase();if(p?.category==='Outerwear')return'Jackets';if(p?.category!=='Top')return null;if(/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck|cardigan/.test(name))return'Sweaters';if(/shirt|oxford|button/.test(name))return'Shirts';if(/polo|t-shirt|tee|henley/.test(name))return'Polos & tees';return null}
+  const hasGarment=(v,choice)=>!choice||choice==='All'||(v.pieces||[]).some(id=>garmentKind(piece(id))===choice);
   function dominantColor(v){
     const ps=(v.pieces||[]).map(piece).filter(Boolean),outer=ps.find(p=>p.category==='Outerwear'),tops=ps.filter(p=>p.category==='Top');
     const visible=outer||tops.find(p=>/(sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck)/i.test(p.name))||tops[0],name=(visible?.name||'').toLowerCase();
@@ -31,7 +33,7 @@
     const st=f.status||'All',gap=missing(v,s).length;
     const statusMatch=st==='Hidden'?isHidden:!isHidden&&(st==='All'||st==='Favorites'&&!!s.saved[v.id]||st==='Complete'&&gap===0||st==='Almost'&&gap===1||st==='Missing'&&gap>=2);
     const occasionMatch=statusMatch&&(f.occasion==='All'||badges.includes(f.occasion));
-    return occasionMatch&&(f.season==='All'||seasons.includes(f.season));
+    return occasionMatch&&(f.season==='All'||seasons.includes(f.season))&&hasGarment(v,f.garment);
   }
   function weatherEligible(v,w){
     if(!w)return true;
@@ -142,7 +144,7 @@
     window.render=wrapped;
   }
   window.addEventListener('fits:filters-changed',schedule);
-  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsWeatherHome','fitsWardrobe','fitsClosetSwaps','fitsWearHistory','fitsSavedVariants','fitsHiddenLooks','fitsLookFeedback'].includes(e.key))schedule()});
+  window.addEventListener('storage',e=>{if(['fitsOccasionFilter','fitsSeasonFilter','fitsGarmentFilter','fitsWeatherHome','fitsWardrobe','fitsClosetSwaps','fitsWearHistory','fitsSavedVariants','fitsHiddenLooks','fitsLookFeedback'].includes(e.key))schedule()});
   document.addEventListener('DOMContentLoaded',schedule);
   schedule();
 })();

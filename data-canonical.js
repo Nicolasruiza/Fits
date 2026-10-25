@@ -248,7 +248,7 @@
   upsertLook({id:'look-107',family:'family-grey-tee-denim',name:'Grey T-shirt + dark jeans + white sneakers',image:'assets/look-107-grey-tee-denim-white-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['grey-tee','dark-denim','white-leather-sneakers']});
 
   upsertFamily({id:'family-lightblue-beige-cognac',name:'Light blue shirt + beige chinos',hero:'look-108',looks:['look-108']});
-  upsertLook({id:'look-108',family:'family-lightblue-beige-cognac',name:'Light blue shirt + beige chinos + cognac sneakers',image:'assets/look-108-blue-shirt-beige-brown-sneakers.webp?v=1',formal:2,badges:['Office','Weekend'],pieces:['light-blue-oxford','beige-chinos','owned-br-cognac-sneakers']});
+  upsertLook({id:'look-108',family:'family-lightblue-beige-cognac',name:'Light blue dress shirt + beige chinos + cognac sneakers',image:'assets/look-108-blue-shirt-beige-brown-sneakers.webp?v=1',formal:2,badges:['Office','Weekend'],pieces:['light-blue-dress-shirt','beige-chinos','owned-br-cognac-sneakers']});
 
   // Legacy bookmarks and rotation history resolve to the existing identical outfit.
   D.lookAliases={'look-69':'look-38'};
