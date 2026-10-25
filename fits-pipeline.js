@@ -1,0 +1,51 @@
+/* FITS shared data pipeline: the one ordered list of data steps every page runs.
+   Each step builds or patches window.FITS_DATA (or a shared map/global), so order matters.
+   Add, remove, reorder or cache-bump a data step here only, never in a page.
+
+   Pages load it as the first script in <body>, then their own UI scripts:
+     <script src="fits-pipeline.js"></script>
+   It has no ?v= on purpose, so there is no per-page version to drift; GitHub Pages revalidates it.
+   document.write keeps the steps parser-blocking and in order, before the page's own scripts
+   and before DOMContentLoaded, exactly like the static <script> tags it replaces.
+
+   scripts/audit-fits.mjs and scripts/validate-data.mjs read FITS_PIPELINE to run the same steps in Node. */
+(()=>{
+  const steps=[
+    // Source data and intake batches
+    'data.js?v=3',
+    'data-batch4.js?v=12','data-batch5.js?v=16','data-batch6.js?v=27','data-batch7.js?v=24','data-batch8.js?v=2',
+    'data-batch9.js?v=2','data-batch10.js?v=4','data-batch11.js?v=2','data-batch12.js?v=4','data-batch13.js?v=4',
+    'data-batch14.js?v=4','data-batch15.js?v=2','data-batch16.js?v=1','data-batch17.js?v=1',
+    'data-canonical.js?v=16',
+    'data-owned-intake-20261006.js?v=4',
+    'data-intake-20261022.js?v=9',
+    // Wardrobe cleanup
+    'wardrobe-canonical-v2.js?v=5',
+    'look-aliases.js?v=1',
+    'wardrobe-normalize.js?v=1',
+    'wardrobe-redundancy.js?v=3',
+    'wardrobe-draft-prune.js?v=3',
+    // Approved looks, families and ownership
+    'approved-look-12.js?v=2',
+    'loader-audit.js?v=3',
+    'approved-photo-integrity.js?v=7',
+    'family-variant-rules.js?v=3',
+    'family-variant-merge.js?v=1',
+    'wardrobe-explicit-state.js?v=16',
+    // Climate and seasons
+    'climate-rules.js?v=2',
+    'winter-layers.js?v=3',
+    'season-meta.js?v=27',
+    // Look photos, final filtering and swaps
+    'look-photo-overrides.js?v=2',
+    'image-runtime-v2.js?v=14',
+    'real-look-audit.js?v=4',
+    'dataset-integrity.js?v=1',
+    'closet-swaps.js?v=2',
+    // Piece image maps (window.FITS_CATALOG_IMAGES)
+    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=5'
+  ];
+  window.FITS_PIPELINE=steps;
+  if(typeof document!=='undefined'&&typeof document.write==='function')
+    steps.forEach(src=>document.write(`<script src="${src}"><\/script>`));
+})();
