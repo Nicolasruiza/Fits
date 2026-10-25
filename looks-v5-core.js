@@ -216,7 +216,7 @@
     if(d<7)return new Date(`${dateKey}T12:00:00`).toLocaleDateString('en-US',{weekday:'short'});
     return`${d} days ago`;
   }
-  const pieceHref=id=>`piece-v5.html?id=${encodeURIComponent(id)}`;
+  const pieceHref=id=>`piece.html?id=${encodeURIComponent(id)}`;
 
   /* ---------- Shared bottom navigation ---------- */
   const NAV_ICONS={
@@ -224,11 +224,12 @@
     wardrobe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18"/></svg>',
     stats:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16M7 20V11M12 20V5M17 20v-6"/></svg>'
   };
+  // Looks follows the v5 / classic choice saved by index.html; Wardrobe and Stats exist only in v5.
   function nav(active){
     const item=(key,href,label)=>key===active
       ?`<a class="is-active" href="${href}" aria-current="page">${NAV_ICONS[key]}<span>${label}</span></a>`
       :`<a href="${href}" aria-label="${label}">${NAV_ICONS[key]}</a>`;
-    return`<nav class="v5-nav" aria-label="Main">${item('looks','looks.html','Looks')}${item('wardrobe','wardrobe-v5.html','Wardrobe')}${item('stats','stats-v5.html','Stats')}</nav>`;
+    return`<nav class="v5-nav" aria-label="Main">${item('looks',read('fitsUI','v5')==='classic'?'index.html':'looks.html','Looks')}${item('wardrobe','wardrobe.html','Wardrobe')}${item('stats','stats.html','Stats')}</nav>`;
   }
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 

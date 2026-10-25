@@ -44,7 +44,7 @@
 
     const imgSrc=V.pieceImage(id);
     root.innerHTML=`<div class="v5" style="padding-bottom:0">
-      <div class="v5-back-row"><a class="v5-back" href="${fromWardrobe?'wardrobe-v5.html?status=missing':'looks.html'}">${back}${fromWardrobe?'Wardrobe':'Looks'}</a></div>
+      <div class="v5-back-row"><a class="v5-back" href="${fromWardrobe?'wardrobe.html?status=missing':'looks.html'}">${back}${fromWardrobe?'Wardrobe':'Looks'}</a></div>
       <div class="nb-hero">${imgSrc?`<img src="${esc(imgSrc)}" alt="${esc(p.name)}" onerror="this.classList.add('is-broken')">`:''}</div>
       <header class="nb-head">
         <span class="v5-kicker" style="color:#2d6a4c">${rank===0?'Best next buy':rank>0?`Next buy · #${rank+1}`:'Piece'}${isOwned?' · You own it':''}</span>
@@ -79,7 +79,7 @@
     if(el.dataset.action==='own'){
       const w=V.read('fitsWardrobe',{});const st=V.state();
       w[id]=V.owned(id,st)?'missing':'owned';V.write('fitsWardrobe',w);V.track(w[id]==='owned'?'nextBuyOwned':'nextBuyUnowned');
-      if(w[id]==='owned'){location.href=fromWardrobe?'wardrobe-v5.html':'looks.html';return}
+      if(w[id]==='owned'){location.href=fromWardrobe?'wardrobe.html':'looks.html';return}
     }
     if(el.dataset.action==='wish'){
       const list=new Set(V.read('fitsWishlistPieces',[]));list.has(id)?list.delete(id):(list.add(id),V.track('wishlistAdd'));V.write('fitsWishlistPieces',[...list]);

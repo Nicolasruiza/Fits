@@ -10,16 +10,33 @@
     eyeOff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.1A10 10 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-3 3.8M6.1 6.1C3.6 7.8 2.5 12 2.5 12s3.5 7 9.5 7a9.7 9.7 0 0 0 4.2-1"/></svg>',
     chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>'
   };
-  const backHref=()=>{try{const r=new URL(document.referrer);if(r.origin===location.origin&&/wardrobe-v5|stats-v5|looks|detail|next-buy/.test(r.pathname))return'back'}catch(e){}return'wardrobe-v5.html'};
+  const backHref=()=>{try{const r=new URL(document.referrer);if(r.origin===location.origin&&/wardrobe|stats|looks|detail|next-buy/.test(r.pathname))return'back'}catch(e){}return'wardrobe.html'};
 
   function rail(title,looks,count,labelFn){
     if(!looks.length)return'';
     return`<section class="p5-section"><div class="v5-row-head v5-pad-x"><h2 class="v5-h2">${title}</h2><span class="v5-count">${count} ${count===1?'look':'looks'}</span></div>
       <div class="v5-rail">${looks.map(l=>`<a class="p5-look" href="${esc(V.detailHref(l))}" aria-label="${esc(l.name)}"><img src="${esc(l.image)}" alt="${esc(l.name)}" loading="lazy" onerror="this.classList.add('is-broken')">${labelFn?`<span class="v5-needs">${esc(labelFn(l))}</span>`:''}</a>`).join('')}</div></section>`;
   }
+  // Interchangeable pieces (same category, linked both ways by FITS_SWAPS): Looks and Detail suggest
+  // one as a stand-in when the other is missing.
+  let picking=false;
+  function swapTile(s,st,action){
+    const src=V.pieceImage(s.id),own=V.owned(s.id,st),photo=`${src?`<img src="${esc(src)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')">`:`<span class="w5-noimg">${esc(s.name)}</span>`}<span class="w5-tag ${own?'dark':'plain'}">${own?'Owned':'Missing'}</span>`;
+    return action==='link'
+      ?`<button type="button" class="p5-swap p5-swap-pick" data-action="link" data-id="${esc(s.id)}" aria-label="Add ${esc(s.name)}"><span class="w5-tile w5-rail-tile">${photo}</span><span class="p5-swap-name">${esc(s.name)}</span></button>`
+      :`<div class="p5-swap"><a class="w5-tile w5-rail-tile" href="${esc(V.pieceHref(s.id))}" aria-label="${esc(s.name)}">${photo}</a><span class="p5-swap-name">${esc(s.name)}</span><button type="button" class="p5-swap-btn" data-action="unlink" data-id="${esc(s.id)}">Remove</button></div>`;
+  }
+  function swapSection(p,swaps,st){
+    if(!window.FITS_SWAPS)return'';
+    const linked=new Set(swaps.map(s=>s.id)),options=(D.pieces||[]).filter(x=>x.category===p.category&&x.id!==id&&!linked.has(x.id)).sort((a,b)=>Number(V.owned(b.id,st))-Number(V.owned(a.id,st))||a.name.localeCompare(b.name));
+    return`<section class="p5-section"><div class="v5-row-head v5-pad-x"><h2 class="v5-h2">Can swap with</h2>${options.length?`<button class="v5-link" type="button" data-action="pick">${picking?'Done':'Add'}</button>`:''}</div>
+      <p class="v5-note">${swaps.length?'When this piece is missing from a look, Fits suggests one of these instead.':'Nothing yet. Add a piece that can stand in for this one and Fits will suggest the swap.'}</p>
+      ${swaps.length?`<div class="v5-rail">${swaps.map(s=>swapTile(s,st,'unlink')).join('')}</div>`:''}
+      ${picking&&options.length?`<h3 class="p5-swap-head v5-pad-x">Choose a piece that can stand in</h3><div class="v5-rail">${options.map(s=>swapTile(s,st,'link')).join('')}</div>`:''}</section>`;
+  }
   function render(){
     const p=V.piece(id);
-    if(!p){root.innerHTML=`<div class="v5"><div class="v5-back-row"><a class="v5-back" href="wardrobe-v5.html">${I.back}Wardrobe</a></div><p class="v5-empty">This piece isn’t in your catalog anymore.</p></div>`;return}
+    if(!p){root.innerHTML=`<div class="v5"><div class="v5-back-row"><a class="v5-back" href="wardrobe.html">${I.back}Wardrobe</a></div><p class="v5-empty">This piece isn’t in your catalog anymore.</p></div>`;return}
     const st=V.state(),owned=V.owned(id,st),star=st.wishlist.has(id),hidden=new Set(V.read('fitsHiddenPieces',[])).has(id);
     const looks=(D.looks||[]).filter(l=>!st.hidden.has(l.id)&&(l.pieces||[]).includes(id)).map(l=>({l,m:V.missing(l,st)}));
     const worn=V.pieceWearCounts(V.wearRecords()).get(id)||0;
@@ -49,7 +66,7 @@
       <section class="nb-stats" aria-label="What it does for you">${stats.map(([n,label,cls])=>`<div class="nb-stat ${cls}"><b>${n}</b><span>${label}</span></div>`).join('')}</section>
       ${!owned?`<div class="p5-actions"><a class="p5-why" href="next-buy.html?piece=${encodeURIComponent(id)}&from=wardrobe"><span>Why it’s worth buying</span>${I.chevron}</a><button class="p5-find" type="button" data-action="find">Find it to buy ↗</button></div>`:''}
       ${rails}
-      ${swaps.length||owned?`<section class="p5-section v5-pad-x"><h2 class="v5-h2" style="font-size:16px">Can swap with</h2><p class="v5-note" style="margin:6px 0 0">${swaps.length?esc(swaps.map(s=>s.name).join(', ')):'No swaps set.'} <a href="piece.html?id=${encodeURIComponent(id)}&classic=1">Edit swaps</a></p></section>`:''}
+      ${swapSection(p,swaps,st)}
       <div class="p5-hide"><button type="button" data-action="hide">${I.eyeOff}${hidden?'Unhide this piece':'Hide this piece'}</button></div>
     </div>${V.nav('wardrobe')}`;
   }
@@ -60,6 +77,9 @@
     if(a==='star'){const w=new Set(V.read('fitsWishlistPieces',[]));w.has(id)?w.delete(id):w.add(id);V.write('fitsWishlistPieces',[...w])}
     else if(a==='own'){const w=V.read('fitsWardrobe',{});w[id]=el.dataset.value;V.write('fitsWardrobe',w);V.track(el.dataset.value==='owned'?'pieceOwned':'pieceMissing')}
     else if(a==='hide'){const h=new Set(V.read('fitsHiddenPieces',[]));h.has(id)?h.delete(id):h.add(id);V.write('fitsHiddenPieces',[...h])}
+    else if(a==='pick'){picking=!picking}
+    else if(a==='link'){FITS_SWAPS.link(id,el.dataset.id);V.track('swapLinked')}
+    else if(a==='unlink'){FITS_SWAPS.unlink(id,el.dataset.id)}
     else if(a==='find'){const p=V.piece(id);window.open(`https://www.google.com/search?udm=28&q=${encodeURIComponent((p?.name||'')+" men's clothing Canada")}`,'_blank','noopener,noreferrer');return}
     render();
   });

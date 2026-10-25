@@ -126,8 +126,8 @@
   function historyView(){
     const recs=V.wearRecords();
     const byDay=[];recs.forEach(r=>{let g=byDay[byDay.length-1];if(!g||g.date!==r.date){g={date:r.date,items:[]};byDay.push(g)}g.items.push(r)});
-    return`<div class="v5-back-row"><a class="v5-back" href="stats-v5.html">${I.back}Stats</a></div>
-      <header class="v5-header"><h1>Wear history</h1><span>${recs.length} WEARS</span></header>
+    return`<div class="v5-back-row"><a class="v5-back" href="stats.html">${I.back}Stats</a></div>
+      <header class="v5-header"><h1>Wear history</h1><span>${recs.length} ${recs.length===1?'WEAR':'WEARS'}</span></header>
       <div class="s5-history">${byDay.length?byDay.map(g=>`<div class="s5-hday">${esc(new Date(`${g.date}T12:00:00`).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}))}</div>${g.items.map(r=>{const l=V.look(r.lookId);return`<div class="s5-hrow"><a href="${esc(V.detailHref(l))}"><img src="${esc(l.image)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')"><span>${esc(l.name)}</span></a><button type="button" data-action="undo" data-look="${esc(r.lookId)}" data-date="${esc(r.date)}">Undo</button></div>`}).join('')}`).join(''):'<p class="v5-empty">No wears logged yet.</p>'}</div>`;
   }
   function monthSheet(m){
@@ -145,11 +145,11 @@
     const uniqueLooks=new Set(m.recs.map(r=>r.lookId)).size;
     const usedPieces=m.ownedPieces.filter(p=>(m.pieceCounts.get(p.id)||0)>0).length;
     const tab=(id,label)=>`<button class="v5-tab${ui.tab===id?' is-active':''}" role="tab" aria-selected="${ui.tab===id}" data-action="tab" data-tab="${id}">${label}</button>`;
-    root.innerHTML=`<div class="v5"><header class="v5-header"><h1>Stats</h1><span>${plural(m.recs.length,'WEAR')}</span></header>
+    root.innerHTML=`<div class="v5"><header class="v5-header"><h1>Stats</h1><span>${m.recs.length} ${m.recs.length===1?'WEAR':'WEARS'}</span></header>
       ${monthCard(m)}
       <div class="v5-tabs" role="tablist" aria-label="Stats">${tab('looks',`Looks · ${uniqueLooks} worn`)}${tab('pieces',`Pieces · ${usedPieces} used`)}</div>
       ${ui.tab==='looks'?looksTab(m):piecesTab(m)}
-      ${m.all.length?`<a class="v5-hidden-link" href="stats-v5.html?view=history"><span>${I.clock}All wear history · undo a log</span>${I.chevron}</a>`:''}
+      ${m.all.length?`<a class="v5-hidden-link" href="stats.html?view=history"><span>${I.clock}All wear history · undo a log</span>${I.chevron}</a>`:''}
       ${monthSheet(m)}</div>${V.nav('stats')}`;
     window.scrollTo(0,y);
   }

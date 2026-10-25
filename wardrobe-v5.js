@@ -6,6 +6,8 @@
   const V=window.FITS_V5,D=window.FITS_DATA,root=document.getElementById('root');
   if(!V||!D||!root)return;
   const esc=V.esc,params=new URLSearchParams(location.search);
+  // Older links opened a piece inside Wardrobe (wardrobe.html?piece=id); pieces have their own page now.
+  if(params.get('piece')){location.replace(V.pieceHref(params.get('piece')));return}
   const ui={
     tab:params.get('status')==='missing'?'missing':(sessionStorage.getItem('fitsV5WardTab')||'owned'),
     kind:sessionStorage.getItem('fitsV5WardKind')||'All',
@@ -114,11 +116,11 @@
       <div class="v5-tabs w5-tabs" role="tablist" aria-label="Wardrobe">${tab('owned',`Owned · ${owned.length}`)}${tab('missing',`Missing · ${miss.length}`)}</div>
       ${chips(list)}
       ${body}
-      <a class="v5-hidden-link" href="wardrobe-v5.html?view=hidden"><span>${I.eyeOff}Pieces you hid${m.hiddenPieces.size?` · ${m.hiddenPieces.size}`:''}</span>${I.chevron}</a>`;
+      <a class="v5-hidden-link" href="wardrobe.html?view=hidden"><span>${I.eyeOff}Pieces you hid${m.hiddenPieces.size?` · ${m.hiddenPieces.size}`:''}</span>${I.chevron}</a>`;
   }
   function hiddenView(){
     const st=V.state(),hidden=V.read('fitsHiddenPieces',[]).map(V.piece).filter(Boolean);
-    return`<div class="v5-back-row"><a class="v5-back" href="wardrobe-v5.html">${I.back}Wardrobe</a></div>
+    return`<div class="v5-back-row"><a class="v5-back" href="wardrobe.html">${I.back}Wardrobe</a></div>
       <header class="v5-header"><h1>Pieces you hid</h1><span>${hidden.length}</span></header>
       <p class="v5-note">Hidden pieces don’t show in Wardrobe or count toward Best next buy.</p>
       ${hidden.length?`<div class="w5-grid">${hidden.map(p=>`<div class="v5-card-wrap">${pieceTile({p,inSeason:true},V.owned(p.id,st)?'Owned':'Missing','plain')}<button class="v5-unhide" type="button" data-action="unhide" data-id="${esc(p.id)}">Unhide</button></div>`).join('')}</div>`:'<p class="v5-empty">You haven’t hidden any pieces.</p>'}`;
