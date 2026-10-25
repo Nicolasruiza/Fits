@@ -88,18 +88,6 @@ svg{display:block}
 .v5-more{display:block;margin:14px auto 0;height:44px;padding:0 20px;border-radius:999px;border:1.5px solid var(--v5-line);background:#fff;font-size:14px;font-weight:600}
 .v5-empty{margin:16px;padding:18px;border-radius:16px;background:var(--v5-surface);font-size:14px;color:var(--v5-ink-2);text-align:center;line-height:1.45}
 
-/* Best next buy card */
-.v5-buy{margin:16px 16px 0;display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:20px;background:var(--v5-ink);color:#fff;text-decoration:none}
-.v5-buy-head{display:flex;align-items:center;gap:12px}
-.v5-buy-head>div{display:flex;flex-direction:column;gap:2px;min-width:0}
-.v5-buy-head strong{font-size:17px}
-.v5-buy-head span:last-child{font-size:13px;color:#d5d8da}
-.v5-buy-piece{width:56px;height:56px;border-radius:12px;object-fit:cover;background:#f4f4f4;flex:none}
-.v5-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#b9d8c6}
-.v5-buy-thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
-.v5-buy-thumbs img,.v5-buy-thumbs span{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:#3a4146}
-.v5-buy-thumbs span{display:grid;place-items:center;font-size:12px;font-weight:700}
-
 /* Hidden link, classic link */
 .v5-hidden-link{margin:24px 16px 0;min-height:52px;padding:0 16px;border-radius:16px;border:1.5px solid var(--v5-line-2);display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:#4a5055;font-size:14px;font-weight:600}
 .v5-hidden-link span{display:flex;align-items:center;gap:8px}

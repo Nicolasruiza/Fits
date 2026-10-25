@@ -131,15 +131,6 @@
       <button class="v5-link" type="button" data-action="fav-all">See all</button></div>
       <div class="v5-rail">${cards.map(c=>`<a class="v5-rail-card" href="${esc(V.detailHref(c.look))}" data-action="open-look" aria-label="${esc(c.look.name)}"><img src="${esc(c.look.image)}" alt="${esc(c.look.name)}" loading="lazy" onerror="this.classList.add('is-broken')"></a>`).join('')}</div></section>`;
   }
-  function bestBuyCard(st){
-    const top=V.nextBuys(st)[0];
-    if(!top)return'';
-    const img=V.pieceImage(top.id),thumbs=top.completes.slice(0,5),more=top.completes.length-thumbs.length;
-    return `<a class="v5-buy" href="next-buy.html?piece=${encodeURIComponent(top.id)}" data-action="open-buy">
-      <div class="v5-buy-head">${img?`<img class="v5-buy-piece" src="${esc(img)}" alt="" onerror="this.classList.add('is-broken')">`:''}
-        <div><span class="v5-kicker">Best next buy</span><strong>${esc(top.piece.name)}</strong><span>Makes ${top.completes.length} ${top.completes.length===1?'look':'looks'} fully wearable</span></div></div>
-      <div class="v5-buy-thumbs">${thumbs.map(l=>`<img src="${esc(l.image)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')">`).join('')}${more>0?`<span>+${more}</span>`:''}</div></a>`;
-  }
   function hiddenLink(){
     return `<a class="v5-hidden-link" href="looks.html?view=hidden"><span>${I.eyeOff}Looks you hid</span>${I.chevron}</a>`;
   }
@@ -182,7 +173,7 @@
       }
     }else{
       const groups=[['1 piece away',ideas.filter(c=>c.missing.length===1),'one'],['2 pieces away',ideas.filter(c=>c.missing.length===2),'two'],['3+ pieces away',ideas.filter(c=>c.missing.length>=3),'more']];
-      body=`${bestBuyCard(st)}<div class="v5-row-head v5-pad"><h2 class="v5-h2">Ideas</h2>${sortToggle()}</div>
+      body=`${V.bestBuyCard(st)}<div class="v5-row-head v5-pad"><h2 class="v5-h2">Ideas</h2>${sortToggle()}</div>
         ${groups.filter(g=>g[1].length).map(([title,list,key])=>{
           const open=ui.expanded[key],shown=open?list:list.slice(0,6);
           return `<section class="v5-section"><div class="v5-row-head"><h3 class="v5-h3">${title}</h3><span class="v5-count">${list.length} ${list.length===1?'look':'looks'}</span></div>

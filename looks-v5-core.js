@@ -139,6 +139,18 @@
   const pieceImage=id=>(window.PIECE_IMAGES&&window.PIECE_IMAGES[id])||(window.FITS_CATALOG_IMAGES&&window.FITS_CATALOG_IMAGES[id])||'';
   const detailHref=l=>`detail.html?family=${encodeURIComponent(l.family||'')}&look=${encodeURIComponent(l.id)}`;
 
+  const escHtml=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  /* The "Best next buy" card shown on Looks and on Wardrobe; both lead to next-buy.html. */
+  function bestBuyCard(st=state()){
+    const top=nextBuys(st)[0];
+    if(!top)return'';
+    const img=pieceImage(top.id),thumbs=top.completes.slice(0,5),more=top.completes.length-thumbs.length;
+    return `<a class="v5-buy" href="next-buy.html?piece=${encodeURIComponent(top.id)}" data-action="open-buy">
+      <div class="v5-buy-head">${img?`<img class="v5-buy-piece" src="${escHtml(img)}" alt="" onerror="this.classList.add('is-broken')">`:''}
+        <div><span class="v5-kicker">Best next buy</span><strong>${escHtml(top.piece.name)}</strong><span>Makes ${top.completes.length} ${top.completes.length===1?'look':'looks'} fully wearable</span></div></div>
+      <div class="v5-buy-thumbs">${thumbs.map(l=>`<img src="${escHtml(l.image)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')">`).join('')}${more>0?`<span>+${more}</span>`:''}</div></a>`;
+  }
+
   /* ---------- Light usage log for the A/B comparison (local only) ---------- */
   function track(event){
     const log=read('fitsV5Events',{}),day=todayKey(),ui=read('fitsUI','v5');
@@ -148,5 +160,5 @@
     write('fitsV5Events',log);
   }
 
-  window.FITS_V5={read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track};
+  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track};
 })();
