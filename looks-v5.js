@@ -50,38 +50,21 @@
   }
   function weatherLabel(c){if(c===0)return'Clear';if(c<=2)return'Partly cloudy';if(c===3)return'Cloudy';if(c===45||c===48)return'Foggy';if((c>=51&&c<=67)||(c>=80&&c<=82))return'Rain';if(c>=71&&c<=86)return'Snow';if(c>=95)return'Storm';return'Cloudy'}
 
-  /* ---------- Weather: same storage keys as the classic app, plus a 7-day outlook ---------- */
-  async function resolveLocation(lat,lon){try{const r=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`),d=await r.json();return d.locality||d.city||d.principalSubdivision||'Your location'}catch(e){return'Your location'}}
+  /* ---------- Weather: shared with the classic app via fits-weather.js ---------- */
+  const FW=window.FitsWeather;
   async function fetchWeather(lat,lon,location){
     ui.loadingWeather=true;render();
-    try{
-      const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,rain,weather_code&hourly=temperature_2m,precipitation_probability,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&forecast_days=7&temperature_unit=celsius&timezone=auto`;
-      const [d,loc]=await Promise.all([fetch(url).then(r=>r.json()),location?Promise.resolve(location):resolveLocation(lat,lon)]);
-      const c=d.current,today=(d.daily?.time||[])[0];
-      const todayHours=(d.hourly?.time||[]).map((t,i)=>({t,i})).filter(x=>!today||x.t.startsWith(today));
-      const start=Math.max(0,todayHours.findIndex(x=>new Date(x.t)>=new Date()));
-      const hours=todayHours.slice(start).filter((_,k)=>k%2===0).slice(0,8).map(x=>({time:x.t,temp:d.hourly.temperature_2m[x.i],rain:d.hourly.precipitation_probability[x.i]||0,code:d.hourly.weather_code[x.i]}));
-      const rainToday=todayHours.map(x=>d.hourly.precipitation_probability[x.i]||0);
-      const w={temp:c.temperature_2m,apparent:c.apparent_temperature,humidity:c.relative_humidity_2m,wind:c.wind_speed_10m,code:c.weather_code,
-        currentRain:(c.rain||c.precipitation)>0,maxRain:Math.max(0,...rainToday),maxTemp:d.daily?.temperature_2m_max?.[0],minTemp:d.daily?.temperature_2m_min?.[0],
-        hours,location:loc||'Your location',ts:Date.now(),
-        week:(d.daily?.time||[]).map((t,i)=>({date:t,hi:d.daily.temperature_2m_max[i],lo:d.daily.temperature_2m_min[i],code:d.daily.weather_code[i]}))};
-      V.write('fitsWeatherHome',w);
-      V.write('fitsWeather',{t:w.temp,rainy:w.currentRain||w.maxRain>=40,location:w.location,ts:w.ts});
-      const saved=V.read('fitsWeatherCoords',{})||{};
-      V.write('fitsWeatherCoords',{lat,lon,location:w.location,savedAt:saved.savedAt||Date.now()});
-    }catch(e){/* keep the cached weather */}
+    try{await FW.fetchAt(lat,lon,location)}catch(e){/* keep the cached weather */}
     ui.loadingWeather=false;render();
   }
-  function requestLocation(){
-    if(!navigator.geolocation)return;
+  async function requestLocation(){
     ui.loadingWeather=true;render();
-    navigator.geolocation.getCurrentPosition(pos=>fetchWeather(pos.coords.latitude,pos.coords.longitude,null),()=>{ui.loadingWeather=false;render()},{enableHighAccuracy:false,timeout:10000,maximumAge:86400000});
+    try{const p=await FW.locate();fetchWeather(p.lat,p.lon,p.location)}
+    catch(e){ui.loadingWeather=false;render()}
   }
   function refreshWeather(force){
-    const coords=V.read('fitsWeatherCoords',null),cached=V.read('fitsWeatherHome',null);
-    const stale=!cached||Date.now()-(cached.ts||0)>3600000||!Array.isArray(cached.week);
-    if(coords&&Number.isFinite(coords.lat)&&Number.isFinite(coords.lon)){if(force||stale)fetchWeather(coords.lat,coords.lon,coords.location)}
+    const c=FW.coords();
+    if(c){if(force||FW.isStale(FW.cached()))fetchWeather(c.lat,c.lon,c.location)}
     else if(force)requestLocation();
   }
 
