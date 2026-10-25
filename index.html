@@ -21,6 +21,14 @@
         window.location.replace(canonical.toString());
         return;
       }
+      // UI switch (A/B): ?ui=v5 or ?ui=classic is remembered on this device.
+      // DEFAULT_UI applies to anyone who has not chosen yet.
+      const DEFAULT_UI='v5';
+      const chosen=new URL(window.location.href).searchParams.get('ui');
+      if(chosen==='v5'||chosen==='classic'){try{localStorage.setItem('fitsUI',JSON.stringify(chosen))}catch(e){}}
+      let ui=DEFAULT_UI;
+      try{const saved=JSON.parse(localStorage.getItem('fitsUI')||'null');if(saved==='v5'||saved==='classic')ui=saved}catch(e){}
+      if(ui==='v5'){window.location.replace('looks.html');return}
       const url = new URL(window.location.href);
       if (!url.searchParams.has('entry')) {
         const now = new Date();
