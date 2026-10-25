@@ -5,3 +5,4 @@
 .occasion-chips .chip .filter-name{font-size:9px;line-height:1.1;white-space:nowrap}
 .status-chips .chip.active{background:#fff;color:#20262a;box-shadow:0 0 0 1px #20262a inset}
 .show-all-btn{display:block;width:100%;min-height:44px;margin:0 0 13px;border:1px solid #cdd5d2;border-radius:14px;background:#fff;color:#20262a;font:inherit;font-size:12px;font-weight:800;letter-spacing:.02em;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.show-all-btn.active{background:#20262a;border-color:#20262a;color:#fff}
+.garment-filter-wrap{margin:18px 0 12px}.garment-chips{padding-bottom:2px}.garment-choice.active{background:#20262a;border-color:#20262a;color:#fff}

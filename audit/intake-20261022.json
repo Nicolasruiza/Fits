@@ -16,9 +16,11 @@
       "look-120": "Refined Urban Gentleman in Motion.png",
       "look-121": "Urban Elegance on a Wet Sidewalk.png",
       "look-122": "Urban Elegance in Motion(2).png",
-      "look-123": "Elegant Urban Walk in Soft Light.png"
+      "look-123": "Elegant Urban Walk in Soft Light.png",
+      "look-124": "Elegant Stroll on a Stone Street.png"
     },
     "pieceImages": {
+      "dark-crewneck": "catalog-dark-charcoal-crewneck.png",
       "navy-vneck-sweater": "Navy V-Neck Sweater Cutout.png",
       "light-blue-crewneck": "Light Blue Knit Crewneck Sweater(1).png",
       "cream-crewneck-sweater": "Cream Knit Crewneck Sweater Cutout.png",
@@ -36,7 +38,7 @@
   },
   "pendingIdentification": {
     "table": "audit/pending-photos-20261022.md",
-    "published": "7 photos reviewed; look-118 to look-123 published; photo 7 not published as its own look",
+    "published": "7 photos reviewed and published as look-118 to look-124; the dark charcoal crewneck and black V-neck remain separate garments and outfit families",
     "held": []
   },
   "needsReview": [
@@ -73,10 +75,6 @@
       "why": "ChatGPT proposed owned-grey-quarterzip (light grey); the charcoal piece added from the user's cut-out was used instead; trousers grey-trousers are probable"
     },
     {
-      "item": "look-122 sweater",
-      "why": "photo shows a black crewneck; linked to owned-black-vneck at user request"
-    },
-    {
       "item": "look-120 and look-121 sweater",
       "why": "relinked from tan-knit-sweater to cream-crewneck-sweater on user request (2026-10-22)"
     }
@@ -92,8 +90,6 @@
     "Dark-brown suede loafers are distinct from Oxfords and Chelseas"
   ],
   "removed": {
-    "dark-crewneck": "removed on user request (2026-10-22); look-122 now uses owned-black-vneck",
-    "look-124": "not published: with the black V-neck it duplicates look-119 exactly; photo kept as assets/look-124-dark-crew-white-beige-brown.jpg (unused)",
     "cognac-leather-biker-jacket": "removed on user request (2026-10-22) together with look-93; image files kept in assets/ (unused)",
     "charcoal-polo": "removed on user request (2026-10-22); it was not used by any look",
     "camel-ribbed-crewneck": "removed on user request (2026-10-22) together with look-117; photo kept as assets/look-117-camel-ribbed-navy-black.jpg (unused)",

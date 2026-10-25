@@ -2,18 +2,18 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 94,
+  "pieces": 99,
   "owned": 31,
-  "missing": 63,
-  "looks": 84,
-  "families": 78,
-  "localPieceImages": 83,
+  "missing": 68,
+  "looks": 102,
+  "families": 96,
+  "localPieceImages": 88,
   "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
-  "orphanPieces": 14,
+  "orphanPieces": 11,
   "unusedAssets": 65,
-  "needsReviewGroups": 13
+  "needsReviewGroups": 17
  },
  "climateConfig": {
   "comfort": {
@@ -102,6 +102,7 @@
    "looks": [
     "look-35",
     "look-40",
+    "look-navy-polo-beige-chinos-white-sneakers",
     "look-82",
     "look-100"
    ]
@@ -115,7 +116,9 @@
    "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_7b50ad21-aad0-458b-92e1-0e26324e1f0b_min.webp",
    "imageKind": "external",
    "hasAlpha": null,
-   "looks": []
+   "looks": [
+    "look-grey-polo-beige-chinos-white-sneakers"
+   ]
   },
   {
    "id": "light-blue-oxford",
@@ -131,13 +134,7 @@
     "look-53",
     "look-70",
     "look-71",
-    "look-72",
-    "look-108",
-    "look-113",
-    "look-116",
-    "look-118",
-    "look-120",
-    "look-122"
+    "look-72"
    ]
   },
   {
@@ -152,6 +149,12 @@
    "looks": [
     "look-42",
     "look-46",
+    "look-grey-blazer-white-shirt-navy-dress",
+    "look-navy-blazer-white-shirt-charcoal-dress",
+    "look-navy-crewneck-white-shirt-beige-chinos",
+    "look-navy-blazer-white-shirt-cream-chinos",
+    "look-grey-quarterzip-white-shirt-charcoal-dress",
+    "look-white-shirt-beige-chinos-white-sneakers",
     "look-60",
     "look-73",
     "look-85",
@@ -164,7 +167,8 @@
     "look-115",
     "look-119",
     "look-121",
-    "look-123"
+    "look-123",
+    "look-124"
    ]
   },
   {
@@ -180,6 +184,8 @@
     "look-41",
     "look-43",
     "look-50",
+    "look-navy-blazer-white-tee-beige-chinos",
+    "look-navy-jacket-white-tee-beige-chinos",
     "look-51",
     "look-54",
     "look-77",
@@ -202,6 +208,20 @@
    ]
   },
   {
+   "id": "dark-crewneck",
+   "name": "Very dark charcoal crewneck sweater",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "knit",
+   "image": "assets/catalog-dark-charcoal-crewneck.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-122",
+    "look-124"
+   ]
+  },
+  {
    "id": "navy-crewneck",
    "name": "Navy crewneck sweater",
    "category": "Top",
@@ -213,6 +233,7 @@
    "looks": [
     "look-38",
     "look-45",
+    "look-navy-crewneck-white-shirt-beige-chinos",
     "look-70",
     "look-73",
     "look-75",
@@ -287,7 +308,6 @@
     "look-90",
     "look-92",
     "look-109",
-    "look-113",
     "look-114"
    ]
   },
@@ -306,9 +326,7 @@
     "look-79",
     "look-101",
     "look-104",
-    "look-115",
-    "look-121",
-    "look-123"
+    "look-115"
    ]
   },
   {
@@ -325,6 +343,18 @@
     "look-42",
     "look-43",
     "look-45",
+    "look-navy-crewneck-white-shirt-beige-chinos",
+    "look-navy-blazer-striped-shirt-beige-chinos",
+    "look-white-shirt-beige-chinos-white-sneakers",
+    "look-navy-polo-beige-chinos-white-sneakers",
+    "look-black-tee-beige-chinos-white-sneakers",
+    "look-lightblue-dress-shirt-beige-chinos-loafers",
+    "look-grey-polo-beige-chinos-white-sneakers",
+    "look-navy-blazer-white-tee-beige-chinos",
+    "look-olive-shirt-beige-chinos-white-sneakers",
+    "look-cream-crewneck-beige-chinos-white-sneakers",
+    "look-striped-linen-shirt-beige-chinos-loafers",
+    "look-navy-jacket-white-tee-beige-chinos",
     "look-57",
     "look-62",
     "look-63",
@@ -341,7 +371,8 @@
     "look-110",
     "look-116",
     "look-118",
-    "look-119"
+    "look-119",
+    "look-124"
    ]
   },
   {
@@ -415,6 +446,10 @@
     "look-40",
     "look-46",
     "look-49",
+    "look-navy-blazer-white-shirt-cream-chinos",
+    "look-lightblue-dress-shirt-beige-chinos-loafers",
+    "look-navy-blazer-white-tee-beige-chinos",
+    "look-striped-linen-shirt-beige-chinos-loafers",
     "look-53",
     "look-62",
     "look-63",
@@ -482,6 +517,14 @@
     "look-47",
     "look-48",
     "look-50",
+    "look-navy-crewneck-white-shirt-beige-chinos",
+    "look-white-shirt-beige-chinos-white-sneakers",
+    "look-navy-polo-beige-chinos-white-sneakers",
+    "look-black-tee-beige-chinos-white-sneakers",
+    "look-grey-polo-beige-chinos-white-sneakers",
+    "look-olive-shirt-beige-chinos-white-sneakers",
+    "look-cream-crewneck-beige-chinos-white-sneakers",
+    "look-navy-jacket-white-tee-beige-chinos",
     "look-51",
     "look-52",
     "look-54",
@@ -568,6 +611,12 @@
     "look-40",
     "look-42",
     "look-49",
+    "look-navy-blazer-striped-shirt-beige-chinos",
+    "look-navy-blazer-white-shirt-cream-chinos",
+    "look-grey-quarterzip-white-shirt-charcoal-dress",
+    "look-lightblue-dress-shirt-beige-chinos-loafers",
+    "look-navy-blazer-white-tee-beige-chinos",
+    "look-striped-linen-shirt-beige-chinos-loafers",
     "look-53",
     "look-62",
     "look-63",
@@ -592,6 +641,9 @@
    "imageKind": "external",
    "hasAlpha": null,
    "looks": [
+    "look-grey-blazer-white-shirt-navy-dress",
+    "look-navy-blazer-white-shirt-charcoal-dress",
+    "look-navy-vneck-striped-shirt-charcoal-dress",
     "look-98",
     "look-113",
     "look-115"
@@ -608,6 +660,10 @@
    "hasAlpha": null,
    "looks": [
     "look-50",
+    "look-navy-blazer-white-shirt-charcoal-dress",
+    "look-navy-blazer-striped-shirt-beige-chinos",
+    "look-navy-blazer-white-shirt-cream-chinos",
+    "look-navy-blazer-white-tee-beige-chinos",
     "look-68",
     "look-92"
    ]
@@ -622,7 +678,8 @@
    "imageKind": "external",
    "hasAlpha": null,
    "looks": [
-    "look-46"
+    "look-46",
+    "look-grey-blazer-white-shirt-navy-dress"
    ]
   },
   {
@@ -634,7 +691,9 @@
    "image": "assets/wardrobe-standardized/navy-bomber.png",
    "imageKind": "local",
    "hasAlpha": true,
-   "looks": []
+   "looks": [
+    "look-navy-jacket-white-tee-beige-chinos"
+   ]
   },
   {
    "id": "charcoal-cardigan",
@@ -703,8 +762,10 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-41",
     "look-57",
-    "look-66"
+    "look-66",
+    "look-76"
    ]
   },
   {
@@ -719,6 +780,7 @@
    "looks": [
     "look-40",
     "look-46",
+    "look-navy-blazer-white-shirt-cream-chinos",
     "look-53",
     "look-54",
     "look-66",
@@ -726,20 +788,6 @@
     "look-91",
     "look-94",
     "look-95"
-   ]
-  },
-  {
-   "id": "cognac-suede-jacket",
-   "name": "Cognac suede jacket",
-   "category": "Outerwear",
-   "ownership": "missing",
-   "class": "leather-jacket",
-   "image": "assets/wardrobe-standardized/cognac-suede-jacket.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": [
-    "look-41",
-    "look-76"
    ]
   },
   {
@@ -894,6 +942,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-black-tee-beige-chinos-white-sneakers",
     "look-61",
     "look-104",
     "look-112"
@@ -922,6 +971,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-striped-linen-shirt-beige-chinos-loafers",
     "look-65",
     "look-89"
    ]
@@ -1015,6 +1065,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-olive-shirt-beige-chinos-white-sneakers",
     "look-63",
     "look-94",
     "look-110"
@@ -1124,6 +1175,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-grey-quarterzip-white-shirt-charcoal-dress",
     "look-81"
    ]
   },
@@ -1166,8 +1218,7 @@
    "hasAlpha": true,
    "looks": [
     "look-79",
-    "look-119",
-    "look-122"
+    "look-119"
    ]
   },
   {
@@ -1301,6 +1352,9 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-grey-blazer-white-shirt-navy-dress",
+    "look-navy-blazer-white-shirt-charcoal-dress",
+    "look-navy-vneck-striped-shirt-charcoal-dress",
     "look-79",
     "look-109",
     "look-112",
@@ -1333,12 +1387,15 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-navy-blazer-striped-shirt-beige-chinos",
+    "look-grey-quarterzip-white-shirt-charcoal-dress",
     "look-89",
     "look-110",
     "look-111",
     "look-118",
     "look-119",
-    "look-122"
+    "look-122",
+    "look-124"
    ]
   },
   {
@@ -1387,6 +1444,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-navy-vneck-striped-shirt-charcoal-dress",
     "look-111",
     "look-115"
    ]
@@ -1414,6 +1472,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-cream-crewneck-beige-chinos-white-sneakers",
     "look-120",
     "look-121"
    ]
@@ -1440,7 +1499,29 @@
    "image": "assets/wardrobe-standardized/sky-blue-striped-dress-shirt.png",
    "imageKind": "local",
    "hasAlpha": true,
-   "looks": []
+   "looks": [
+    "look-navy-blazer-striped-shirt-beige-chinos",
+    "look-navy-vneck-striped-shirt-charcoal-dress"
+   ]
+  },
+  {
+   "id": "light-blue-dress-shirt",
+   "name": "Light blue dress shirt",
+   "category": "Top",
+   "ownership": "missing",
+   "class": "shirt",
+   "image": "assets/catalog-light-blue-dress-shirt.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-lightblue-dress-shirt-beige-chinos-loafers",
+    "look-108",
+    "look-113",
+    "look-116",
+    "look-118",
+    "look-120",
+    "look-122"
+   ]
   },
   {
    "id": "black-chinos",
@@ -1452,9 +1533,64 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
-    "look-112",
-    "look-120",
+    "look-112"
+   ]
+  },
+  {
+   "id": "black-dress-trousers",
+   "name": "Black dress trousers",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/catalog-black-dress-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-120"
+   ]
+  },
+  {
+   "id": "dark-charcoal-dress-trousers",
+   "name": "Dark charcoal dress trousers",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/catalog-dark-charcoal-dress-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-navy-blazer-white-shirt-charcoal-dress",
+    "look-grey-quarterzip-white-shirt-charcoal-dress",
+    "look-navy-vneck-striped-shirt-charcoal-dress",
     "look-122"
+   ]
+  },
+  {
+   "id": "grey-dress-trousers",
+   "name": "Grey dress trousers",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/catalog-grey-dress-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-121",
+    "look-123"
+   ]
+  },
+  {
+   "id": "navy-dress-trousers",
+   "name": "Navy dress trousers",
+   "category": "Pants",
+   "ownership": "missing",
+   "class": "trousers",
+   "image": "assets/catalog-navy-dress-trousers.png",
+   "imageKind": "local",
+   "hasAlpha": true,
+   "looks": [
+    "look-grey-blazer-white-shirt-navy-dress",
+    "look-113"
    ]
   },
   {
@@ -1585,15 +1721,15 @@
   },
   {
    "id": "look-41",
-   "name": "Cognac suede jacket + white tee + navy trousers",
+   "name": "Brown suede jacket + white tee + navy trousers",
    "pieces": [
-    "cognac-suede-jacket",
+    "brown-suede-jacket",
     "white-tee",
     "navy-trousers",
     "owned-brown-buckle-chelsea"
    ],
    "missingPieces": [
-    "cognac-suede-jacket",
+    "brown-suede-jacket",
     "white-tee"
    ],
    "image": "assets/look-41-hq.webp",
@@ -1857,6 +1993,485 @@
     22.1
    ],
    "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-grey-blazer-white-shirt-navy-dress",
+   "name": "Grey blazer + white shirt + navy dress trousers",
+   "pieces": [
+    "grey-blazer",
+    "white-shirt",
+    "navy-dress-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "grey-blazer",
+    "white-shirt",
+    "navy-dress-trousers"
+   ],
+   "image": "assets/look-01-grey-blazer-white-navy-dress-black.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-navy-blazer-white-shirt-charcoal-dress",
+   "name": "Navy blazer + white shirt + charcoal dress trousers",
+   "pieces": [
+    "navy-blazer",
+    "white-shirt",
+    "dark-charcoal-dress-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "white-shirt",
+    "dark-charcoal-dress-trousers"
+   ],
+   "image": "assets/look-02-navy-blazer-white-charcoal-dress-black.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-navy-crewneck-white-shirt-beige-chinos",
+   "name": "Navy crewneck + white shirt + beige chinos",
+   "pieces": [
+    "navy-crewneck",
+    "white-shirt",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-crewneck",
+    "white-shirt"
+   ],
+   "image": "assets/look-03-navy-crew-white-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-navy-blazer-striped-shirt-beige-chinos",
+   "name": "Navy blazer + striped shirt + beige chinos",
+   "pieces": [
+    "navy-blazer",
+    "sky-blue-striped-dress-shirt",
+    "beige-chinos",
+    "brown-belt",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "sky-blue-striped-dress-shirt"
+   ],
+   "image": "assets/look-04-navy-blazer-striped-blue-beige-brown.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-navy-blazer-white-shirt-cream-chinos",
+   "name": "Navy blazer + white shirt + cream chinos",
+   "pieces": [
+    "navy-blazer",
+    "white-shirt",
+    "cream-chinos",
+    "brown-belt",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "white-shirt",
+    "cream-chinos"
+   ],
+   "image": "assets/look-05-navy-blazer-white-cream-loafers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-grey-quarterzip-white-shirt-charcoal-dress",
+   "name": "Grey quarter-zip + white shirt + charcoal dress trousers",
+   "pieces": [
+    "owned-grey-quarterzip",
+    "white-shirt",
+    "dark-charcoal-dress-trousers",
+    "brown-belt",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "white-shirt",
+    "dark-charcoal-dress-trousers"
+   ],
+   "image": "assets/look-06-lightgrey-quarterzip-white-charcoal-brown.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-navy-vneck-striped-shirt-charcoal-dress",
+   "name": "Navy V-neck + striped shirt + charcoal dress trousers",
+   "pieces": [
+    "navy-vneck-sweater",
+    "sky-blue-striped-dress-shirt",
+    "dark-charcoal-dress-trousers",
+    "dark-belt",
+    "owned-black-leather-captoe"
+   ],
+   "missingPieces": [
+    "navy-vneck-sweater",
+    "sky-blue-striped-dress-shirt",
+    "dark-charcoal-dress-trousers"
+   ],
+   "image": "assets/look-07-navy-vneck-striped-charcoal-black.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-white-shirt-beige-chinos-white-sneakers",
+   "name": "White shirt + beige chinos + white sneakers",
+   "pieces": [
+    "white-shirt",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "white-shirt"
+   ],
+   "image": "assets/look-08-white-shirt-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-navy-polo-beige-chinos-white-sneakers",
+   "name": "Navy polo + beige chinos + white sneakers",
+   "pieces": [
+    "navy-polo",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-09-navy-polo-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-black-tee-beige-chinos-white-sneakers",
+   "name": "Black T-shirt + beige chinos + white sneakers",
+   "pieces": [
+    "black-tee",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "black-tee"
+   ],
+   "image": "assets/look-10-black-tee-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-lightblue-dress-shirt-beige-chinos-loafers",
+   "name": "Light blue dress shirt + beige chinos + brown loafers",
+   "pieces": [
+    "light-blue-dress-shirt",
+    "beige-chinos",
+    "brown-belt",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "light-blue-dress-shirt"
+   ],
+   "image": "assets/look-11-lightblue-dress-beige-loafers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-grey-polo-beige-chinos-white-sneakers",
+   "name": "Grey polo + beige chinos + white sneakers",
+   "pieces": [
+    "grey-polo",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "grey-polo"
+   ],
+   "image": "assets/look-12-grey-polo-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-navy-blazer-white-tee-beige-chinos",
+   "name": "Navy blazer + white T-shirt + beige chinos",
+   "pieces": [
+    "navy-blazer",
+    "white-tee",
+    "beige-chinos",
+    "brown-belt",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "white-tee"
+   ],
+   "image": "assets/look-13-navy-blazer-white-tee-beige-loafers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-olive-shirt-beige-chinos-white-sneakers",
+   "name": "Olive shirt + beige chinos + white sneakers",
+   "pieces": [
+    "olive-buttondown",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "olive-buttondown"
+   ],
+   "image": "assets/look-14-olive-shirt-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-cream-crewneck-beige-chinos-white-sneakers",
+   "name": "Cream crewneck + beige chinos + white sneakers",
+   "pieces": [
+    "cream-crewneck-sweater",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "cream-crewneck-sweater"
+   ],
+   "image": "assets/look-15-cream-crewneck-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.5,
+    22.5
+   ],
+   "warmth": 1.5,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-striped-linen-shirt-beige-chinos-loafers",
+   "name": "Striped linen shirt + beige chinos + brown loafers",
+   "pieces": [
+    "striped-blue-linen-shirt",
+    "beige-chinos",
+    "brown-belt",
+    "brown-loafers"
+   ],
+   "missingPieces": [
+    "striped-blue-linen-shirt"
+   ],
+   "image": "assets/look-16-striped-linen-beige-loafers.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-navy-jacket-white-tee-beige-chinos",
+   "name": "Navy jacket + white T-shirt + beige chinos",
+   "pieces": [
+    "navy-bomber",
+    "white-tee",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-bomber",
+    "white-tee"
+   ],
+   "image": "assets/look-17-navy-jacket-white-tee-beige-white.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    11.5,
+    20.5
+   ],
+   "warmth": 1.75,
    "winterLayerable": false
   },
   {
@@ -2525,15 +3140,15 @@
   },
   {
    "id": "look-76",
-   "name": "Cognac suede jacket + cream shirt + dark denim + Italian suede shoes",
+   "name": "Brown suede jacket + cream shirt + dark denim + Italian suede shoes",
    "pieces": [
-    "cognac-suede-jacket",
+    "brown-suede-jacket",
     "owned-cream-buttondown",
     "dark-denim",
     "owned-darkbrown-suede-italian-laceup"
    ],
    "missingPieces": [
-    "cognac-suede-jacket"
+    "brown-suede-jacket"
    ],
    "image": "assets/look-76-hq.webp",
    "imageKind": "local",
@@ -3369,14 +3984,14 @@
   },
   {
    "id": "look-108",
-   "name": "Light blue shirt + beige chinos + cognac sneakers",
+   "name": "Light blue dress shirt + beige chinos + cognac sneakers",
    "pieces": [
-    "light-blue-oxford",
+    "light-blue-dress-shirt",
     "beige-chinos",
     "owned-br-cognac-sneakers"
    ],
    "missingPieces": [
-    "light-blue-oxford"
+    "light-blue-dress-shirt"
    ],
    "image": "assets/look-108-blue-shirt-beige-brown-sneakers.webp",
    "imageKind": "local",
@@ -3509,15 +4124,16 @@
   },
   {
    "id": "look-113",
-   "name": "Light blue shirt + navy chinos + black cap-toe shoes",
+   "name": "Light blue dress shirt + navy dress trousers + black cap-toe shoes",
    "pieces": [
-    "light-blue-oxford",
-    "navy-trousers",
+    "light-blue-dress-shirt",
+    "navy-dress-trousers",
     "dark-belt",
     "owned-black-leather-captoe"
    ],
    "missingPieces": [
-    "light-blue-oxford"
+    "light-blue-dress-shirt",
+    "navy-dress-trousers"
    ],
    "image": "assets/look-113-lightblue-navy-black.jpg",
    "imageKind": "local",
@@ -3595,15 +4211,15 @@
   },
   {
    "id": "look-116",
-   "name": "Light blue shirt + khaki chinos + dark brown suede loafers",
+   "name": "Light blue dress shirt + khaki chinos + dark brown suede loafers",
    "pieces": [
-    "light-blue-oxford",
+    "light-blue-dress-shirt",
     "beige-chinos",
     "brown-belt",
     "darkbrown-suede-loafers"
    ],
    "missingPieces": [
-    "light-blue-oxford",
+    "light-blue-dress-shirt",
     "darkbrown-suede-loafers"
    ],
    "image": "assets/look-116-lightblue-khaki-suede-loafers.jpg",
@@ -3625,16 +4241,16 @@
   },
   {
    "id": "look-118",
-   "name": "Navy crewneck + light blue shirt + beige chinos + brown cap-toe shoes",
+   "name": "Navy crewneck + light blue dress shirt + beige chinos + brown cap-toe shoes",
    "pieces": [
     "navy-crewneck",
-    "light-blue-oxford",
+    "light-blue-dress-shirt",
     "beige-chinos",
     "owned-brown-leather-captoe"
    ],
    "missingPieces": [
     "navy-crewneck",
-    "light-blue-oxford"
+    "light-blue-dress-shirt"
    ],
    "image": "assets/look-118-navy-crew-lightblue-beige-brown.jpg",
    "imageKind": "local",
@@ -3680,17 +4296,17 @@
   },
   {
    "id": "look-120",
-   "name": "Cream crewneck sweater + light blue shirt + black chinos + black cap-toe shoes",
+   "name": "Cream crewneck sweater + light blue dress shirt + black dress trousers + black cap-toe shoes",
    "pieces": [
     "cream-crewneck-sweater",
-    "light-blue-oxford",
-    "black-chinos",
+    "light-blue-dress-shirt",
+    "black-dress-trousers",
     "owned-black-leather-captoe"
    ],
    "missingPieces": [
     "cream-crewneck-sweater",
-    "light-blue-oxford",
-    "black-chinos"
+    "light-blue-dress-shirt",
+    "black-dress-trousers"
    ],
    "image": "assets/look-120-tan-knit-lightblue-black-black.jpg",
    "imageKind": "local",
@@ -3709,16 +4325,17 @@
   },
   {
    "id": "look-121",
-   "name": "Cream crewneck sweater + white shirt + grey chinos + black cap-toe shoes",
+   "name": "Cream crewneck sweater + white shirt + grey dress trousers + black cap-toe shoes",
    "pieces": [
     "cream-crewneck-sweater",
     "white-shirt",
-    "grey-trousers",
+    "grey-dress-trousers",
     "owned-black-leather-captoe"
    ],
    "missingPieces": [
     "cream-crewneck-sweater",
-    "white-shirt"
+    "white-shirt",
+    "grey-dress-trousers"
    ],
    "image": "assets/look-121-tan-knit-white-grey-black.jpg",
    "imageKind": "local",
@@ -3737,16 +4354,17 @@
   },
   {
    "id": "look-122",
-   "name": "Black V-neck + light blue shirt + black chinos + brown cap-toe shoes",
+   "name": "Dark charcoal crewneck + light blue dress shirt + dark charcoal dress trousers + brown cap-toe shoes",
    "pieces": [
-    "owned-black-vneck",
-    "light-blue-oxford",
-    "black-chinos",
+    "dark-crewneck",
+    "light-blue-dress-shirt",
+    "dark-charcoal-dress-trousers",
     "owned-brown-leather-captoe"
    ],
    "missingPieces": [
-    "light-blue-oxford",
-    "black-chinos"
+    "dark-crewneck",
+    "light-blue-dress-shirt",
+    "dark-charcoal-dress-trousers"
    ],
    "image": "assets/look-122-dark-crew-lightblue-black-brown.jpg",
    "imageKind": "local",
@@ -3765,18 +4383,47 @@
   },
   {
    "id": "look-123",
-   "name": "Charcoal quarter-zip + white shirt + grey chinos + black cap-toe shoes",
+   "name": "Charcoal quarter-zip + white shirt + grey dress trousers + black cap-toe shoes",
    "pieces": [
     "charcoal-quarterzip",
     "white-shirt",
-    "grey-trousers",
+    "grey-dress-trousers",
     "owned-black-leather-captoe"
    ],
    "missingPieces": [
     "charcoal-quarterzip",
-    "white-shirt"
+    "white-shirt",
+    "grey-dress-trousers"
    ],
    "image": "assets/look-123-charcoal-qz-white-grey-black.jpg",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": true
+  },
+  {
+   "id": "look-124",
+   "name": "Dark charcoal crewneck + white shirt + beige chinos + brown cap-toe shoes",
+   "pieces": [
+    "dark-crewneck",
+    "white-shirt",
+    "beige-chinos",
+    "owned-brown-leather-captoe"
+   ],
+   "missingPieces": [
+    "dark-crewneck",
+    "white-shirt"
+   ],
+   "image": "assets/look-124-dark-crew-white-beige-brown.jpg",
    "imageKind": "local",
    "seasons": [
     "Transition"
@@ -3818,7 +4465,8 @@
     "striped-blue-linen-shirt",
     "owned-lightblue-microcheck-shirt",
     "owned-blue-gingham-shirt",
-    "sky-blue-striped-dress-shirt"
+    "sky-blue-striped-dress-shirt",
+    "light-blue-dress-shirt"
    ],
    "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
   },
@@ -3836,6 +4484,30 @@
     "navy-crewneck",
     "navy-quarterzip",
     "navy-vneck-sweater"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Pants|trousers|navy",
+   "ids": [
+    "navy-trousers",
+    "navy-dress-trousers"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Pants|trousers|grey",
+   "ids": [
+    "grey-trousers",
+    "grey-dress-trousers"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Pants|trousers|darkcharcoal",
+   "ids": [
+    "dark-chinos",
+    "dark-charcoal-dress-trousers"
    ],
    "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
   },
@@ -3906,6 +4578,14 @@
     "owned-darkbrown-suede-chelsea"
    ],
    "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
+  },
+  {
+   "key": "Pants|trousers|black",
+   "ids": [
+    "black-chinos",
+    "black-dress-trousers"
+   ],
+   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
   }
  ],
  "knownDebt": {
@@ -3953,20 +4633,17 @@
   ],
   "pendingImages": [],
   "orphanPieces": [
-   "grey-polo",
    "navy-henley",
    "olive-henley",
    "brown-derbies",
    "navy-leather-sneakers",
-   "navy-bomber",
    "navy-cardigan",
    "charcoal-overcoat",
    "brown-leather-jacket",
    "navy-quarterzip",
    "owned-rwb-check-shirt",
    "owned-navy-suede-chelsea",
-   "owned-navy-suede-brogue",
-   "sky-blue-striped-dress-shirt"
+   "owned-navy-suede-brogue"
   ],
   "unusedAssets": [
    "assets/beige-buttondown.webp",
@@ -3977,7 +4654,6 @@
    "assets/catalog-stone-shirt.webp",
    "assets/look-117-camel-ribbed-navy-black.jpg",
    "assets/look-12-hq.webp",
-   "assets/look-124-dark-crew-white-beige-brown.jpg",
    "assets/look-28-lightblue-beige-v2.webp",
    "assets/look-35-navy-denim.webp",
    "assets/look-36-cardigan-henley-denim.webp",
@@ -4032,6 +4708,7 @@
    "assets/piece-navy-quarterzip.webp",
    "assets/wardrobe-standardized/beige-blazer.png",
    "assets/wardrobe-standardized/charcoal-trousers.png",
+   "assets/wardrobe-standardized/cognac-suede-jacket.png",
    "assets/wardrobe-standardized/khaki-chinos.png",
    "assets/wardrobe-standardized/tan-suede-derbies.png"
   ]

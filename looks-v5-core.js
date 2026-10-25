@@ -57,6 +57,7 @@
 
   /* ---------- Occasion: weekday = Office, weekend = Weekend, overridable for today ---------- */
   const OCCASIONS=['Office','Weekend','Dinner','Travel'];
+  const GARMENTS=['All','Sweaters','Shirts','Polos & tees','Jackets'];
   function autoOccasion(d=new Date()){const day=d.getDay();return day===0||day===6?'Weekend':'Office'}
   function occasion(){
     const o=read('fitsOccasionV5',null);
@@ -65,6 +66,8 @@
   }
   function setOccasion(value){write('fitsOccasionV5',{value,date:todayKey()})}
   const occasionMatch=(l,o)=>o==='All'||(l.badges||[]).includes(o);
+  function garmentKind(p){const name=(p?.name||'').toLowerCase();if(p?.category==='Outerwear')return'Jackets';if(p?.category!=='Top')return null;if(/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck|cardigan/.test(name))return'Sweaters';if(/shirt|oxford|button/.test(name))return'Shirts';if(/polo|t-shirt|tee|henley/.test(name))return'Polos & tees';return null}
+  const garmentMatch=(l,g)=>!g||g==='All'||(l.pieces||[]).some(id=>garmentKind(piece(id))===g);
 
   /* ---------- Warmth label and sort ---------- */
   function feel(l){
@@ -76,13 +79,14 @@
 
   /* ---------- Families: one card per family, showing its closest variant ---------- */
   function familyCards(opts={}){
-    const st=opts.state||state(),s=opts.season,o=opts.occasion||'All',includeHidden=!!opts.hiddenOnly;
+    const st=opts.state||state(),s=opts.season,o=opts.occasion||'All',g=opts.garment||'All',includeHidden=!!opts.hiddenOnly;
     const out=[];
     (D.families||[]).forEach(f=>{
       const variants=(f.looks||[]).map(look).filter(Boolean)
         .filter(l=>includeHidden?st.hidden.has(l.id):!st.hidden.has(l.id))
         .filter(l=>!s||seasonMatch(l,s))
-        .filter(l=>occasionMatch(l,o));
+        .filter(l=>occasionMatch(l,o))
+        .filter(l=>garmentMatch(l,g));
       if(!variants.length)return;
       const ranked=variants.map(l=>({look:l,missing:missing(l,st)}))
         .sort((a,b)=>a.missing.length-b.missing.length||(st.saved[b.look.id]?1:0)-(st.saved[a.look.id]?1:0)||(a.look.id===f.hero?-1:b.look.id===f.hero?1:0));
@@ -160,5 +164,5 @@
     write('fitsV5Events',log);
   }
 
-  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track};
+  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track};
 })();
