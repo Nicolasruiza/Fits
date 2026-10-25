@@ -89,7 +89,7 @@ for(const asset of pendingAssets){
 
 // Verify the actual page data pipelines, including pruning and photo overrides.
 // Checking only the source batches previously missed looks dropped at runtime.
-const pages=['index.html','detail.html','wardrobe.html','unlock.html','stats.html'];
+const pages=['index.html','looks.html','detail.html','next-buy.html','wardrobe.html','piece.html','stats.html'];
 const expected=new Set(D.looks.filter(l=>!blocked.has(l.id)&&!l.inspiration).map(l=>l.id));
 const checkedWebps=new Set();
 function validateRuntimeImage(page,look){

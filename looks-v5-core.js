@@ -164,5 +164,75 @@
     write('fitsV5Events',log);
   }
 
-  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track};
+  /* ---------- Pieces: kind (category chip), season fit, wear counts ---------- */
+  const KINDS=['Shirts','Tees & polos','Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories'];
+  function pieceKind(p){
+    const t=`${p?.name||''} ${p?.category||''} ${p?.styleRole||''}`.toLowerCase();
+    if(/belt|watch|accessor|\btie\b|scarf|wallet/.test(t))return'Accessories';
+    if(/shoe|sneaker|loafer|boot|chelsea|derb|brogue|wingtip|footwear|espadrille|cap-toe|lace-up/.test(t))return'Shoes';
+    if(/t-shirt|\btee\b|polo|henley/.test(t))return'Tees & polos';
+    if(/sweater|crewneck|crew-neck|v-neck|quarter-zip|quarter zip|cardigan|turtleneck|knit/.test(t))return'Knitwear';
+    if(/overshirt|blazer|jacket|coat|outerwear|bomber/.test(t))return'Outerwear';
+    if(/shirt|button-down|button down|button-up|button up|oxford|gingham|check/.test(t))return'Shirts';
+    if(/short/.test(t))return'Shorts';
+    if(/denim|jean|chino|trouser|pants/.test(t))return'Pants';
+    return p?.category==='Pants'?'Pants':p?.category==='Shoes'?'Shoes':'Accessories';
+  }
+  // A piece is out of season when it clearly belongs to the opposite end of the year.
+  function pieceInSeason(p,s){
+    if(!C)return true;
+    const g=C.classify(p);
+    if(s==='Winter')return!['shorts','open-shoes'].includes(g.cls);
+    if(s==='Summer')return!(g.heavy||g.cls==='heavy-knit');
+    return true;
+  }
+  function wearRecords(){
+    const wear=read('fitsWearHistory',{});
+    return Object.entries(wear).flatMap(([id,dates])=>lookById.has(id)&&Array.isArray(dates)?[...new Set(dates)].filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d)).map(date=>({lookId:id,date})):[]).sort((a,b)=>b.date.localeCompare(a.date));
+  }
+  function pieceWearCounts(records){
+    const counts=new Map();
+    records.forEach(r=>(look(r.lookId)?.pieces||[]).forEach(id=>counts.set(id,(counts.get(id)||0)+1)));
+    return counts;
+  }
+  function logWear(lookId,dateKey=todayKey()){
+    const wear=read('fitsWearHistory',{}),list=new Set(wear[lookId]||[]);
+    list.add(dateKey);wear[lookId]=[...list].sort();write('fitsWearHistory',wear);
+  }
+  function unlogWear(lookId,dateKey){
+    const wear=read('fitsWearHistory',{});
+    wear[lookId]=(wear[lookId]||[]).filter(d=>d!==dateKey);if(!wear[lookId].length)delete wear[lookId];
+    write('fitsWearHistory',wear);
+  }
+  function daysSince(dateKey){
+    if(!dateKey)return Infinity;
+    const a=new Date(`${dateKey}T12:00:00`),b=new Date(`${todayKey()}T12:00:00`);
+    return Math.round((b-a)/86400000);
+  }
+  function relativeDay(dateKey){
+    const d=daysSince(dateKey);
+    if(d===Infinity)return'Never worn';
+    if(d<=0)return'Today';if(d===1)return'Yesterday';
+    if(d<7)return new Date(`${dateKey}T12:00:00`).toLocaleDateString('en-US',{weekday:'short'});
+    return`${d} days ago`;
+  }
+  const pieceHref=id=>`piece.html?id=${encodeURIComponent(id)}`;
+
+  /* ---------- Shared bottom navigation ---------- */
+  const NAV_ICONS={
+    looks:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7a2 2 0 1 0-2-2M12 7v2L3 16h18l-9-7"/></svg>',
+    wardrobe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18"/></svg>',
+    stats:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16M7 20V11M12 20V5M17 20v-6"/></svg>'
+  };
+  // Looks follows the v5 / classic choice saved by index.html; Wardrobe and Stats exist only in v5.
+  function nav(active){
+    const item=(key,href,label)=>key===active
+      ?`<a class="is-active" href="${href}" aria-current="page">${NAV_ICONS[key]}<span>${label}</span></a>`
+      :`<a href="${href}" aria-label="${label}">${NAV_ICONS[key]}</a>`;
+    return`<nav class="v5-nav" aria-label="Main">${item('looks',read('fitsUI','v5')==='classic'?'index.html':'looks.html','Looks')}${item('wardrobe','wardrobe.html','Wardrobe')}${item('stats','stats.html','Stats')}</nav>`;
+  }
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
+    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc};
 })();

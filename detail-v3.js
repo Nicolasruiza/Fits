@@ -21,7 +21,7 @@ function diff(v){if(v.id===looks[0].id)return'Base look';const base=looks[0],add
 function count(){return(wear[active.id]||[]).length}function last(){const h=wear[active.id]||[];return h.length?new Date(h[h.length-1]+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):'Never'}
 window.wearToday=function(){const d=new Date().toISOString().slice(0,10),history=wear[active.id]||[],i=history.indexOf(d);if(i>=0)history.splice(i,1);else history.push(d);wear[active.id]=history.sort();localStorage.setItem('fitsWearHistory',JSON.stringify(wear));render()};window.toggleSaved=function(){saved[active.id]=!saved[active.id];localStorage.setItem('fitsSavedVariants',JSON.stringify(saved));render()};window.findItem=function(id){const p=piece(id);if(!p)return;window.open(`https://www.google.com/search?udm=28&q=${encodeURIComponent(p.name+" men's clothing Canada")}`,'_blank','noopener,noreferrer')};
 window.toggleHidden=function(){hidden.has(active.id)?hidden.delete(active.id):hidden.add(active.id);localStorage.setItem('fitsHiddenLooks',JSON.stringify([...hidden]));render()};
-window.openWardrobePiece=function(id){location.href=`wardrobe.html?piece=${encodeURIComponent(id)}`};
+window.openWardrobePiece=function(id){location.href=`piece.html?id=${encodeURIComponent(id)}`};
 
 // Winter layering: a look that already has a winter coat, or a warm base look the user can add one of their coats to.
 const layerMode=LAYERS?(LAYERS.hasWinterCoat(active)?'included':LAYERS.canLayer(active)?'add':''):'';
