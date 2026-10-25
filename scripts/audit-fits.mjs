@@ -16,17 +16,15 @@ for(const key of ['externalImages','noAlpha','opaqueBackground','pendingImages',
 const bootstrapping=write&&!previous;
 const debt=(list,id,message)=>{if(list.includes(id))return;(bootstrapping?warn:err)(message)};
 
-// Same script order the app uses for the detail page, stopping before its own UI code.
-const html=fs.readFileSync(path.join(root,'detail.html'),'utf8');
-const scripts=[...html.matchAll(/<script src="([^"?]+)/g)].map(m=>m[1]);
-const stop=scripts.indexOf('detail-v3.js');
+// Same shared pipeline every page runs (fits-pipeline.js), then the detail page's piece image overrides.
 const context={document:{body:{dataset:{}}},localStorage:{getItem:()=>null,setItem:()=>{}}};
 context.window=context;
 vm.createContext(context);
-for(const file of scripts.slice(0,stop)){
-  if(file==='piece-image-overrides.js')context.PIECE_IMAGES=context.FITS_CATALOG_IMAGES||{};
-  vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
-}
+const run=file=>vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context,{filename:file});
+run('fits-pipeline.js');
+for(const file of context.FITS_PIPELINE.map(src=>src.split('?')[0]))run(file);
+context.PIECE_IMAGES=context.FITS_CATALOG_IMAGES||{};
+run('piece-image-overrides.js');
 const D=context.FITS_DATA,C=context.FITS_CLIMATE,IMAGES=context.PIECE_IMAGES||{};
 if(!D||!C)throw new Error('FITS_DATA or FITS_CLIMATE missing from the runtime pipeline');
 

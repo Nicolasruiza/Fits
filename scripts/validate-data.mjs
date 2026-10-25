@@ -6,14 +6,11 @@ import crypto from 'node:crypto';
 const root=process.cwd();
 global.window=global;
 
-const sources=[
-  'data.js',
-  'data-batch4.js','data-batch5.js','data-batch6.js','data-batch7.js','data-batch8.js','data-batch9.js','data-batch10.js','data-batch11.js','data-batch12.js','data-batch13.js','data-batch14.js','data-batch15.js',
-  'data-canonical.js',
-  'data-owned-intake-20261006.js',
-  'data-intake-20261022.js',
-  'wardrobe-normalize.js'
-];
+// The raw source data: the shared pipeline (fits-pipeline.js) up to its first cleanup step, plus
+// wardrobe-normalize.js. Cleanup steps would hide the source errors this validator looks for.
+vm.runInThisContext(fs.readFileSync(path.join(root,'fits-pipeline.js'),'utf8'),{filename:'fits-pipeline.js'});
+const pipeline=global.FITS_PIPELINE.map(src=>src.split('?')[0]);
+const sources=[...pipeline.slice(0,pipeline.indexOf('wardrobe-canonical-v2.js')),'wardrobe-normalize.js'];
 
 for(const file of sources){
   const code=fs.readFileSync(path.join(root,file),'utf8');
