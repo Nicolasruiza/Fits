@@ -139,12 +139,7 @@
   function hiddenLink(){
     return `<a class="v5-hidden-link" href="looks.html?view=hidden"><span>${I.eyeOff}Looks you hid</span>${I.chevron}</a>`;
   }
-  function nav(){
-    return `<nav class="v5-nav" aria-label="Main">
-      <a class="is-active" href="looks.html" aria-current="page">${I.hanger}<span>Looks</span></a>
-      <a href="wardrobe.html" aria-label="Wardrobe">${I.wardrobe}</a>
-      <a href="stats.html" aria-label="Stats">${I.stats}</a></nav>`;
-  }
+  const nav=()=>V.nav('looks');
   function seasonSheet(s){
     if(!ui.sheet)return'';
     const opt=x=>`<button class="v5-sheet-opt${s.season===x?' is-active':''}" type="button" data-action="set-season" data-value="${x}">${x}${x===s.autoSeason?'<small>Weather says this week</small>':''}</button>`;

@@ -13,6 +13,7 @@
       +(more>0?`<a href="#all" class="nb-more" data-action="all" style="display:grid;place-items:center;font-weight:700;color:#3f4549;text-decoration:none">+${more}</a>`:'');
   }
 
+  const fromWardrobe=new URLSearchParams(location.search).get('from')==='wardrobe';
   let showAll=false;
   function render(){
     const st=V.state(),ranked=V.nextBuys(st);
@@ -43,7 +44,7 @@
 
     const imgSrc=V.pieceImage(id);
     root.innerHTML=`<div class="v5" style="padding-bottom:0">
-      <div class="v5-back-row"><a class="v5-back" href="looks.html">${back}Looks</a></div>
+      <div class="v5-back-row"><a class="v5-back" href="${fromWardrobe?'wardrobe-v5.html?status=missing':'looks.html'}">${back}${fromWardrobe?'Wardrobe':'Looks'}</a></div>
       <div class="nb-hero">${imgSrc?`<img src="${esc(imgSrc)}" alt="${esc(p.name)}" onerror="this.classList.add('is-broken')">`:''}</div>
       <header class="nb-head">
         <span class="v5-kicker" style="color:#2d6a4c">${rank===0?'Best next buy':rank>0?`Next buy · #${rank+1}`:'Piece'}${isOwned?' · You own it':''}</span>
@@ -58,12 +59,12 @@
       ${info.completes.length?`<section class="nb-section" id="all"><div class="v5-row-head"><h2 class="v5-h2">Ready right away</h2><span class="v5-count">${info.completes.length} ${info.completes.length===1?'look':'looks'}</span></div>
         <div class="nb-thumbs">${thumbs(info.completes,showAll?999:5)}</div></section>`:''}
       ${pairs.length?`<section class="nb-section"><h2 class="v5-h2">Pairs with what you own</h2><div class="nb-pills">${pairs.map((x,i)=>`<span>${esc(x.piece.name)} · ${x.count}${i===0?` ${x.count===1?'look':'looks'}`:''}</span>`).join('')}</div></section>`:''}
-      ${together?`<a class="nb-together" href="next-buy.html?piece=${encodeURIComponent(together.partner.id)}">
+      ${together?`<a class="nb-together" href="next-buy.html?piece=${encodeURIComponent(together.partner.id)}${fromWardrobe?'&from=wardrobe':''}">
         <span class="v5-kicker">Better together</span>
         <div class="nb-together-row"><div><strong>${esc(p.name.replace(/ shirt$/i,''))} + ${esc(lower(together.partner.name))}</strong><span>Buying both also finishes ${together.pairLooks.length} ${together.pairLooks.length===1?'look that needs':'looks that need'} the two of them</span></div><span class="nb-big">+${together.total}</span></div>
       </a>`:''}
       ${why}
-      ${others.length?`<section class="nb-section"><h2 class="v5-h2" style="font-size:14px;color:#4a5055">Other good buys</h2><div class="nb-list">${others.map(r=>`<a href="next-buy.html?piece=${encodeURIComponent(r.id)}"><span>${esc(r.piece.name)}</span><span style="display:flex;align-items:center;gap:8px"><b>+${r.completes.length}</b>${chevron}</span></a>`).join('')}</div></section>`:''}
+      ${others.length?`<section class="nb-section"><h2 class="v5-h2" style="font-size:14px;color:#4a5055">Other good buys</h2><div class="nb-list">${others.map(r=>`<a href="next-buy.html?piece=${encodeURIComponent(r.id)}${fromWardrobe?'&from=wardrobe':''}"><span>${esc(r.piece.name)}</span><span style="display:flex;align-items:center;gap:8px"><b>+${r.completes.length}</b>${chevron}</span></a>`).join('')}</div></section>`:''}
       <div class="nb-actions">
         <button class="nb-secondary" type="button" data-action="own">${isOwned?'Mark as missing':'I own it'}</button>
         <button class="nb-primary${wish?' is-on':''}" type="button" data-action="wish" aria-pressed="${wish}">${wish?'On your wishlist':'Add to wishlist'}</button>
@@ -78,7 +79,7 @@
     if(el.dataset.action==='own'){
       const w=V.read('fitsWardrobe',{});const st=V.state();
       w[id]=V.owned(id,st)?'missing':'owned';V.write('fitsWardrobe',w);V.track(w[id]==='owned'?'nextBuyOwned':'nextBuyUnowned');
-      if(w[id]==='owned'){location.href='looks.html';return}
+      if(w[id]==='owned'){location.href=fromWardrobe?'wardrobe-v5.html':'looks.html';return}
     }
     if(el.dataset.action==='wish'){
       const list=new Set(V.read('fitsWishlistPieces',[]));list.has(id)?list.delete(id):(list.add(id),V.track('wishlistAdd'));V.write('fitsWishlistPieces',[...list]);
