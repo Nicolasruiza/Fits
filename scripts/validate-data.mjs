@@ -120,7 +120,8 @@ for(const entry of audit.entries){
 }
 for(const page of pages){
   const html=fs.readFileSync(path.join(root,page),'utf8');
-  const scripts=[...html.matchAll(/<script src="([^"?]+)(?:\?[^"]*)?"/g)].map(m=>m[1]);
+  const scripts=[...html.matchAll(/<script src="([^"?]+)(?:\?[^"]*)?"/g)].map(m=>m[1])
+    .flatMap(file=>file==='fits-pipeline.js'?pipeline:[file]);
   const end=scripts.indexOf('dataset-integrity.js');
   if(end<0){errors.push(`${page}: missing data integrity pipeline`);continue}
   const context={document:{body:{dataset:{}}},localStorage:{getItem:()=>null,setItem:()=>{}}};
