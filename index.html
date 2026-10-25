@@ -21,6 +21,14 @@
         window.location.replace(canonical.toString());
         return;
       }
+      // UI switch (A/B): ?ui=v5 or ?ui=classic is remembered on this device.
+      // DEFAULT_UI applies to anyone who has not chosen yet.
+      const DEFAULT_UI='v5';
+      const chosen=new URL(window.location.href).searchParams.get('ui');
+      if(chosen==='v5'||chosen==='classic'){try{localStorage.setItem('fitsUI',JSON.stringify(chosen))}catch(e){}}
+      let ui=DEFAULT_UI;
+      try{const saved=JSON.parse(localStorage.getItem('fitsUI')||'null');if(saved==='v5'||saved==='classic')ui=saved}catch(e){}
+      if(ui==='v5'){window.location.replace('looks.html');return}
       const url = new URL(window.location.href);
       if (!url.searchParams.has('entry')) {
         const now = new Date();
@@ -75,8 +83,9 @@
   <script src="real-look-audit.js?v=4"></script>
   <script src="dataset-integrity.js?v=1"></script>
   <script src="closet-swaps.js?v=2"></script>
-  <script src="home-v2.js?v=31"></script>
-  <script src="weather-location-cache.js?v=4"></script>
+  <script src="fits-weather.js?v=1"></script>
+  <script src="home-v2.js?v=33"></script>
+  <script src="weather-location-cache.js?v=5"></script>
   <script src="thermal-prep.js?v=1"></script>
   <script src="season-filter.js?v=28"></script>
   <script src="smart-home.js?v=40"></script>
