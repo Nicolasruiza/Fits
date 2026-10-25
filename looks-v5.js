@@ -12,6 +12,7 @@
     tab:sessionStorage.getItem('fitsV5Tab')||'ready',
     favoritesOnly:false,
     expanded:{},
+    garment:V.GARMENTS.includes(V.read('fitsGarmentV5','All'))?V.read('fitsGarmentV5','All'):'All',
     sheet:false,
     view:params.get('view')==='hidden'?'hidden':'main',
     loadingWeather:false
@@ -104,6 +105,10 @@
     const note=o.occasion==='All'?'Showing every occasion · tap one to filter':o.auto?`Auto: ${o.occasion==='Weekend'?'weekend':'weekday'} · tap ${o.occasion} again to see every occasion`:`Set by you today · tap ${o.occasion} again to see every occasion`;
     return `<div class="v5-chips" role="radiogroup" aria-label="Occasion">${V.OCCASIONS.map(chip).join('')}</div><p class="v5-note">${esc(note)}</p>`;
   }
+  function garmentChips(){
+    const chip=x=>`<button class="v5-garment-chip${ui.garment===x?' is-active':''}" type="button" data-action="garment" data-value="${esc(x)}">${x==='All'?'Anything':esc(x)}</button>`;
+    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Start with</strong><span>find looks by garment</span></div><div class="v5-garment-chips">${V.GARMENTS.map(chip).join('')}</div></section>`;
+  }
   function sortToggle(){
     const d=sortDir();
     return `<div class="v5-sort" role="radiogroup" aria-label="Sort by warmth">
@@ -157,7 +162,7 @@
   /* ---------- Views ---------- */
   function mainView(){
     const st=V.state(),s=V.season(st),o=V.occasion();
-    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion});
+    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion,garment:ui.garment});
     const ready=V.sortByWarmth(cards.filter(c=>!c.missing.length),sortDir());
     const ideas=V.sortByWarmth(cards.filter(c=>c.missing.length),sortDir());
     let body='';
@@ -185,6 +190,7 @@
       ${weatherCard(st,s)}
       ${tabs(ready.length,ideas.length)}
       ${occasionChips(o)}
+      ${garmentChips()}
       ${body}
       ${hiddenLink()}
       <p class="v5-classic"><a href="index.html?ui=classic">Switch to the classic view</a></p>
@@ -214,6 +220,7 @@
     e.preventDefault();
     if(a==='tab'){ui.tab=el.dataset.tab;ui.favoritesOnly=false;sessionStorage.setItem('fitsV5Tab',ui.tab);V.track(ui.tab==='ideas'?'ideasOpen':'readyOpen')}
     else if(a==='occasion'){const cur=V.occasion().occasion,v=el.dataset.value;V.setOccasion(cur===v?'All':v)}
+    else if(a==='garment'){const v=el.dataset.value;ui.garment=ui.garment===v?'All':v;V.write('fitsGarmentV5',ui.garment);ui.expanded={}}
     else if(a==='sort'){V.write('fitsWarmthSortV5',el.dataset.value)}
     else if(a==='fav-all'){ui.favoritesOnly=true;window.scrollTo(0,0)}
     else if(a==='fav-back'){ui.favoritesOnly=false}
