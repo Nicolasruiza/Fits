@@ -40,6 +40,7 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "grey-dress-trousers": "assets/catalog-grey-dress-trousers.png?v=1",
   "navy-dress-trousers": "assets/catalog-navy-dress-trousers.png?v=1",
   "light-blue-dress-shirt": "assets/catalog-light-blue-dress-shirt.png?v=1",
+  "light-grey-vneck-sweater": "assets/catalog-light-grey-vneck-sweater.png?v=1",
   "grey-trousers": "assets/wardrobe-standardized/light-grey-trousers.png?v=1",
   "navy-vneck-sweater": "assets/wardrobe-standardized/navy-vneck-sweater.png?v=1",
   "light-blue-crewneck": "assets/wardrobe-standardized/light-blue-crewneck.png?v=1",
