@@ -5,8 +5,8 @@
   "pieces": 100,
   "owned": 31,
   "missing": 69,
-  "looks": 143,
-  "families": 137,
+  "looks": 147,
+  "families": 139,
   "localPieceImages": 89,
   "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
@@ -86,6 +86,7 @@
    "hasAlpha": null,
    "looks": [
     "look-03",
+    "look-07",
     "look-47",
     "look-68",
     "look-95",
@@ -103,6 +104,9 @@
    "hasAlpha": true,
    "looks": [
     "look-04",
+    "look-05",
+    "look-08",
+    "look-10",
     "look-35",
     "look-40",
     "look-navy-polo-beige-chinos-white-sneakers",
@@ -332,6 +336,7 @@
    "hasAlpha": null,
    "looks": [
     "look-03",
+    "look-07",
     "look-41",
     "look-charcoal-quarterzip-black-polo-navy-chinos",
     "look-70",
@@ -357,6 +362,7 @@
    "hasAlpha": true,
    "looks": [
     "look-04",
+    "look-08",
     "look-64",
     "look-68",
     "look-79",
@@ -377,6 +383,7 @@
    "hasAlpha": true,
    "looks": [
     "look-01",
+    "look-05",
     "look-38",
     "look-42",
     "look-43",
@@ -446,6 +453,7 @@
    "imageKind": "external",
    "hasAlpha": null,
    "looks": [
+    "look-10",
     "look-48",
     "look-49",
     "look-50",
@@ -493,6 +501,8 @@
    "looks": [
     "look-01",
     "look-04",
+    "look-05",
+    "look-08",
     "look-40",
     "look-46",
     "look-49",
@@ -537,6 +547,7 @@
    "imageKind": "external",
    "hasAlpha": null,
    "looks": [
+    "look-07",
     "look-64",
     "look-98",
     "look-149"
@@ -566,6 +577,7 @@
    "hasAlpha": true,
    "looks": [
     "look-03",
+    "look-10",
     "look-35",
     "look-38",
     "look-43",
@@ -672,6 +684,8 @@
    "looks": [
     "look-01",
     "look-04",
+    "look-05",
+    "look-08",
     "look-40",
     "look-42",
     "look-49",
@@ -709,6 +723,7 @@
    "imageKind": "external",
    "hasAlpha": null,
    "looks": [
+    "look-07",
     "look-grey-blazer-white-shirt-navy-dress",
     "look-navy-blazer-white-shirt-charcoal-dress",
     "look-navy-vneck-striped-shirt-charcoal-dress",
@@ -730,6 +745,7 @@
    "imageKind": "external",
    "hasAlpha": null,
    "looks": [
+    "look-08",
     "look-50",
     "look-navy-blazer-white-shirt-charcoal-dress",
     "look-navy-blazer-striped-shirt-beige-chinos",
@@ -1840,6 +1856,110 @@
    ],
    "missingPieces": [],
    "image": "assets/look-04-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-05",
+   "name": "Navy polo + beige chinos + brown loafers",
+   "pieces": [
+    "navy-polo",
+    "beige-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-05-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-07",
+   "name": "White polo + navy chinos + loafers",
+   "pieces": [
+    "white-polo",
+    "navy-trousers",
+    "dark-loafers",
+    "dark-belt"
+   ],
+   "missingPieces": [
+    "dark-loafers"
+   ],
+   "image": "assets/look-07-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer"
+   ],
+   "thermal": [
+    "Warmer"
+   ],
+   "comfortC": [
+    19.1,
+    28.1
+   ],
+   "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-08",
+   "name": "Navy blazer + navy polo + grey chinos",
+   "pieces": [
+    "navy-blazer",
+    "navy-polo",
+    "grey-trousers",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "navy-blazer"
+   ],
+   "image": "assets/look-08-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    13.1,
+    22.1
+   ],
+   "warmth": 1.55,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-10",
+   "name": "Navy polo + dark denim",
+   "pieces": [
+    "navy-polo",
+    "dark-denim",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [],
+   "image": "assets/look-10-fits-replacement.webp",
    "imageKind": "local",
    "seasons": [
     "Summer"

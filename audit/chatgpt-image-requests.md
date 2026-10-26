@@ -32,16 +32,16 @@ These already exist: download them from the original generation history and add 
 
 ### Pieces
 
-- `white-polo` — White polo (owned) · looks: look-03, look-47, look-68, look-95, look-103
+- `white-polo` — White polo (owned) · looks: look-03, look-07, look-47, look-68, look-95, look-103
 - `grey-polo` — Grey polo (missing) · looks: look-grey-polo-beige-chinos-white-sneakers
-- `navy-trousers` — Navy chinos (owned) · looks: look-03, look-41, look-charcoal-quarterzip-black-polo-navy-chinos, look-70, look-73, look-72, look-88, look-89, look-90, look-92, look-109, look-143, look-150
-- `dark-denim` — Dark indigo jeans (owned) · looks: look-48, look-49, look-50, look-51, look-52, look-60, look-61, look-76, look-78, look-84, look-85, look-86, look-100, look-107
+- `navy-trousers` — Navy chinos (owned) · looks: look-03, look-07, look-41, look-charcoal-quarterzip-black-polo-navy-chinos, look-70, look-73, look-72, look-88, look-89, look-90, look-92, look-109, look-143, look-150
+- `dark-denim` — Dark indigo jeans (owned) · looks: look-10, look-48, look-49, look-50, look-51, look-52, look-60, look-61, look-76, look-78, look-84, look-85, look-86, look-100, look-107
 - `brown-derbies` — Brown derbies (missing) · looks: none
-- `dark-loafers` — Black loafers (missing) · looks: look-64, look-98, look-149
+- `dark-loafers` — Black loafers (missing) · looks: look-07, look-64, look-98, look-149
 - `brown-casual-shoes` — Brown casual shoes (missing) · looks: look-36
-- `brown-belt` — Brown belt (owned) · looks: look-01, look-04, look-40, look-42, look-49, look-navy-blazer-striped-shirt-beige-chinos, look-navy-blazer-white-shirt-cream-chinos, look-grey-quarterzip-white-shirt-charcoal-dress, look-lightblue-dress-shirt-beige-chinos-loafers, look-navy-blazer-white-tee-beige-chinos, look-striped-linen-shirt-beige-chinos-loafers, look-white-shirt-olive-trousers-brown-captoe, look-lightblue-shirt-beige-chinos-brown-captoe, look-cream-crewneck-lightblue-navy-dress-brown, look-charcoal-quarterzip-black-polo-navy-chinos, look-53, look-62, look-63, look-82, look-89, look-94, look-95, look-96, look-97, look-110, look-111, look-116
-- `dark-belt` — Dark belt (owned) · looks: look-grey-blazer-white-shirt-navy-dress, look-navy-blazer-white-shirt-charcoal-dress, look-navy-vneck-striped-shirt-charcoal-dress, look-charcoal-quarterzip-lightblue-black-dress-black, look-lightgrey-vneck-white-shirt-navy-dress, look-navy-vneck-lightblue-grey-dress, look-98, look-113, look-115
-- `navy-blazer` — Navy blazer (missing) · looks: look-50, look-navy-blazer-white-shirt-charcoal-dress, look-navy-blazer-striped-shirt-beige-chinos, look-navy-blazer-white-shirt-cream-chinos, look-navy-blazer-white-tee-beige-chinos, look-68, look-92, look-151, look-153
+- `brown-belt` — Brown belt (owned) · looks: look-01, look-04, look-05, look-08, look-40, look-42, look-49, look-navy-blazer-striped-shirt-beige-chinos, look-navy-blazer-white-shirt-cream-chinos, look-grey-quarterzip-white-shirt-charcoal-dress, look-lightblue-dress-shirt-beige-chinos-loafers, look-navy-blazer-white-tee-beige-chinos, look-striped-linen-shirt-beige-chinos-loafers, look-white-shirt-olive-trousers-brown-captoe, look-lightblue-shirt-beige-chinos-brown-captoe, look-cream-crewneck-lightblue-navy-dress-brown, look-charcoal-quarterzip-black-polo-navy-chinos, look-53, look-62, look-63, look-82, look-89, look-94, look-95, look-96, look-97, look-110, look-111, look-116
+- `dark-belt` — Dark belt (owned) · looks: look-07, look-grey-blazer-white-shirt-navy-dress, look-navy-blazer-white-shirt-charcoal-dress, look-navy-vneck-striped-shirt-charcoal-dress, look-charcoal-quarterzip-lightblue-black-dress-black, look-lightgrey-vneck-white-shirt-navy-dress, look-navy-vneck-lightblue-grey-dress, look-98, look-113, look-115
+- `navy-blazer` — Navy blazer (missing) · looks: look-08, look-50, look-navy-blazer-white-shirt-charcoal-dress, look-navy-blazer-striped-shirt-beige-chinos, look-navy-blazer-white-shirt-cream-chinos, look-navy-blazer-white-tee-beige-chinos, look-68, look-92, look-151, look-153
 - `grey-blazer` — Grey blazer (missing) · looks: look-46, look-grey-blazer-white-shirt-navy-dress
 
 ### Looks
