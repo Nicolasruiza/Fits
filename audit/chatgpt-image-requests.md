@@ -36,7 +36,6 @@ These already exist: download them from the original generation history and add 
 - `grey-polo` — Grey polo (missing) · looks: look-grey-polo-beige-chinos-white-sneakers
 - `navy-trousers` — Navy chinos (owned) · looks: look-03, look-07, look-27, look-41, look-charcoal-quarterzip-black-polo-navy-chinos, look-70, look-73, look-72, look-88, look-89, look-90, look-92, look-109, look-143, look-150
 - `dark-denim` — Dark indigo jeans (owned) · looks: look-10, look-16, look-21, look-31, look-48, look-49, look-50, look-51, look-52, look-60, look-61, look-76, look-78, look-84, look-85, look-86, look-100, look-107
-- `brown-derbies` — Brown derbies (missing) · looks: none
 - `dark-loafers` — Black loafers (missing) · looks: look-07, look-64, look-98, look-149
 - `brown-casual-shoes` — Brown casual shoes (missing) · looks: look-36
 - `brown-belt` — Brown belt (owned) · looks: look-01, look-04, look-05, look-08, look-12, look-18, look-21, look-26, look-28, look-31, look-40, look-42, look-49, look-navy-blazer-striped-shirt-beige-chinos, look-navy-blazer-white-shirt-cream-chinos, look-grey-quarterzip-white-shirt-charcoal-dress, look-lightblue-dress-shirt-beige-chinos-loafers, look-navy-blazer-white-tee-beige-chinos, look-striped-linen-shirt-beige-chinos-loafers, look-white-shirt-olive-trousers-brown-captoe, look-lightblue-shirt-beige-chinos-brown-captoe, look-cream-crewneck-lightblue-navy-dress-brown, look-charcoal-quarterzip-black-polo-navy-chinos, look-53, look-62, look-63, look-82, look-89, look-94, look-95, look-96, look-97, look-110, look-111, look-116
@@ -74,22 +73,3 @@ Fallback prompt if an original cannot be recovered (use the approved reference, 
 `Full-body editorial photograph of the approved FITS male model (use the attached reference assets/look-85-approved-intake.webp for the same face, hair, build and proportions), adult and natural looking, walking confidently outdoors in front of the approved elegant stone facade with columns in an urban setting, natural daylight. One person only, shoes fully visible. Outfit exactly: . No collage, no floating garments, no side panels, no studio background.`
 
 ## D. References pending identification (possible duplicates, keep both until confirmed)
-
-- `white-polo` (White polo) ↔ `white-tee` (White crew-neck T-shirt) ↔ `owned-white-henley` (White short-sleeve henley)
-- `navy-polo` (Navy blue polo) ↔ `navy-henley` (Navy blue short-sleeve henley) ↔ `navy-tee` (Navy T-shirt)
-- `light-blue-oxford` (Light blue Oxford shirt) ↔ `striped-blue-linen-shirt` (Blue striped linen shirt) ↔ `owned-lightblue-microcheck-shirt` (Light blue micro-check button-down shirt) ↔ `owned-blue-gingham-shirt` (Blue gingham button-down shirt) ↔ `sky-blue-striped-dress-shirt` (Sky blue striped dress shirt) ↔ `light-blue-dress-shirt` (Light blue dress shirt)
-- `grey-tee` (Light grey crew-neck T-shirt) ↔ `lightgrey-polo` (Light grey polo shirt)
-- `navy-crewneck` (Navy crewneck sweater) ↔ `navy-quarterzip` (Navy quarter-zip) ↔ `navy-vneck-sweater` (Navy V-neck sweater)
-- `navy-trousers` (Navy chinos) ↔ `navy-dress-trousers` (Navy dress trousers)
-- `grey-trousers` (Grey chinos) ↔ `grey-dress-trousers` (Grey dress trousers)
-- `dark-chinos` (Dark charcoal chinos) ↔ `dark-charcoal-dress-trousers` (Dark charcoal dress trousers)
-- `brown-loafers` (Cognac brown leather loafers) ↔ `owned-br-cognac-sneakers` (Cognac brown leather sneakers)
-- `brown-derbies` (Brown derbies) ↔ `brown-casual-shoes` (Brown casual shoes) ↔ `owned-darkbrown-suede-italian-laceup` (Dark brown suede Italian lace-up shoes) ↔ `owned-brown-leather-captoe` (Brown leather cap-toe dress shoes) ↔ `darkbrown-suede-loafers` (Dark brown suede loafers)
-- `dark-loafers` (Black loafers) ↔ `black-sneakers` (Black sneakers) ↔ `owned-black-leather-captoe` (Black leather cap-toe dress shoes)
-- `navy-leather-sneakers` (Navy blue sneakers) ↔ `owned-navy-suede-brogue` (Navy blue suede brogue shoes)
-- `brown-leather-jacket` (Brown leather jacket) ↔ `brown-suede-jacket` (Brown suede jacket)
-- `light-grey-vneck-sweater` (Light grey V-neck sweater) ↔ `owned-grey-quarterzip` (Light grey quarter-zip knit sweater)
-- `black-polo` (Black polo) ↔ `black-tee` (Black crew-neck T-shirt)
-- `cream-knit-sweater` (Cream knit sweater) ↔ `cream-crewneck-sweater` (Cream crewneck sweater)
-- `owned-brown-buckle-chelsea` (Dark brown leather Chelsea boots with buckle detail) ↔ `owned-darkbrown-suede-chelsea` (Dark brown suede Chelsea boots)
-- `black-chinos` (Black chinos) ↔ `black-dress-trousers` (Black dress trousers)

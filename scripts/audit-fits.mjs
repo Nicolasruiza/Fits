@@ -216,10 +216,14 @@ if(C.weatherContext({temp:15,apparent:8},{indoor:true}).feelsC<=8)err('Indoor us
 }
 
 // ---- Ownership and reviews -----------------------------------------------------------------
-const colorOf=name=>{const m=name.toLowerCase().match(/\b(off-?white|light grey|light gr[ae]y|charcoal|dark charcoal|navy|white|black|grey|gray|olive|green|cream|beige|tan|taupe|khaki|brown|cognac|camel|burgundy|chocolate|blue|red)\b/);return m?m[1].replace(/dark |light |off-?|gr[ae]y/,x=>x.trim()==='grey'||x.trim()==='gray'?'grey':x.trim()):'?'};
+// Duplicate review must preserve garment identity. Colour/class-only grouping used to
+// collapse polos with tees, crewnecks with V-necks/quarter-zips and chinos with dress
+// trousers, contradicting the wardrobe rules. Normalize spelling only; retain every
+// meaningful word that describes cut, neckline, material or function.
+const identityOf=p=>`${p.category}|${p.name.toLowerCase().replace(/\bgray\b/g,'grey').replace(/[^a-z0-9]+/g,' ').trim()}`;
 const groups=new Map();
-for(const p of D.pieces){const key=`${p.category}|${C.classify(p).cls}|${colorOf(p.name)}`;(groups.get(key)||groups.set(key,[]).get(key)).push(p.id)}
-const needsReview=[...groups.entries()].filter(([,ids])=>ids.length>1).map(([key,ids])=>({key,ids,reason:'Same category, garment class and colour family: confirm whether these are the same item or materially different.'}));
+for(const p of D.pieces){const key=identityOf(p);(groups.get(key)||groups.set(key,[]).get(key)).push(p.id)}
+const needsReview=[...groups.entries()].filter(([,ids])=>ids.length>1).map(([key,ids])=>({key,ids,reason:'Same category and normalized full garment identity: confirm whether these records represent one item.'}));
 
 // ---- Report ----------------------------------------------------------------------------------
 const owned=D.pieces.filter(p=>p.status==='owned').length;
@@ -285,7 +289,7 @@ if(write){
   lines.push('## D. References pending identification (possible duplicates, keep both until confirmed)','');
   for(const g of needsReview)lines.push(`- ${g.ids.map(id=>`\`${id}\` (${pieceById.get(id).name})`).join(' ↔ ')}`);
   lines.push('');
-  fs.writeFileSync(path.join(root,'audit','chatgpt-image-requests.md'),lines.join('\n'));
+  fs.writeFileSync(path.join(root,'audit','chatgpt-image-requests.md'),lines.join('\n').replace(/\n+$/,'\n'));
   console.log('Wrote audit/fits-audit-manifest.json and audit/chatgpt-image-requests.md');
 }
 console.log(errors.length?'FITS audit: FAILED':'FITS audit: OK');

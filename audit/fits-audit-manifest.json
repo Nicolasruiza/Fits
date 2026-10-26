@@ -2,18 +2,18 @@
  "generatedBy": "scripts/audit-fits.mjs --write",
  "note": "Machine-readable audit state. Regenerate after data or image changes; knownDebt is the baseline the audit tolerates so only new problems fail CI.",
  "summary": {
-  "pieces": 100,
+  "pieces": 95,
   "owned": 31,
-  "missing": 69,
+  "missing": 64,
   "looks": 160,
   "families": 150,
-  "localPieceImages": 89,
-  "externalPieceImages": 11,
+  "localPieceImages": 85,
+  "externalPieceImages": 10,
   "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
-  "orphanPieces": 10,
+  "orphanPieces": 5,
   "unusedAssets": 65,
-  "needsReviewGroups": 18
+  "needsReviewGroups": 0
  },
  "climateConfig": {
   "comfort": {
@@ -328,17 +328,6 @@
    ]
   },
   {
-   "id": "olive-henley",
-   "name": "Olive henley",
-   "category": "Top",
-   "ownership": "missing",
-   "class": "long-sleeve-light",
-   "image": "assets/wardrobe-standardized/olive-henley.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
-  },
-  {
    "id": "navy-trousers",
    "name": "Navy chinos",
    "category": "Pants",
@@ -553,17 +542,6 @@
     "look-137",
     "look-144"
    ]
-  },
-  {
-   "id": "brown-derbies",
-   "name": "Brown derbies",
-   "category": "Shoes",
-   "ownership": "missing",
-   "class": "shoes",
-   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_114435_4380b5ac-1ab1-4218-9b42-dc5baaa57dbd_min.webp",
-   "imageKind": "external",
-   "hasAlpha": null,
-   "looks": []
   },
   {
    "id": "dark-loafers",
@@ -849,17 +827,6 @@
    ]
   },
   {
-   "id": "navy-cardigan",
-   "name": "Navy cardigan",
-   "category": "Outerwear",
-   "ownership": "missing",
-   "class": "cardigan",
-   "image": "assets/wardrobe-standardized/navy-cardigan.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
-  },
-  {
    "id": "charcoal-overcoat",
    "name": "Charcoal overcoat",
    "category": "Outerwear",
@@ -872,28 +839,6 @@
     "look-16",
     "look-32"
    ]
-  },
-  {
-   "id": "brown-leather-jacket",
-   "name": "Brown leather jacket",
-   "category": "Outerwear",
-   "ownership": "missing",
-   "class": "leather-jacket",
-   "image": "assets/wardrobe-standardized/brown-leather-jacket.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
-  },
-  {
-   "id": "navy-quarterzip",
-   "name": "Navy quarter-zip",
-   "category": "Top",
-   "ownership": "missing",
-   "class": "knit",
-   "image": "assets/wardrobe-standardized/navy-quarterzip.png",
-   "imageKind": "local",
-   "hasAlpha": true,
-   "looks": []
   },
   {
    "id": "brown-suede-jacket",
@@ -6325,170 +6270,13 @@
    "winterLayerable": false
   }
  ],
- "needsReview": [
-  {
-   "key": "Top|tee|white",
-   "ids": [
-    "white-polo",
-    "white-tee",
-    "owned-white-henley"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|tee|navy",
-   "ids": [
-    "navy-polo",
-    "navy-henley",
-    "navy-tee"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|shirt|blue",
-   "ids": [
-    "light-blue-oxford",
-    "striped-blue-linen-shirt",
-    "owned-lightblue-microcheck-shirt",
-    "owned-blue-gingham-shirt",
-    "sky-blue-striped-dress-shirt",
-    "light-blue-dress-shirt"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|tee|lightgrey",
-   "ids": [
-    "grey-tee",
-    "lightgrey-polo"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|knit|navy",
-   "ids": [
-    "navy-crewneck",
-    "navy-quarterzip",
-    "navy-vneck-sweater"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Pants|trousers|navy",
-   "ids": [
-    "navy-trousers",
-    "navy-dress-trousers"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Pants|trousers|grey",
-   "ids": [
-    "grey-trousers",
-    "grey-dress-trousers"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Pants|trousers|darkcharcoal",
-   "ids": [
-    "dark-chinos",
-    "dark-charcoal-dress-trousers"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Shoes|shoes|cognac",
-   "ids": [
-    "brown-loafers",
-    "owned-br-cognac-sneakers"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Shoes|shoes|brown",
-   "ids": [
-    "brown-derbies",
-    "brown-casual-shoes",
-    "owned-darkbrown-suede-italian-laceup",
-    "owned-brown-leather-captoe",
-    "darkbrown-suede-loafers"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Shoes|shoes|black",
-   "ids": [
-    "dark-loafers",
-    "black-sneakers",
-    "owned-black-leather-captoe"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Shoes|shoes|navy",
-   "ids": [
-    "navy-leather-sneakers",
-    "owned-navy-suede-brogue"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Outerwear|leather-jacket|brown",
-   "ids": [
-    "brown-leather-jacket",
-    "brown-suede-jacket"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|knit|lightgrey",
-   "ids": [
-    "light-grey-vneck-sweater",
-    "owned-grey-quarterzip"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|tee|black",
-   "ids": [
-    "black-polo",
-    "black-tee"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Top|knit|cream",
-   "ids": [
-    "cream-knit-sweater",
-    "cream-crewneck-sweater"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Shoes|boots|brown",
-   "ids": [
-    "owned-brown-buckle-chelsea",
-    "owned-darkbrown-suede-chelsea"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  },
-  {
-   "key": "Pants|trousers|black",
-   "ids": [
-    "black-chinos",
-    "black-dress-trousers"
-   ],
-   "reason": "Same category, garment class and colour family: confirm whether these are the same item or materially different."
-  }
- ],
+ "needsReview": [],
  "knownDebt": {
   "externalImages": [
    "white-polo",
    "grey-polo",
    "navy-trousers",
    "dark-denim",
-   "brown-derbies",
    "dark-loafers",
    "brown-casual-shoes",
    "brown-belt",
@@ -6528,12 +6316,7 @@
   "pendingImages": [],
   "orphanPieces": [
    "navy-henley",
-   "olive-henley",
-   "brown-derbies",
    "navy-leather-sneakers",
-   "navy-cardigan",
-   "brown-leather-jacket",
-   "navy-quarterzip",
    "owned-rwb-check-shirt",
    "owned-navy-suede-chelsea",
    "owned-navy-suede-brogue"
