@@ -5,13 +5,13 @@
   "pieces": 100,
   "owned": 31,
   "missing": 69,
-  "looks": 147,
-  "families": 139,
+  "looks": 151,
+  "families": 143,
   "localPieceImages": 89,
   "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
   "externalLookImages": 22,
-  "orphanPieces": 11,
+  "orphanPieces": 10,
   "unusedAssets": 65,
   "needsReviewGroups": 18
  },
@@ -137,6 +137,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-11",
     "look-38",
     "look-53",
     "look-70",
@@ -154,6 +155,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-12",
     "look-42",
     "look-46",
     "look-grey-blazer-white-shirt-navy-dress",
@@ -242,6 +244,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-13",
     "look-122",
     "look-124",
     "look-125",
@@ -259,6 +262,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-16",
     "look-38",
     "look-45",
     "look-navy-crewneck-white-shirt-beige-chinos",
@@ -384,6 +388,8 @@
    "looks": [
     "look-01",
     "look-05",
+    "look-11",
+    "look-12",
     "look-38",
     "look-42",
     "look-43",
@@ -437,6 +443,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-13",
     "look-44",
     "look-55",
     "look-56",
@@ -454,6 +461,7 @@
    "hasAlpha": null,
    "looks": [
     "look-10",
+    "look-16",
     "look-48",
     "look-49",
     "look-50",
@@ -503,6 +511,7 @@
     "look-04",
     "look-05",
     "look-08",
+    "look-12",
     "look-40",
     "look-46",
     "look-49",
@@ -578,6 +587,8 @@
    "looks": [
     "look-03",
     "look-10",
+    "look-11",
+    "look-13",
     "look-35",
     "look-38",
     "look-43",
@@ -640,6 +651,7 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
+    "look-16",
     "look-86"
    ]
   },
@@ -686,6 +698,7 @@
     "look-04",
     "look-05",
     "look-08",
+    "look-12",
     "look-40",
     "look-42",
     "look-49",
@@ -746,6 +759,8 @@
    "hasAlpha": null,
    "looks": [
     "look-08",
+    "look-12",
+    "look-13",
     "look-50",
     "look-navy-blazer-white-shirt-charcoal-dress",
     "look-navy-blazer-striped-shirt-beige-chinos",
@@ -817,7 +832,9 @@
    "image": "assets/wardrobe-standardized/charcoal-overcoat.png",
    "imageKind": "local",
    "hasAlpha": true,
-   "looks": []
+   "looks": [
+    "look-16"
+   ]
   },
   {
    "id": "brown-leather-jacket",
@@ -1972,6 +1989,121 @@
     28.1
    ],
    "warmth": 0.8,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-11",
+   "name": "Light blue Oxford + beige chinos + white sneakers",
+   "pieces": [
+    "light-blue-oxford",
+    "beige-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "light-blue-oxford"
+   ],
+   "image": "assets/look-11-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Summer",
+    "Transition"
+   ],
+   "thermal": [
+    "Mild",
+    "Warmer"
+   ],
+   "comfortC": [
+    16.7,
+    25.7
+   ],
+   "warmth": 1.1,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-12",
+   "name": "Navy blazer + white shirt + beige chinos",
+   "pieces": [
+    "navy-blazer",
+    "white-shirt",
+    "beige-chinos",
+    "brown-loafers",
+    "brown-belt"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "white-shirt"
+   ],
+   "image": "assets/look-12-hq.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    10.7,
+    19.7
+   ],
+   "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-13",
+   "name": "Dark blazer + dark crewneck + dark chinos",
+   "pieces": [
+    "navy-blazer",
+    "dark-crewneck",
+    "dark-chinos",
+    "white-leather-sneakers"
+   ],
+   "missingPieces": [
+    "navy-blazer",
+    "dark-crewneck",
+    "dark-chinos"
+   ],
+   "image": "assets/look-13-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Transition"
+   ],
+   "thermal": [
+    "Mild"
+   ],
+   "comfortC": [
+    7.5,
+    16.5
+   ],
+   "warmth": 2.25,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-16",
+   "name": "Charcoal overcoat + navy sweater + dark denim",
+   "pieces": [
+    "charcoal-overcoat",
+    "navy-crewneck",
+    "dark-denim",
+    "tan-chelsea"
+   ],
+   "missingPieces": [
+    "charcoal-overcoat",
+    "navy-crewneck",
+    "tan-chelsea"
+   ],
+   "image": "assets/look-16-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    -3.7,
+    5.3
+   ],
+   "warmth": 3.65,
    "winterLayerable": false
   },
   {
@@ -6099,7 +6231,6 @@
    "brown-derbies",
    "navy-leather-sneakers",
    "navy-cardigan",
-   "charcoal-overcoat",
    "brown-leather-jacket",
    "navy-quarterzip",
    "owned-rwb-check-shirt",
@@ -6114,7 +6245,7 @@
    "assets/catalog-green-buttonup.webp",
    "assets/catalog-stone-shirt.webp",
    "assets/look-117-camel-ribbed-navy-black.jpg",
-   "assets/look-12-hq.webp",
+   "assets/look-12-fits-replacement.webp",
    "assets/look-28-lightblue-beige-v2.webp",
    "assets/look-35-navy-denim.webp",
    "assets/look-36-cardigan-henley-denim.webp",
