@@ -12,7 +12,8 @@
     tab:params.get('status')==='missing'?'missing':(sessionStorage.getItem('fitsV5WardTab')||'owned'),
     kind:sessionStorage.getItem('fitsV5WardKind')||'All',
     view:params.get('view')==='hidden'?'hidden':'main',
-    rowAll:false
+    rowAll:false,
+    editing:false,edits:new Map()
   };
 
   const ICON={
@@ -33,7 +34,8 @@
     bag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2l-2 4v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4z"/><path d="M4 6h16M16 10a4 4 0 0 1-8 0"/></svg>',
     eyeOff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.1A10 10 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-3 3.8M6.1 6.1C3.6 7.8 2.5 12 2.5 12s3.5 7 9.5 7a9.7 9.7 0 0 0 4.2-1"/></svg>',
     chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',
-    back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>'
+    back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
+    check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>'
   };
 
   function model(){
@@ -113,11 +115,32 @@
         ${sorted.length?`<div class="w5-grid">${sorted.map(x=>pieceTile(x,missingLabel(x),missingClass(x))).join('')}</div>`:'<p class="v5-empty">Nothing missing in this category.</p>'}`;
     }
     const tab=(id,label)=>`<button class="v5-tab${ui.tab===id?' is-active':''}" role="tab" aria-selected="${ui.tab===id}" data-action="tab" data-tab="${id}">${label}</button>`;
-    return`<header class="v5-header"><h1>Wardrobe</h1><span>${m.pieces.length} PIECES</span></header>
+    const start=V.read('fitsWardrobeReviewed',false)?'':`<div class="w5-start"><div><strong>Check what you own</strong><span>Tap the pieces you have in one pass. It takes about a minute.</span></div>
+      <button class="w5-start-go" type="button" data-action="edit">Start</button><button class="w5-start-close" type="button" data-action="start-dismiss" aria-label="Dismiss">×</button></div>`;
+    return`<header class="v5-header"><h1>Wardrobe</h1><button class="w5-edit" type="button" data-action="edit">Edit</button></header>
+      ${start}
       <div class="v5-tabs w5-tabs" role="tablist" aria-label="Wardrobe">${tab('owned',`Owned · ${owned.length}`)}${tab('missing',`Missing · ${miss.length}`)}</div>
       ${chips(list)}
       ${body}
       <a class="v5-hidden-link" href="wardrobe.html?view=hidden"><span>${I.eyeOff}Pieces you hid${m.hiddenPieces.size?` · ${m.hiddenPieces.size}`:''}</span>${I.chevron}</a>`;
+  }
+  // Edit mode: one list of every piece; tap to mark it owned or missing, then save all changes at once.
+  function editView(){
+    const m=model(),own=x=>ui.edits.has(x.p.id)?ui.edits.get(x.p.id)==='owned':x.owned;
+    const order=x=>V.KINDS.indexOf(x.kind);
+    const list=m.pieces.filter(x=>ui.kind==='All'||x.kind===ui.kind).sort((a,b)=>order(a)-order(b)||a.p.name.localeCompare(b.p.name));
+    const tile=x=>{const src=img(x.p),on=own(x);return`<button class="w5-pick${on?' is-owned':''}" type="button" data-action="toggle" data-id="${esc(x.p.id)}" aria-pressed="${on}" aria-label="${esc(x.p.name)}">
+      <span class="w5-tile">${src?`<img src="${esc(src)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')">`:`<span class="w5-noimg">${esc(x.p.name)}</span>`}<span class="w5-check" aria-hidden="true">${on?I.check:''}</span></span>
+      <span class="w5-pick-name">${esc(x.p.name)}</span></button>`};
+    return`<header class="v5-header"><h1>Edit wardrobe</h1><span>${m.pieces.filter(own).length} OWNED</span></header>
+      <p class="v5-note">Tap what you own; tap again to mark it missing. Nothing changes until you save.</p>
+      ${chips(m.pieces)}
+      <div class="w5-grid w5-pick-grid">${list.map(tile).join('')}</div>`;
+  }
+  function editBar(){
+    const n=ui.edits.size;
+    return`<div class="w5-editbar" role="region" aria-label="Save wardrobe changes"><span>${n?`${n} ${n===1?'change':'changes'}`:'No changes yet'}</span>
+      <button class="w5-editbar-cancel" type="button" data-action="edit-cancel">Cancel</button><button class="w5-editbar-save" type="button" data-action="edit-save"${n?'':' disabled'}>Save</button></div>`;
   }
   function hiddenView(){
     const st=V.state(),hidden=V.read('fitsHiddenPieces',[]).map(V.piece).filter(Boolean);
@@ -128,7 +151,7 @@
   }
   function render(){
     const y=window.scrollY;
-    root.innerHTML=`<div class="v5">${ui.view==='hidden'?hiddenView():mainView()}</div>${V.nav('wardrobe')}`;
+    root.innerHTML=ui.editing?`<div class="v5">${editView()}</div>${editBar()}`:`<div class="v5">${ui.view==='hidden'?hiddenView():mainView()}</div>${V.nav('wardrobe')}`;
     window.scrollTo(0,y);
   }
   root.addEventListener('click',e=>{
@@ -141,6 +164,17 @@
     else if(a==='sort'){V.write(ui.tab==='owned'?'fitsWardSortOwned':'fitsWardSortMissing',el.dataset.value)}
     else if(a==='row-all'){ui.rowAll=true;window.scrollTo(0,0)}
     else if(a==='row-back'){ui.rowAll=false}
+    else if(a==='edit'){ui.editing=true;ui.edits=new Map();window.scrollTo(0,0);V.track('wardrobeEditOpen')}
+    else if(a==='toggle'){
+      const id=el.dataset.id,saved=V.owned(id,V.state())?'owned':'missing',cur=ui.edits.get(id)||saved,next=cur==='owned'?'missing':'owned';
+      next===saved?ui.edits.delete(id):ui.edits.set(id,next);
+    }
+    else if(a==='edit-cancel'){ui.editing=false;ui.edits=new Map()}
+    else if(a==='edit-save'){
+      const w=V.read('fitsWardrobe',{});ui.edits.forEach((v,id)=>{w[id]=v});V.write('fitsWardrobe',w);
+      V.write('fitsWardrobeReviewed',true);V.track('wardrobeEditSave');ui.editing=false;ui.edits=new Map();
+    }
+    else if(a==='start-dismiss'){V.write('fitsWardrobeReviewed',true)}
     else if(a==='unhide'){const h=new Set(V.read('fitsHiddenPieces',[]));h.delete(el.dataset.id);V.write('fitsHiddenPieces',[...h])}
     render();
   });

@@ -15,4 +15,8 @@
   // Same blazer, tee and sneakers. Denim makes it more casual; navy chinos make
   // it cleaner, but they are two versions of the same styling idea.
   merge('family-navy-blazer-white-tee','Navy blazer + white tee',['look-50','look-92'],'look-92');
+
+  // Same brown suede jacket over a lighter top; the tee + navy chinos and crewneck + dark denim
+  // versions are two takes on one outfit idea.
+  merge('family-brown-suede-jacket','Brown suede jacket',['look-41','look-156'],'look-41');
 })();
