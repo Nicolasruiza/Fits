@@ -5,8 +5,8 @@
   "pieces": 100,
   "owned": 31,
   "missing": 69,
-  "looks": 159,
-  "families": 149,
+  "looks": 160,
+  "families": 150,
   "localPieceImages": 89,
   "externalPieceImages": 11,
   "pieceImagesWithoutAlpha": 2,
@@ -271,6 +271,7 @@
    "hasAlpha": true,
    "looks": [
     "look-16",
+    "look-32",
     "look-38",
     "look-45",
     "look-navy-crewneck-white-shirt-beige-chinos",
@@ -457,6 +458,7 @@
     "look-18",
     "look-25",
     "look-30",
+    "look-32",
     "look-44",
     "look-55",
     "look-56",
@@ -675,6 +677,7 @@
     "look-25",
     "look-28",
     "look-30",
+    "look-32",
     "look-86"
    ]
   },
@@ -866,7 +869,8 @@
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
-    "look-16"
+    "look-16",
+    "look-32"
    ]
   },
   {
@@ -2371,6 +2375,36 @@
     19.7
    ],
    "warmth": 1.85,
+   "winterLayerable": false
+  },
+  {
+   "id": "look-32",
+   "name": "Charcoal overcoat + navy sweater + dark chinos",
+   "pieces": [
+    "charcoal-overcoat",
+    "navy-crewneck",
+    "dark-chinos",
+    "tan-chelsea"
+   ],
+   "missingPieces": [
+    "charcoal-overcoat",
+    "navy-crewneck",
+    "dark-chinos",
+    "tan-chelsea"
+   ],
+   "image": "assets/look-32-fits-replacement.webp",
+   "imageKind": "local",
+   "seasons": [
+    "Winter"
+   ],
+   "thermal": [
+    "Colder"
+   ],
+   "comfortC": [
+    -3.7,
+    5.3
+   ],
+   "warmth": 3.65,
    "winterLayerable": false
   },
   {
