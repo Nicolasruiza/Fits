@@ -9,7 +9,7 @@
   "families": 150,
   "localPieceImages": 85,
   "externalPieceImages": 10,
-  "pieceImagesWithoutAlpha": 2,
+  "pieceImagesWithoutAlpha": 0,
   "externalLookImages": 22,
   "orphanPieces": 5,
   "unusedAssets": 7,
@@ -155,7 +155,7 @@
    "category": "Top",
    "ownership": "missing",
    "class": "shirt",
-   "image": "assets/wardrobe-standardized/white-shirt.png",
+   "image": "assets/wardrobe-standardized/white-shirt-transparent-v2.png",
    "imageKind": "local",
    "hasAlpha": true,
    "looks": [
@@ -1137,9 +1137,9 @@
    "category": "Top",
    "ownership": "missing",
    "class": "heavy-knit",
-   "image": "assets/catalog-olive-cable-knit-sweater.webp",
+   "image": "assets/catalog-olive-cable-knit-sweater-transparent-v2.png",
    "imageKind": "local",
-   "hasAlpha": false,
+   "hasAlpha": true,
    "looks": [
     "look-86"
    ]
@@ -1163,9 +1163,9 @@
    "category": "Top",
    "ownership": "missing",
    "class": "heavy-knit",
-   "image": "assets/catalog-brown-ribbed-crewneck.webp",
+   "image": "assets/catalog-brown-ribbed-crewneck-transparent-v2.png",
    "imageKind": "local",
-   "hasAlpha": false,
+   "hasAlpha": true,
    "looks": [
     "look-91"
    ]
@@ -6306,13 +6306,8 @@
    "look-65",
    "look-67"
   ],
-  "noAlpha": [
-   "olive-cable-knit-sweater",
-   "brown-ribbed-crewneck"
-  ],
-  "opaqueBackground": [
-   "white-shirt"
-  ],
+  "noAlpha": [],
+  "opaqueBackground": [],
   "pendingImages": [],
   "orphanPieces": [
    "navy-henley",

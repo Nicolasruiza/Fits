@@ -81,8 +81,8 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "taupe-suede-shoes": "assets/wardrobe-standardized/taupe-suede-shoes.png?v=1",
   "white-leather-sneakers": "assets/owned-br-white-leather-sneakers.webp?v=1",
   "white-linen-shorts": "assets/catalog-white-linen-shorts.webp?v=1",
-  "white-shirt": "assets/wardrobe-standardized/white-shirt.png?v=1",
+  "white-shirt": "assets/wardrobe-standardized/white-shirt-transparent-v2.png?v=2",
   "white-tee": "assets/wardrobe-standardized/white-tee.png?v=1",
-  "olive-cable-knit-sweater": "assets/catalog-olive-cable-knit-sweater.webp?v=1",
-  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck.webp?v=1"
+  "olive-cable-knit-sweater": "assets/catalog-olive-cable-knit-sweater-transparent-v2.png?v=2",
+  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck-transparent-v2.png?v=2"
 });
