@@ -1,6 +1,6 @@
 (()=>{const D=window.FITS_DATA;if(!D)return;
 const approved=[
-{id:'look-12',family:'family-blazer-white-beige',name:'Navy blazer + white shirt + beige chinos',image:'assets/look-12-hq.webp?v=1'},
+{id:'look-12',family:'family-blazer-white-beige',name:'Navy blazer + white shirt + beige chinos',image:'assets/look-12-fits-replacement.webp?v=1'},
 {id:'look-38',family:'family-navy-crewneck-beige',name:'Navy crewneck + light blue Oxford + beige chinos'},
 {id:'look-40',family:'family-navy-polo-cream',name:'Navy polo + cream chinos + brown loafers',image:'assets/look-40-hq.webp?v=1'},
 {id:'look-41',family:'family-cognac-suede-navy',name:'Cognac suede jacket + white tee + navy trousers',image:'assets/look-41-hq.webp?v=1'},
