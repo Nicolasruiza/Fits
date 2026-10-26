@@ -12,7 +12,7 @@
 (()=>{
   const steps=[
     // Source data: edit records in data-catalog.js and bump its ?v= here
-    'data-catalog.js?v=2',
+    'data-catalog.js?v=3',
     // Wardrobe cleanup
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
