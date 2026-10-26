@@ -223,7 +223,9 @@
   // with the term filled in (Massimo Dutti's ignores it, so it is not here). "Everywhere else" is the
   // Google Shopping search Fits always used.
   const SHOP_STORES=[
-    {name:'Banana Republic',url:q=>`https://bananarepublic.gapcanada.ca/browse/search.do?searchText=${encodeURIComponent(`men ${q}`)}`}
+    // "men" in the term pulls in men's styles (they're named "dress shirt", not "button-up"), and the
+    // #department=Men filter then drops women's items; either alone leaves women's results or none.
+    {name:'Banana Republic',url:q=>`https://bananarepublic.gapcanada.ca/browse/search.do?searchText=${encodeURIComponent(`men ${q}`)}#department=Men`}
   ];
   const everywhereUrl=q=>`https://www.google.com/search?udm=28&q=${encodeURIComponent(`${q} men's clothing Canada`)}`;
   function shopLinks(id){
