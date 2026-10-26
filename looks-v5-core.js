@@ -218,6 +218,23 @@
   }
   const pieceHref=id=>`piece.html?id=${encodeURIComponent(id)}`;
 
+  /* ---------- Buying: preferred stores first, then everywhere ---------- */
+  // Stores searched directly on their own site, in this order. Only add a store whose search URL opens
+  // with the term filled in (Massimo Dutti's ignores it, so it is not here). "Everywhere else" is the
+  // Google Shopping search Fits always used.
+  const SHOP_STORES=[
+    // "men" in the term pulls in men's styles (they're named "dress shirt", not "button-up"), and the
+    // #department=Men filter then drops women's items; either alone leaves women's results or none.
+    {name:'Banana Republic',url:q=>`https://bananarepublic.gapcanada.ca/browse/search.do?searchText=${encodeURIComponent(`men ${q}`)}#department=Men`}
+  ];
+  const everywhereUrl=q=>`https://www.google.com/search?udm=28&q=${encodeURIComponent(`${q} men's clothing Canada`)}`;
+  function shopLinks(id){
+    const p=piece(id);if(!p)return'';
+    const link=(label,url,cls='')=>`<a class="v5-shop-link${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer"><span>${esc(label)}</span><span aria-hidden="true">↗</span></a>`;
+    return`<section class="v5-shop" id="shop" aria-label="Find it to buy"><h2 class="v5-h2">Find it to buy</h2>
+      <div class="v5-shop-links">${SHOP_STORES.map(s=>link(s.name,s.url(p.name))).join('')}${link('Everywhere else',everywhereUrl(p.name),' is-all')}</div></section>`;
+  }
+
   /* ---------- Shared bottom navigation ---------- */
   const NAV_ICONS={
     looks:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7a2 2 0 1 0-2-2M12 7v2L3 16h18l-9-7"/></svg>',
@@ -234,5 +251,5 @@
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
-    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc};
+    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_STORES,shopLinks};
 })();

@@ -191,7 +191,6 @@ svg{display:block}
 .p5-actions{margin:14px 16px 0;display:flex;flex-direction:column;gap:8px}
 .p5-why{min-height:52px;padding:0 16px;border-radius:16px;background:var(--v5-ink);color:#fff;display:flex;align-items:center;justify-content:space-between;text-decoration:none;font-size:15px;font-weight:700}
 .p5-why svg{width:18px;height:18px}
-.p5-find{height:48px;border-radius:14px;border:1.5px solid var(--v5-line);background:#fff;font-size:14px;font-weight:600}
 .p5-section{padding-top:24px}
 .p5-section .v5-rail{padding-top:12px}
 .p5-look{position:relative;flex:none;width:132px;height:176px;border-radius:16px;overflow:hidden;background:var(--v5-surface);scroll-snap-align:start}
@@ -268,3 +267,8 @@ svg{display:block}
 .v5-buy-thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
 .v5-buy-thumbs img,.v5-buy-thumbs span{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:#3a4146}
 .v5-buy-thumbs span{display:grid;place-items:center;font-size:12px;font-weight:700}
+/* Find it to buy: preferred brands first, then every store */
+.v5-shop{margin:20px 16px 0}
+.v5-shop-links{display:grid;gap:8px;margin-top:10px}
+.v5-shop-link{min-height:48px;padding:0 16px;border-radius:14px;border:1.5px solid var(--v5-line);background:#fff;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--v5-ink);font-size:14px;font-weight:600}
+.v5-shop-link.is-all{color:#4a5055}

@@ -65,6 +65,7 @@
       </a>`:''}
       ${why}
       ${others.length?`<section class="nb-section"><h2 class="v5-h2" style="font-size:14px;color:#4a5055">Other good buys</h2><div class="nb-list">${others.map(r=>`<a href="next-buy.html?piece=${encodeURIComponent(r.id)}${fromWardrobe?'&from=wardrobe':''}"><span>${esc(r.piece.name)}</span><span style="display:flex;align-items:center;gap:8px"><b>+${r.completes.length}</b>${chevron}</span></a>`).join('')}</div></section>`:''}
+      ${isOwned?'':V.shopLinks(id)}
       <div class="nb-actions">
         <button class="nb-secondary" type="button" data-action="own">${isOwned?'Mark as missing':'I own it'}</button>
         <button class="nb-primary${wish?' is-on':''}" type="button" data-action="wish" aria-pressed="${wish}">${wish?'On your wishlist':'Add to wishlist'}</button>
