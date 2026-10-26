@@ -282,7 +282,6 @@ svg{display:block}
 .w5-start-close{width:32px;height:32px;border:0;border-radius:16px;background:transparent;color:var(--v5-muted);font-size:20px;line-height:1}
 .w5-pick{display:flex;flex-direction:column;gap:6px;border:0;padding:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}
 .w5-pick .w5-tile{width:100%}
-.w5-pick:not(.is-owned) .w5-tile img{opacity:.4;filter:grayscale(1)}
 .w5-check{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:14px;display:grid;place-items:center;background:#fff;border:2px solid var(--v5-line)}
 .w5-check svg{width:16px;height:16px}
 .w5-pick.is-owned .w5-check{background:var(--v5-green);border-color:var(--v5-green);color:#fff}
