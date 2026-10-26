@@ -64,7 +64,7 @@
         <button type="button" role="radio" aria-checked="${!owned}" class="${!owned?'is-missing':''}" data-action="own" data-value="missing">Missing</button>
       </div>
       <section class="nb-stats" aria-label="What it does for you">${stats.map(([n,label,cls])=>`<div class="nb-stat ${cls}"><b>${n}</b><span>${label}</span></div>`).join('')}</section>
-      ${!owned?`<div class="p5-actions"><a class="p5-why" href="next-buy.html?piece=${encodeURIComponent(id)}&from=wardrobe"><span>Why it’s worth buying</span>${I.chevron}</a><button class="p5-find" type="button" data-action="find">Find it to buy ↗</button></div>`:''}
+      ${!owned?`<div class="p5-actions"><a class="p5-why" href="next-buy.html?piece=${encodeURIComponent(id)}&from=wardrobe"><span>Why it’s worth buying</span>${I.chevron}</a></div>${V.shopLinks(id)}`:''}
       ${rails}
       ${swapSection(p,swaps,st)}
       <div class="p5-hide"><button type="button" data-action="hide">${I.eyeOff}${hidden?'Unhide this piece':'Hide this piece'}</button></div>
@@ -80,9 +80,10 @@
     else if(a==='pick'){picking=!picking}
     else if(a==='link'){FITS_SWAPS.link(id,el.dataset.id);V.track('swapLinked')}
     else if(a==='unlink'){FITS_SWAPS.unlink(id,el.dataset.id)}
-    else if(a==='find'){const p=V.piece(id);window.open(`https://www.google.com/search?udm=28&q=${encodeURIComponent((p?.name||'')+" men's clothing Canada")}`,'_blank','noopener,noreferrer');return}
     render();
   });
   window.addEventListener('pageshow',e=>{if(e.persisted)render()});
   render();
+  // Detail's "Find item to buy" opens piece.html?id=…#shop; the section only exists after render.
+  if(location.hash==='#shop')document.getElementById('shop')?.scrollIntoView({block:'start'});
 })();
