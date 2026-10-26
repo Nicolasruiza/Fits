@@ -218,16 +218,19 @@
   }
   const pieceHref=id=>`piece.html?id=${encodeURIComponent(id)}`;
 
-  /* ---------- Buying: preferred brands first, then every store ---------- */
-  // Checked in this order. Each brand opens Google Shopping filtered by the brand name, so it also works
-  // for brands whose own store search can't be linked; "Everywhere else" searches every store.
-  const SHOP_BRANDS=['Banana Republic','Massimo Dutti'];
-  const shopUrl=(name,brand)=>`https://www.google.com/search?udm=28&q=${encodeURIComponent(brand?`${brand} ${name} men`:`${name} men's clothing Canada`)}`;
+  /* ---------- Buying: preferred stores first, then everywhere ---------- */
+  // Stores searched directly on their own site, in this order. Only add a store whose search URL opens
+  // with the term filled in (Massimo Dutti's ignores it, so it is not here). "Everywhere else" is the
+  // Google Shopping search Fits always used.
+  const SHOP_STORES=[
+    {name:'Banana Republic',url:q=>`https://bananarepublic.gapcanada.ca/browse/search.do?searchText=${encodeURIComponent(`men ${q}`)}`}
+  ];
+  const everywhereUrl=q=>`https://www.google.com/search?udm=28&q=${encodeURIComponent(`${q} men's clothing Canada`)}`;
   function shopLinks(id){
     const p=piece(id);if(!p)return'';
     const link=(label,url,cls='')=>`<a class="v5-shop-link${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer"><span>${esc(label)}</span><span aria-hidden="true">↗</span></a>`;
     return`<section class="v5-shop" id="shop" aria-label="Find it to buy"><h2 class="v5-h2">Find it to buy</h2>
-      <div class="v5-shop-links">${SHOP_BRANDS.map(b=>link(b,shopUrl(p.name,b))).join('')}${link('Everywhere else',shopUrl(p.name),' is-all')}</div></section>`;
+      <div class="v5-shop-links">${SHOP_STORES.map(s=>link(s.name,s.url(p.name))).join('')}${link('Everywhere else',everywhereUrl(p.name),' is-all')}</div></section>`;
   }
 
   /* ---------- Shared bottom navigation ---------- */
@@ -246,5 +249,5 @@
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
-    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_BRANDS,shopLinks};
+    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_STORES,shopLinks};
 })();
