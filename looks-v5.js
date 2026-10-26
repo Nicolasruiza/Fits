@@ -12,7 +12,7 @@
     tab:sessionStorage.getItem('fitsV5Tab')||'ready',
     favoritesOnly:false,
     expanded:{},
-    garment:V.GARMENTS.includes(V.read('fitsGarmentV5','All'))?V.read('fitsGarmentV5','All'):'All',
+    garment:(g=>V.GARMENTS.includes(g)?g:'All')(window.FITS_KINDS.migrate(V.read('fitsGarmentV5','All'))),
     sheet:false,
     view:params.get('view')==='hidden'?'hidden':'main',
     loadingWeather:false

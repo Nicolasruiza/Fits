@@ -36,6 +36,8 @@
     'real-look-audit.js?v=4',
     'dataset-integrity.js?v=1',
     'closet-swaps.js?v=2',
+    // Garment groups for the Wardrobe and Looks filters (FITS_KINDS)
+    'garment-kinds.js?v=1',
     // Piece image maps (window.FITS_CATALOG_IMAGES)
     'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=5'
   ];

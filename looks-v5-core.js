@@ -57,7 +57,8 @@
 
   /* ---------- Occasion: weekday = Office, weekend = Weekend, overridable for today ---------- */
   const OCCASIONS=['Office','Weekend','Dinner','Travel'];
-  const GARMENTS=['All','Sweaters','Shirts','Polos & tees','Jackets'];
+  // Garment groups come from garment-kinds.js, shared with Wardrobe and the classic Looks.
+  const K=window.FITS_KINDS,GARMENTS=['All',...K.LOOK_GARMENTS];
   function autoOccasion(d=new Date()){const day=d.getDay();return day===0||day===6?'Weekend':'Office'}
   function occasion(){
     const o=read('fitsOccasionV5',null);
@@ -66,8 +67,7 @@
   }
   function setOccasion(value){write('fitsOccasionV5',{value,date:todayKey()})}
   const occasionMatch=(l,o)=>o==='All'||(l.badges||[]).includes(o);
-  // Polos and tees first: "crew-neck T-shirt" would match Sweaters and "T-shirt" / "polo shirt" would match Shirts.
-  function garmentKind(p){const name=(p?.name||'').toLowerCase();if(p?.category==='Outerwear')return'Jackets';if(p?.category!=='Top')return null;if(/polo|t-shirt|tee|henley/.test(name))return'Polos & tees';if(/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck|cardigan/.test(name))return'Sweaters';if(/shirt|oxford|button/.test(name))return'Shirts';return null}
+  const garmentKind=K.garment;
   const garmentMatch=(l,g)=>!g||g==='All'||(l.pieces||[]).some(id=>garmentKind(piece(id))===g);
 
   /* ---------- Warmth label and sort ---------- */
@@ -166,19 +166,7 @@
   }
 
   /* ---------- Pieces: kind (category chip), season fit, wear counts ---------- */
-  const KINDS=['Shirts','Tees & polos','Knitwear','Pants','Shorts','Outerwear','Shoes','Accessories'];
-  function pieceKind(p){
-    const t=`${p?.name||''} ${p?.category||''} ${p?.styleRole||''}`.toLowerCase();
-    if(/belt|watch|accessor|\btie\b|scarf|wallet/.test(t))return'Accessories';
-    if(/shoe|sneaker|loafer|boot|chelsea|derb|brogue|wingtip|footwear|espadrille|cap-toe|lace-up/.test(t))return'Shoes';
-    if(/t-shirt|\btee\b|polo|henley/.test(t))return'Tees & polos';
-    if(/sweater|crewneck|crew-neck|v-neck|quarter-zip|quarter zip|cardigan|turtleneck|knit/.test(t))return'Knitwear';
-    if(/overshirt|blazer|jacket|coat|outerwear|bomber/.test(t))return'Outerwear';
-    if(/shirt|button-down|button down|button-up|button up|oxford|gingham|check/.test(t))return'Shirts';
-    if(/short/.test(t))return'Shorts';
-    if(/denim|jean|chino|trouser|pants/.test(t))return'Pants';
-    return p?.category==='Pants'?'Pants':p?.category==='Shoes'?'Shoes':'Accessories';
-  }
+  const KINDS=K.KINDS,pieceKind=K.kind;
   // A piece is out of season when it clearly belongs to the opposite end of the year.
   function pieceInSeason(p,s){
     if(!C)return true;

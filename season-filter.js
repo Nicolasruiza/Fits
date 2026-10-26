@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const validOcc=['All','Office','Weekend','Dinner','Travel'],validStatus=['All','Favorites','Hidden','Complete','Almost','Missing'],validSeason=['All','Summer','Transitional','Cold'],validGarment=['All','Sweaters','Shirts','Polos & tees','Jackets'];
+  const validOcc=['All','Office','Weekend','Dinner','Travel'],validStatus=['All','Favorites','Hidden','Complete','Almost','Missing'],validSeason=['All','Summer','Transitional','Cold'],validGarment=['All',...window.FITS_KINDS.LOOK_GARMENTS];
   const icon=name=>({
     All:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>',
     Favorites:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg>',
@@ -10,7 +10,7 @@
     Dinner:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v7M9 3v7M4 3v5a3 3 0 0 0 6 0V3M7 10v11M16 3v18M16 3c3 2 4 5 4 8h-4"/></svg>',
     Travel:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 14 7-2 4-8 2 1-2 7 6 2c1 .3 1 1.7 0 2l-6 1-3 4-1-1 1-4-5 1-3-3Z"/></svg>'
   })[name]||'';
-  let occasion=localStorage.getItem('fitsOccasionFilter')||'All',status=localStorage.getItem('fitsLookStatusFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All',garment=localStorage.getItem('fitsGarmentFilter')||'All';
+  let occasion=localStorage.getItem('fitsOccasionFilter')||'All',status=localStorage.getItem('fitsLookStatusFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All',garment=window.FITS_KINDS.migrate(localStorage.getItem('fitsGarmentFilter')||'All');
   // Favorites and Hidden used to live in the occasion row; they are a separate "status" filter now.
   if(['Favorites','Hidden'].includes(occasion)){status=occasion;occasion='All';localStorage.setItem('fitsOccasionFilter',occasion);localStorage.setItem('fitsLookStatusFilter',status)}
   if(!validOcc.includes(occasion))occasion='All';
@@ -22,7 +22,7 @@
   const seasonsForFamily=f=>[...new Set((f.looks||[]).map(look).filter(Boolean).flatMap(l=>l.seasons||['Summer']))];
   const read=(k,f=null)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}};
   function allCards(){return[...document.querySelectorAll('a.card')]}
-  function garmentKind(p){const name=(p?.name||'').toLowerCase();if(p?.category==='Outerwear')return'Jackets';if(p?.category!=='Top')return null;if(/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck|cardigan/.test(name))return'Sweaters';if(/shirt|oxford|button/.test(name))return'Shirts';if(/polo|t-shirt|tee|henley/.test(name))return'Polos & tees';return null}
+  const garmentKind=window.FITS_KINDS.garment;
   function cardFamily(card){try{const id=new URL(card.getAttribute('href'),location.href).searchParams.get('family')||card.dataset.family;return D.families.find(f=>f.id===id)}catch(_){return null}}
   function familyHasGarment(card,choice=garment){if(choice==='All')return true;const f=cardFamily(card);return(f?.looks||[]).map(look).filter(Boolean).some(l=>(l.pieces||[]).some(id=>garmentKind(piece(id))===choice))}
   function matches(card,occ=occasion,sea=season,st=status){
