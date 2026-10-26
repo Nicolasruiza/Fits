@@ -2,8 +2,9 @@
   const D=window.FITS_DATA;if(!D)return;
   // Keep the original records for history, but do not publish the legacy
   // personal-face set. Public Looks starts with the approved FITS model.
+  const approvedLegacy=new Set(['look-01','look-03','look-04']);
   const blocked=new Set([
-    ...Array.from({length:34},(_,index)=>`look-${String(index+1).padStart(2,'0')}`),
+    ...Array.from({length:34},(_,index)=>`look-${String(index+1).padStart(2,'0')}`).filter(id=>!approvedLegacy.has(id)),
     'look-07' // broken legacy asset: assets/source-04.jpg
   ]);
   const page=document.body?.dataset?.page||'';
