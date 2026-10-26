@@ -24,13 +24,18 @@
   function allCards(){return[...document.querySelectorAll('a.card')]}
   const garmentKind=window.FITS_KINDS.garment;
   function cardFamily(card){try{const id=new URL(card.getAttribute('href'),location.href).searchParams.get('family')||card.dataset.family;return D.families.find(f=>f.id===id)}catch(_){return null}}
-  function familyHasGarment(card,choice=garment){if(choice==='All')return true;const f=cardFamily(card);return(f?.looks||[]).map(look).filter(Boolean).some(l=>(l.pieces||[]).some(id=>garmentKind(piece(id))===choice))}
-  function matches(card,occ=occasion,sea=season,st=status){
+  // Garment chips show only garments in the looks the other filters leave (occasion, season, status); a saved
+  // choice with nothing to show reads as All. apply() works this out once per pass into activeGarment.
+  let activeGarment=garment;
+  function availableGarments(){const pool=allCards().filter(c=>baseMatch(c));return window.FITS_KINDS.LOOK_GARMENTS.filter(g=>pool.some(c=>familyHasGarment(c,g)))}
+  function familyHasGarment(card,choice=activeGarment){if(choice==='All')return true;const f=cardFamily(card);return(f?.looks||[]).map(look).filter(Boolean).some(l=>(l.pieces||[]).some(id=>garmentKind(piece(id))===choice))}
+  function baseMatch(card,occ=occasion,sea=season,st=status){
     const tags=(card.dataset.tags||'').split(',').filter(Boolean),ss=(card.dataset.seasons||'').split(',').filter(Boolean),done=card.dataset.completeness;
     const occasionMatch=occ==='All'||tags.includes(occ);
     const statusMatch=st==='All'||st==='Favorites'&&card.dataset.saved==='yes'||st==='Hidden'&&card.dataset.hidden==='yes'||st==='Complete'&&['complete','adapted'].includes(done)||st==='Almost'&&done==='one'||st==='Missing'&&['some','all'].includes(done);
-    return occasionMatch&&statusMatch&&(sea==='All'||ss.includes(sea))&&familyHasGarment(card);
+    return occasionMatch&&statusMatch&&(sea==='All'||ss.includes(sea));
   }
+  function matches(card,occ,sea,st){return baseMatch(card,occ,sea,st)&&familyHasGarment(card)}
   function weatherSeason(){
     const w=read('fitsWeatherHome',null);if(!w)return null;
     const t=Number(w.temp),high=Number.isFinite(w.maxTemp)?Number(w.maxTemp):t,low=Number.isFinite(w.minTemp)?Number(w.minTemp):t;
@@ -41,7 +46,7 @@
     return{recommended,temp:Number.isFinite(t)?Math.round(t):null,high:Math.round(high),low:Number.isFinite(low)?Math.round(low):null};
   }
   window.getFitsWeatherSeason=()=>weatherSeason()?.recommended||null;
-  function current(){return{occasion,status,season,garment,recommendedSeason:weatherSeason()?.recommended||null}}
+  function current(){return{occasion,status,season,garment:activeGarment,recommendedSeason:weatherSeason()?.recommended||null}}
   window.getFitsActiveFilters=current;
   function announce(){window.dispatchEvent(new CustomEvent('fits:filters-changed',{detail:current()}))}
   function updateChipCounts(){
@@ -61,6 +66,8 @@
     const s=document.createElement('style');s.id='weather-season-hint-style';s.textContent='.weather-season-hint{margin:10px 0 0;padding:9px 11px;border-radius:11px;background:#e6ecef;color:#526570;font-size:10px;font-weight:700;line-height:1.35}.weather-season-hint[data-season]{color:#526570}';document.head.appendChild(s);
   }
   function apply(shouldAnnounce=true){
+    const fits=availableGarments();activeGarment=garment==='All'||fits.includes(garment)?garment:'All';
+    document.querySelectorAll('[data-garment-choice]').forEach(b=>{const v=b.dataset.garmentChoice;b.style.display=v!=='All'&&!fits.includes(v)?'none':'';b.classList.toggle('active',v===activeGarment)});
     let visible=0;
     allCards().forEach(card=>{const show=matches(card);card.classList.toggle('hidden',!show);if(show)visible++});
     const empty=document.querySelector('.empty');

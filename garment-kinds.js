@@ -4,6 +4,7 @@
 (()=>{
   const KINDS=['Shirts','Tees & polos','Knitwear','Blazers','Outerwear','Pants','Shorts','Shoes','Accessories'];
   // Looks filters by what you wear on top, plus Shorts; every look has shoes, so they are not a Looks filter.
+  // Each page shows only the chips whose garment appears in the looks it is showing (season, occasion).
   const LOOK_GARMENTS=['Shirts','Tees & polos','Knitwear','Blazers','Outerwear','Shorts'];
   // Group names saved by earlier versions of the Looks filter.
   const LEGACY={Sweaters:'Knitwear','Polos & tees':'Tees & polos',Jackets:'Outerwear'};
