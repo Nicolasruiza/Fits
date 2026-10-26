@@ -1,9 +1,10 @@
 /* FITS garment groups: the one place that decides which filter a piece belongs to.
-   Wardrobe's category chips use every group; the Looks "Start with" chips (v5 and classic) use the tops
-   and layers. Checks run in order, so a more specific name is tested before a broader one. */
+   Wardrobe's category chips use every group; the Looks "Start with" chips (v5 and classic) use the tops,
+   layers and shorts. Checks run in order, so a more specific name is tested before a broader one. */
 (()=>{
   const KINDS=['Shirts','Tees & polos','Knitwear','Blazers','Outerwear','Pants','Shorts','Shoes','Accessories'];
-  const LOOK_GARMENTS=['Shirts','Tees & polos','Knitwear','Blazers','Outerwear'];
+  // Looks filters by what you wear on top, plus Shorts; every look has shoes, so they are not a Looks filter.
+  const LOOK_GARMENTS=['Shirts','Tees & polos','Knitwear','Blazers','Outerwear','Shorts'];
   // Group names saved by earlier versions of the Looks filter.
   const LEGACY={Sweaters:'Knitwear','Polos & tees':'Tees & polos',Jackets:'Outerwear'};
   function kind(p){
