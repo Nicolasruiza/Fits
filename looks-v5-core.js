@@ -66,7 +66,8 @@
   }
   function setOccasion(value){write('fitsOccasionV5',{value,date:todayKey()})}
   const occasionMatch=(l,o)=>o==='All'||(l.badges||[]).includes(o);
-  function garmentKind(p){const name=(p?.name||'').toLowerCase();if(p?.category==='Outerwear')return'Jackets';if(p?.category!=='Top')return null;if(/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck|cardigan/.test(name))return'Sweaters';if(/shirt|oxford|button/.test(name))return'Shirts';if(/polo|t-shirt|tee|henley/.test(name))return'Polos & tees';return null}
+  // Polos and tees first: "crew-neck T-shirt" would match Sweaters and "T-shirt" / "polo shirt" would match Shirts.
+  function garmentKind(p){const name=(p?.name||'').toLowerCase();if(p?.category==='Outerwear')return'Jackets';if(p?.category!=='Top')return null;if(/polo|t-shirt|tee|henley/.test(name))return'Polos & tees';if(/sweater|crew[- ]?neck|v-neck|quarter[- ]?zip|turtleneck|cardigan/.test(name))return'Sweaters';if(/shirt|oxford|button/.test(name))return'Shirts';return null}
   const garmentMatch=(l,g)=>!g||g==='All'||(l.pieces||[]).some(id=>garmentKind(piece(id))===g);
 
   /* ---------- Warmth label and sort ---------- */
@@ -220,12 +221,14 @@
 
   /* ---------- Buying: preferred stores first, then everywhere ---------- */
   // Stores searched directly on their own site, in this order. Only add a store whose search URL opens
-  // with the term filled in (Massimo Dutti's ignores it, so it is not here). "Everywhere else" is the
-  // Google Shopping search Fits always used.
+  // with the term filled in and men's results; Massimo Dutti and COS ignore the term and Club Monaco
+  // redirects home, so they are not here. "Everywhere else" is the Google Shopping search Fits always used.
   const SHOP_STORES=[
     // "men" in the term pulls in men's styles (they're named "dress shirt", not "button-up"), and the
     // #department=Men filter then drops women's items; either alone leaves women's results or none.
-    {name:'Banana Republic',url:q=>`https://bananarepublic.gapcanada.ca/browse/search.do?searchText=${encodeURIComponent(`men ${q}`)}#department=Men`}
+    {name:'Banana Republic',url:q=>`https://bananarepublic.gapcanada.ca/browse/search.do?searchText=${encodeURIComponent(`men ${q}`)}#department=Men`},
+    // section=MAN opens the search on the Man tab, so the term needs no "men".
+    {name:'Zara',url:q=>`https://www.zara.com/ca/en/search?searchTerm=${encodeURIComponent(q)}&section=MAN`}
   ];
   const everywhereUrl=q=>`https://www.google.com/search?udm=28&q=${encodeURIComponent(`${q} men's clothing Canada`)}`;
   function shopLinks(id){
