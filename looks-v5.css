@@ -256,3 +256,15 @@ svg{display:block}
 .p5-swap-name{font-size:12px;font-weight:600;line-height:1.3;color:#3f4549;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .p5-swap-btn{height:36px;border-radius:999px;border:1.5px solid var(--v5-line);background:#fff;font-size:13px;font-weight:600}
 .p5-swap-head{margin:16px 0 0;font-size:13px;font-weight:700;color:var(--v5-muted)}
+/* Best next buy card (Looks and Wardrobe) and the small uppercase kicker label */
+/* Best next buy card: shared by Looks (v5) and Wardrobe. */
+.v5-buy{margin:16px 16px 0;display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:20px;background:var(--v5-ink,#1f2428);color:#fff;text-decoration:none}
+.v5-buy-head{display:flex;align-items:center;gap:12px}
+.v5-buy-head>div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.v5-buy-head strong{font-size:17px}
+.v5-buy-head span:last-child{font-size:13px;color:#d5d8da}
+.v5-buy-piece{width:56px;height:56px;border-radius:12px;object-fit:cover;background:#f4f4f4;flex:none}
+.v5-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#b9d8c6}
+.v5-buy-thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.v5-buy-thumbs img,.v5-buy-thumbs span{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:#3a4146}
+.v5-buy-thumbs span{display:grid;place-items:center;font-size:12px;font-weight:700}
