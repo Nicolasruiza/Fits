@@ -12,7 +12,7 @@
     tab:sessionStorage.getItem('fitsV5Tab')||'ready',
     favoritesOnly:false,
     expanded:{},
-    garment:V.GARMENTS.includes(V.read('fitsGarmentV5','All'))?V.read('fitsGarmentV5','All'):'All',
+    garment:(g=>V.GARMENTS.includes(g)?g:'All')(window.FITS_KINDS.migrate(V.read('fitsGarmentV5','All'))),
     sheet:false,
     view:params.get('view')==='hidden'?'hidden':'main',
     loadingWeather:false
@@ -105,9 +105,9 @@
     const note=o.occasion==='All'?'Showing every occasion · tap one to filter':o.auto?`Auto: ${o.occasion==='Weekend'?'weekend':'weekday'} · tap ${o.occasion} again to see every occasion`:`Set by you today · tap ${o.occasion} again to see every occasion`;
     return `<div class="v5-chips" role="radiogroup" aria-label="Occasion">${V.OCCASIONS.map(chip).join('')}</div><p class="v5-note">${esc(note)}</p>`;
   }
-  function garmentChips(){
-    const chip=x=>`<button class="v5-garment-chip${ui.garment===x?' is-active':''}" type="button" data-action="garment" data-value="${esc(x)}">${x==='All'?'Anything':esc(x)}</button>`;
-    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Start with</strong><span>find looks by garment</span></div><div class="v5-garment-chips">${V.GARMENTS.map(chip).join('')}</div></section>`;
+  function garmentChips(garments,active){
+    const chip=x=>`<button class="v5-garment-chip${active===x?' is-active':''}" type="button" data-action="garment" data-value="${esc(x)}">${x==='All'?'Anything':esc(x)}</button>`;
+    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Start with</strong><span>find looks by garment</span></div><div class="v5-garment-chips">${garments.map(chip).join('')}</div></section>`;
   }
   function sortToggle(){
     const d=sortDir();
@@ -157,7 +157,11 @@
   /* ---------- Views ---------- */
   function mainView(){
     const st=V.state(),s=V.season(st),o=V.occasion();
-    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion,garment:ui.garment});
+    // Only chips for garments in the looks for this season and occasion (both tabs). A saved choice with
+    // nothing to show (Shorts in winter) reads as Anything until such looks come back.
+    const garments=['All',...window.FITS_KINDS.LOOK_GARMENTS.filter(g=>V.familyCards({state:st,season:s.season,occasion:o.occasion,garment:g}).length)];
+    const garment=garments.includes(ui.garment)?ui.garment:'All';
+    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion,garment});
     const ready=V.sortByWarmth(cards.filter(c=>!c.missing.length),sortDir());
     const ideas=V.sortByWarmth(cards.filter(c=>c.missing.length),sortDir());
     let body='';
@@ -185,7 +189,7 @@
       ${weatherCard(st,s)}
       ${tabs(ready.length,ideas.length)}
       ${occasionChips(o)}
-      ${garmentChips()}
+      ${garmentChips(garments,garment)}
       ${body}
       ${hiddenLink()}
       <p class="v5-classic"><a href="index.html?ui=classic">Switch to the classic view</a></p>

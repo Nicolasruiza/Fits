@@ -22,6 +22,7 @@
     Knitwear:'<rect x="3" y="6" width="18" height="5" rx="2.5"/><rect x="3" y="13" width="18" height="5" rx="2.5"/>',
     Pants:'<path d="M6 3h12l1 18h-5l-2-12-2 12H5z"/>',
     Shorts:'<path d="M5 5h14l1 11h-6l-2-6-2 6H4z"/>',
+    Blazers:'<path d="M8 3h8l4 4v14h-6l-2-9-2 9H4V7z"/><path d="M8 3l4 9 4-9"/>',
     Outerwear:'<path d="M9 3h6l5 4v14h-5v-8l-3 2-3-2v8H4V7z"/><path d="M12 15V6"/>',
     Shoes:'<path d="M3 8h5l2 3 7 2c2.5.7 4 2 4 4H3z"/><path d="M3 17h18v2H3z"/>',
     Accessories:'<rect x="3" y="10" width="18" height="4" rx="1"/><rect x="14" y="9" width="4" height="6" rx="1"/>'
