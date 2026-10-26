@@ -148,7 +148,10 @@ families:[
 {id:'family-look-150',name:'Navy crewneck + navy chinos + brown cap-toe shoes',hero:'look-150',looks:['look-150']},
 {id:'family-look-151',name:'Navy blazer + white shirt + olive trousers',hero:'look-151',looks:['look-151']},
 {id:'family-look-152',name:'Cream crewneck + black dress trousers',hero:'look-152',looks:['look-152']},
-{id:'family-look-153',name:'Navy blazer + white T-shirt + black chinos',hero:'look-153',looks:['look-153']}
+{id:'family-look-153',name:'Navy blazer + white T-shirt + black chinos',hero:'look-153',looks:['look-153']},
+{id:'family-look-154',name:'White shirt + beige chinos + cognac sneakers',hero:'look-154',looks:['look-154']},
+{id:'family-look-155',name:'Navy casual jacket + cream crewneck + dark denim',hero:'look-155',looks:['look-155']},
+{id:'family-look-156',name:'Cognac suede jacket + cream crewneck + dark denim',hero:'look-156',looks:['look-156']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -323,7 +326,10 @@ looks:[
 {id:'look-150',family:'family-look-150',name:'Navy crewneck + navy chinos + brown cap-toe shoes',image:'assets/look-150-navy-crew-navy-chinos-brown.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['navy-crewneck','navy-trousers','owned-brown-leather-captoe']},
 {id:'look-151',family:'family-look-151',name:'Navy blazer + white shirt + olive trousers + brown cap-toe shoes',image:'assets/look-151-navy-blazer-white-olive-brown.webp?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','white-shirt','olive-trousers','owned-brown-leather-captoe']},
 {id:'look-152',family:'family-look-152',name:'Cream crewneck + black dress trousers + black cap-toe shoes',image:'assets/look-152-cream-crew-black-dress-black.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['cream-crewneck-sweater','black-dress-trousers','owned-black-leather-captoe']},
-{id:'look-153',family:'family-look-153',name:'Navy blazer + white T-shirt + black chinos + white sneakers',image:'assets/look-153-navy-blazer-white-tee-black-white.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-tee','black-chinos','white-leather-sneakers']}
+{id:'look-153',family:'family-look-153',name:'Navy blazer + white T-shirt + black chinos + white sneakers',image:'assets/look-153-navy-blazer-white-tee-black-white.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-tee','black-chinos','white-leather-sneakers']},
+{id:'look-154',family:'family-look-154',name:'White shirt + beige chinos + cognac leather sneakers',image:'assets/look-154-white-shirt-beige-cognac-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['white-shirt','beige-chinos','brown-belt','owned-br-cognac-sneakers']},
+{id:'look-155',family:'family-look-155',name:'Navy casual jacket + cream crewneck + dark denim + white sneakers',image:'assets/look-155-navy-jacket-cream-crew-dark-denim-white.png?v=1',formal:2,badges:['Weekend','Travel','Dinner'],pieces:['navy-bomber','cream-crewneck-sweater','dark-denim','white-leather-sneakers']},
+{id:'look-156',family:'family-look-156',name:'Cognac suede jacket + cream crewneck + dark denim + white sneakers',image:'assets/look-156-cognac-suede-cream-crew-dark-denim-white.png?v=1',formal:2,badges:['Weekend','Travel','Dinner'],pieces:['cognac-suede-jacket','cream-crewneck-sweater','dark-denim','white-leather-sneakers']}
 ],
 pieces:[
 {id:'green-polo',name:'Green polo',category:'Top',status:'missing'},
