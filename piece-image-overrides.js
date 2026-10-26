@@ -84,5 +84,15 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "white-shirt": "assets/wardrobe-standardized/white-shirt-transparent-v2.png?v=2",
   "white-tee": "assets/wardrobe-standardized/white-tee.png?v=1",
   "olive-cable-knit-sweater": "assets/catalog-olive-cable-knit-sweater-transparent-v2.png?v=2",
-  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck-transparent-v2.png?v=2"
+  "brown-ribbed-crewneck": "assets/catalog-brown-ribbed-crewneck-transparent-v2.png?v=2",
+  "white-polo": "assets/piece-white-polo-transparent.png?v=1",
+  "grey-polo": "assets/piece-grey-polo-transparent.png?v=1",
+  "navy-trousers": "assets/piece-navy-trousers-transparent.png?v=1",
+  "dark-denim": "assets/piece-dark-denim-transparent.png?v=1",
+  "dark-loafers": "assets/piece-dark-loafers-transparent.png?v=1",
+  "brown-casual-shoes": "assets/piece-brown-casual-shoes-transparent.png?v=1",
+  "brown-belt": "assets/piece-brown-belt-transparent.png?v=1",
+  "dark-belt": "assets/piece-dark-belt-transparent.png?v=1",
+  "navy-blazer": "assets/piece-navy-blazer-transparent.png?v=1",
+  "grey-blazer": "assets/piece-grey-blazer-transparent.png?v=1"
 });
