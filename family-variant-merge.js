@@ -41,6 +41,18 @@
   // Grey blazer over a white shirt; denim, navy dress trousers or cream chinos.
   merge('family-grey-blazer-white-shirt','Grey blazer + white shirt',['look-26','look-grey-blazer-white-shirt-navy-dress','look-46'],'look-26');
 
+  // A light blue shirt (micro-check, dress or Oxford) on its own with beige chinos; the shoes are the versions.
+  merge('family-lightblue-shirt-beige','Light blue shirt + beige trousers',['look-62','look-lightblue-dress-shirt-beige-chinos-loafers','look-116','look-lightblue-shirt-beige-chinos-brown-captoe','look-108','look-11','look-28'],'look-62');
+
+  // Light blue dress shirt on its own with navy dress trousers; black or brown cap-toes.
+  merge('family-lightblue-shirt-navy','Light blue shirt + navy trousers',['look-113','look-130'],'look-113');
+
+  // White shirt on its own with navy dress trousers; brown cap-toes or navy brogues.
+  merge('family-white-shirt-navy','White shirt + navy trousers',['look-131','look-161'],'look-131');
+
+  // A sweater over a white shirt with jeans; sneakers or suede Chelsea boots.
+  merge('family-sweater-shirt-denim','Sweater over shirt + denim',['look-navy-crewneck-white-shirt-blue-denim-taupe','look-87','look-85','look-86'],'look-navy-crewneck-white-shirt-blue-denim-taupe');
+
   // The brown suede jacket is the outfit; the top, trousers and shoes under it are its versions.
   merge('family-brown-suede-jacket','Brown suede jacket',['look-41','look-156','look-76','look-57','look-66','look-145','look-147','look-148'],'look-41');
 })();
