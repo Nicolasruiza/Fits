@@ -218,7 +218,7 @@
   }
   function render(){
     const y=window.scrollY;
-    root.innerHTML=`<div class="v5 v5-wide v5-looks">${ui.view==='hidden'?hiddenView():mainView()}</div>${nav()}`;
+    root.innerHTML=`<div class="v5 v5-wide">${ui.view==='hidden'?hiddenView():mainView()}</div>${nav()}`;
     window.scrollTo(0,y);
   }
 
