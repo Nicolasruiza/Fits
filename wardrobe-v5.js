@@ -151,6 +151,7 @@
   }
   function render(){
     const y=window.scrollY;
+    if(ui.editing)V.hideNav();
     root.innerHTML=ui.editing?`<div class="v5">${editView()}</div>${editBar()}`:`<div class="v5">${ui.view==='hidden'?hiddenView():mainView()}</div>${V.nav('wardrobe')}`;
     window.scrollTo(0,y);
   }

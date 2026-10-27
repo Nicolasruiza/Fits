@@ -235,14 +235,22 @@
     stats:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16M7 20V11M12 20V5M17 20v-6"/></svg>'
   };
   // Looks follows the v5 / classic choice saved by index.html; Wardrobe and Stats exist only in v5.
+  // The bar is built once, straight under <body>, and kept across re-renders: iOS Safari can place a
+  // fixed element that was just re-created at a stale spot mid-screen. Pages still write ${V.nav(key)}
+  // into their template (it returns ''), and call hideNav() for views that have no bar.
   function nav(active){
     const item=(key,href,label)=>key===active
       ?`<a class="is-active" href="${href}" aria-current="page">${NAV_ICONS[key]}<span>${label}</span></a>`
       :`<a href="${href}" aria-label="${label}">${NAV_ICONS[key]}</a>`;
-    return`<nav class="v5-nav" aria-label="Main">${item('looks',read('fitsUI','v5')==='classic'?'index.html':'looks.html','Looks')}${item('wardrobe','wardrobe.html','Wardrobe')}${item('stats','stats.html','Stats')}</nav>`;
+    let el=document.querySelector('body>.v5-nav');
+    if(!el){el=document.createElement('nav');el.className='v5-nav';el.setAttribute('aria-label','Main');document.body.appendChild(el)}
+    if(el.dataset.active!==active){el.dataset.active=active;el.innerHTML=`${item('looks',read('fitsUI','v5')==='classic'?'index.html':'looks.html','Looks')}${item('wardrobe','wardrobe.html','Wardrobe')}${item('stats','stats.html','Stats')}`}
+    el.hidden=false;
+    return'';
   }
+  function hideNav(){const el=document.querySelector('body>.v5-nav');if(el)el.hidden=true}
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
-    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_STORES,shopLinks};
+    KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_STORES,shopLinks,hideNav};
 })();
