@@ -297,3 +297,35 @@ svg{display:block}
 /* Looks card: how many other versions the card has (stack icon + count), top right */
 .v5-variants{position:absolute;right:8px;top:8px;display:flex;align-items:center;gap:3px;padding:3px 8px 3px 6px;border-radius:999px;background:rgba(255,255,255,.92);color:#3f4549;font-size:11px;font-weight:700}
 .v5-variants svg{width:13px;height:13px}
+
+/* Wide screens (phone in landscape, tablet, desktop): Looks, Wardrobe and Stats use the full width,
+   with 3 photos per row from 600px and 4 from 820px. Piece and Best next buy stay one phone column. */
+@media (min-width:600px){
+  .v5-wide{width:min(100%,1100px);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+  .v5-wide .v5-grid,.v5-wide .w5-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (min-width:820px){
+  .v5-wide .v5-grid,.v5-wide .w5-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* From 600px the Looks top goes in two columns: weather on the left, tabs and occasion chips on the
+   right, so the photos start higher. Everything else still spans the full width. */
+@media (min-width:600px){
+  .v5-looks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start}
+  .v5-looks>*{grid-column:1/-1}
+  .v5-looks>.v5-weather{grid-column:1;grid-row:span 3;margin:0 4px 0 16px}
+  .v5-looks>.v5-tabs{grid-column:2;margin:0 16px 0 4px}
+  .v5-looks>.v5-chips{grid-column:2;padding:10px 16px 0 4px}
+  .v5-looks>.v5-note{grid-column:2;margin:8px 16px 0 4px}
+  .v5-looks>.v5-tabs,.v5-looks>.v5-chips,.v5-looks>.v5-note{align-self:start}
+  /* The Stats week strip keeps phone proportions instead of stretching its 7 photos. */
+  .v5-wide .s5-week{max-width:440px}
+}
+/* Phone in landscape: little height, so the header and weather card shrink. */
+@media (orientation:landscape) and (max-height:500px){
+  .v5-header{padding-top:calc(env(safe-area-inset-top) + 12px);padding-bottom:10px}
+  .v5-header h1{font-size:30px}
+  .v5-weather{padding:12px;gap:8px;border-radius:20px}
+  .v5-temp{font-size:38px}
+  .v5-enable{padding:10px 12px}
+  .v5-garment-filter{padding-top:12px}
+}
