@@ -29,7 +29,7 @@
   });
 
   const roles={
-    'owned-lightblue-weekend-shirt':{label:'Weekend shirt · light blue',note:'A relaxed Massimo Dutti shirt, neither a dress shirt nor an Oxford, for chinos, denim, knitwear and summer looks.'},
+    'owned-lightblue-weekend-shirt':{label:'Casual shirt · light blue',note:'A Massimo Dutti shirt, neither a dress shirt nor an Oxford, for the office and the weekend, from spring to autumn, with chinos, denim and knitwear.'},
     'light-blue-dress-shirt':{label:'Dress shirt · solid light blue',note:'A smooth solid dress shirt for tailored trousers and sharper office combinations.'},
     'light-blue-oxford':{label:'Oxford · smart casual',note:'A sturdier, more relaxed shirt for chinos, denim, knitwear and unstructured layers.'},
     'black-dress-trousers':{label:'Dress trousers · black',note:'Tailored black trousers for the most formal dark combinations.'},

@@ -3,7 +3,7 @@
    Add, remove, reorder or cache-bump a data step here only, never in a page.
 
    Pages load it as the first script in <body>, then their own UI scripts:
-     <script src="fits-pipeline.js?v=3"></script>
+     <script src="fits-pipeline.js?v=4"></script>
    Cloudflare caches it for 4 hours, so bump that ?v= in every page whenever this file changes.
    document.write keeps the steps parser-blocking and in order, before the page's own scripts
    and before DOMContentLoaded, exactly like the static <script> tags it replaces.
@@ -17,7 +17,7 @@
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
     'wardrobe-normalize.js?v=1',
-    'wardrobe-redundancy.js?v=4',
+    'wardrobe-redundancy.js?v=5',
     'wardrobe-draft-prune.js?v=3',
     // Approved looks, families and ownership
     'approved-look-12.js?v=2',
