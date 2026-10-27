@@ -310,24 +310,19 @@ svg{display:block}
 @media (min-width:820px){
   .v5-wide .v5-grid,.v5-wide .w5-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
-/* From 600px the Looks top goes in two columns: weather on the left, tabs and occasion chips on the
-   right, so the photos start higher. Everything else still spans the full width. */
-@media (min-width:600px){
-  .v5-looks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start}
-  .v5-looks>*{grid-column:1/-1}
-  .v5-looks>.v5-weather{grid-column:1;grid-row:span 3;margin:0 4px 0 16px}
-  .v5-looks>.v5-tabs{grid-column:2;margin:0 16px 0 4px}
-  .v5-looks>.v5-chips{grid-column:2;padding:10px 16px 0 4px}
-  .v5-looks>.v5-note{grid-column:2;margin:8px 16px 0 4px}
-  .v5-looks>.v5-tabs,.v5-looks>.v5-chips,.v5-looks>.v5-note{align-self:start}
-  /* The Stats week strip keeps phone proportions instead of stretching its 7 photos. */
-  .v5-wide .s5-week{max-width:440px}
-}
+/* The Stats week strip keeps phone proportions instead of stretching its 7 photos. */
+@media (min-width:600px){.v5-wide .s5-week{max-width:440px}}
 /* Phone in landscape: little height, so the header and weather card shrink. */
 @media (orientation:landscape) and (max-height:500px){
   .v5-header{padding-top:calc(env(safe-area-inset-top) + 12px);padding-bottom:10px}
   .v5-header h1{font-size:30px}
-  .v5-weather{padding:12px;gap:8px;border-radius:20px}
+  /* The weather card spans the width in one row (place · conditions · season) to keep it short. */
+  .v5-weather{padding:10px 12px;gap:16px;border-radius:20px;flex-direction:row;align-items:center}
+  .v5-weather>*{flex:1 1 0;min-width:0}
+  .v5-weather>.v5-weather-top{flex:none;gap:10px}
+  .v5-season{margin-top:0}
+  /* Narrower landscape phones (iPhone SE): the place gets its own line above conditions and season. */
+  @media (max-width:759px){.v5-weather{flex-wrap:wrap;row-gap:6px}.v5-weather>.v5-weather-top{flex-basis:100%}}
   .v5-temp{font-size:38px}
   .v5-enable{padding:10px 12px}
   .v5-garment-filter{padding-top:12px}
