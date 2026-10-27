@@ -21,6 +21,7 @@
 
   /* ---------- Icons ---------- */
   const I={
+    stack:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="13" height="13" rx="2.5"/><path d="M4 8v10.5A2.5 2.5 0 0 0 6.5 21H16"/></svg>',
     pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
     refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8M4 4v4h4M4 13a8 8 0 0 0 14.3 4.9L20 16M20 20v-4h-4"/></svg>',
     leaf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></svg>',
@@ -126,9 +127,12 @@
     const l=c.look,f=V.feel(l),cls=f==='Warmer'?'warm':f==='Colder'?'cold':'mild';
     const needs=opts.needs?`<span class="v5-needs">${esc(needsText(c))}</span>`:'';
     const extra=opts.unhide?`<button class="v5-unhide" type="button" data-action="unhide" data-look="${esc(l.id)}">Unhide</button>`:'';
+    // Other versions in this card (Detail shows them all); the one on the card and hidden looks don't count.
+    const hidden=new Set(V.read('fitsHiddenLooks',[])),more=(c.family?.looks||[]).filter(id=>id!==l.id&&V.look(id)&&!hidden.has(id)).length;
+    const variants=more?`<span class="v5-variants" aria-label="${more} more ${more===1?'variant':'variants'}">${I.stack}+${more}</span>`:'';
     return `<div class="v5-card-wrap"><a class="v5-card" href="${esc(V.detailHref(l))}" data-action="open-look" aria-label="${esc(l.name)}">
       <img src="${esc(l.image)}" alt="${esc(l.name)}" loading="lazy" onerror="this.classList.add('is-broken')">
-      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${needs}</a>${extra}</div>`;
+      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${variants}${needs}</a>${extra}</div>`;
   }
   function favRow(cards){
     if(!cards.length)return'';
@@ -154,6 +158,12 @@
       </div>`;
   }
 
+  // Detail's Previous / Next walks this list: the cards on screen, in screen order, each with the look its card
+  // shows (the most complete version), so it follows the tab, filters and sort the user is looking at.
+  function saveSequence(cards){
+    try{sessionStorage.setItem('fitsLookSequence',JSON.stringify({families:cards.map(c=>c.family.id),looks:Object.fromEntries(cards.map(c=>[c.family.id,c.look.id]))}))}catch(e){}
+  }
+
   /* ---------- Views ---------- */
   function mainView(){
     const st=V.state(),s=V.season(st),o=V.occasion();
@@ -167,6 +177,7 @@
     let body='';
     if(ui.tab==='ready'){
       const favs=ready.filter(c=>c.saved);
+      saveSequence(ui.favoritesOnly?favs:ready);
       if(ui.favoritesOnly){
         body=`<div class="v5-row-head v5-pad"><h2 class="v5-h2"><span class="v5-star">${I.star}</span>Favorites ready</h2><button class="v5-link" type="button" data-action="fav-back">Back</button></div>
           <div class="v5-grid">${favs.map(c=>card(c)).join('')}</div>`;
@@ -177,6 +188,7 @@
       }
     }else{
       const groups=[['1 piece away',ideas.filter(c=>c.missing.length===1),'one'],['2 pieces away',ideas.filter(c=>c.missing.length===2),'two'],['3+ pieces away',ideas.filter(c=>c.missing.length>=3),'more']];
+      saveSequence(groups.flatMap(g=>g[1]));
       body=`${V.bestBuyCard(st)}<div class="v5-row-head v5-pad"><h2 class="v5-h2">Ideas</h2>${sortToggle()}</div>
         ${groups.filter(g=>g[1].length).map(([title,list,key])=>{
           const open=ui.expanded[key],shown=open?list:list.slice(0,6);
@@ -198,6 +210,7 @@
   function hiddenView(){
     const st=V.state();
     const cards=V.familyCards({state:st,hiddenOnly:true});
+    saveSequence(cards);
     return `<div class="v5-back-row"><a class="v5-back" href="looks.html">${I.back}Looks</a></div>
       <header class="v5-header"><h1>Looks you hid</h1><span>${cards.length}</span></header>
       <p class="v5-note">These never show in Ready or Inspiration. Unhide one to bring it back.</p>

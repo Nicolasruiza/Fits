@@ -16,7 +16,7 @@ function currentWeather(){const w=safe('fitsWeatherHome',null);return w&&Date.no
 function fit(w){if(!w)return{level:'neutral',label:'Weather pending',reason:'Enable weather on Looks for live suggestions.'};const items=active.pieces.map(id=>piece(id)).filter(Boolean),names=items.map(p=>p.name.toLowerCase()).join(' '),t=Math.round(w.temp),rain=w.currentRain||w.maxRain>=40,outer=/blazer|jacket|vest|coat|overshirt|bomber|sweater|cardigan/.test(names),outerPiece=items.find(p=>/blazer|jacket|coat|overshirt|bomber/i.test(p.name)),dress=/loafer|derbies|dress shoe/.test(names),sneakers=/sneaker/.test(names);if(t>=25&&outer)return{level:'caution',label:'Might feel warm',reason:'The extra layer may feel heavy.'};if(t<=12&&outerPiece)return{level:'good',label:'Good for cooler weather',reason:`The ${outerPiece.name.toLowerCase()} already provides the outer layer.`};if(t<=12&&!outer)return{level:'caution',label:'Could feel cool',reason:'Consider a light layer.'};if(rain&&dress&&!sneakers)return{level:'caution',label:'Weather note',reason:'Rain may make dress shoes less practical.'};if(t>=22&&!outer)return{level:'good',label:'Great today',reason:'Lighter pieces suit the temperature.'};if(rain&&sneakers)return{level:'good',label:'Good today',reason:'Sneakers are easier if rain shows up.'};return{level:'neutral',label:'Could work',reason:'Weather should not be a major issue.'}}
 function hourLabel(iso){return new Date(iso).toLocaleTimeString([], {hour:'numeric'}).replace(' ','').toLowerCase()}
 function weatherHTML(w){if(!w)return`<div class="weather"><div class="weather-note">Weather unavailable · enable location on Looks for live suggestions.</div></div>`;let hs=(w.hours||[]).slice(0,4);if(!hs.length)hs=[{time:new Date().toISOString(),temp:w.temp,rain:w.maxRain||0,code:w.code||2}];return`<div class="weather"><div class="weather-row">${hs.map((h,i)=>`<div class="wx"><div class="t">${i===0?'Now':hourLabel(h.time)}</div><div class="ico">${icon(h.code||2)}</div><div class="deg">${Math.round(h.temp)}°</div></div>`).join('')}</div><div class="weather-note">${fit(w).reason}</div></div>`}
-function shortName(){return fam.name.replace(' chinos','').replace(' polo','')}
+function shortName(){return fam.name}
 // Belts and other accessories are left out, so a look that only drops the belt still reads as a swap.
 function diff(v){if(v.id===looks[0].id)return'Base look';const base=looks[0],worn=id=>piece(id)&&piece(id).category!=='Accessory',add=v.pieces.filter(x=>worn(x)&&!base.pieces.includes(x)).map(x=>piece(x).name),rem=base.pieces.filter(x=>worn(x)&&!v.pieces.includes(x)).map(x=>piece(x).name);if(add.length===1&&rem.length===1)return`${rem[0]} → ${add[0]}`;if(add.length===1)return`Add ${add[0]}`;return v.name}
 function count(){return(wear[active.id]||[]).length}function last(){const h=wear[active.id]||[];return h.length?new Date(h[h.length-1]+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):'Never'}
@@ -63,13 +63,16 @@ function readinessHTML(st){
 }
 
 // Previous / next look: the order the user was browsing on Looks, else the saved Looks filters.
+// Looks saves the cards it shows (families in screen order, plus the look each card shows); without one, fall back
+// to the classic filters.
+let sequenceLooks={};
 const sequenceIds=(()=>{
-  try{const s=JSON.parse(sessionStorage.getItem('fitsLookSequence')||'null');if(s&&Array.isArray(s.families)&&s.families.includes(fam.id))return s.families}catch(_){}
+  try{const s=JSON.parse(sessionStorage.getItem('fitsLookSequence')||'null');if(s&&Array.isArray(s.families)&&s.families.includes(fam.id)){sequenceLooks=s.looks||{};return s.families}}catch(_){}
   const occasion=localStorage.getItem('fitsOccasionFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All';
   return DATA.families.filter(f=>{const variants=(f.looks||[]).map(look).filter(Boolean);return(occasion==='All'||variants.some(v=>(v.badges||[]).includes(occasion)))&&(season==='All'||variants.some(v=>(v.seasons||['Summer']).includes(season)))}).map(f=>f.id);
 })();
 const seqIndex=sequenceIds.indexOf(fam.id),prevFamily=seqIndex>0?sequenceIds[seqIndex-1]:null,nextFamily=seqIndex>=0&&seqIndex<sequenceIds.length-1?sequenceIds[seqIndex+1]:null;
-function goToFamily(id,direction){const f=family(id);if(!f)return;const hero=look(f.hero)||(f.looks||[]).map(look).find(Boolean);document.documentElement.dataset.swipeExit=direction;setTimeout(()=>location.assign(`detail.html?family=${encodeURIComponent(id)}${hero?`&look=${encodeURIComponent(hero.id)}`:''}`),130)}
+function goToFamily(id,direction){const f=family(id);if(!f)return;const shown=(f.looks||[]).includes(sequenceLooks[id])?look(sequenceLooks[id]):null,hero=shown||look(f.hero)||(f.looks||[]).map(look).find(Boolean);document.documentElement.dataset.swipeExit=direction;setTimeout(()=>location.assign(`detail.html?family=${encodeURIComponent(id)}${hero?`&look=${encodeURIComponent(hero.id)}`:''}`),130)}
 function swipeNavHTML(){return`<div class="look-swipe-nav"><button type="button" class="swipe-prev" ${prevFamily?'':'disabled'} aria-label="Previous look">‹<span>Previous</span></button><small>${seqIndex>=0?`${seqIndex+1} of ${sequenceIds.length}`:'Swipe between looks'}</small><button type="button" class="swipe-next" ${nextFamily?'':'disabled'} aria-label="Next look"><span>Next</span>›</button></div>`}
 function bindSwipe(){
   const hero=document.querySelector('.hero');if(!hero)return;
