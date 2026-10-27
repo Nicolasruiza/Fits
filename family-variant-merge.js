@@ -10,8 +10,6 @@
     D.families.push({id,name,hero:looks.some(l=>l.id===hero)?hero:looks[0].id,looks:looks.map(l=>l.id)});
   };
 
-  // Same sweater, light trousers and sneakers; the visible shirt is the useful variant.
-  merge('family-navy-crewneck-light-trousers','Navy crewneck + light trousers',['look-38','look-75'],'look-75');
 
   // Navy blazer over a white tee or polo with white sneakers: the trousers (navy, black or grey
   // chinos, dark denim) and tee vs polo are versions of one smart-casual idea.
@@ -21,9 +19,10 @@
   // loafers, boots or cap-toes are versions of the same tailored idea.
   merge('family-navy-blazer-white-shirt','Navy blazer + shirt',['look-12','look-navy-blazer-striped-shirt-beige-chinos','look-31','look-navy-blazer-white-shirt-charcoal-dress','look-navy-blazer-white-shirt-cream-chinos','look-151','look-163','look-18','look-165','look-166'],'look-12');
 
-  // A sweater over a collared shirt with beige chinos and leather dress shoes (cap-toes or loafers);
-  // the sweater, shirt and shoe colours are the versions. (No "chinos" in the name: Detail strips it.)
-  merge('family-sweater-shirt-beige','Sweater over shirt + beige trousers',['look-118','look-119','look-124','look-127','look-128','look-126'],'look-118');
+  // A sweater over a collared shirt with beige chinos; cap-toes, loafers or white sneakers. The sweater,
+  // shirt and shoes are the versions. (No "chinos" in the name: Detail strips it.) Includes look-38 and
+  // look-75, which used to be their own "Navy crewneck + light trousers" card.
+  merge('family-sweater-shirt-beige','Sweater over shirt + beige trousers',['look-118','look-119','look-124','look-127','look-128','look-126','look-navy-crewneck-white-shirt-beige-chinos','look-38','look-75','look-71','look-74'],'look-118');
 
   // Dark charcoal crewneck over a light blue dress shirt with brown cap-toes; dress trousers or black chinos.
   merge('family-charcoal-crew-lightblue','Charcoal crewneck + light blue shirt',['look-122','look-125'],'look-122');
