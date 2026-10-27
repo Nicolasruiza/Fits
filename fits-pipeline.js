@@ -3,8 +3,8 @@
    Add, remove, reorder or cache-bump a data step here only, never in a page.
 
    Pages load it as the first script in <body>, then their own UI scripts:
-     <script src="fits-pipeline.js"></script>
-   It has no ?v= on purpose, so there is no per-page version to drift; GitHub Pages revalidates it.
+     <script src="fits-pipeline.js?v=2"></script>
+   Cloudflare caches it for 4 hours, so bump that ?v= in every page whenever this file changes.
    document.write keeps the steps parser-blocking and in order, before the page's own scripts
    and before DOMContentLoaded, exactly like the static <script> tags it replaces.
 
