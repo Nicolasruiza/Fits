@@ -30,7 +30,7 @@
     if(!window.FITS_SWAPS)return'';
     const linked=new Set(swaps.map(s=>s.id)),options=(D.pieces||[]).filter(x=>x.category===p.category&&x.id!==id&&!linked.has(x.id)).sort((a,b)=>Number(V.owned(b.id,st))-Number(V.owned(a.id,st))||a.name.localeCompare(b.name));
     return`<section class="p5-section"><div class="v5-row-head v5-pad-x"><h2 class="v5-h2">Can swap with</h2>${options.length?`<button class="v5-link" type="button" data-action="pick">${picking?'Done':'Add'}</button>`:''}</div>
-      <p class="v5-note">${swaps.length?'When this piece is missing from a look, Fits suggests one of these instead.':'Nothing yet. Add a piece that can stand in for this one and Fits will suggest the swap.'}</p>
+      <p class="v5-note">${swaps.length?'When this piece is missing from a look, FITS suggests one of these instead.':'Nothing yet. Add a piece that can stand in for this one and FITS will suggest the swap.'}</p>
       ${swaps.length?`<div class="v5-rail">${swaps.map(s=>swapTile(s,st,'unlink')).join('')}</div>`:''}
       ${picking&&options.length?`<h3 class="p5-swap-head v5-pad-x">Choose a piece that can stand in</h3><div class="v5-rail">${options.map(s=>swapTile(s,st,'link')).join('')}</div>`:''}</section>`;
   }
