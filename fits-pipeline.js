@@ -12,7 +12,7 @@
 (()=>{
   const steps=[
     // Source data: edit records in data-catalog.js and bump its ?v= here
-    'data-catalog.js?v=8',
+    'data-catalog.js?v=9',
     // Wardrobe cleanup
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
@@ -33,7 +33,7 @@
     // Look photos, final filtering and swaps
     'look-photo-overrides.js?v=2',
     'image-runtime-v2.js?v=14',
-    'real-look-audit.js?v=4',
+    'real-look-audit.js?v=5',
     'dataset-integrity.js?v=1',
     'closet-swaps.js?v=2',
     // Garment groups for the Wardrobe and Looks filters (FITS_KINDS)

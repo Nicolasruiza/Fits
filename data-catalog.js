@@ -169,7 +169,8 @@ families:[
 {id:'family-look-171',name:'White T-shirt + dark denim + white sneakers',hero:'look-171',looks:['look-171']},
 {id:'family-look-172',name:'Light blue Oxford + dark denim + brown loafers',hero:'look-172',looks:['look-172']},
 {id:'family-look-173',name:'Black polo + dark denim + brown loafers',hero:'look-173',looks:['look-173']},
-{id:'family-look-174',name:'Beige quarter-zip + white T-shirt + dark denim',hero:'look-174',looks:['look-174']}
+{id:'family-look-174',name:'Beige quarter-zip + white T-shirt + dark denim',hero:'look-174',looks:['look-174']},
+{id:'family-quarterzip-beige',name:'Navy quarter-zip + light blue Oxford + beige chinos',hero:'look-33',looks:['look-33']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -204,7 +205,7 @@ looks:[
 {id:'look-30',family:'family-dark-blazer-dark',name:'Dark crewneck + dark chinos + tan Chelsea boots',image:'assets/look-30-fits-replacement.webp?v=1',formal:2,badges:['Dinner','Weekend'],pieces:['dark-crewneck','dark-chinos','tan-chelsea']},
 {id:'look-31',family:'family-blazer-white-beige',name:'Navy blazer + white shirt + dark denim',image:'assets/look-31-fits-replacement.webp?v=1',formal:3,badges:['Dinner','Office'],pieces:['navy-blazer','white-shirt','dark-denim','brown-loafers','brown-belt']},
 {id:'look-32',family:'family-overcoat-navy',name:'Charcoal overcoat + navy sweater + dark chinos',image:'assets/look-32-fits-replacement.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['charcoal-overcoat','navy-crewneck','dark-chinos','tan-chelsea']},
-{id:'look-33',family:'family-quarterzip-beige',name:'Navy quarter-zip + light blue Oxford + beige chinos',image:'assets/look-33-quarterzip-beige.svg?v=12',formal:3,badges:['Office','Weekend'],pieces:['navy-quarterzip','light-blue-oxford','beige-chinos','brown-derbies']},
+{id:'look-33',family:'family-quarterzip-beige',name:'Navy quarter-zip + light blue Oxford + beige chinos + brown loafers',image:'assets/look-33-navy-quarterzip-lightblue-beige-loafers.png?v=1',formal:3,badges:['Office','Weekend'],pieces:['navy-quarterzip','light-blue-oxford','beige-chinos','brown-loafers']},
 {id:'look-35',family:'family-navy-denim',name:'Navy polo + blue denim + white sneakers',image:'assets/external-look-look-35.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['navy-polo','blue-denim','white-leather-sneakers']},
 {id:'look-36',family:'family-cardigan-henley-denim',name:'Charcoal cardigan + grey henley + blue denim',image:'assets/external-look-look-36.png?v=1',formal:2,badges:['Weekend','Dinner'],pieces:['charcoal-cardigan','grey-henley','blue-denim','brown-casual-shoes']},
 {id:'look-38',family:'family-navy-crewneck-beige',name:'Navy crewneck + light blue Oxford + beige chinos',image:'assets/look-38-hq.webp?v=1',formal:3,badges:['Office','Weekend'],pieces:['navy-crewneck','light-blue-oxford','beige-chinos','white-leather-sneakers']},
