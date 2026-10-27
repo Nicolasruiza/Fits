@@ -63,13 +63,16 @@ function readinessHTML(st){
 }
 
 // Previous / next look: the order the user was browsing on Looks, else the saved Looks filters.
+// Looks saves the cards it shows (families in screen order, plus the look each card shows); without one, fall back
+// to the classic filters.
+let sequenceLooks={};
 const sequenceIds=(()=>{
-  try{const s=JSON.parse(sessionStorage.getItem('fitsLookSequence')||'null');if(s&&Array.isArray(s.families)&&s.families.includes(fam.id))return s.families}catch(_){}
+  try{const s=JSON.parse(sessionStorage.getItem('fitsLookSequence')||'null');if(s&&Array.isArray(s.families)&&s.families.includes(fam.id)){sequenceLooks=s.looks||{};return s.families}}catch(_){}
   const occasion=localStorage.getItem('fitsOccasionFilter')||'All',season=localStorage.getItem('fitsSeasonFilter')||'All';
   return DATA.families.filter(f=>{const variants=(f.looks||[]).map(look).filter(Boolean);return(occasion==='All'||variants.some(v=>(v.badges||[]).includes(occasion)))&&(season==='All'||variants.some(v=>(v.seasons||['Summer']).includes(season)))}).map(f=>f.id);
 })();
 const seqIndex=sequenceIds.indexOf(fam.id),prevFamily=seqIndex>0?sequenceIds[seqIndex-1]:null,nextFamily=seqIndex>=0&&seqIndex<sequenceIds.length-1?sequenceIds[seqIndex+1]:null;
-function goToFamily(id,direction){const f=family(id);if(!f)return;const hero=look(f.hero)||(f.looks||[]).map(look).find(Boolean);document.documentElement.dataset.swipeExit=direction;setTimeout(()=>location.assign(`detail.html?family=${encodeURIComponent(id)}${hero?`&look=${encodeURIComponent(hero.id)}`:''}`),130)}
+function goToFamily(id,direction){const f=family(id);if(!f)return;const shown=(f.looks||[]).includes(sequenceLooks[id])?look(sequenceLooks[id]):null,hero=shown||look(f.hero)||(f.looks||[]).map(look).find(Boolean);document.documentElement.dataset.swipeExit=direction;setTimeout(()=>location.assign(`detail.html?family=${encodeURIComponent(id)}${hero?`&look=${encodeURIComponent(hero.id)}`:''}`),130)}
 function swipeNavHTML(){return`<div class="look-swipe-nav"><button type="button" class="swipe-prev" ${prevFamily?'':'disabled'} aria-label="Previous look">‹<span>Previous</span></button><small>${seqIndex>=0?`${seqIndex+1} of ${sequenceIds.length}`:'Swipe between looks'}</small><button type="button" class="swipe-next" ${nextFamily?'':'disabled'} aria-label="Next look"><span>Next</span>›</button></div>`}
 function bindSwipe(){
   const hero=document.querySelector('.hero');if(!hero)return;

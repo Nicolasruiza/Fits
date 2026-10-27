@@ -158,6 +158,12 @@
       </div>`;
   }
 
+  // Detail's Previous / Next walks this list: the cards on screen, in screen order, each with the look its card
+  // shows (the most complete version), so it follows the tab, filters and sort the user is looking at.
+  function saveSequence(cards){
+    try{sessionStorage.setItem('fitsLookSequence',JSON.stringify({families:cards.map(c=>c.family.id),looks:Object.fromEntries(cards.map(c=>[c.family.id,c.look.id]))}))}catch(e){}
+  }
+
   /* ---------- Views ---------- */
   function mainView(){
     const st=V.state(),s=V.season(st),o=V.occasion();
@@ -171,6 +177,7 @@
     let body='';
     if(ui.tab==='ready'){
       const favs=ready.filter(c=>c.saved);
+      saveSequence(ui.favoritesOnly?favs:ready);
       if(ui.favoritesOnly){
         body=`<div class="v5-row-head v5-pad"><h2 class="v5-h2"><span class="v5-star">${I.star}</span>Favorites ready</h2><button class="v5-link" type="button" data-action="fav-back">Back</button></div>
           <div class="v5-grid">${favs.map(c=>card(c)).join('')}</div>`;
@@ -181,6 +188,7 @@
       }
     }else{
       const groups=[['1 piece away',ideas.filter(c=>c.missing.length===1),'one'],['2 pieces away',ideas.filter(c=>c.missing.length===2),'two'],['3+ pieces away',ideas.filter(c=>c.missing.length>=3),'more']];
+      saveSequence(groups.flatMap(g=>g[1]));
       body=`${V.bestBuyCard(st)}<div class="v5-row-head v5-pad"><h2 class="v5-h2">Ideas</h2>${sortToggle()}</div>
         ${groups.filter(g=>g[1].length).map(([title,list,key])=>{
           const open=ui.expanded[key],shown=open?list:list.slice(0,6);
@@ -202,6 +210,7 @@
   function hiddenView(){
     const st=V.state();
     const cards=V.familyCards({state:st,hiddenOnly:true});
+    saveSequence(cards);
     return `<div class="v5-back-row"><a class="v5-back" href="looks.html">${I.back}Looks</a></div>
       <header class="v5-header"><h1>Looks you hid</h1><span>${cards.length}</span></header>
       <p class="v5-note">These never show in Ready or Inspiration. Unhide one to bring it back.</p>
