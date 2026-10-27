@@ -13,7 +13,7 @@
 
   // Navy blazer over a white tee or polo with white sneakers: the trousers (navy, black or grey
   // chinos, dark denim) and tee vs polo are versions of one smart-casual idea.
-  merge('family-navy-blazer-white-tee','Navy blazer + white top',['look-92','look-50','look-27','look-153','look-68'],'look-92');
+  merge('family-navy-blazer-white-tee','Navy blazer + white top',['look-92','look-50','look-27','look-153','look-68','look-navy-blazer-white-tee-beige-chinos','look-25'],'look-92');
 
   // Navy blazer over a collared shirt (white, striped or light blue): chinos, denim or dress trousers and
   // loafers, boots or cap-toes are versions of the same tailored idea.
@@ -22,7 +22,7 @@
   // A sweater over a collared shirt with beige chinos; cap-toes, loafers or white sneakers. The sweater,
   // shirt and shoes are the versions. (No "chinos" in the name: Detail strips it.) Includes look-38 and
   // look-75, which used to be their own "Navy crewneck + light trousers" card.
-  merge('family-sweater-shirt-beige','Sweater over shirt + beige trousers',['look-118','look-119','look-124','look-127','look-128','look-126','look-navy-crewneck-white-shirt-beige-chinos','look-38','look-75','look-71','look-74'],'look-118');
+  merge('family-sweater-shirt-beige','Sweater over shirt + beige trousers',['look-118','look-119','look-124','look-127','look-128','look-126','look-navy-crewneck-white-shirt-beige-chinos','look-38','look-75','look-71','look-74','look-53'],'look-118');
 
   // Dark charcoal crewneck over a light blue dress shirt with brown cap-toes; dress trousers or black chinos.
   merge('family-charcoal-crew-lightblue','Charcoal crewneck + light blue shirt',['look-122','look-125'],'look-122');
@@ -30,12 +30,12 @@
   // Cream crewneck over a light blue dress shirt with cap-toes; black or navy trousers.
   merge('family-cream-crew-lightblue','Cream crewneck + light blue shirt',['look-129','look-136','look-120','look-cream-crewneck-lightblue-navy-dress-brown'],'look-129');
 
-  // A sweater over a collared shirt with grey trousers (dress or chinos) and leather shoes; the sweater,
+  // A sweater over a collared shirt with grey or charcoal trousers (dress or chinos) and leather shoes; the sweater,
   // shirt, trousers and shoes are the versions.
-  merge('family-sweater-shirt-grey','Sweater over shirt + grey trousers',['look-134','look-140','look-141','look-144','look-168','look-115','look-121','look-123','look-navy-vneck-lightblue-grey-dress','look-133','look-79'],'look-134');
+  merge('family-sweater-shirt-grey','Sweater over shirt + grey trousers',['look-134','look-140','look-141','look-144','look-168','look-115','look-121','look-123','look-navy-vneck-lightblue-grey-dress','look-133','look-79','look-navy-vneck-striped-shirt-charcoal-dress','look-grey-quarterzip-white-shirt-charcoal-dress'],'look-134');
 
   // Navy quarter-zip over a shirt with light chinos; loafers or white sneakers.
-  merge('family-navy-quarterzip-shirt','Navy quarter-zip + shirt',['look-169','look-170','look-162'],'look-169');
+  merge('family-navy-quarterzip-shirt','Navy quarter-zip + shirt',['look-169','look-170','look-162','look-33'],'look-169');
 
   // Grey blazer over a white shirt; denim, navy dress trousers or cream chinos.
   merge('family-grey-blazer-white-shirt','Grey blazer + white shirt',['look-26','look-grey-blazer-white-shirt-navy-dress','look-46'],'look-26');
@@ -51,6 +51,32 @@
 
   // A sweater over a white shirt with jeans; sneakers or suede Chelsea boots.
   merge('family-sweater-shirt-denim','Sweater over shirt + denim',['look-navy-crewneck-white-shirt-blue-denim-taupe','look-87','look-85','look-86'],'look-navy-crewneck-white-shirt-blue-denim-taupe');
+
+  /* ---------- Extrapolated from the cards above ----------
+     The base of the outfit makes the card; colours and shoes are versions:
+     - a distinctive jacket or overshirt groups on its own; a blazer groups by blazer + what's under it
+     - a sweater over a shirt groups by trouser colour family (beige/cream, grey/charcoal, navy, black, denim, olive)
+     - a shirt, polo or tee on its own groups by its colour + trouser colour family */
+  merge('family-sweater-shirt-navy','Sweater over shirt + navy trousers',['look-114','look-135','look-lightgrey-vneck-white-shirt-navy-dress','look-90','look-72'],'look-114');
+  merge('family-sweater-shirt-black','Sweater over shirt + black trousers',['look-charcoal-quarterzip-lightblue-black-dress-black','look-139'],'look-charcoal-quarterzip-lightblue-black-dress-black');
+  merge('family-sweater-shirt-olive','Sweater over shirt + olive trousers',['look-111','look-137'],'look-111');
+  merge('family-lightblue-shirt-denim','Light blue shirt + denim',['look-21','look-172'],'look-21');
+  merge('family-white-shirt-beige','White shirt + beige trousers',['look-white-shirt-beige-chinos-white-sneakers','look-42','look-154'],'look-white-shirt-beige-chinos-white-sneakers');
+  merge('family-olive-buttondown-cream','Olive shirt + light trousers',['look-94','look-63','look-110','look-olive-shirt-beige-chinos-white-sneakers','look-142'],'look-94');
+  merge('family-cream-shirt-earth','Cream shirt + earthy trousers',['look-97','look-83'],'look-97');
+  merge('family-navy-polo-light','Navy polo + light trousers',['look-05','look-40','look-navy-polo-beige-chinos-white-sneakers','look-82'],'look-05');
+  merge('family-navy-polo-denim','Navy polo + denim',['look-35','look-10','look-100'],'look-35');
+  merge('family-black-polo-denim','Black polo + denim',['look-52','look-173'],'look-52');
+  merge('family-black-polo-dark','Black polo + dark trousers',['look-55','look-149'],'look-55');
+  merge('family-grey-polo-beige','Grey polo + beige trousers',['look-grey-polo-beige-chinos-white-sneakers','look-158'],'look-grey-polo-beige-chinos-white-sneakers');
+  merge('family-green-polo-light','Green polo + light trousers',['look-01','look-67'],'look-01');
+  merge('family-white-polo-earth','White polo + earthy trousers',['look-47','look-103'],'look-47');
+  merge('family-white-tee-beige','White tee + beige trousers',['look-43','look-99'],'look-43');
+  merge('family-black-tee-beige','Black tee + beige trousers',['look-black-tee-beige-chinos-white-sneakers','look-132'],'look-black-tee-beige-chinos-white-sneakers');
+  merge('family-charcoal-overcoat','Charcoal overcoat',['look-16','look-32'],'look-16');
+  merge('family-navy-casual-jacket','Navy casual jacket',['look-155','look-164','look-167','look-navy-jacket-white-tee-beige-chinos'],'look-155');
+  merge('family-olive-overshirt','Olive overshirt',['look-51','look-54'],'look-51');
+  merge('family-tan-overshirt','Tan overshirt',['look-77','look-88','look-146'],'look-77');
 
   // The brown suede jacket is the outfit; the top, trousers and shoes under it are its versions.
   merge('family-brown-suede-jacket','Brown suede jacket',['look-41','look-156','look-76','look-57','look-66','look-145','look-147','look-148'],'look-41');
