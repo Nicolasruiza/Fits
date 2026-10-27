@@ -10,6 +10,8 @@
    - The three olive-shirt looks (look-63, look-94, look-110) share one family as variants of one outfit.
    - The dark charcoal crewneck and the black V-neck are separate garments in separate families.
    - Cognac suede jacket is Outerwear, so it can be linked with the other jackets.
+   - The striped linen and micro-check shirts are the owned light blue Oxford (wardrobe-redundancy.js), so the
+     striped linen + beige chinos + loafers look is an alias of the identical look-62.
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
@@ -51,7 +53,6 @@ families:[
 {id:'family-navy-blazer-white-tee-beige-chinos',name:'Navy blazer + white T-shirt + beige chinos',hero:'look-navy-blazer-white-tee-beige-chinos',looks:['look-navy-blazer-white-tee-beige-chinos']},
 {id:'family-olive-shirt-beige-chinos-white-sneakers',name:'Olive shirt + beige chinos + white sneakers',hero:'look-olive-shirt-beige-chinos-white-sneakers',looks:['look-olive-shirt-beige-chinos-white-sneakers']},
 {id:'family-cream-crewneck-beige-chinos-white-sneakers',name:'Cream crewneck + beige chinos + white sneakers',hero:'look-cream-crewneck-beige-chinos-white-sneakers',looks:['look-cream-crewneck-beige-chinos-white-sneakers']},
-{id:'family-striped-linen-shirt-beige-chinos-loafers',name:'Striped linen shirt + beige chinos + brown loafers',hero:'look-striped-linen-shirt-beige-chinos-loafers',looks:['look-striped-linen-shirt-beige-chinos-loafers']},
 {id:'family-navy-jacket-white-tee-beige-chinos',name:'Navy jacket + white T-shirt + beige chinos',hero:'look-navy-jacket-white-tee-beige-chinos',looks:['look-navy-jacket-white-tee-beige-chinos']},
 {id:'family-white-shirt-olive-trousers-brown-captoe',name:'White shirt + olive trousers + brown cap-toe shoes',hero:'look-white-shirt-olive-trousers-brown-captoe',looks:['look-white-shirt-olive-trousers-brown-captoe']},
 {id:'family-lightblue-shirt-beige-chinos-brown-captoe',name:'Light blue dress shirt + beige chinos + brown cap-toe shoes',hero:'look-lightblue-shirt-beige-chinos-brown-captoe',looks:['look-lightblue-shirt-beige-chinos-brown-captoe']},
@@ -72,7 +73,7 @@ families:[
 {id:'family-white-shirt-denim',name:'White shirt + denim',hero:'look-60',looks:['look-60']},
 {id:'family-black-tee-denim',name:'Black tee + denim',hero:'look-61',looks:['look-61']},
 {id:'family-burgundy-knit-grey',name:'Burgundy knit + grey trousers',hero:'look-64',looks:['look-64']},
-{id:'family-striped-linen-summer',name:'Striped linen summer',hero:'look-65',looks:['look-65']},
+{id:'family-striped-linen-summer',name:'Light blue Oxford + white linen shorts',hero:'look-65',looks:['look-65']},
 {id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-70',looks:['look-70','look-73','look-75']},
 {id:'family-olive-crewneck-shirt',name:'Pale green crewneck + shirt',hero:'look-71',looks:['look-71','look-72','look-74']},
 {id:'family-cognac-suede-denim',name:'Cognac suede + dark denim',hero:'look-76',looks:['look-76']},
@@ -239,7 +240,6 @@ looks:[
 {id:'look-navy-blazer-white-tee-beige-chinos',family:'family-navy-blazer-white-tee-beige-chinos',name:'Navy blazer + white T-shirt + beige chinos',image:'assets/look-13-navy-blazer-white-tee-beige-loafers.webp?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-tee','beige-chinos','brown-belt','brown-loafers']},
 {id:'look-olive-shirt-beige-chinos-white-sneakers',family:'family-olive-shirt-beige-chinos-white-sneakers',name:'Olive shirt + beige chinos + white sneakers',image:'assets/look-14-olive-shirt-beige-white.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['olive-buttondown','beige-chinos','white-leather-sneakers']},
 {id:'look-cream-crewneck-beige-chinos-white-sneakers',family:'family-cream-crewneck-beige-chinos-white-sneakers',name:'Cream crewneck + beige chinos + white sneakers',image:'assets/look-15-cream-crewneck-beige-white.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['cream-crewneck-sweater','beige-chinos','white-leather-sneakers']},
-{id:'look-striped-linen-shirt-beige-chinos-loafers',family:'family-striped-linen-shirt-beige-chinos-loafers',name:'Striped linen shirt + beige chinos + brown loafers',image:'assets/look-16-striped-linen-beige-loafers.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['striped-blue-linen-shirt','beige-chinos','brown-belt','brown-loafers']},
 {id:'look-navy-jacket-white-tee-beige-chinos',family:'family-navy-jacket-white-tee-beige-chinos',name:'Navy jacket + white T-shirt + beige chinos',image:'assets/look-17-navy-jacket-white-tee-beige-white.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['navy-bomber','white-tee','beige-chinos','white-leather-sneakers']},
 {id:'look-white-shirt-olive-trousers-brown-captoe',family:'family-white-shirt-olive-trousers-brown-captoe',name:'White shirt + olive trousers + brown cap-toe shoes',image:'assets/look-folder-a-white-shirt-olive-chinos-brown-captoe.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['white-shirt','olive-trousers','brown-belt','owned-brown-leather-captoe']},
 {id:'look-lightblue-shirt-beige-chinos-brown-captoe',family:'family-lightblue-shirt-beige-chinos-brown-captoe',name:'Light blue dress shirt + beige chinos + brown cap-toe shoes',image:'assets/look-folder-b-lightblue-shirt-beige-chinos-brown-captoe.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['light-blue-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']},
@@ -383,7 +383,7 @@ pieces:[
 {id:'white-polo',name:'White polo',category:'Top',status:'owned'},
 {id:'navy-polo',name:'Navy blue polo',category:'Top',status:'owned'},
 {id:'grey-polo',name:'Grey polo',category:'Top',status:'missing'},
-{id:'light-blue-oxford',name:'Light blue Oxford shirt',category:'Top',status:'missing'},
+{id:'light-blue-oxford',name:'Light blue Oxford shirt',category:'Top',status:'owned'},
 {id:'white-shirt',name:'White button-up shirt',category:'Top',status:'missing'},
 {id:'white-tee',name:'White crew-neck T-shirt',category:'Top',status:'missing'},
 {id:'grey-tee',name:'Light grey crew-neck T-shirt',category:'Top',status:'missing'},
@@ -509,6 +509,7 @@ inspirations:[
 {id:'inspiration-0554',image:'assets/inspiration-0554.jpeg',title:'Blue denim jacket',summary:'Useful outerwear reference',status:'Footwear not shown'}
 ],
 lookAliases:{
-'look-69':'look-38'
+'look-69':'look-38',
+'look-striped-linen-shirt-beige-chinos-loafers':'look-62'
 }
 };

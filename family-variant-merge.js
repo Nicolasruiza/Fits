@@ -21,7 +21,7 @@
      trouser colour (beige, cream and khaki count as one). Only these change between its versions:
      - the shirt under it, among similar light shirts (white, cream, light blue);
      - under a blazer, a white tee or a white polo (a white shirt is a different card);
-     - on its own, the same shirt or polo (light blue Oxford, dress and micro-check count as one);
+     - on its own, the same shirt or polo (light blue Oxford and dress shirt count as one);
      - the shoes, always.
      Navy, charcoal and black trousers are different colours; so are pale green and olive sweaters. */
   merge('family-v-t-green-polo-beige','Green polo + beige trousers',['look-01','look-67'],'look-01');
