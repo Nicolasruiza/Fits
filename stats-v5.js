@@ -140,12 +140,12 @@
 
   function render(){
     const y=window.scrollY;
-    if(ui.view==='history'){root.innerHTML=`<div class="v5">${historyView()}</div>${V.nav('stats')}`;window.scrollTo(0,y);return}
+    if(ui.view==='history'){root.innerHTML=`<div class="v5 v5-wide">${historyView()}</div>${V.nav('stats')}`;window.scrollTo(0,y);return}
     const m=model();
     const uniqueLooks=new Set(m.recs.map(r=>r.lookId)).size;
     const usedPieces=m.ownedPieces.filter(p=>(m.pieceCounts.get(p.id)||0)>0).length;
     const tab=(id,label)=>`<button class="v5-tab${ui.tab===id?' is-active':''}" role="tab" aria-selected="${ui.tab===id}" data-action="tab" data-tab="${id}">${label}</button>`;
-    root.innerHTML=`<div class="v5"><header class="v5-header"><h1>Stats</h1><span>${m.recs.length} ${m.recs.length===1?'WEAR':'WEARS'}</span></header>
+    root.innerHTML=`<div class="v5 v5-wide"><header class="v5-header"><h1>Stats</h1><span>${m.recs.length} ${m.recs.length===1?'WEAR':'WEARS'}</span></header>
       ${monthCard(m)}
       <div class="v5-tabs" role="tablist" aria-label="Stats">${tab('looks',`Looks · ${uniqueLooks} worn`)}${tab('pieces',`Pieces · ${usedPieces} used`)}</div>
       ${ui.tab==='looks'?looksTab(m):piecesTab(m)}
