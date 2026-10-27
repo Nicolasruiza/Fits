@@ -24,7 +24,7 @@
     'loader-audit.js?v=3',
     'approved-photo-integrity.js?v=7',
     'family-variant-rules.js?v=3',
-    'family-variant-merge.js?v=11',
+    'family-variant-merge.js?v=12',
     'wardrobe-explicit-state.js?v=16',
     // Climate and seasons
     'climate-rules.js?v=2',
