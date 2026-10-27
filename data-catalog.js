@@ -10,7 +10,7 @@
    - The three olive-shirt looks (look-63, look-94, look-110) share one family as variants of one outfit.
    - The dark charcoal crewneck and the black V-neck are separate garments in separate families.
    - Cognac suede jacket is Outerwear, so it can be linked with the other jackets.
-   - The striped linen and micro-check shirts are one light blue weekend shirt (wardrobe-redundancy.js), so the
+   - The striped linen and micro-check shirts are the owned light blue Oxford (wardrobe-redundancy.js), so the
      striped linen + beige chinos + loafers look is an alias of the identical look-62.
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
@@ -73,7 +73,7 @@ families:[
 {id:'family-white-shirt-denim',name:'White shirt + denim',hero:'look-60',looks:['look-60']},
 {id:'family-black-tee-denim',name:'Black tee + denim',hero:'look-61',looks:['look-61']},
 {id:'family-burgundy-knit-grey',name:'Burgundy knit + grey trousers',hero:'look-64',looks:['look-64']},
-{id:'family-striped-linen-summer',name:'Light blue weekend shirt + white linen shorts',hero:'look-65',looks:['look-65']},
+{id:'family-striped-linen-summer',name:'Light blue Oxford + white linen shorts',hero:'look-65',looks:['look-65']},
 {id:'family-navy-crewneck-shirt',name:'Navy crewneck + shirt',hero:'look-70',looks:['look-70','look-73','look-75']},
 {id:'family-olive-crewneck-shirt',name:'Pale green crewneck + shirt',hero:'look-71',looks:['look-71','look-72','look-74']},
 {id:'family-cognac-suede-denim',name:'Cognac suede + dark denim',hero:'look-76',looks:['look-76']},
@@ -383,7 +383,7 @@ pieces:[
 {id:'white-polo',name:'White polo',category:'Top',status:'owned'},
 {id:'navy-polo',name:'Navy blue polo',category:'Top',status:'owned'},
 {id:'grey-polo',name:'Grey polo',category:'Top',status:'missing'},
-{id:'light-blue-oxford',name:'Light blue Oxford shirt',category:'Top',status:'missing'},
+{id:'light-blue-oxford',name:'Light blue Oxford shirt',category:'Top',status:'owned'},
 {id:'white-shirt',name:'White button-up shirt',category:'Top',status:'missing'},
 {id:'white-tee',name:'White crew-neck T-shirt',category:'Top',status:'missing'},
 {id:'grey-tee',name:'Light grey crew-neck T-shirt',category:'Top',status:'missing'},
@@ -470,7 +470,6 @@ pieces:[
 {id:'owned-grey-quarterzip',name:'Light grey quarter-zip knit sweater',category:'Top',status:'owned'},
 {id:'owned-brown-buckle-chelsea',name:'Dark brown leather Chelsea boots with buckle detail',category:'Shoes',status:'owned'},
 {id:'owned-lightblue-microcheck-shirt',name:'Light blue micro-check button-down shirt',category:'Top',status:'owned'},
-{id:'owned-lightblue-weekend-shirt',name:'Light blue weekend shirt',category:'Top',status:'owned'},
 {id:'owned-black-vneck',name:'Black V-neck sweater',category:'Top',status:'owned'},
 {id:'owned-green-crewneck',name:'Green crew-neck sweater',category:'Top',status:'owned'},
 {id:'owned-france-blue-henley',name:'Bright France blue short-sleeve henley',category:'Top',status:'owned'},

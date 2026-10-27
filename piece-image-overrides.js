@@ -74,7 +74,6 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "owned-white-henley": "assets/owned-white-henley.webp?v=1",
   "stone-shirt": "assets/catalog-stone-shirt.webp?v=1",
   "striped-blue-linen-shirt": "assets/catalog-striped-blue-linen-shirt.webp?v=1",
-  "owned-lightblue-weekend-shirt": "assets/catalog-striped-blue-linen-shirt.webp?v=1",
   "tan-chelsea": "assets/wardrobe-standardized/tan-chelsea.png?v=1",
   "tan-espadrilles": "assets/catalog-tan-espadrilles.webp?v=1",
   "tan-knit-sweater": "assets/catalog-tan-knit-sweater.webp?v=1",
