@@ -96,9 +96,11 @@
     });
     return out;
   }
+  // Shorts always lead the Warmer order (and close the Colder one), whatever the rest of the outfit adds.
+  const hasShorts=l=>(l.pieces||[]).some(id=>garmentKind(piece(id))==='Shorts');
   function sortByWarmth(cards,dir){
     const k=dir==='colder'?-1:1;
-    return[...cards].sort((a,b)=>k*(warmth(a.look)-warmth(b.look)));
+    return[...cards].sort((a,b)=>k*((hasShorts(b.look)-hasShorts(a.look))||(warmth(a.look)-warmth(b.look))));
   }
 
   /* ---------- Best next buy ----------
