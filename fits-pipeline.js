@@ -12,7 +12,7 @@
 (()=>{
   const steps=[
     // Source data: edit records in data-catalog.js and bump its ?v= here
-    'data-catalog.js?v=9',
+    'data-catalog.js?v=10',
     // Wardrobe cleanup
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
@@ -24,7 +24,7 @@
     'loader-audit.js?v=3',
     'approved-photo-integrity.js?v=7',
     'family-variant-rules.js?v=3',
-    'family-variant-merge.js?v=14',
+    'family-variant-merge.js?v=15',
     'wardrobe-explicit-state.js?v=16',
     // Climate and seasons
     'climate-rules.js?v=2',

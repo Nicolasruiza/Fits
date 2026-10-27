@@ -23,7 +23,7 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'olive-henley':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214259_000a2ac7-c04d-4ca5-ba8b-9f173c12704d_min.webp',
 'navy-henley':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_4949e96e-9a6e-4eae-9f13-1d553a6653a1_min.webp',
 'grey-henley':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214259_7e4837ba-0cca-4699-8adf-26324eae0525_min.webp',
-'taupe-suede-shoes':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214259_a889cb3b-21c7-44eb-9deb-73a09336a84e_min.webp',
+'taupe-suede-shoes':'assets/wardrobe-standardized/taupe-suede-shoes.png?v=1',
 'grey-polo':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_7b50ad21-aad0-458b-92e1-0e26324e1f0b_min.webp',
 'blue-denim':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_402ecde4-7216-418f-a926-01f238d55f04_min.webp',
 'navy-leather-sneakers':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214426_5888becf-d8b9-4f01-81a4-a022f60cc351_min.webp',
@@ -37,6 +37,8 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'navy-tee':'assets/navy-tee.webp?v=1',
 'khaki-shorts':'assets/khaki-shorts.webp?v=1',
 'beige-sneakers':'assets/beige-sneakers.webp?v=1',
+'white-linen-shirt':'assets/wardrobe-standardized/white-linen-shirt.png?v=1',
+'brown-sandals':'assets/wardrobe-standardized/brown-sandals.png?v=1',
 'black-sneakers':'assets/black-sneakers.webp?v=1',
 'offwhite-tee':'assets/offwhite-tee.webp?v=1'
 });

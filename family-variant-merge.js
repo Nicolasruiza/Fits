@@ -26,7 +26,7 @@
      Navy, charcoal and black trousers are different colours; so are pale green and olive sweaters. */
   merge('family-v-t-green-polo-beige','Green polo + beige trousers',['look-01','look-67'],'look-01');
   merge('family-v-t-white-polo-navy','White polo + navy trousers',['look-03','look-07'],'look-03');
-  merge('family-v-t-navy-polo-beige','Navy polo + beige trousers',['look-05','look-40','look-navy-polo-beige-chinos-white-sneakers','look-82'],'look-05');
+  merge('family-v-t-navy-polo-beige','Navy polo + beige trousers',['look-05','look-40','look-navy-polo-beige-chinos-white-sneakers','look-82','look-175'],'look-05');
   merge('family-v-t-navy-polo-dark-denim','Navy polo + dark denim',['look-10','look-100'],'look-10');
   merge('family-v-t-lightblue-shirt-beige','Light blue shirt + beige trousers',['look-62','look-lightblue-dress-shirt-beige-chinos-loafers','look-11','look-28','look-lightblue-shirt-beige-chinos-brown-captoe','look-108','look-116'],'look-62');
   merge('family-v-b-navy-blazer-light-shirt-beige','Navy blazer + light shirt + beige trousers',['look-12','look-navy-blazer-white-shirt-cream-chinos'],'look-12');
