@@ -293,3 +293,6 @@ svg{display:block}
 .w5-editbar-cancel{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff}
 .w5-editbar-save{border:0;background:#fff;color:var(--v5-ink)}
 .w5-editbar-save:disabled{opacity:.45}
+/* Looks card: how many other versions the card has (stack icon + count), top right */
+.v5-variants{position:absolute;right:8px;top:8px;display:flex;align-items:center;gap:3px;padding:3px 8px 3px 6px;border-radius:999px;background:rgba(255,255,255,.92);color:#3f4549;font-size:11px;font-weight:700}
+.v5-variants svg{width:13px;height:13px}
