@@ -235,8 +235,8 @@
     stats:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16M7 20V11M12 20V5M17 20v-6"/></svg>'
   };
   // Looks follows the v5 / classic choice saved by index.html; Wardrobe and Stats exist only in v5.
-  // The bar is built once, straight under <body>, and kept across re-renders: iOS Safari can place a
-  // fixed element that was just re-created at a stale spot mid-screen. Pages still write ${V.nav(key)}
+  // The bar is built once, as the last element of <body>, and kept across re-renders (it is sticky,
+  // see looks-v5.css, so it must stay after the page content). Pages still write ${V.nav(key)}
   // into their template (it returns ''), and call hideNav() for views that have no bar.
   function nav(active){
     const item=(key,href,label)=>key===active
