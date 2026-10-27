@@ -17,9 +17,29 @@
   // chinos, dark denim) and tee vs polo are versions of one smart-casual idea.
   merge('family-navy-blazer-white-tee','Navy blazer + white top',['look-92','look-50','look-27','look-153','look-68'],'look-92');
 
-  // Navy blazer over a white button-up shirt: chinos, denim or dress trousers and loafers or cap-toes
-  // are versions of the same tailored idea.
-  merge('family-navy-blazer-white-shirt','Navy blazer + white shirt',['look-12','look-31','look-navy-blazer-white-shirt-charcoal-dress','look-navy-blazer-white-shirt-cream-chinos','look-151','look-163'],'look-12');
+  // Navy blazer over a collared shirt (white, striped or light blue): chinos, denim or dress trousers and
+  // loafers, boots or cap-toes are versions of the same tailored idea.
+  merge('family-navy-blazer-white-shirt','Navy blazer + shirt',['look-12','look-navy-blazer-striped-shirt-beige-chinos','look-31','look-navy-blazer-white-shirt-charcoal-dress','look-navy-blazer-white-shirt-cream-chinos','look-151','look-163','look-18','look-165','look-166'],'look-12');
+
+  // A sweater over a collared shirt with beige chinos and leather dress shoes (cap-toes or loafers);
+  // the sweater, shirt and shoe colours are the versions. (No "chinos" in the name: Detail strips it.)
+  merge('family-sweater-shirt-beige','Sweater over shirt + beige trousers',['look-118','look-119','look-124','look-127','look-128','look-126'],'look-118');
+
+  // Dark charcoal crewneck over a light blue dress shirt with brown cap-toes; dress trousers or black chinos.
+  merge('family-charcoal-crew-lightblue','Charcoal crewneck + light blue shirt',['look-122','look-125'],'look-122');
+
+  // Cream crewneck over a light blue dress shirt with cap-toes; black or navy trousers.
+  merge('family-cream-crew-lightblue','Cream crewneck + light blue shirt',['look-129','look-136','look-120','look-cream-crewneck-lightblue-navy-dress-brown'],'look-129');
+
+  // A sweater over a collared shirt with grey trousers (dress or chinos) and leather shoes; the sweater,
+  // shirt, trousers and shoes are the versions.
+  merge('family-sweater-shirt-grey','Sweater over shirt + grey trousers',['look-134','look-140','look-141','look-144','look-168','look-115','look-121','look-123','look-navy-vneck-lightblue-grey-dress','look-133','look-79'],'look-134');
+
+  // Navy quarter-zip over a shirt with light chinos; loafers or white sneakers.
+  merge('family-navy-quarterzip-shirt','Navy quarter-zip + shirt',['look-169','look-170','look-162'],'look-169');
+
+  // Grey blazer over a white shirt; denim, navy dress trousers or cream chinos.
+  merge('family-grey-blazer-white-shirt','Grey blazer + white shirt',['look-26','look-grey-blazer-white-shirt-navy-dress','look-46'],'look-26');
 
   // The brown suede jacket is the outfit; the top, trousers and shoes under it are its versions.
   merge('family-brown-suede-jacket','Brown suede jacket',['look-41','look-156','look-76','look-57','look-66','look-145','look-147','look-148'],'look-41');
