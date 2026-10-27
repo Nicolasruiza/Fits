@@ -56,7 +56,7 @@ families:[
 {id:'family-navy-jacket-white-tee-beige-chinos',name:'Navy jacket + white T-shirt + beige chinos',hero:'look-navy-jacket-white-tee-beige-chinos',looks:['look-navy-jacket-white-tee-beige-chinos']},
 {id:'family-white-shirt-olive-trousers-brown-captoe',name:'White shirt + olive trousers + brown cap-toe shoes',hero:'look-white-shirt-olive-trousers-brown-captoe',looks:['look-white-shirt-olive-trousers-brown-captoe']},
 {id:'family-lightblue-shirt-beige-chinos-brown-captoe',name:'Light blue dress shirt + beige chinos + brown cap-toe shoes',hero:'look-lightblue-shirt-beige-chinos-brown-captoe',looks:['look-lightblue-shirt-beige-chinos-brown-captoe']},
-{id:'family-black-tee-olive-trousers-white-sneakers',name:'Black T-shirt + olive trousers + white sneakers',hero:'look-black-tee-olive-trousers-white-sneakers',looks:['look-black-tee-olive-trousers-white-sneakers']},
+{id:'family-black-tee-olive-trousers-white-sneakers',name:'Black T-shirt + olive lightweight joggers',hero:'look-black-tee-olive-trousers-white-sneakers',looks:['look-black-tee-olive-trousers-white-sneakers']},
 {id:'family-cream-crewneck-lightblue-navy-dress-brown',name:'Cream crewneck + light blue shirt + navy dress trousers',hero:'look-cream-crewneck-lightblue-navy-dress-brown',looks:['look-cream-crewneck-lightblue-navy-dress-brown']},
 {id:'family-charcoal-quarterzip-lightblue-black-dress-black',name:'Charcoal quarter-zip + light blue shirt + black dress trousers',hero:'look-charcoal-quarterzip-lightblue-black-dress-black',looks:['look-charcoal-quarterzip-lightblue-black-dress-black']},
 {id:'family-charcoal-quarterzip-black-polo-navy-chinos',name:'Charcoal quarter-zip + black polo + navy chinos',hero:'look-charcoal-quarterzip-black-polo-navy-chinos',looks:['look-charcoal-quarterzip-black-polo-navy-chinos']},
@@ -175,7 +175,12 @@ families:[
 {id:'family-look-175',name:'Navy polo + beige chinos + beige sneakers',hero:'look-175',looks:['look-175']},
 {id:'family-look-176',name:'White T-shirt + khaki shorts',hero:'look-176',looks:['look-176']},
 {id:'family-look-177',name:'White shirt + blue denim',hero:'look-177',looks:['look-177']},
-{id:'family-look-178',name:'White linen shirt + cream trousers',hero:'look-178',looks:['look-178']}
+{id:'family-look-178',name:'White linen shirt + cream trousers',hero:'look-178',looks:['look-178']},
+{id:'family-look-179',name:'Olive linen shirt + khaki shorts',hero:'look-179',looks:['look-179']},
+{id:'family-look-180',name:'White linen shirt + navy shorts',hero:'look-180',looks:['look-180']},
+{id:'family-look-181',name:'Grey T-shirt + khaki shorts',hero:'look-181',looks:['look-181']},
+{id:'family-look-182',name:'Light blue linen shirt + white shorts',hero:'look-182',looks:['look-182']},
+{id:'family-look-183',name:'Black T-shirt + khaki shorts',hero:'look-183',looks:['look-183']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -243,7 +248,7 @@ looks:[
 {id:'look-navy-jacket-white-tee-beige-chinos',family:'family-navy-jacket-white-tee-beige-chinos',name:'Navy jacket + white T-shirt + beige chinos',image:'assets/look-17-navy-jacket-white-tee-beige-white.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['navy-bomber','white-tee','beige-chinos','white-leather-sneakers']},
 {id:'look-white-shirt-olive-trousers-brown-captoe',family:'family-white-shirt-olive-trousers-brown-captoe',name:'White shirt + olive trousers + brown cap-toe shoes',image:'assets/look-folder-a-white-shirt-olive-chinos-brown-captoe.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['white-shirt','olive-trousers','brown-belt','owned-brown-leather-captoe']},
 {id:'look-lightblue-shirt-beige-chinos-brown-captoe',family:'family-lightblue-shirt-beige-chinos-brown-captoe',name:'Light blue dress shirt + beige chinos + brown cap-toe shoes',image:'assets/look-folder-b-lightblue-shirt-beige-chinos-brown-captoe.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['light-blue-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']},
-{id:'look-black-tee-olive-trousers-white-sneakers',family:'family-black-tee-olive-trousers-white-sneakers',name:'Black T-shirt + olive trousers + white sneakers',image:'assets/look-folder-c-black-tee-olive-trousers-white-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['black-tee','olive-trousers','white-leather-sneakers']},
+{id:'look-black-tee-olive-trousers-white-sneakers',family:'family-black-tee-olive-trousers-white-sneakers',name:'Black T-shirt + olive lightweight joggers + white sneakers',image:'assets/look-folder-c-black-tee-olive-trousers-white-sneakers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['black-tee','owned-olive-lightweight-joggers','white-leather-sneakers']},
 {id:'look-cream-crewneck-lightblue-navy-dress-brown',family:'family-cream-crewneck-lightblue-navy-dress-brown',name:'Cream crewneck + light blue shirt + navy dress trousers',image:'assets/look-folder-d-lightblue-shirt-cream-layer-navy-chinos-brown-captoe.webp?v=1',formal:4,badges:['Office','Dinner'],pieces:['cream-crewneck-sweater','light-blue-dress-shirt','navy-dress-trousers','brown-belt','owned-brown-leather-captoe']},
 {id:'look-charcoal-quarterzip-lightblue-black-dress-black',family:'family-charcoal-quarterzip-lightblue-black-dress-black',name:'Charcoal quarter-zip + light blue shirt + black dress trousers',image:'assets/look-folder-e1-charcoal-quarterzip-lightblue-black-black-captoe.webp?v=1',formal:4,badges:['Office','Dinner'],pieces:['charcoal-quarterzip','light-blue-dress-shirt','black-dress-trousers','dark-belt','owned-black-leather-captoe']},
 {id:'look-charcoal-quarterzip-black-polo-navy-chinos',family:'family-charcoal-quarterzip-black-polo-navy-chinos',name:'Charcoal quarter-zip + black polo + navy chinos',image:'assets/look-folder-e2-charcoal-quarterzip-black-polo-navy-brown-captoe.webp?v=1',formal:3,badges:['Office','Dinner'],pieces:['charcoal-quarterzip','black-polo','navy-trousers','brown-belt','owned-brown-leather-captoe']},
@@ -374,7 +379,12 @@ looks:[
 {id:'look-175',family:'family-look-175',name:'Navy polo + beige chinos + beige sneakers',image:'assets/look-175-navy-polo-beige-beige-sneakers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['navy-polo','beige-chinos','beige-sneakers']},
 {id:'look-176',family:'family-look-176',name:'White T-shirt + khaki shorts + white sneakers',image:'assets/look-176-white-tee-khaki-shorts-white.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['white-tee','khaki-shorts','white-leather-sneakers']},
 {id:'look-177',family:'family-look-177',name:'White shirt + blue denim + taupe suede sneakers',image:'assets/look-177-white-shirt-blue-denim-taupe.png?v=1',formal:2,badges:['Weekend','Travel'],pieces:['white-shirt','blue-denim','taupe-suede-shoes']},
-{id:'look-178',family:'family-look-178',name:'White linen shirt + cream trousers + brown sandals',image:'assets/look-178-white-linen-cream-brown-sandals.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','cream-chinos','brown-sandals']}
+{id:'look-178',family:'family-look-178',name:'White linen shirt + cream trousers + brown sandals',image:'assets/look-178-white-linen-cream-brown-sandals.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','cream-chinos','brown-sandals']},
+{id:'look-179',family:'family-look-179',name:'Olive linen shirt + khaki shorts + white leather sneakers',image:'assets/look-179-olive-linen-khaki-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['olive-buttondown','khaki-shorts','white-leather-sneakers']},
+{id:'look-180',family:'family-look-180',name:'White linen shirt + white T-shirt + navy shorts + white leather sneakers',image:'assets/look-180-white-linen-navy-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','white-tee','navy-tailored-shorts','white-leather-sneakers']},
+{id:'look-181',family:'family-look-181',name:'Grey T-shirt + khaki shorts + white leather sneakers',image:'assets/look-181-grey-tee-khaki-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['grey-tee','khaki-shorts','white-leather-sneakers']},
+{id:'look-182',family:'family-look-182',name:'Light blue linen shirt + white linen shorts + white leather sneakers',image:'assets/look-182-lightblue-linen-white-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['light-blue-linen-shirt','white-linen-shorts','white-leather-sneakers']},
+{id:'look-183',family:'family-look-183',name:'Black T-shirt + khaki shorts + white leather sneakers',image:'assets/look-183-black-tee-khaki-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['black-tee','khaki-shorts','white-leather-sneakers']}
 ],
 pieces:[
 {id:'navy-quarterzip',name:'Navy quarter-zip knit sweater',category:'Top',status:'owned'},
@@ -464,6 +474,7 @@ pieces:[
 {id:'chocolate-trousers',name:'Chocolate brown trousers',category:'Pants',status:'missing'},
 {id:'navy-tee',name:'Navy T-shirt',category:'Top',status:'missing'},
 {id:'khaki-shorts',name:'Khaki shorts',category:'Pants',status:'owned'},
+{id:'navy-tailored-shorts',name:'Navy tailored shorts',category:'Pants',status:'missing'},
 {id:'beige-sneakers',name:'Beige sneakers',category:'Shoes',status:'owned'},
 {id:'black-sneakers',name:'Black sneakers',category:'Shoes',status:'missing'},
 {id:'offwhite-tee',name:'Off-white crewneck T-shirt',category:'Top',status:'missing'},
@@ -478,6 +489,7 @@ pieces:[
 {id:'owned-blue-gingham-shirt',name:'Blue gingham button-down shirt',category:'Top',status:'owned'},
 {id:'owned-rwb-check-shirt',name:'Red, white and blue check button-down shirt',category:'Top',status:'owned'},
 {id:'owned-dark-green-chinos',name:'Dark green chinos',category:'Pants',status:'owned'},
+{id:'owned-olive-lightweight-joggers',name:'Olive lightweight joggers',category:'Pants',status:'owned'},
 {id:'owned-darkbrown-suede-captoe-shoe',name:'Dark brown suede cap-toe dress shoes',category:'Shoes',status:'owned'},
 {id:'owned-darkbrown-suede-italian-laceup',name:'Dark brown suede Italian lace-up shoes',category:'Shoes',status:'owned'},
 {id:'owned-navy-suede-chelsea',name:'Navy blue suede Chelsea boots',category:'Shoes',status:'owned'},
