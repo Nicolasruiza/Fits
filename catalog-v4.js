@@ -41,6 +41,7 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'white-linen-shirt':'assets/wardrobe-standardized/white-linen-shirt.png?v=1',
 'light-blue-linen-shirt':'assets/wardrobe-standardized/light-blue-linen-shirt.png?v=1',
 'owned-olive-lightweight-joggers':'assets/wardrobe-standardized/owned-olive-lightweight-joggers.png?v=1',
+'owned-beige-lightweight-joggers':'assets/wardrobe-standardized/owned-beige-lightweight-joggers.png?v=1',
 'brown-sandals':'assets/wardrobe-standardized/brown-sandals.png?v=1',
 'black-sneakers':'assets/black-sneakers.webp?v=1',
 'offwhite-tee':'assets/offwhite-tee.webp?v=1'

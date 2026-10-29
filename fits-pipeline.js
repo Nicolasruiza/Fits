@@ -12,7 +12,7 @@
 (()=>{
   const steps=[
     // Source data: edit records in data-catalog.js and bump its ?v= here
-    'data-catalog.js?v=15',
+    'data-catalog.js?v=16',
     // Wardrobe cleanup
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
@@ -39,7 +39,7 @@
     // Garment groups for the Wardrobe and Looks filters (FITS_KINDS)
     'garment-kinds.js?v=4',
     // Piece image maps (window.FITS_CATALOG_IMAGES)
-    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=7'
+    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=8'
   ];
   window.FITS_PIPELINE=steps;
   if(typeof document!=='undefined'&&typeof document.write==='function')
