@@ -6,7 +6,7 @@
    Tune everything in FITS_CLIMATE_CONFIG; no other file should hold climate thresholds. */
 (()=>{
   const config={
-    version:1,
+    version:2,
     // Feels-like (°C) bands. A look belongs to a band when its comfort range overlaps it
     // by at least `minOverlapC`.
     thermal:{Colder:{max:10},Mild:{min:10,max:20},Warmer:{min:20}},
@@ -21,6 +21,9 @@
     // Garment warmth by class, first matching rule wins. Unit: roughly "how many T-shirts of warmth".
     garments:[
       {cls:'shorts',slot:'bottom',warmth:0.2,test:/\bshorts\b|bermuda/},
+      // Linen is materially lighter than the generic shirt/trouser rules below.
+      {cls:'linen-shirt',slot:'top',warmth:0.35,test:/linen.*(?:shirt|button)|(?:shirt|button).*linen/},
+      {cls:'linen-trousers',slot:'bottom',warmth:0.25,test:/linen.*(?:trousers?|pants)|(?:trousers?|pants).*linen/},
       {cls:'overcoat',slot:'outer',warmth:1.8,heavy:true,test:/overcoat|topcoat|wool coat|winter coat|parka|puffer|trench|gab[aá]n/},
       {cls:'leather-jacket',slot:'outer',warmth:0.9,test:/leather jacket|biker|suede jacket|racer/},
       {cls:'casual-jacket',slot:'outer',warmth:0.8,test:/bomber|casual jacket|jacket/},
@@ -79,12 +82,17 @@
       return[name,mid<lo?lo-mid:mid>hi?mid-hi:0];
     }).sort((a,b)=>a[1]-b[1])[0][0];
   }
-  const order={seasons:['Summer','Transition','Winter'],thermal:['Colder','Mild','Warmer']};
+  // Hot weather / light outfits first, cold weather / layers last.
+  const order={seasons:['Summer','Transition','Winter'],thermal:['Warmer','Mild','Colder']};
   const sortBy=(list,key)=>[...list].sort((a,b)=>order[key].indexOf(a)-order[key].indexOf(b));
 
   function classifyLook(look){
-    const warmth=lookWarmth(look),range=comfortRange(warmth);
+    const parts=lookPieces(look).map(classify),warmth=lookWarmth(look),range=comfortRange(warmth);
     let seasons=bandsFor(range,config.seasons),thermal=bandsFor(range,config.thermal);
+    // Shorts with only light tops are unambiguously summer outfits, including an
+    // open linen shirt over a tee; layer overlap must not relabel them Transition.
+    const lightweightSummer=parts.some(g=>g.cls==='shorts')&&!parts.some(g=>g.heavy||g.slot==='mid'||g.slot==='outer'||g.knit);
+    if(lightweightSummer){seasons=['Summer'];thermal=['Warmer']}
     if(!seasons.length)seasons=[nearest(range,config.seasons)];
     if(!thermal.length)thermal=[nearest(range,config.thermal)];
     return{warmth:Math.round(warmth*100)/100,comfortC:range,seasons:sortBy(seasons,'seasons'),thermal:sortBy(thermal,'thermal')};

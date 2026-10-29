@@ -94,5 +94,6 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "brown-belt": "assets/piece-brown-belt-transparent.png?v=1",
   "dark-belt": "assets/piece-dark-belt-transparent.png?v=1",
   "navy-blazer": "assets/piece-navy-blazer-transparent.png?v=1",
-  "grey-blazer": "assets/piece-grey-blazer-transparent.png?v=1"
+  "grey-blazer": "assets/piece-grey-blazer-transparent.png?v=1",
+  "black-blazer": "assets/wardrobe-standardized/black-tailored-blazer.png?v=1"
 });

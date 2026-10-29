@@ -194,6 +194,8 @@ families:[
 ,{id:'family-look-194',name:'Pink linen shirt + cream linen trousers',hero:'look-194',looks:['look-194']}
 ,{id:'family-look-195',name:'White linen shirt + navy shorts',hero:'look-195',looks:['look-195']}
 ,{id:'family-look-196',name:'White linen shirt + navy linen trousers',hero:'look-196',looks:['look-196']}
+,{id:'family-look-197',name:'Black blazer + white dress shirt + dark denim',hero:'look-197',looks:['look-197']}
+,{id:'family-look-198',name:'Black blazer + white T-shirt + dark denim',hero:'look-198',looks:['look-198']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -411,6 +413,8 @@ looks:[
 {id:'look-194',family:'family-look-194',name:'Pink linen shirt + cream linen trousers + white leather sneakers',image:'assets/look-194-pink-linen-shirt-cream-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['pink-linen-shirt','cream-linen-trousers','white-leather-sneakers']},
 {id:'look-195',family:'family-look-195',name:'White linen shirt + navy shorts + white leather sneakers',image:'assets/look-195-white-linen-shirt-navy-shorts.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','navy-tailored-shorts','white-leather-sneakers']},
 {id:'look-196',family:'family-look-196',name:'White linen shirt + navy linen trousers + white leather sneakers',image:'assets/look-196-white-linen-shirt-navy-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','navy-linen-trousers','white-leather-sneakers']}
+,{id:'look-197',family:'family-look-197',name:'Black blazer + white dress shirt + dark denim + white leather sneakers',image:'assets/look-197-black-blazer-white-shirt-dark-denim-white.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['black-blazer','white-shirt','dark-denim','dark-belt','white-leather-sneakers']}
+,{id:'look-198',family:'family-look-198',name:'Black blazer + white T-shirt + dark denim + white leather sneakers',image:'assets/look-198-black-blazer-white-tee-dark-denim-white.png?v=1',formal:2,badges:['Dinner','Weekend'],pieces:['black-blazer','white-tee','dark-denim','white-leather-sneakers']}
 ],
 pieces:[
 {id:'navy-quarterzip',name:'Navy quarter-zip knit sweater',category:'Top',status:'owned'},
@@ -451,6 +455,7 @@ pieces:[
 {id:'dark-belt',name:'Dark belt',category:'Accessory',status:'owned'},
 {id:'navy-blazer',name:'Navy blazer',category:'Outerwear',status:'missing'},
 {id:'grey-blazer',name:'Grey blazer',category:'Outerwear',status:'missing'},
+{id:'black-blazer',name:'Black tailored blazer',category:'Outerwear',status:'owned'},
 {id:'navy-bomber',name:'Navy casual jacket',category:'Outerwear',status:'missing'},
 {id:'charcoal-cardigan',name:'Charcoal cardigan',category:'Outerwear',status:'missing'},
 {id:'charcoal-overcoat',name:'Charcoal overcoat',category:'Outerwear',status:'missing'},
