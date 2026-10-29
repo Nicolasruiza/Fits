@@ -2,3 +2,5 @@
 .wear-replace-scrim{position:fixed;inset:0;z-index:60;background:rgba(20,22,23,.42);backdrop-filter:blur(3px)}
 .wear-replace-dialog{position:fixed;z-index:61;left:50%;bottom:max(24px,env(safe-area-inset-bottom));width:min(calc(100% - 32px),420px);transform:translateX(-50%);padding:22px;background:#fff;border:1px solid #e2e4e3;border-radius:22px;box-shadow:0 22px 60px rgba(15,18,20,.25);color:#17191a}
 .wear-replace-dialog .wear-replace-kicker{font-size:10px;font-weight:750;letter-spacing:.1em;color:#777f82}.wear-replace-dialog h2{margin:7px 0 8px;font-size:22px;letter-spacing:-.025em}.wear-replace-dialog p{margin:0;color:#666d70;font-size:13px;line-height:1.45}.wear-replace-dialog>div{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px}.wear-replace-dialog button{min-height:46px;border:1px solid #dfe2e0;border-radius:13px;background:#f5f6f5;color:#242829;font-weight:700;font-size:14px}.wear-replace-dialog button.replace{border-color:#202426;background:#202426;color:#fff}
+.wear-replace-scrim{z-index:10001}
+.wear-replace-dialog{z-index:10002}
