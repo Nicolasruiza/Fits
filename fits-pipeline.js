@@ -12,19 +12,19 @@
 (()=>{
   const steps=[
     // Source data: edit records in data-catalog.js and bump its ?v= here
-    'data-catalog.js?v=16',
+    'data-catalog.js?v=17',
     // Wardrobe cleanup
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
     'wardrobe-normalize.js?v=1',
-    'wardrobe-redundancy.js?v=6',
+    'wardrobe-redundancy.js?v=7',
     'wardrobe-draft-prune.js?v=3',
     // Approved looks, families and ownership
     'approved-look-12.js?v=2',
     'loader-audit.js?v=3',
     'approved-photo-integrity.js?v=7',
     'family-variant-rules.js?v=3',
-    'family-variant-merge.js?v=18',
+    'family-variant-merge.js?v=19',
     'wardrobe-explicit-state.js?v=16',
     // Climate and seasons
     'climate-rules.js?v=2',
@@ -39,7 +39,7 @@
     // Garment groups for the Wardrobe and Looks filters (FITS_KINDS)
     'garment-kinds.js?v=4',
     // Piece image maps (window.FITS_CATALOG_IMAGES)
-    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=8'
+    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=9'
   ];
   window.FITS_PIPELINE=steps;
   if(typeof document!=='undefined'&&typeof document.write==='function')

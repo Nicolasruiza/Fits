@@ -51,6 +51,8 @@
   merge('family-v-k-cream-crewneck-light-shirt-black','Cream crewneck + light shirt + black trousers',['look-129','look-120'],'look-129');
   merge('family-v-k-cream-crewneck-light-shirt-grey','Cream crewneck + light shirt + grey trousers',['look-121','look-133'],'look-121');
   merge('family-v-t-white-shirt-navy','White shirt + navy trousers',['look-131','look-161'],'look-131');
+  merge('family-v-t-white-linen-shirt-cream','White linen shirt + cream linen trousers',['look-178','look-188'],'look-178');
+  merge('family-v-t-white-linen-shirt-navy-shorts','White linen shirt + navy shorts',['look-180','look-195'],'look-195');
   merge('family-v-k-navy-crewneck-light-shirt-grey','Navy crewneck + light shirt + grey trousers',['look-141','look-144','look-168','look-134'],'look-141');
   merge('family-v-b-navy-blazer-light-shirt-navy','Navy blazer + light shirt + navy trousers',['look-163','look-166'],'look-163');
 

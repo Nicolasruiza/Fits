@@ -39,6 +39,11 @@
     Object.entries(aliases).forEach(([from,to])=>{if(!Object.hasOwn(wardrobe,from))return;if(wardrobe[from]==='owned')wardrobe[to]='owned';delete wardrobe[from];changed=true});
     // Once: the user confirmed (2026-10-27) they own the light blue Oxford, even if Edit mode had marked it missing.
     if(!localStorage.getItem('fitsOxfordOwnedConfirmed')){if(wardrobe['light-blue-oxford']!=='owned'&&Object.hasOwn(wardrobe,'light-blue-oxford')){wardrobe['light-blue-oxford']='owned';changed=true}localStorage.setItem('fitsOxfordOwnedConfirmed','1')}
+    // Once: the summer linen wardrobe was confirmed while adding the 2026-10-28 summer look set.
+    if(!localStorage.getItem('fitsSummerLinenOwnedConfirmed')){
+      ['grey-tee','white-linen-shirt','beige-linen-shirt','navy-linen-shirt','pink-linen-shirt','white-linen-shorts','cream-linen-trousers','navy-linen-trousers','navy-tailored-shorts'].forEach(id=>{if(wardrobe[id]!=='owned'){wardrobe[id]='owned';changed=true}});
+      localStorage.setItem('fitsSummerLinenOwnedConfirmed','1');
+    }
     if(changed)localStorage.setItem('fitsWardrobe',JSON.stringify(wardrobe));
     ['fitsWishlistPieces','fitsHiddenPieces'].forEach(key=>{const values=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(values))return;const migrated=[...new Set(values.map(id=>aliases[id]||id))];if(migrated.join('|')!==values.join('|'))localStorage.setItem(key,JSON.stringify(migrated))});
     const swaps=JSON.parse(localStorage.getItem('fitsClosetSwaps')||'{}');let swapsChanged=false;

@@ -80,7 +80,7 @@ Object.assign(PIECE_IMAGES, window.FITS_CATALOG_IMAGES || {}, {
   "tan-overshirt": "assets/catalog-tan-overshirt.webp?v=1",
   "taupe-suede-shoes": "assets/wardrobe-standardized/taupe-suede-shoes.png?v=1",
   "white-leather-sneakers": "assets/owned-br-white-leather-sneakers.webp?v=1",
-  "white-linen-shorts": "assets/catalog-white-linen-shorts.webp?v=1",
+  "white-linen-shorts": "assets/wardrobe-standardized/white-linen-shorts.png?v=1",
   "white-shirt": "assets/wardrobe-standardized/white-shirt-transparent-v2.png?v=2",
   "white-tee": "assets/wardrobe-standardized/white-tee.png?v=1",
   "olive-cable-knit-sweater": "assets/catalog-olive-cable-knit-sweater-transparent-v2.png?v=2",

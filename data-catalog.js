@@ -182,6 +182,18 @@ families:[
 {id:'family-look-182',name:'Light blue linen shirt + white shorts',hero:'look-182',looks:['look-182']},
 {id:'family-look-183',name:'Black T-shirt + khaki shorts',hero:'look-183',looks:['look-183']},
 {id:'family-look-184',name:'Navy polo + beige lightweight joggers',hero:'look-184',looks:['look-184']}
+,{id:'family-look-185',name:'Blue-grey T-shirt + white linen shorts',hero:'look-185',looks:['look-185']}
+,{id:'family-look-186',name:'Blue-grey T-shirt + cream linen trousers',hero:'look-186',looks:['look-186']}
+,{id:'family-look-187',name:'White linen shirt + white linen shorts',hero:'look-187',looks:['look-187']}
+,{id:'family-look-188',name:'White linen shirt + cream linen trousers',hero:'look-188',looks:['look-188']}
+,{id:'family-look-189',name:'Beige linen shirt + white linen shorts',hero:'look-189',looks:['look-189']}
+,{id:'family-look-190',name:'Beige linen shirt + cream linen trousers',hero:'look-190',looks:['look-190']}
+,{id:'family-look-191',name:'Navy linen shirt + white linen shorts',hero:'look-191',looks:['look-191']}
+,{id:'family-look-192',name:'Navy linen shirt + cream linen trousers',hero:'look-192',looks:['look-192']}
+,{id:'family-look-193',name:'Pink linen shirt + white linen shorts',hero:'look-193',looks:['look-193']}
+,{id:'family-look-194',name:'Pink linen shirt + cream linen trousers',hero:'look-194',looks:['look-194']}
+,{id:'family-look-195',name:'White linen shirt + navy shorts',hero:'look-195',looks:['look-195']}
+,{id:'family-look-196',name:'White linen shirt + navy linen trousers',hero:'look-196',looks:['look-196']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -386,7 +398,19 @@ looks:[
 {id:'look-181',family:'family-look-181',name:'Grey T-shirt + khaki shorts + white leather sneakers',image:'assets/look-181-grey-tee-khaki-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['grey-tee','khaki-shorts','white-leather-sneakers']},
 {id:'look-182',family:'family-look-182',name:'Light blue linen shirt + white linen shorts + white leather sneakers',image:'assets/look-182-lightblue-linen-white-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['light-blue-linen-shirt','white-linen-shorts','white-leather-sneakers']},
 {id:'look-183',family:'family-look-183',name:'Black T-shirt + khaki shorts + white leather sneakers',image:'assets/look-183-black-tee-khaki-shorts-white-leather.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['black-tee','khaki-shorts','white-leather-sneakers']},
-{id:'look-184',family:'family-look-184',name:'Navy polo + beige lightweight joggers + white leather sneakers',image:'assets/look-184-navy-polo-beige-joggers-white-leather.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['navy-polo','owned-beige-lightweight-joggers','white-leather-sneakers']}
+{id:'look-184',family:'family-look-184',name:'Navy polo + beige lightweight joggers + white leather sneakers',image:'assets/look-184-navy-polo-beige-joggers-white-leather.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['navy-polo','owned-beige-lightweight-joggers','white-leather-sneakers']},
+{id:'look-185',family:'family-look-185',name:'Blue-grey T-shirt + white linen shorts + white leather sneakers',image:'assets/look-185-bluegrey-tee-white-linen-shorts.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['grey-tee','white-linen-shorts','white-leather-sneakers']},
+{id:'look-186',family:'family-look-186',name:'Blue-grey T-shirt + cream linen trousers + white leather sneakers',image:'assets/look-186-bluegrey-tee-cream-linen-trousers.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['grey-tee','cream-linen-trousers','white-leather-sneakers']},
+{id:'look-187',family:'family-look-187',name:'White linen shirt + white linen shorts + white leather sneakers',image:'assets/look-187-white-linen-shirt-white-linen-shorts.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','white-linen-shorts','white-leather-sneakers']},
+{id:'look-188',family:'family-look-188',name:'White linen shirt + cream linen trousers + white leather sneakers',image:'assets/look-188-white-linen-shirt-cream-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','cream-linen-trousers','white-leather-sneakers']},
+{id:'look-189',family:'family-look-189',name:'Beige linen shirt + white linen shorts + white leather sneakers',image:'assets/look-189-beige-linen-shirt-white-linen-shorts.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['beige-linen-shirt','white-linen-shorts','white-leather-sneakers']},
+{id:'look-190',family:'family-look-190',name:'Beige linen shirt + cream linen trousers + white leather sneakers',image:'assets/look-190-beige-linen-shirt-cream-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['beige-linen-shirt','cream-linen-trousers','white-leather-sneakers']},
+{id:'look-191',family:'family-look-191',name:'Navy linen shirt + white linen shorts + white leather sneakers',image:'assets/look-191-navy-linen-shirt-white-linen-shorts.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['navy-linen-shirt','white-linen-shorts','white-leather-sneakers']},
+{id:'look-192',family:'family-look-192',name:'Navy linen shirt + cream linen trousers + white leather sneakers',image:'assets/look-192-navy-linen-shirt-cream-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['navy-linen-shirt','cream-linen-trousers','white-leather-sneakers']},
+{id:'look-193',family:'family-look-193',name:'Pink linen shirt + white linen shorts + white leather sneakers',image:'assets/look-193-pink-linen-shirt-white-linen-shorts.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['pink-linen-shirt','white-linen-shorts','white-leather-sneakers']},
+{id:'look-194',family:'family-look-194',name:'Pink linen shirt + cream linen trousers + white leather sneakers',image:'assets/look-194-pink-linen-shirt-cream-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['pink-linen-shirt','cream-linen-trousers','white-leather-sneakers']},
+{id:'look-195',family:'family-look-195',name:'White linen shirt + navy shorts + white leather sneakers',image:'assets/look-195-white-linen-shirt-navy-shorts.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','navy-tailored-shorts','white-leather-sneakers']},
+{id:'look-196',family:'family-look-196',name:'White linen shirt + navy linen trousers + white leather sneakers',image:'assets/look-196-white-linen-shirt-navy-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','navy-linen-trousers','white-leather-sneakers']}
 ],
 pieces:[
 {id:'navy-quarterzip',name:'Navy quarter-zip knit sweater',category:'Top',status:'owned'},
@@ -398,7 +422,7 @@ pieces:[
 {id:'light-blue-oxford',name:'Light blue Oxford shirt',category:'Top',status:'owned'},
 {id:'white-shirt',name:'White button-up shirt',category:'Top',status:'missing'},
 {id:'white-tee',name:'White crew-neck T-shirt',category:'Top',status:'missing'},
-{id:'grey-tee',name:'Light grey crew-neck T-shirt',category:'Top',status:'missing'},
+{id:'grey-tee',name:'Blue-grey crew-neck T-shirt',category:'Top',status:'owned'},
 {id:'dark-crewneck',name:'Very dark charcoal crewneck sweater',category:'Top',status:'missing'},
 {id:'navy-crewneck',name:'Navy crewneck sweater',category:'Top',status:'missing'},
 {id:'black-turtleneck',name:'Black turtleneck',category:'Top',status:'missing'},
@@ -432,13 +456,15 @@ pieces:[
 {id:'charcoal-overcoat',name:'Charcoal overcoat',category:'Outerwear',status:'missing'},
 {id:'light-blue-linen-shirt',name:'Light blue linen shirt',category:'Top',status:'missing'},
 {id:'white-linen-shirt',name:'White linen shirt',category:'Top',status:'owned'},
-{id:'pink-linen-shirt',name:'Pink linen shirt',category:'Top',status:'missing'},
-{id:'beige-linen-shirt',name:'Beige linen shirt',category:'Top',status:'missing'},
+{id:'pink-linen-shirt',name:'Pink linen shirt',category:'Top',status:'owned'},
+{id:'beige-linen-shirt',name:'Beige linen shirt',category:'Top',status:'owned'},
+{id:'navy-linen-shirt',name:'Navy linen shirt',category:'Top',status:'owned'},
 {id:'beige-shorts',name:'Beige tailored shorts',category:'Pants',status:'missing'},
 {id:'denim-shorts',name:'Denim shorts',category:'Pants',status:'missing'},
 {id:'olive-shorts',name:'Olive tailored shorts',category:'Pants',status:'missing'},
 {id:'grey-shorts',name:'Grey tailored shorts',category:'Pants',status:'missing'},
-{id:'cream-linen-trousers',name:'Cream linen trousers',category:'Pants',status:'missing'},
+{id:'cream-linen-trousers',name:'Cream linen trousers',category:'Pants',status:'owned'},
+{id:'navy-linen-trousers',name:'Navy linen trousers',category:'Pants',status:'owned'},
 {id:'taupe-linen-trousers',name:'Taupe linen trousers',category:'Pants',status:'missing'},
 {id:'beige-espadrilles',name:'Beige espadrilles',category:'Shoes',status:'missing'},
 {id:'brown-sandals',name:'Brown leather sandals',category:'Shoes',status:'owned'},
@@ -464,7 +490,7 @@ pieces:[
 {id:'green-buttonup',name:'Green button-up shirt',category:'Top',status:'missing'},
 {id:'burgundy-knit-polo',name:'Burgundy knit polo',category:'Top',status:'missing'},
 {id:'striped-blue-linen-shirt',name:'Blue striped linen shirt',category:'Top',status:'missing'},
-{id:'white-linen-shorts',name:'White linen shorts',category:'Pants',status:'missing'},
+{id:'white-linen-shorts',name:'White linen shorts',category:'Pants',status:'owned'},
 {id:'tan-espadrilles',name:'Tan summer espadrilles',category:'Shoes',status:'missing'},
 {id:'tan-overshirt',name:'Light tan cotton overshirt',category:'Outerwear',status:'missing'},
 {id:'olive-cable-knit-sweater',name:'Olive cable-knit crewneck sweater',category:'Top',status:'missing'},
@@ -476,7 +502,7 @@ pieces:[
 {id:'chocolate-trousers',name:'Chocolate brown trousers',category:'Pants',status:'missing'},
 {id:'navy-tee',name:'Navy T-shirt',category:'Top',status:'missing'},
 {id:'khaki-shorts',name:'Khaki shorts',category:'Pants',status:'owned'},
-{id:'navy-tailored-shorts',name:'Navy tailored shorts',category:'Pants',status:'missing'},
+{id:'navy-tailored-shorts',name:'Navy tailored shorts',category:'Pants',status:'owned'},
 {id:'beige-sneakers',name:'Beige sneakers',category:'Shoes',status:'owned'},
 {id:'black-sneakers',name:'Black sneakers',category:'Shoes',status:'missing'},
 {id:'offwhite-tee',name:'Off-white crewneck T-shirt',category:'Top',status:'missing'},
