@@ -196,6 +196,8 @@ families:[
 ,{id:'family-look-196',name:'White linen shirt + navy linen trousers',hero:'look-196',looks:['look-196']}
 ,{id:'family-look-197',name:'Black blazer + white dress shirt + dark denim',hero:'look-197',looks:['look-197']}
 ,{id:'family-look-198',name:'Black blazer + white T-shirt + dark denim',hero:'look-198',looks:['look-198']}
+,{id:'family-look-199',name:'Light grey quarter-zip + navy chinos',hero:'look-199',looks:['look-199']}
+,{id:'family-look-200',name:'Beige linen shirt + navy chinos',hero:'look-200',looks:['look-200']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -415,6 +417,8 @@ looks:[
 {id:'look-196',family:'family-look-196',name:'White linen shirt + navy linen trousers + white leather sneakers',image:'assets/look-196-white-linen-shirt-navy-linen-trousers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['white-linen-shirt','navy-linen-trousers','white-leather-sneakers']}
 ,{id:'look-197',family:'family-look-197',name:'Black blazer + white dress shirt + dark denim + white leather sneakers',image:'assets/look-197-black-blazer-white-shirt-dark-denim-white.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['black-blazer','white-shirt','dark-denim','dark-belt','white-leather-sneakers']}
 ,{id:'look-198',family:'family-look-198',name:'Black blazer + white T-shirt + dark denim + white leather sneakers',image:'assets/look-198-black-blazer-white-tee-dark-denim-white.png?v=1',formal:2,badges:['Dinner','Weekend'],pieces:['black-blazer','white-tee','dark-denim','white-leather-sneakers']}
+,{id:'look-199',family:'family-look-199',name:'Light grey quarter-zip + navy chinos + white leather sneakers',image:'assets/look-199-grey-quarterzip-navy-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','navy-trousers','white-leather-sneakers']}
+,{id:'look-200',family:'family-look-200',name:'Beige linen shirt + navy chinos + brown loafers',image:'assets/look-200-beige-linen-shirt-navy-chinos-brown-loafers.png?v=1',formal:3,badges:['Summer','Office','Dinner'],pieces:['beige-linen-shirt','navy-trousers','brown-belt','brown-loafers']}
 ],
 pieces:[
 {id:'navy-quarterzip',name:'Navy quarter-zip knit sweater',category:'Top',status:'owned'},
