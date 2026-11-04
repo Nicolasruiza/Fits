@@ -198,6 +198,12 @@ families:[
 ,{id:'family-look-198',name:'Black blazer + white T-shirt + dark denim',hero:'look-198',looks:['look-198']}
 ,{id:'family-look-199',name:'Light grey quarter-zip + navy chinos',hero:'look-199',looks:['look-199']}
 ,{id:'family-look-200',name:'Beige linen shirt + navy chinos',hero:'look-200',looks:['look-200']}
+,{id:'family-look-201',name:'Charcoal quarter-zip + black chinos',hero:'look-201',looks:['look-201']}
+,{id:'family-look-202',name:'Grey V-neck + striped shirt + navy chinos',hero:'look-202',looks:['look-202']}
+,{id:'family-look-203',name:'Striped shirt + black sweater + camel chinos',hero:'look-203',looks:['look-203']}
+,{id:'family-look-204',name:'Striped shirt + grey sweater + olive chinos',hero:'look-204',looks:['look-204']}
+,{id:'family-look-205',name:'Navy V-neck + striped shirt + camel chinos',hero:'look-205',looks:['look-205']}
+,{id:'family-look-206',name:'Black V-neck + striped shirt + beige chinos',hero:'look-206',looks:['look-206']}
 ],
 looks:[
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
@@ -419,6 +425,12 @@ looks:[
 ,{id:'look-198',family:'family-look-198',name:'Black blazer + white T-shirt + dark denim + white leather sneakers',image:'assets/look-198-black-blazer-white-tee-dark-denim-white.png?v=1',formal:2,badges:['Dinner','Weekend'],pieces:['black-blazer','white-tee','dark-denim','white-leather-sneakers']}
 ,{id:'look-199',family:'family-look-199',name:'Light grey quarter-zip + navy chinos + white leather sneakers',image:'assets/look-199-grey-quarterzip-navy-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','navy-trousers','white-leather-sneakers']}
 ,{id:'look-200',family:'family-look-200',name:'Beige linen shirt + navy chinos + brown loafers',image:'assets/look-200-beige-linen-shirt-navy-chinos-brown-loafers.png?v=1',formal:3,badges:['Summer','Office','Dinner'],pieces:['beige-linen-shirt','navy-trousers','brown-belt','brown-loafers']}
+,{id:'look-201',family:'family-look-201',name:'Charcoal quarter-zip + black chinos + white leather sneakers',image:'assets/look-201-charcoal-quarterzip-black-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['charcoal-quarterzip','grey-tee','black-chinos','white-leather-sneakers']}
+,{id:'look-202',family:'family-look-202',name:'Light grey V-neck + striped shirt + navy chinos + black cap-toe shoes',image:'assets/look-202-grey-vneck-striped-shirt-navy-black.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['light-grey-vneck-sweater','sky-blue-striped-dress-shirt','navy-trousers','dark-belt','owned-black-leather-captoe']}
+,{id:'look-203',family:'family-look-203',name:'Striped shirt + black sweater + camel chinos + brown cap-toe shoes',image:'assets/look-203-striped-shirt-black-sweater-camel-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','owned-black-vneck','beige-chinos','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-204',family:'family-look-204',name:'Striped shirt + grey sweater + olive chinos + brown cap-toe shoes',image:'assets/look-204-striped-shirt-grey-sweater-olive-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','grey-crewneck','olive-trousers','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-205',family:'family-look-205',name:'Navy V-neck + striped shirt + camel chinos + brown cap-toe shoes',image:'assets/look-205-navy-vneck-striped-shirt-camel-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-vneck-sweater','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-206',family:'family-look-206',name:'Black V-neck + striped shirt + beige chinos + brown cap-toe shoes',image:'assets/look-206-black-vneck-striped-shirt-beige-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['owned-black-vneck','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
 ],
 pieces:[
 {id:'navy-quarterzip',name:'Navy quarter-zip knit sweater',category:'Top',status:'owned'},
