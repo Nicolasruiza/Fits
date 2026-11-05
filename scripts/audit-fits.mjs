@@ -128,7 +128,8 @@ for(const look of D.looks){
 }
 const outfitSignatures=new Map();
 for(const look of D.looks){
-  const key=[...(look.pieces||[])].sort().join('|');
+  // The same pieces worn differently (look.styling) are a different outfit.
+  const key=[...(look.pieces||[])].sort().join('|')+(look.styling?`|${look.styling}`:'');
   if(outfitSignatures.has(key))err(`Exact outfit duplicate at runtime: ${outfitSignatures.get(key)} and ${look.id}`);
   else outfitSignatures.set(key,look.id);
 }
