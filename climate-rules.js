@@ -26,7 +26,7 @@
       {cls:'linen-trousers',slot:'bottom',warmth:0.25,test:/linen.*(?:trousers?|pants)|(?:trousers?|pants).*linen/},
       {cls:'overcoat',slot:'outer',warmth:1.8,heavy:true,test:/overcoat|topcoat|wool coat|winter coat|parka|puffer|trench|gab[aá]n/},
       {cls:'leather-jacket',slot:'outer',warmth:0.9,test:/leather jacket|biker|suede jacket|racer/},
-      {cls:'casual-jacket',slot:'outer',warmth:0.8,test:/bomber|casual jacket|jacket/},
+      {cls:'casual-jacket',slot:'outer',warmth:0.8,test:/bomber|casual jacket|jacket|quilted vest/},
       {cls:'blazer',slot:'outer',warmth:0.6,test:/blazer/},
       {cls:'overshirt',slot:'outer',warmth:0.6,test:/overshirt/},
       {cls:'cardigan',slot:'mid',warmth:0.9,test:/cardigan/},
