@@ -65,10 +65,12 @@ for(const f of D.families||[]){
 const signatures=new Map();
 for(const l of D.looks||[]){
   if(blocked.has(l.id))continue;
+  // The same pieces worn differently (look.styling) are a different outfit.
   const key=[...(l.pieces||[])].sort().join('|');
   if(!key)continue;
-  const prev=signatures.get(key);
-  if(prev)errors.push(`Exact outfit duplicate: ${prev} and ${l.id}`);else signatures.set(key,l.id);
+  const outfit=l.styling?`${key}|${l.styling}`:key;
+  const prev=signatures.get(outfit);
+  if(prev)errors.push(`Exact outfit duplicate: ${prev} and ${l.id}`);else signatures.set(outfit,l.id);
 }
 
 // Generic numbered look assets should never silently land in /assets without a

@@ -14,6 +14,7 @@
    - Cognac suede jacket is Outerwear, so it can be linked with the other jackets.
    - The striped linen and micro-check shirts are the owned light blue Oxford (wardrobe-redundancy.js), so the
      striped linen + beige chinos + loafers look is an alias of the identical look-62.
+   - A look's `styling` marks the same pieces worn differently, so it is not an exact duplicate (look-203, look-206).
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
@@ -423,7 +424,7 @@ looks:[
 ,{id:'look-199',family:'family-look-199',name:'Light grey quarter-zip + navy chinos + white leather sneakers',image:'assets/look-199-grey-quarterzip-navy-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','navy-trousers','white-leather-sneakers']}
 ,{id:'look-201',family:'family-look-201',name:'Charcoal quarter-zip + black chinos + white leather sneakers',image:'assets/look-201-charcoal-quarterzip-black-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['charcoal-quarterzip','grey-tee','black-chinos','white-leather-sneakers']}
 ,{id:'look-202',family:'family-look-202',name:'Light grey V-neck + striped shirt + navy chinos + black cap-toe shoes',image:'assets/look-202-grey-vneck-striped-shirt-navy-black.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['light-grey-vneck-sweater','sky-blue-striped-dress-shirt','navy-trousers','dark-belt','owned-black-leather-captoe']}
-,{id:'look-203',family:'family-look-203',name:'Striped shirt + black sweater + camel chinos + brown cap-toe shoes',image:'assets/look-203-striped-shirt-black-sweater-camel-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','owned-black-vneck','beige-chinos','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-203',family:'family-look-203',name:'Striped shirt + black sweater + camel chinos + brown cap-toe shoes',styling:'sweater over the shoulders',image:'assets/look-203-striped-shirt-black-sweater-camel-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','owned-black-vneck','beige-chinos','brown-belt','owned-brown-leather-captoe']}
 ,{id:'look-204',family:'family-look-204',name:'Striped shirt + grey sweater + olive chinos + brown cap-toe shoes',image:'assets/look-204-striped-shirt-grey-sweater-olive-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','grey-crewneck','olive-trousers','brown-belt','owned-brown-leather-captoe']}
 ,{id:'look-205',family:'family-look-205',name:'Navy V-neck + striped shirt + camel chinos + brown cap-toe shoes',image:'assets/look-205-navy-vneck-striped-shirt-camel-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-vneck-sweater','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
 ,{id:'look-206',family:'family-look-206',name:'Black V-neck + striped shirt + beige chinos + brown cap-toe shoes',image:'assets/look-206-black-vneck-striped-shirt-beige-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['owned-black-vneck','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
