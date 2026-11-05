@@ -18,6 +18,7 @@
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
+{id:'family-navy-suit-periwinkle-shirt',name:'Navy suit + periwinkle dress shirt',hero:'look-navy-suit-periwinkle-shirt',looks:['look-navy-suit-periwinkle-shirt']},
 {id:'family-green-khaki',name:'Green polo + khaki chinos',hero:'look-01',looks:['look-01','look-67']},
 {id:'family-white-navy',name:'White polo + navy chinos',hero:'look-03',looks:['look-03','look-07']},
 {id:'family-navy-grey',name:'Navy + grey chinos',hero:'look-04',looks:['look-04','look-08']},
@@ -206,6 +207,7 @@ families:[
 ,{id:'family-look-206',name:'Black V-neck + striped shirt + beige chinos',hero:'look-206',looks:['look-206']}
 ],
 looks:[
+{id:'look-navy-suit-periwinkle-shirt',family:'family-navy-suit-periwinkle-shirt',name:'Navy suit + periwinkle dress shirt + brown leather shoes',image:'assets/look-navy-suit-periwinkle-shirt.png?v=1',formal:4,badges:['Office','Dinner'],styling:'Matching navy two-piece suit, open collar, brown leather belt matching the shoes',pieces:['navy-blazer','owned-br-periwinkle-dress-shirt','navy-dress-trousers','brown-belt','owned-brown-leather-captoe']},
 {id:'look-01',family:'family-green-khaki',name:'Green polo + khaki chinos',image:'assets/look-01-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Office'],pieces:['green-polo','khaki-chinos','brown-loafers','brown-belt']},
 {id:'look-02',family:'family-burgundy-charcoal',name:'Burgundy polo + charcoal chinos',image:'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_113208_6c9b6936-983a-4974-90c2-5b74dfe69664_min.webp',formal:3,badges:['Office','Dinner'],pieces:['burgundy-polo','charcoal-trousers','brown-derbies','brown-belt']},
 {id:'look-03',family:'family-white-navy',name:'White polo + navy chinos + sneakers',image:'assets/look-03-fits-replacement.webp?v=1',formal:2,badges:['Weekend','Dinner'],pieces:['white-polo','navy-trousers','white-leather-sneakers']},
@@ -430,6 +432,7 @@ looks:[
 ,{id:'look-206',family:'family-look-206',name:'Black V-neck + striped shirt + beige chinos + brown cap-toe shoes',image:'assets/look-206-black-vneck-striped-shirt-beige-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['owned-black-vneck','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
 ],
 pieces:[
+{id:'owned-br-periwinkle-dress-shirt',name:'Periwinkle blue dress shirt',brand:'Banana Republic',description:'Standard-fit wrinkle-resistant dress shirt. Pale blue with a subtle violet undertone and fine woven texture; distinct from the light blue dress shirt and Oxford.',category:'Top',status:'owned'},
 {id:'navy-quarterzip',name:'Navy quarter-zip knit sweater',category:'Top',status:'owned'},
 {id:'green-polo',name:'Green polo',category:'Top',status:'missing'},
 {id:'burgundy-polo',name:'Burgundy polo',category:'Top',status:'missing'},

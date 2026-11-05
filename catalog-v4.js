@@ -1,5 +1,6 @@
 window.FITS_CATALOG_IMAGES=window.FITS_CATALOG_IMAGES||{};
 Object.assign(window.FITS_CATALOG_IMAGES,{
+'owned-br-periwinkle-dress-shirt':'assets/catalog-br-periwinkle-dress-shirt.png?v=1',
 'light-blue-oxford':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214140_d0080bde-7ead-446b-af4a-4e6ed3d7708d_min.webp',
 'white-shirt':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214140_0c9cde24-062d-4a54-b535-12659052bc5d_min.webp',
 'dark-crewneck':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214140_4b409df5-4a81-4679-b39f-6429587e94d0_min.webp',
