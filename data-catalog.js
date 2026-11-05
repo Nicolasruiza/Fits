@@ -6,7 +6,9 @@
    data-intake-20261022 (their history is in git). Rules those files recorded:
    - New pieces are 'missing' until ownership is confirmed; nothing is inferred as owned.
    - Removed at the user's request, do not re-add: cognac leather biker jacket (and look-93), charcoal polo,
-     camel ribbed crewneck (and look-117), cream leather belt, two tan suede derby shoes, beige blazer.
+     camel ribbed crewneck (and look-117), cream leather belt, two tan suede derby shoes, beige blazer,
+     look-49 (cream shirt + dark denim + brown loafers), look-200 (beige linen shirt + navy chinos + brown loafers),
+     look-80 (blue gingham shirt + beige chinos + cognac loafers; the shirt stays in the wardrobe).
    - The three olive-shirt looks (look-63, look-94, look-110) share one family as variants of one outfit.
    - The dark charcoal crewneck and the black V-neck are separate garments in separate families.
    - Cognac suede jacket is Outerwear, so it can be linked with the other jackets.
@@ -37,7 +39,6 @@ families:[
 {id:'family-navy-sweater-beige',name:'Navy sweater + beige chinos',hero:'look-45',looks:['look-45']},
 {id:'family-white-polo-olive',name:'White polo + olive trousers',hero:'look-47',looks:['look-47']},
 {id:'family-grey-crewneck-denim',name:'Grey crewneck + denim',hero:'look-48',looks:['look-48']},
-{id:'family-stone-shirt-denim',name:'Stone shirt + denim',hero:'look-49',looks:['look-49']},
 {id:'family-grey-blazer-white-shirt-navy-dress',name:'Grey blazer + white shirt + navy dress trousers',hero:'look-grey-blazer-white-shirt-navy-dress',looks:['look-grey-blazer-white-shirt-navy-dress']},
 {id:'family-navy-blazer-white-shirt-charcoal-dress',name:'Navy blazer + white shirt + charcoal dress trousers',hero:'look-navy-blazer-white-shirt-charcoal-dress',looks:['look-navy-blazer-white-shirt-charcoal-dress']},
 {id:'family-navy-crewneck-white-shirt-beige-chinos',name:'Navy crewneck + white shirt + beige chinos',hero:'look-navy-crewneck-white-shirt-beige-chinos',looks:['look-navy-crewneck-white-shirt-beige-chinos']},
@@ -80,7 +81,6 @@ families:[
 {id:'family-tan-overshirt-denim',name:'Tan overshirt + light denim',hero:'look-77',looks:['look-77']},
 {id:'family-france-blue-denim',name:'France blue henley + dark denim',hero:'look-78',looks:['look-78']},
 {id:'family-black-vneck-navy',name:'Black V-neck + grey chinos',hero:'look-79',looks:['look-79']},
-{id:'family-blue-gingham-green',name:'Blue gingham + beige chinos',hero:'look-80',looks:['look-80']},
 {id:'family-grey-quarterzip-beige',name:'Grey quarter-zip + beige chinos',hero:'look-81',looks:['look-81']},
 {id:'family-navy-polo-beige-cognac-sneakers',name:'Navy polo + beige chinos',hero:'look-82',looks:['look-82']},
 {id:'family-cream-shirt-green-cognac-sneakers',name:'Cream shirt + dark green chinos',hero:'look-83',looks:['look-83']},
@@ -197,7 +197,6 @@ families:[
 ,{id:'family-look-197',name:'Black blazer + white dress shirt + dark denim',hero:'look-197',looks:['look-197']}
 ,{id:'family-look-198',name:'Black blazer + white T-shirt + dark denim',hero:'look-198',looks:['look-198']}
 ,{id:'family-look-199',name:'Light grey quarter-zip + navy chinos',hero:'look-199',looks:['look-199']}
-,{id:'family-look-200',name:'Beige linen shirt + navy chinos',hero:'look-200',looks:['look-200']}
 ,{id:'family-look-201',name:'Charcoal quarter-zip + black chinos',hero:'look-201',looks:['look-201']}
 ,{id:'family-look-202',name:'Grey V-neck + striped shirt + navy chinos',hero:'look-202',looks:['look-202']}
 ,{id:'family-look-203',name:'Striped shirt + black sweater + camel chinos',hero:'look-203',looks:['look-203']}
@@ -251,7 +250,6 @@ looks:[
 {id:'look-46',family:'family-blazer-white-beige',name:'Grey blazer + white shirt + cream trousers + brown loafers',image:'assets/look-46-hq.webp?v=1',formal:4,badges:['Office','Dinner'],pieces:['grey-blazer','white-shirt','cream-chinos','brown-loafers']},
 {id:'look-47',family:'family-white-polo-olive',name:'White polo + olive trousers + white sneakers',image:'assets/look-47-hq.webp?v=1',formal:2,badges:['Weekend','Office','Travel'],pieces:['white-polo','olive-trousers','white-leather-sneakers']},
 {id:'look-48',family:'family-grey-crewneck-denim',name:'Grey crewneck + dark denim + white sneakers',image:'assets/external-look-look-48.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['grey-crewneck','dark-denim','white-leather-sneakers']},
-{id:'look-49',family:'family-stone-shirt-denim',name:'Stone shirt + dark denim + brown loafers',image:'assets/external-look-look-49.png?v=1',formal:2,badges:['Weekend','Office','Dinner'],pieces:['stone-shirt','dark-denim','brown-loafers','brown-belt']},
 {id:'look-50',family:'family-blazer-tee',name:'Navy blazer + white tee + dark denim + white sneakers',image:'assets/external-look-look-50.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-tee','dark-denim','white-leather-sneakers']},
 {id:'look-grey-blazer-white-shirt-navy-dress',family:'family-grey-blazer-white-shirt-navy-dress',name:'Grey blazer + white shirt + navy dress trousers',image:'assets/look-01-grey-blazer-white-navy-dress-black.webp?v=1',formal:4,badges:['Office','Dinner'],pieces:['grey-blazer','white-shirt','navy-dress-trousers','dark-belt','owned-black-leather-captoe']},
 {id:'look-navy-blazer-white-shirt-charcoal-dress',family:'family-navy-blazer-white-shirt-charcoal-dress',name:'Navy blazer + white shirt + charcoal dress trousers',image:'assets/look-02-navy-blazer-white-charcoal-dress-black.webp?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','white-shirt','dark-charcoal-dress-trousers','dark-belt','owned-black-leather-captoe']},
@@ -306,7 +304,6 @@ looks:[
 {id:'look-77',family:'family-tan-overshirt-denim',name:'Tan overshirt + white tee + light denim + cognac loafers',image:'assets/look-77-hq.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['tan-overshirt','white-tee','blue-denim','brown-loafers']},
 {id:'look-78',family:'family-france-blue-denim',name:'France blue henley + dark denim + cognac sneakers',image:'assets/look-78-hq.webp?v=2',formal:1,badges:['Weekend','Travel'],pieces:['owned-france-blue-henley','dark-denim','owned-br-cognac-sneakers']},
 {id:'look-79',family:'family-black-vneck-navy',name:'Black V-neck + cream shirt + grey chinos + black cap-toe shoes',image:'assets/look-79-hq.webp?v=2',formal:3,badges:['Office','Dinner'],pieces:['owned-black-vneck','owned-cream-buttondown','grey-trousers','owned-black-leather-captoe']},
-{id:'look-80',family:'family-blue-gingham-green',name:'Blue gingham shirt + beige chinos + cognac loafers',image:'assets/look-80-hq.webp?v=2',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','beige-chinos','brown-loafers']},
 {id:'look-81',family:'family-grey-quarterzip-beige',name:'Grey quarter-zip + beige chinos + dark brown suede Chelsea boots',image:'assets/look-81-hq.webp?v=2',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','beige-chinos','owned-darkbrown-suede-chelsea']},
 {id:'look-82',family:'family-navy-polo-beige-cognac-sneakers',name:'Navy polo + beige chinos + cognac leather sneakers',image:'assets/look-82-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['navy-polo','beige-chinos','owned-br-cognac-sneakers','brown-belt']},
 {id:'look-83',family:'family-cream-shirt-green-cognac-sneakers',name:'Cream shirt + dark green chinos + cognac leather sneakers',image:'assets/look-83-hq.webp?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-cream-buttondown','owned-dark-green-chinos','owned-br-cognac-sneakers']},
@@ -424,7 +421,6 @@ looks:[
 ,{id:'look-197',family:'family-look-197',name:'Black blazer + white dress shirt + dark denim + white leather sneakers',image:'assets/look-197-black-blazer-white-shirt-dark-denim-white.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['black-blazer','white-shirt','dark-denim','dark-belt','white-leather-sneakers']}
 ,{id:'look-198',family:'family-look-198',name:'Black blazer + white T-shirt + dark denim + white leather sneakers',image:'assets/look-198-black-blazer-white-tee-dark-denim-white.png?v=1',formal:2,badges:['Dinner','Weekend'],pieces:['black-blazer','white-tee','dark-denim','white-leather-sneakers']}
 ,{id:'look-199',family:'family-look-199',name:'Light grey quarter-zip + navy chinos + white leather sneakers',image:'assets/look-199-grey-quarterzip-navy-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-grey-quarterzip','navy-trousers','white-leather-sneakers']}
-,{id:'look-200',family:'family-look-200',name:'Beige linen shirt + navy chinos + brown loafers',image:'assets/look-200-beige-linen-shirt-navy-chinos-brown-loafers.png?v=1',formal:3,badges:['Summer','Office','Dinner'],pieces:['beige-linen-shirt','navy-trousers','brown-belt','brown-loafers']}
 ,{id:'look-201',family:'family-look-201',name:'Charcoal quarter-zip + black chinos + white leather sneakers',image:'assets/look-201-charcoal-quarterzip-black-chinos-white-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['charcoal-quarterzip','grey-tee','black-chinos','white-leather-sneakers']}
 ,{id:'look-202',family:'family-look-202',name:'Light grey V-neck + striped shirt + navy chinos + black cap-toe shoes',image:'assets/look-202-grey-vneck-striped-shirt-navy-black.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['light-grey-vneck-sweater','sky-blue-striped-dress-shirt','navy-trousers','dark-belt','owned-black-leather-captoe']}
 ,{id:'look-203',family:'family-look-203',name:'Striped shirt + black sweater + camel chinos + brown cap-toe shoes',image:'assets/look-203-striped-shirt-black-sweater-camel-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','owned-black-vneck','beige-chinos','brown-belt','owned-brown-leather-captoe']}
