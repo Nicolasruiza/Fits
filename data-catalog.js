@@ -8,7 +8,7 @@
    - Removed at the user's request, do not re-add: cognac leather biker jacket (and look-93), charcoal polo,
      camel ribbed crewneck (and look-117), cream leather belt, two tan suede derby shoes, beige blazer,
      look-49 (cream shirt + dark denim + brown loafers), look-200 (beige linen shirt + navy chinos + brown loafers),
-     look-80 (blue gingham shirt + beige chinos + cognac loafers; the shirt stays in the wardrobe).
+     look-80 (blue gingham shirt + beige chinos + cognac loafers; look-207 replaces it with navy chinos).
    - The three olive-shirt looks (look-63, look-94, look-110) share one family as variants of one outfit.
    - The dark charcoal crewneck and the black V-neck are separate garments in separate families.
    - Cognac suede jacket is Outerwear, so it can be linked with the other jackets.
@@ -205,6 +205,7 @@ families:[
 ,{id:'family-look-204',name:'Striped shirt + grey sweater + olive chinos',hero:'look-204',looks:['look-204']}
 ,{id:'family-look-205',name:'Navy V-neck + striped shirt + camel chinos',hero:'look-205',looks:['look-205']}
 ,{id:'family-look-206',name:'Black V-neck + striped shirt + beige chinos',hero:'look-206',looks:['look-206']}
+,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
 ],
 looks:[
 {id:'look-navy-suit-periwinkle-shirt',family:'family-navy-suit-periwinkle-shirt',name:'Navy suit + periwinkle dress shirt + brown leather shoes',image:'assets/look-navy-suit-periwinkle-shirt.png?v=1',formal:4,badges:['Office','Dinner'],styling:'Matching navy two-piece suit, open collar, brown leather belt matching the shoes',pieces:['navy-blazer','owned-br-periwinkle-dress-shirt','navy-dress-trousers','brown-belt','owned-brown-leather-captoe']},
@@ -430,6 +431,7 @@ looks:[
 ,{id:'look-204',family:'family-look-204',name:'Striped shirt + grey sweater + olive chinos + brown cap-toe shoes',image:'assets/look-204-striped-shirt-grey-sweater-olive-brown.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['sky-blue-striped-dress-shirt','grey-crewneck','olive-trousers','brown-belt','owned-brown-leather-captoe']}
 ,{id:'look-205',family:'family-look-205',name:'Navy V-neck + striped shirt + camel chinos + brown cap-toe shoes',image:'assets/look-205-navy-vneck-striped-shirt-camel-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-vneck-sweater','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
 ,{id:'look-206',family:'family-look-206',name:'Black V-neck + striped shirt + beige chinos + brown cap-toe shoes',image:'assets/look-206-black-vneck-striped-shirt-beige-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['owned-black-vneck','sky-blue-striped-dress-shirt','beige-chinos','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-207',family:'family-look-207',name:'Blue gingham shirt + navy chinos + cognac loafers',image:'assets/look-207-blue-gingham-navy-chinos-brown-loafers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','navy-trousers','brown-loafers']}
 ],
 pieces:[
 {id:'owned-br-periwinkle-dress-shirt',name:'Periwinkle blue dress shirt',brand:'Banana Republic',description:'Standard-fit wrinkle-resistant dress shirt. Pale blue with a subtle violet undertone and fine woven texture; distinct from the light blue dress shirt and Oxford.',category:'Top',status:'owned'},
