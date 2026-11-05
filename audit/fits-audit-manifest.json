@@ -6308,7 +6308,11 @@
   ],
   "noAlpha": [],
   "opaqueBackground": [],
-  "pendingImages": [],
+  "pendingImages": [
+   "owned-md-navy-quilted-vest",
+   "light-grey-crewneck-sweatshirt",
+   "cream-cable-knit-turtleneck"
+  ],
   "orphanPieces": [
    "navy-henley",
    "navy-leather-sneakers",
