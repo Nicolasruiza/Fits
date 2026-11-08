@@ -18,6 +18,7 @@
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
+{id:'family-navy-vest-white-longsleeve-beige-joggers',name:'Navy quilted vest + white long-sleeve T-shirt + beige lightweight joggers',hero:'look-navy-vest-white-longsleeve-beige-joggers',looks:['look-navy-vest-white-longsleeve-beige-joggers']},
 {id:'family-navy-vest-grey-sweatshirt-navy-chinos',name:'Navy quilted vest + Grey sweatshirt + navy chinos',hero:'look-navy-vest-grey-sweatshirt-navy-chinos',looks:['look-navy-vest-grey-sweatshirt-navy-chinos']},
 {id:'family-navy-vest-cream-turtleneck-dark-denim',name:'Navy quilted vest + Cream turtleneck + dark denim',hero:'look-navy-vest-cream-turtleneck-dark-denim',looks:['look-navy-vest-cream-turtleneck-dark-denim']},
 {id:'family-navy-vest-ivory-knit-beige-chinos',name:'Navy quilted vest + Ivory crewneck + light blue Oxford + beige chinos',hero:'look-navy-vest-ivory-knit-beige-chinos',looks:['look-navy-vest-ivory-knit-beige-chinos']},
@@ -213,6 +214,7 @@ families:[
 ,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
 ],
 looks:[
+{id:'look-navy-vest-white-longsleeve-beige-joggers',family:'family-navy-vest-white-longsleeve-beige-joggers',name:'Navy quilted vest + white long-sleeve T-shirt + beige lightweight joggers',image:'assets/look-navy-vest-white-longsleeve-beige-joggers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-md-navy-quilted-vest','white-long-sleeve-crew-neck-tee','owned-beige-lightweight-joggers','white-leather-sneakers']},
 {id:'look-navy-vest-grey-sweatshirt-navy-chinos',family:'family-navy-vest-grey-sweatshirt-navy-chinos',name:'Navy quilted vest + Grey sweatshirt + navy chinos',image:'assets/look-navy-vest-grey-sweatshirt-navy-chinos.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-md-navy-quilted-vest','light-grey-crewneck-sweatshirt','navy-trousers','white-leather-sneakers']},
 {id:'look-navy-vest-cream-turtleneck-dark-denim',family:'family-navy-vest-cream-turtleneck-dark-denim',name:'Navy quilted vest + Cream turtleneck + dark denim',image:'assets/look-navy-vest-cream-turtleneck-dark-denim.webp?v=1',formal:2,badges:['Weekend','Dinner'],pieces:['owned-md-navy-quilted-vest','cream-cable-knit-turtleneck','dark-denim','white-leather-sneakers']},
 {id:'look-navy-vest-ivory-knit-beige-chinos',family:'family-navy-vest-ivory-knit-beige-chinos',name:'Navy quilted vest + Ivory crewneck + light blue Oxford + beige chinos',image:'assets/look-navy-vest-ivory-knit-beige-chinos.webp?v=1',formal:2,badges:['Office','Weekend'],pieces:['owned-md-navy-quilted-vest','cream-crewneck-sweater','light-blue-oxford','beige-chinos','white-leather-sneakers']},
@@ -444,6 +446,7 @@ looks:[
 ,{id:'look-207',family:'family-look-207',name:'Blue gingham shirt + navy chinos + cognac loafers',image:'assets/look-207-blue-gingham-navy-chinos-brown-loafers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','navy-trousers','brown-loafers']}
 ],
 pieces:[
+{id:'white-long-sleeve-crew-neck-tee',name:'White long-sleeve crew neck T-shirt',category:'Top',status:'missing'},
 {id:'owned-md-navy-quilted-vest',name:'Navy quilted vest',brand:'Massimo Dutti',category:'Outerwear',status:'owned'},
 {id:'light-grey-crewneck-sweatshirt',name:'Light grey crewneck sweatshirt',category:'Top',status:'missing'},
 {id:'cream-cable-knit-turtleneck',name:'Cream cable-knit turtleneck sweater',category:'Top',status:'missing'},

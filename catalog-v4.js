@@ -54,3 +54,10 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'black-sneakers':'assets/black-sneakers.webp?v=1',
 'offwhite-tee':'assets/offwhite-tee.webp?v=1'
 });
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'owned-md-navy-quilted-vest':'assets/catalog-navy-quilted-vest.webp?v=1',
+'light-grey-crewneck-sweatshirt':'assets/catalog-light-grey-crewneck-sweatshirt.webp?v=1',
+'cream-cable-knit-turtleneck':'assets/catalog-cream-cable-knit-turtleneck.webp?v=1',
+'white-long-sleeve-crew-neck-tee':'assets/catalog-white-long-sleeve-crew-neck-tee.webp?v=1'
+});
