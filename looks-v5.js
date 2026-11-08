@@ -12,7 +12,6 @@
     tab:sessionStorage.getItem('fitsV5Tab')||'ready',
     favoritesOnly:false,
     expanded:{},
-    garment:(g=>V.GARMENTS.includes(g)?g:'All')(window.FITS_KINDS.migrate(V.read('fitsGarmentV5','All'))),
     sheet:false,
     view:params.get('view')==='hidden'?'hidden':'main',
     loadingWeather:false
@@ -106,9 +105,11 @@
     const note=o.occasion==='All'?'Showing every occasion · tap one to filter':o.auto?`Auto: ${o.occasion==='Weekend'?'weekend':'weekday'} · tap ${o.occasion} again to see every occasion`:`Set by you today · tap ${o.occasion} again to see every occasion`;
     return `<div class="v5-chips" role="radiogroup" aria-label="Occasion">${V.OCCASIONS.map(chip).join('')}</div><p class="v5-note">${esc(note)}</p>`;
   }
-  function garmentChips(garments,active){
-    const chip=x=>`<button class="v5-garment-chip${active===x?' is-active':''}" type="button" data-action="garment" data-value="${esc(x)}">${x==='All'?'Anything':esc(x)}</button>`;
-    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Start with</strong><span>find looks by garment</span></div><div class="v5-garment-chips">${garments.map(chip).join('')}</div></section>`;
+  // How dressed-up: any mix of the three styles, starting from the occasion's default (see looks-v5-core.js).
+  function styleChips(o,sel){
+    const chip=x=>`<button class="v5-garment-chip${sel.values.includes(x)?' is-active':''}" type="button" role="checkbox" aria-checked="${sel.values.includes(x)}" data-action="style" data-value="${esc(x)}">${esc(x)}</button>`;
+    const note=sel.auto?(o.occasion==='All'?'every style':`auto for ${o.occasion.toLowerCase()}`):'set by you today';
+    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Style</strong><span>${esc(note)}</span></div><div class="v5-garment-chips" role="group" aria-label="Style">${V.STYLES.map(chip).join('')}</div></section>`;
   }
   function sortToggle(){
     const d=sortDir();
@@ -167,11 +168,8 @@
   /* ---------- Views ---------- */
   function mainView(){
     const st=V.state(),s=V.season(st),o=V.occasion();
-    // Only chips for garments in the looks for this season and occasion (both tabs). A saved choice with
-    // nothing to show (Shorts in winter) reads as Anything until such looks come back.
-    const garments=['All',...window.FITS_KINDS.LOOK_GARMENTS.filter(g=>V.familyCards({state:st,season:s.season,occasion:o.occasion,garment:g}).length)];
-    const garment=garments.includes(ui.garment)?ui.garment:'All';
-    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion,garment});
+    const sel=V.styles(o.occasion);
+    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion,styles:sel.values});
     const ready=V.sortByWarmth(cards.filter(c=>!c.missing.length),sortDir());
     const ideas=V.sortByWarmth(cards.filter(c=>c.missing.length),sortDir());
     let body='';
@@ -184,7 +182,7 @@
       }else{
         body=`${favRow(favs)}
           <div class="v5-row-head v5-pad"><h2 class="v5-h2">All ready</h2>${sortToggle()}</div>
-          ${ready.length?`<div class="v5-grid">${ready.map(c=>card(c)).join('')}</div>`:`<p class="v5-empty">Nothing ready for ${esc(o.occasion==='All'?'this season':o.occasion.toLowerCase())} yet. Check Inspiration for the closest looks.</p>`}`;
+          ${ready.length?`<div class="v5-grid">${ready.map(c=>card(c)).join('')}</div>`:`<p class="v5-empty">Nothing ${esc(sel.values.length<V.STYLES.length?sel.values.join(' or ').toLowerCase()+' ':'')}ready for ${esc(o.occasion==='All'?'this season':o.occasion.toLowerCase())} yet. Check Inspiration for the closest looks, or tap another style.</p>`}`;
       }
     }else{
       const groups=[['1 piece away',ideas.filter(c=>c.missing.length===1),'one'],['2 pieces away',ideas.filter(c=>c.missing.length===2),'two'],['3+ pieces away',ideas.filter(c=>c.missing.length>=3),'more']];
@@ -201,7 +199,7 @@
       ${weatherCard(st,s)}
       ${tabs(ready.length,ideas.length)}
       ${occasionChips(o)}
-      ${garmentChips(garments,garment)}
+      ${styleChips(o,sel)}
       ${body}
       ${hiddenLink()}
       <p class="v5-classic"><a href="index.html?ui=classic">Switch to the classic view</a></p>
@@ -232,7 +230,13 @@
     e.preventDefault();
     if(a==='tab'){ui.tab=el.dataset.tab;ui.favoritesOnly=false;sessionStorage.setItem('fitsV5Tab',ui.tab);V.track(ui.tab==='ideas'?'ideasOpen':'readyOpen')}
     else if(a==='occasion'){const cur=V.occasion().occasion,v=el.dataset.value;V.setOccasion(cur===v?'All':v)}
-    else if(a==='garment'){const v=el.dataset.value;ui.garment=ui.garment===v?'All':v;V.write('fitsGarmentV5',ui.garment);ui.expanded={}}
+    else if(a==='style'){
+      // Toggle one style for today's occasion; the last one left stays on.
+      const occ=V.occasion().occasion,cur=V.styles(occ).values,v=el.dataset.value;
+      const next=V.STYLES.filter(x=>x===v?!cur.includes(x):cur.includes(x));
+      if(!next.length)return;
+      V.setStyles(occ,next);ui.expanded={}
+    }
     else if(a==='sort'){V.write('fitsWarmthSortV5',el.dataset.value)}
     else if(a==='fav-all'){ui.favoritesOnly=true;window.scrollTo(0,0)}
     else if(a==='fav-back'){ui.favoritesOnly=false}

@@ -67,6 +67,20 @@
   }
   function setOccasion(value){write('fitsOccasionV5',{value,date:todayKey()})}
   const occasionMatch=(l,o)=>o==='All'||(l.badges||[]).includes(o);
+
+  /* ---------- Style: how dressed-up (formality-rules.js), defaulting from the occasion ---------- */
+  const STYLES=window.FITS_FORMALITY?.STYLES||['Relaxed','Smart casual','Sharp'];
+  const STYLE_DEFAULTS={Office:['Smart casual','Sharp'],Weekend:['Relaxed','Smart casual'],Dinner:['Smart casual','Sharp'],Travel:['Relaxed','Smart casual']};
+  // A choice made today sticks to the occasion it was made for; a new occasion or a new day starts from its default.
+  function styles(occ){
+    const o=read('fitsStyleV5',null);
+    if(o&&o.date===todayKey()&&o.occasion===occ&&Array.isArray(o.values)&&o.values.some(v=>STYLES.includes(v)))return{values:o.values.filter(v=>STYLES.includes(v)),auto:false};
+    return{values:STYLE_DEFAULTS[occ]||STYLES,auto:true};
+  }
+  function setStyles(occ,values){
+    if(values)write('fitsStyleV5',{occasion:occ,values,date:todayKey()});else localStorage.removeItem('fitsStyleV5');
+  }
+  const styleMatch=(l,list)=>!list||!l.style||list.includes(l.style);
   const garmentKind=K.garment;
   const garmentMatch=(l,g)=>!g||g==='All'||(l.pieces||[]).some(id=>garmentKind(piece(id))===g);
 
@@ -80,13 +94,14 @@
 
   /* ---------- Families: one card per family, showing its closest variant ---------- */
   function familyCards(opts={}){
-    const st=opts.state||state(),s=opts.season,o=opts.occasion||'All',g=opts.garment||'All',includeHidden=!!opts.hiddenOnly;
+    const st=opts.state||state(),s=opts.season,o=opts.occasion||'All',g=opts.garment||'All',sty=opts.styles,includeHidden=!!opts.hiddenOnly;
     const out=[];
     (D.families||[]).forEach(f=>{
       const variants=(f.looks||[]).map(look).filter(Boolean)
         .filter(l=>includeHidden?st.hidden.has(l.id):!st.hidden.has(l.id))
         .filter(l=>!s||seasonMatch(l,s))
         .filter(l=>occasionMatch(l,o))
+        .filter(l=>styleMatch(l,sty))
         .filter(l=>garmentMatch(l,g));
       if(!variants.length)return;
       const ranked=variants.map(l=>({look:l,missing:missing(l,st)}))
@@ -251,6 +266,6 @@
   function hideNav(){const el=document.querySelector('body>.v5-nav');if(el)el.hidden=true}
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
+  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,STYLES,styles,setStyles,styleMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
     KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_STORES,shopLinks,hideNav};
 })();
