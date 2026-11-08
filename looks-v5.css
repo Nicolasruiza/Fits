@@ -327,3 +327,6 @@ svg{display:block}
   .v5-enable{padding:10px 12px}
   .v5-garment-filter{padding-top:12px}
 }
+/* Style row: three equal chips across the full width, matching the occasion row above */
+.v5-garment-chips[aria-label="Style"]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;overflow:visible}
+.v5-garment-chips[aria-label="Style"] .v5-garment-chip{height:44px;padding:0 4px;font-size:13px;font-weight:600}
