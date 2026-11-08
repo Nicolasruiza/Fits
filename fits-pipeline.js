@@ -3,7 +3,7 @@
    Add, remove, reorder or cache-bump a data step here only, never in a page.
 
    Pages load it as the first script in <body>, then their own UI scripts:
-     <script src="fits-pipeline.js?v=16"></script>
+     <script src="fits-pipeline.js?v=17"></script>
    Cloudflare caches it for 4 hours, so bump that ?v= in every page whenever this file changes.
    document.write keeps the steps parser-blocking and in order, before the page's own scripts
    and before DOMContentLoaded, exactly like the static <script> tags it replaces.
@@ -30,6 +30,8 @@
     'climate-rules.js?v=5',
     'winter-layers.js?v=3',
     'season-meta.js?v=27',
+    // How dressed-up each look is (Relaxed / Smart casual / Sharp)
+    'formality-rules.js?v=1',
     // Look photos, final filtering and swaps
     'look-photo-overrides.js?v=2',
     'image-runtime-v2.js?v=14',
