@@ -61,3 +61,9 @@ Object.assign(window.FITS_CATALOG_IMAGES, {
 'cream-cable-knit-turtleneck':'assets/catalog-cream-cable-knit-turtleneck.webp?v=1',
 'white-long-sleeve-crew-neck-tee':'assets/catalog-white-long-sleeve-crew-neck-tee.webp?v=1'
 });
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'black-fullzip-sweatshirt-jacket':'assets/catalog-black-fullzip-sweatshirt-jacket.webp?v=1',
+'olive-polo':'assets/catalog-olive-polo.webp?v=1',
+'black-lightweight-joggers':'assets/catalog-black-lightweight-joggers.webp?v=1'
+});

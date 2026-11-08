@@ -18,6 +18,10 @@
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
+{id:'family-black-fullzip-white-tee-beige-chinos',name:'Black full-zip sweatshirt jacket + white T-shirt + beige chinos',hero:'look-black-fullzip-white-tee-beige-chinos',looks:['look-black-fullzip-white-tee-beige-chinos']},
+{id:'family-olive-polo-black-chinos',name:'Olive polo + black chinos + white leather sneakers',hero:'look-olive-polo-black-chinos',looks:['look-olive-polo-black-chinos']},
+{id:'family-cream-crewneck-navy-chinos-white-sneakers',name:'Cream crewneck sweater + navy chinos + white leather sneakers',hero:'look-cream-crewneck-navy-chinos-white-sneakers',looks:['look-cream-crewneck-navy-chinos-white-sneakers']},
+{id:'family-white-tee-black-joggers-white-sneakers',name:'White T-shirt + black lightweight joggers + white leather sneakers',hero:'look-white-tee-black-joggers-white-sneakers',looks:['look-white-tee-black-joggers-white-sneakers']},
 {id:'family-white-tee-olive-joggers',name:'White T-shirt + olive lightweight joggers + white leather sneakers',hero:'look-white-tee-olive-joggers-white-sneakers',looks:['look-white-tee-olive-joggers-white-sneakers']},
 {id:'family-navy-vest-white-longsleeve-beige-joggers',name:'Navy quilted vest + white long-sleeve T-shirt + beige lightweight joggers',hero:'look-navy-vest-white-longsleeve-beige-joggers',looks:['look-navy-vest-white-longsleeve-beige-joggers']},
 {id:'family-navy-vest-grey-sweatshirt-navy-chinos',name:'Navy quilted vest + Grey sweatshirt + navy chinos',hero:'look-navy-vest-grey-sweatshirt-navy-chinos',looks:['look-navy-vest-grey-sweatshirt-navy-chinos']},
@@ -215,6 +219,10 @@ families:[
 ,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
 ],
 looks:[
+{id:'look-black-fullzip-white-tee-beige-chinos',family:'family-black-fullzip-white-tee-beige-chinos',name:'Black full-zip sweatshirt jacket + white T-shirt + beige chinos',image:'assets/look-black-fullzip-white-tee-beige-chinos.webp?v=1',formal:2,badges:['Weekend', 'Travel'],pieces:['black-fullzip-sweatshirt-jacket', 'white-tee', 'beige-chinos', 'white-leather-sneakers']},
+{id:'look-olive-polo-black-chinos',family:'family-olive-polo-black-chinos',name:'Olive polo + black chinos + white leather sneakers',image:'assets/look-olive-polo-black-chinos.webp?v=1',formal:2,badges:['Weekend', 'Office', 'Travel'],pieces:['olive-polo', 'black-chinos', 'brown-belt', 'white-leather-sneakers']},
+{id:'look-cream-crewneck-navy-chinos-white-sneakers',family:'family-cream-crewneck-navy-chinos-white-sneakers',name:'Cream crewneck sweater + navy chinos + white leather sneakers',image:'assets/look-cream-crewneck-navy-chinos-white-sneakers.webp?v=1',formal:2,badges:['Weekend', 'Office', 'Travel'],pieces:['cream-crewneck-sweater', 'navy-trousers', 'white-leather-sneakers']},
+{id:'look-white-tee-black-joggers-white-sneakers',family:'family-white-tee-black-joggers-white-sneakers',name:'White T-shirt + black lightweight joggers + white leather sneakers',image:'assets/look-white-tee-black-joggers-white-sneakers.webp?v=1',formal:1,badges:['Summer', 'Weekend', 'Travel'],pieces:['white-tee', 'black-lightweight-joggers', 'white-leather-sneakers']},
 {id:'look-white-tee-olive-joggers-white-sneakers',family:'family-white-tee-olive-joggers',name:'White T-shirt + olive lightweight joggers + white leather sneakers',image:'assets/look-white-tee-olive-joggers-white-sneakers.webp?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['white-tee','owned-olive-lightweight-joggers','white-leather-sneakers']},
 {id:'look-navy-vest-white-longsleeve-beige-joggers',family:'family-navy-vest-white-longsleeve-beige-joggers',name:'Navy quilted vest + white long-sleeve T-shirt + beige lightweight joggers',image:'assets/look-navy-vest-white-longsleeve-beige-joggers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-md-navy-quilted-vest','white-long-sleeve-crew-neck-tee','owned-beige-lightweight-joggers','white-leather-sneakers']},
 {id:'look-navy-vest-grey-sweatshirt-navy-chinos',family:'family-navy-vest-grey-sweatshirt-navy-chinos',name:'Navy quilted vest + Grey sweatshirt + navy chinos',image:'assets/look-navy-vest-grey-sweatshirt-navy-chinos.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-md-navy-quilted-vest','light-grey-crewneck-sweatshirt','navy-trousers','white-leather-sneakers']},
@@ -448,6 +456,9 @@ looks:[
 ,{id:'look-207',family:'family-look-207',name:'Blue gingham shirt + navy chinos + cognac loafers',image:'assets/look-207-blue-gingham-navy-chinos-brown-loafers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','navy-trousers','brown-loafers']}
 ],
 pieces:[
+{id:'black-fullzip-sweatshirt-jacket',name:'Black full-zip sweatshirt jacket',category:'Outerwear',status:'missing'},
+{id:'olive-polo',name:'Olive polo',category:'Top',status:'missing'},
+{id:'black-lightweight-joggers',name:'Black lightweight joggers',category:'Pants',status:'missing'},
 {id:'white-long-sleeve-crew-neck-tee',name:'White long-sleeve crew neck T-shirt',category:'Top',status:'missing'},
 {id:'owned-md-navy-quilted-vest',name:'Navy quilted vest',brand:'Massimo Dutti',category:'Outerwear',status:'owned'},
 {id:'light-grey-crewneck-sweatshirt',name:'Light grey crewneck sweatshirt',category:'Top',status:'missing'},
