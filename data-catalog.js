@@ -18,6 +18,7 @@
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
+{id:'family-white-tee-olive-joggers',name:'White T-shirt + olive lightweight joggers + white leather sneakers',hero:'look-white-tee-olive-joggers-white-sneakers',looks:['look-white-tee-olive-joggers-white-sneakers']},
 {id:'family-navy-vest-white-longsleeve-beige-joggers',name:'Navy quilted vest + white long-sleeve T-shirt + beige lightweight joggers',hero:'look-navy-vest-white-longsleeve-beige-joggers',looks:['look-navy-vest-white-longsleeve-beige-joggers']},
 {id:'family-navy-vest-grey-sweatshirt-navy-chinos',name:'Navy quilted vest + Grey sweatshirt + navy chinos',hero:'look-navy-vest-grey-sweatshirt-navy-chinos',looks:['look-navy-vest-grey-sweatshirt-navy-chinos']},
 {id:'family-navy-vest-cream-turtleneck-dark-denim',name:'Navy quilted vest + Cream turtleneck + dark denim',hero:'look-navy-vest-cream-turtleneck-dark-denim',looks:['look-navy-vest-cream-turtleneck-dark-denim']},
@@ -214,6 +215,7 @@ families:[
 ,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
 ],
 looks:[
+{id:'look-white-tee-olive-joggers-white-sneakers',family:'family-white-tee-olive-joggers',name:'White T-shirt + olive lightweight joggers + white leather sneakers',image:'assets/look-white-tee-olive-joggers-white-sneakers.webp?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['white-tee','owned-olive-lightweight-joggers','white-leather-sneakers']},
 {id:'look-navy-vest-white-longsleeve-beige-joggers',family:'family-navy-vest-white-longsleeve-beige-joggers',name:'Navy quilted vest + white long-sleeve T-shirt + beige lightweight joggers',image:'assets/look-navy-vest-white-longsleeve-beige-joggers.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-md-navy-quilted-vest','white-long-sleeve-crew-neck-tee','owned-beige-lightweight-joggers','white-leather-sneakers']},
 {id:'look-navy-vest-grey-sweatshirt-navy-chinos',family:'family-navy-vest-grey-sweatshirt-navy-chinos',name:'Navy quilted vest + Grey sweatshirt + navy chinos',image:'assets/look-navy-vest-grey-sweatshirt-navy-chinos.webp?v=1',formal:1,badges:['Weekend','Travel'],pieces:['owned-md-navy-quilted-vest','light-grey-crewneck-sweatshirt','navy-trousers','white-leather-sneakers']},
 {id:'look-navy-vest-cream-turtleneck-dark-denim',family:'family-navy-vest-cream-turtleneck-dark-denim',name:'Navy quilted vest + Cream turtleneck + dark denim',image:'assets/look-navy-vest-cream-turtleneck-dark-denim.webp?v=1',formal:2,badges:['Weekend','Dinner'],pieces:['owned-md-navy-quilted-vest','cream-cable-knit-turtleneck','dark-denim','white-leather-sneakers']},
