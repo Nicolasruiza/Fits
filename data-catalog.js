@@ -18,6 +18,7 @@
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
+{id:'family-dark-green-crewneck-beige-chinos',name:'Dark green crewneck + beige chinos + white leather sneakers',hero:'look-dark-green-crewneck-beige-chinos',looks:['look-dark-green-crewneck-beige-chinos']},
 {"id":"family-navy-wool-cream-knit-blue-denim","name":"Navy wool shirt jacket + cream crewneck + blue jeans","hero":"look-navy-wool-cream-knit-blue-denim","looks":["look-navy-wool-cream-knit-blue-denim"]},
 {"id":"family-brown-quarterzip-dark-denim","name":"Brown quarter-zip + white T-shirt + dark denim","hero":"look-brown-quarterzip-dark-denim","looks":["look-brown-quarterzip-dark-denim"]},
 {"id":"family-cream-quarterzip-blue-denim","name":"Cream quarter-zip + white T-shirt + blue jeans","hero":"look-cream-quarterzip-blue-denim","looks":["look-cream-quarterzip-blue-denim"]},
@@ -233,6 +234,7 @@ families:[
 ,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
 ],
 looks:[
+{id:'look-dark-green-crewneck-beige-chinos',family:'family-dark-green-crewneck-beige-chinos',name:'Dark green crewneck + beige chinos + white leather sneakers',image:'assets/look-dark-green-crewneck-beige-chinos.webp?v=1',formal:2,badges:['Weekend','Travel'],pieces:['dark-green-crewneck-sweater','beige-chinos','white-leather-sneakers']},
 {"id":"look-navy-wool-cream-knit-blue-denim","family":"family-navy-wool-cream-knit-blue-denim","name":"Navy wool shirt jacket + cream crewneck + blue jeans","image":"assets/look-navy-wool-cream-knit-blue-denim.webp?v=1","formal":2,"badges":["Weekend","Travel"],"pieces":["navy-wool-shirt-jacket","cream-crewneck-sweater","blue-denim","white-leather-sneakers"]},
 {"id":"look-brown-quarterzip-dark-denim","family":"family-brown-quarterzip-dark-denim","name":"Brown quarter-zip + white T-shirt + dark denim","image":"assets/look-brown-quarterzip-dark-denim.webp?v=1","formal":2,"badges":["Weekend","Travel"],"pieces":["brown-knit-quarterzip","white-tee","dark-denim","white-leather-sneakers"]},
 {"id":"look-navy-vest-cream-knit-brown-chelsea","family":"family-navy-vest-cream-turtleneck-dark-denim","name":"Navy quilted vest + cream turtleneck + brown Chelsea boots","image":"assets/look-navy-vest-cream-knit-brown-chelsea.webp?v=1","formal":2,"badges":["Weekend","Dinner"],"pieces":["owned-md-navy-quilted-vest","cream-cable-knit-turtleneck","dark-denim","brown-chelsea"]},
@@ -485,6 +487,7 @@ looks:[
 ,{id:'look-207',family:'family-look-207',name:'Blue gingham shirt + navy chinos + cognac loafers',image:'assets/look-207-blue-gingham-navy-chinos-brown-loafers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','navy-trousers','brown-loafers']}
 ],
 pieces:[
+{id:'dark-green-crewneck-sweater',name:'Dark green crewneck sweater',category:'Top',status:'missing'},
 {"id":"navy-wool-shirt-jacket","name":"Navy wool shirt jacket","category":"Outerwear","status":"missing"},
 {"id":"brown-knit-quarterzip","name":"Brown quarter-zip knit sweater","category":"Top","status":"missing"},
 {"id":"charcoal-denim","name":"Washed charcoal jeans","category":"Pants","status":"missing"},

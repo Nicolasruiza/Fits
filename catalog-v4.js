@@ -82,3 +82,7 @@ Object.assign(window.FITS_CATALOG_IMAGES, {
 'taupe-suede-chelsea':'assets/catalog-taupe-suede-chelsea.webp?v=1',
 'taupe-suede-bomber':'assets/catalog-taupe-suede-bomber.webp?v=1'
 });
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'dark-green-crewneck-sweater':'assets/catalog-dark-green-crewneck-sweater.webp?v=1'
+});
