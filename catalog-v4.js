@@ -67,3 +67,18 @@ Object.assign(window.FITS_CATALOG_IMAGES, {
 'olive-polo':'assets/catalog-olive-polo.webp?v=1',
 'black-lightweight-joggers':'assets/catalog-black-lightweight-joggers.webp?v=1'
 });
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'navy-wool-shirt-jacket':'assets/catalog-navy-wool-shirt-jacket.webp?v=1',
+'brown-knit-quarterzip':'assets/catalog-brown-knit-quarterzip.webp?v=1',
+'charcoal-denim':'assets/catalog-charcoal-denim.webp?v=1',
+'grey-suede-court-sneakers':'assets/catalog-grey-suede-court-sneakers.webp?v=1',
+'cream-cargo-joggers':'assets/catalog-cream-cargo-joggers.webp?v=1',
+'navy-lightweight-joggers':'assets/catalog-navy-lightweight-joggers.webp?v=1',
+'tobacco-workwear-overshirt':'assets/catalog-tobacco-workwear-overshirt.webp?v=1',
+'black-denim':'assets/catalog-black-denim.webp?v=1',
+'beige-long-sleeve-polo':'assets/catalog-beige-long-sleeve-polo.webp?v=1',
+'taupe-suede-trucker':'assets/catalog-taupe-suede-trucker.webp?v=1',
+'taupe-suede-chelsea':'assets/catalog-taupe-suede-chelsea.webp?v=1',
+'taupe-suede-bomber':'assets/catalog-taupe-suede-bomber.webp?v=1'
+});
