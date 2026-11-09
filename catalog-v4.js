@@ -84,5 +84,5 @@ Object.assign(window.FITS_CATALOG_IMAGES, {
 });
 
 Object.assign(window.FITS_CATALOG_IMAGES, {
-'dark-green-crewneck-sweater':'assets/catalog-dark-green-crewneck-sweater.webp?v=1'
+'dark-green-crewneck-sweater':'assets/catalog-dark-green-crewneck-sweater.webp?v=2'
 });
