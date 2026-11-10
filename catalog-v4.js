@@ -86,3 +86,7 @@ Object.assign(window.FITS_CATALOG_IMAGES, {
 Object.assign(window.FITS_CATALOG_IMAGES, {
 'dark-green-crewneck-sweater':'assets/catalog-dark-green-crewneck-sweater.webp?v=3'
 });
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'owned-blue-tailored-waistcoat':'assets/catalog-owned-blue-tailored-waistcoat.webp?v=1'
+});
