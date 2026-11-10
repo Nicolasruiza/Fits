@@ -331,3 +331,13 @@ svg{display:block}
 /* Style row: three equal chips across the full width, matching the occasion row above */
 .v5-garment-chips[aria-label="Style"]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;overflow:visible}
 .v5-garment-chips[aria-label="Style"] .v5-garment-chip{height:44px;padding:0 4px;font-size:13px;font-weight:600}
+.v5-style-row{display:flex;align-items:flex-start;padding:0 16px;gap:8px}
+.v5-style-row .v5-garment-chips[aria-label="Style"]{flex:1;min-width:0;padding:0 0 4px}
+.v5-new-control{border-left:1px solid var(--v5-line);padding-left:8px}
+.v5-new-switch{display:flex;align-items:center;gap:6px;min-height:44px;padding:0;border:0;background:transparent;color:var(--v5-ink);font-size:12px;font-weight:650;white-space:nowrap}
+.v5-new-track{position:relative;width:28px;height:16px;border-radius:999px;background:var(--v5-muted)}
+.v5-new-track::after{content:"";position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff}
+.v5-new-switch[aria-checked="true"] .v5-new-track{background:var(--v5-green)}
+.v5-new-switch[aria-checked="true"] .v5-new-track::after{transform:translateX(12px)}
+.v5-new-badge{position:absolute;left:8px;top:33px;padding:4px 8px;border-radius:999px;background:#edf5ee;color:#234634;font-size:10px;font-weight:700;white-space:nowrap}
+@media(max-width:370px){.v5-style-row{padding-inline:12px;gap:5px}.v5-new-control{padding-left:5px}.v5-style-row .v5-garment-chips[aria-label="Style"]{gap:4px}.v5-style-row .v5-garment-chips[aria-label="Style"] .v5-garment-chip{font-size:11px}}

@@ -11,6 +11,7 @@
   const ui={
     tab:sessionStorage.getItem('fitsV5Tab')||'ready',
     favoritesOnly:false,
+    newOnly:sessionStorage.getItem('fitsV5NewOnly')==='true',
     expanded:{},
     sheet:false,
     view:params.get('view')==='hidden'?'hidden':'main',
@@ -106,10 +107,11 @@
     return `<div class="v5-chips" role="radiogroup" aria-label="Occasion">${V.OCCASIONS.map(chip).join('')}</div><p class="v5-note">${esc(note)}</p>`;
   }
   // How dressed-up: any mix of the three styles, starting from the occasion's default (see looks-v5-core.js).
-  function styleChips(o,sel){
+  function styleChips(o,sel,showNew,recentCount){
     const chip=x=>`<button class="v5-garment-chip${sel.values.includes(x)?' is-active':''}" type="button" role="checkbox" aria-checked="${sel.values.includes(x)}" data-action="style" data-value="${esc(x)}">${esc(x)}</button>`;
     const note=sel.auto?(o.occasion==='All'?'every style':`auto for ${o.occasion.toLowerCase()}`):'set by you today';
-    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Style</strong><span>${esc(note)}</span></div><div class="v5-garment-chips" role="group" aria-label="Style">${V.STYLES.map(chip).join('')}</div></section>`;
+    const fresh=showNew?`<div class="v5-new-control"><button class="v5-new-switch" type="button" role="switch" aria-checked="${ui.newOnly}" aria-label="Only new looks" data-action="new-only"><span>New · ${recentCount}</span><span class="v5-new-track" aria-hidden="true"></span></button></div>`:'';
+    return `<section class="v5-garment-filter"><div class="v5-filter-head"><strong>Style</strong><span>${esc(note)}</span></div><div class="v5-style-row"><div class="v5-garment-chips" role="group" aria-label="Style">${V.STYLES.map(chip).join('')}</div>${fresh}</div></section>`;
   }
   function sortToggle(){
     const d=sortDir();
@@ -131,9 +133,10 @@
     // Other versions in this card (Detail shows them all); the one on the card and hidden looks don't count.
     const hidden=new Set(V.read('fitsHiddenLooks',[])),more=(c.family?.looks||[]).filter(id=>id!==l.id&&V.look(id)&&!hidden.has(id)).length;
     const variants=more?`<span class="v5-variants" aria-label="${more} more ${more===1?'variant':'variants'}">${I.stack}+${more}</span>`:'';
-    return `<div class="v5-card-wrap"><a class="v5-card" href="${esc(V.detailHref(l))}" data-action="open-look" aria-label="${esc(l.name)}">
+    const fresh=!opts.unhide&&c.newBadge?`<span class="v5-new-badge">${esc(c.newBadge)}</span>`:'';
+    return `<div class="v5-card-wrap"><a class="v5-card" href="${esc(V.detailHref(l))}" data-action="open-look" aria-label="${esc([l.name,!opts.unhide&&c.newBadge].filter(Boolean).join(' · '))}">
       <img src="${esc(l.image)}" alt="${esc(l.name)}" loading="lazy" onerror="this.classList.add('is-broken')">
-      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${variants}${needs}</a>${extra}</div>`;
+      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${variants}${fresh}${needs}</a>${extra}</div>`;
   }
   function favRow(cards){
     if(!cards.length)return'';
@@ -169,7 +172,11 @@
   function mainView(){
     const st=V.state(),s=V.season(st),o=V.occasion();
     const sel=V.styles(o.occasion);
-    const cards=V.familyCards({state:st,season:s.season,occasion:o.occasion,styles:sel.values});
+    const filters={state:st,season:s.season,occasion:o.occasion,styles:sel.values};
+    const showNew=(D.looks||[]).some(l=>!st.hidden.has(l.id)&&V.isNewLook(l));
+    if(!showNew&&ui.newOnly){ui.newOnly=false;sessionStorage.removeItem('fitsV5NewOnly')}
+    const recent=showNew?V.familyCards({...filters,newOnly:true}):[];
+    const cards=ui.newOnly?recent:V.familyCards(filters);
     const ready=V.sortByWarmth(cards.filter(c=>!c.missing.length),sortDir());
     const ideas=V.sortByWarmth(cards.filter(c=>c.missing.length),sortDir());
     let body='';
@@ -182,24 +189,24 @@
       }else{
         body=`${favRow(favs)}
           <div class="v5-row-head v5-pad"><h2 class="v5-h2">All ready</h2>${sortToggle()}</div>
-          ${ready.length?`<div class="v5-grid">${ready.map(c=>card(c)).join('')}</div>`:`<p class="v5-empty">Nothing ${esc(sel.values.length<V.STYLES.length?sel.values.join(' or ').toLowerCase()+' ':'')}ready for ${esc(o.occasion==='All'?'this season':o.occasion.toLowerCase())} yet. Check Inspiration for the closest looks, or tap another style.</p>`}`;
+          ${ready.length?`<div class="v5-grid">${ready.map(c=>card(c)).join('')}</div>`:ui.newOnly?'<p class="v5-empty">No new ready-to-wear looks match these filters. Try Inspiration or turn off New.</p>':`<p class="v5-empty">Nothing ${esc(sel.values.length<V.STYLES.length?sel.values.join(' or ').toLowerCase()+' ':'')}ready for ${esc(o.occasion==='All'?'this season':o.occasion.toLowerCase())} yet. Check Inspiration for the closest looks, or tap another style.</p>`}`;
       }
     }else{
       const groups=[['1 piece away',ideas.filter(c=>c.missing.length===1),'one'],['2 pieces away',ideas.filter(c=>c.missing.length===2),'two'],['3+ pieces away',ideas.filter(c=>c.missing.length>=3),'more']];
       saveSequence(groups.flatMap(g=>g[1]));
-      body=`${V.bestBuyCard(st)}<div class="v5-row-head v5-pad"><h2 class="v5-h2">Ideas</h2>${sortToggle()}</div>
+      body=`${ui.newOnly?'':V.bestBuyCard(st)}<div class="v5-row-head v5-pad"><h2 class="v5-h2">Ideas</h2>${sortToggle()}</div>
         ${groups.filter(g=>g[1].length).map(([title,list,key])=>{
           const open=ui.expanded[key],shown=open?list:list.slice(0,6);
           return `<section class="v5-section"><div class="v5-row-head"><h3 class="v5-h3">${title}</h3><span class="v5-count">${list.length} ${list.length===1?'look':'looks'}</span></div>
             <div class="v5-grid">${shown.map(c=>card(c,{needs:true})).join('')}</div>
             ${list.length>6?`<button class="v5-more" type="button" data-action="expand" data-key="${key}">${open?'Show less':`Show all ${list.length}`}</button>`:''}</section>`;
-        }).join('')||'<p class="v5-empty">No ideas match this season and occasion.</p>'}`;
+        }).join('')||(ui.newOnly?'<p class="v5-empty">No new ideas match these filters.</p>':'<p class="v5-empty">No ideas match this season and occasion.</p>')}`;
     }
     return `<header class="v5-header"><h1>Looks</h1><span>${(D.looks||[]).length} LOOKS</span></header>
       ${weatherCard(st,s)}
       ${tabs(ready.length,ideas.length)}
       ${occasionChips(o)}
-      ${styleChips(o,sel)}
+      ${styleChips(o,sel,showNew,recent.length)}
       ${body}
       ${hiddenLink()}
       <p class="v5-classic"><a href="index.html?ui=classic">Switch to the classic view</a></p>
@@ -237,6 +244,11 @@
       if(!next.length)return;
       V.setStyles(occ,next);ui.expanded={}
     }
+    else if(a==='new-only'){
+      ui.newOnly=!ui.newOnly;
+      sessionStorage.setItem('fitsV5NewOnly',String(ui.newOnly));
+      ui.expanded={};
+    }
     else if(a==='sort'){V.write('fitsWarmthSortV5',el.dataset.value)}
     else if(a==='fav-all'){ui.favoritesOnly=true;window.scrollTo(0,0)}
     else if(a==='fav-back'){ui.favoritesOnly=false}
@@ -247,6 +259,7 @@
     else if(a==='locate'){requestLocation();return}
     else if(a==='unhide'){const h=new Set(V.read('fitsHiddenLooks',[]));h.delete(el.dataset.look);V.write('fitsHiddenLooks',[...h])}
     render();
+    if(a==='new-only')root.querySelector('[data-action="new-only"]')?.focus({preventScroll:true});
   });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ui.sheet){ui.sheet=false;render()}});
   window.addEventListener('storage',e=>{if(/^fits/.test(e.key||''))render()});
