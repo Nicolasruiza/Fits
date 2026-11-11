@@ -16,7 +16,7 @@
     if(/t-shirt|\btee\b|polo|henley/.test(t))return'Tees & polos';
     // Before Outerwear: cardigans are stored in the Outerwear category but are knitwear.
     if(/sweater|crewneck|crew-neck|v-neck|quarter-zip|quarter zip|cardigan|turtleneck|knit/.test(t))return'Knitwear';
-    if(/blazer/.test(t))return'Blazers';
+    if(/blazer|waistcoat/.test(t))return'Blazers';
     if(/overshirt|jacket|coat|outerwear|bomber/.test(t))return'Outerwear';
     if(/shirt|button-down|button down|button-up|button up|oxford|gingham|check/.test(t))return'Shirts';
     if(/short/.test(t))return'Shorts';

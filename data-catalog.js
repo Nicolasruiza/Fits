@@ -495,7 +495,7 @@ looks:[
 ,{id:'look-207',publishedOn:'2026-11-05',family:'family-look-207',name:'Blue gingham shirt + navy chinos + cognac loafers',image:'assets/look-207-blue-gingham-navy-chinos-brown-loafers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','navy-trousers','brown-loafers']}
 ],
 pieces:[
-{id:'owned-blue-tailored-waistcoat',name:'Blue micro-stripe tailored waistcoat',category:'Outerwear',status:'owned'},
+{id:'owned-blue-tailored-waistcoat',name:'Blue micro-stripe tailored waistcoat',category:'Top',status:'owned'},
 {id:'owned-dark-burgundy-silk-tie',name:'Dark burgundy silk tie',category:'Accessory',status:'owned'},
 {id:'dark-green-crewneck-sweater',name:'Christmas green crewneck sweater',category:'Top',status:'owned'},
 {"id":"navy-wool-shirt-jacket","name":"Navy wool shirt jacket","category":"Outerwear","status":"missing"},
