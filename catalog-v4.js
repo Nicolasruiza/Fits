@@ -38,7 +38,6 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'navy-tee':'assets/navy-tee.webp?v=1',
 'khaki-shorts':'assets/khaki-shorts.webp?v=1',
 'navy-tailored-shorts':'assets/wardrobe-standardized/navy-tailored-shorts.png?v=1',
-'beige-sneakers':'assets/beige-sneakers.webp?v=1',
 'white-linen-shirt':'assets/wardrobe-standardized/white-linen-shirt.png?v=1',
 'beige-linen-shirt':'assets/wardrobe-standardized/beige-linen-shirt.png?v=1',
 'navy-linen-shirt':'assets/wardrobe-standardized/navy-linen-shirt.png?v=1',
