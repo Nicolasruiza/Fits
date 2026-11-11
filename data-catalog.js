@@ -19,6 +19,7 @@
    - lookAliases resolves legacy bookmarks and rotation history to the identical existing look. */
 window.FITS_DATA={
 families:[
+{id:'family-blue-microstripe-waistcoat-navy-dress-trousers',name:'Blue micro-stripe waistcoat + white shirt + navy dress trousers',hero:'look-blue-microstripe-waistcoat-navy-dress-burgundy-tie',looks:['look-blue-microstripe-waistcoat-navy-dress-burgundy-tie','look-blue-microstripe-waistcoat-navy-dress-open-collar']},
 {id:'family-blue-waistcoat-grey-dress-trousers',name:'Blue waistcoat + white shirt + grey dress trousers',hero:'look-blue-waistcoat-grey-dress-trousers',looks:['look-blue-waistcoat-grey-dress-trousers']},
 {id:'family-blue-waistcoat-beige-chinos',name:'Blue waistcoat + white shirt + beige chinos',hero:'look-blue-waistcoat-beige-chinos',looks:['look-blue-waistcoat-beige-chinos']},
 {id:'family-dark-green-crewneck-beige-chinos',name:'Christmas green crewneck + beige chinos + white leather sneakers',hero:'look-dark-green-crewneck-beige-chinos',looks:['look-dark-green-crewneck-beige-chinos']},
@@ -237,6 +238,8 @@ families:[
 ,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
 ],
 looks:[
+{id:'look-blue-microstripe-waistcoat-navy-dress-burgundy-tie',family:'family-blue-microstripe-waistcoat-navy-dress-trousers',name:'Blue micro-stripe waistcoat + burgundy tie + navy dress trousers',image:'assets/look-blue-microstripe-waistcoat-navy-dress-burgundy-tie.webp?v=1',publishedOn:'2026-11-10',formal:4,badges:['Office','Dinner'],pieces:['owned-blue-tailored-waistcoat','white-shirt','owned-dark-burgundy-silk-tie','navy-dress-trousers','owned-brown-leather-captoe']},
+{id:'look-blue-microstripe-waistcoat-navy-dress-open-collar',family:'family-blue-microstripe-waistcoat-navy-dress-trousers',name:'Blue micro-stripe waistcoat + white shirt + navy dress trousers',image:'assets/look-blue-microstripe-waistcoat-navy-dress-open-collar.webp?v=1',publishedOn:'2026-11-10',formal:3,badges:['Office','Dinner'],pieces:['owned-blue-tailored-waistcoat','white-shirt','navy-dress-trousers','owned-brown-leather-captoe']},
 {id:'look-blue-waistcoat-grey-dress-trousers',family:'family-blue-waistcoat-grey-dress-trousers',name:'Blue waistcoat + white shirt + grey dress trousers',image:'assets/look-blue-waistcoat-grey-dress-trousers.webp?v=1',publishedOn:'2026-11-10',formal:3,badges:['Office','Dinner'],pieces:['owned-blue-tailored-waistcoat','white-shirt','grey-dress-trousers','owned-black-leather-captoe']},
 {id:'look-blue-waistcoat-beige-chinos',family:'family-blue-waistcoat-beige-chinos',name:'Blue waistcoat + white shirt + beige chinos',image:'assets/look-blue-waistcoat-beige-chinos.webp?v=1',publishedOn:'2026-11-10',formal:2,badges:['Weekend','Dinner'],pieces:['owned-blue-tailored-waistcoat','white-shirt','beige-chinos','brown-loafers']},
 {id:'look-dark-green-crewneck-beige-chinos',publishedOn:'2026-11-09',family:'family-dark-green-crewneck-beige-chinos',name:'Christmas green crewneck + beige chinos + white leather sneakers',image:'assets/look-dark-green-crewneck-beige-chinos.webp?v=3',formal:2,badges:['Weekend','Travel'],pieces:['dark-green-crewneck-sweater','beige-chinos','white-leather-sneakers']},
@@ -492,7 +495,8 @@ looks:[
 ,{id:'look-207',publishedOn:'2026-11-05',family:'family-look-207',name:'Blue gingham shirt + navy chinos + cognac loafers',image:'assets/look-207-blue-gingham-navy-chinos-brown-loafers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['owned-blue-gingham-shirt','navy-trousers','brown-loafers']}
 ],
 pieces:[
-{id:'owned-blue-tailored-waistcoat',name:'Blue tailored waistcoat',category:'Outerwear',status:'owned'},
+{id:'owned-blue-tailored-waistcoat',name:'Blue micro-stripe tailored waistcoat',category:'Outerwear',status:'owned'},
+{id:'owned-dark-burgundy-silk-tie',name:'Dark burgundy silk tie',category:'Accessory',status:'owned'},
 {id:'dark-green-crewneck-sweater',name:'Christmas green crewneck sweater',category:'Top',status:'owned'},
 {"id":"navy-wool-shirt-jacket","name":"Navy wool shirt jacket","category":"Outerwear","status":"missing"},
 {"id":"brown-knit-quarterzip","name":"Brown quarter-zip knit sweater","category":"Top","status":"missing"},
@@ -639,7 +643,7 @@ pieces:[
 {id:'black-dress-trousers',name:'Black dress trousers',category:'Pants',status:'missing'},
 {id:'dark-charcoal-dress-trousers',name:'Dark charcoal dress trousers',category:'Pants',status:'missing'},
 {id:'grey-dress-trousers',name:'Grey dress trousers',category:'Pants',status:'missing'},
-{id:'navy-dress-trousers',name:'Navy dress trousers',category:'Pants',status:'missing'},
+{id:'navy-dress-trousers',name:'Navy dress trousers',category:'Pants',status:'owned'},
 {id:'darkbrown-suede-loafers',name:'Dark brown suede loafers',category:'Shoes',status:'missing'}
 ],
 inspirations:[
