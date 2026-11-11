@@ -88,5 +88,6 @@ Object.assign(window.FITS_CATALOG_IMAGES, {
 
 Object.assign(window.FITS_CATALOG_IMAGES, {
 'owned-blue-tailored-waistcoat':'assets/catalog-owned-blue-tailored-waistcoat.webp?v=2',
-'owned-dark-burgundy-silk-tie':'assets/catalog-owned-dark-burgundy-silk-tie.webp?v=1'
+'owned-dark-burgundy-silk-tie':'assets/catalog-owned-dark-burgundy-silk-tie.webp?v=1',
+'owned-dark-brown-leather-cafe-racer':'assets/catalog-owned-dark-brown-leather-cafe-racer.webp?v=1'
 });
