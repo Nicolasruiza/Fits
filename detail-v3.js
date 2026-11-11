@@ -17,7 +17,7 @@ function fit(w){if(!w)return{level:'neutral',label:'Weather pending',reason:'Ena
 function hourLabel(iso){return new Date(iso).toLocaleTimeString([], {hour:'numeric'}).replace(' ','').toLowerCase()}
 function weatherHTML(w){if(!w)return`<div class="weather"><div class="weather-note">Weather unavailable · enable location on Looks for live suggestions.</div></div>`;let hs=(w.hours||[]).slice(0,4);if(!hs.length)hs=[{time:new Date().toISOString(),temp:w.temp,rain:w.maxRain||0,code:w.code||2}];return`<div class="weather"><div class="weather-row">${hs.map((h,i)=>`<div class="wx"><div class="t">${i===0?'Now':hourLabel(h.time)}</div><div class="ico">${icon(h.code||2)}</div><div class="deg">${Math.round(h.temp)}°</div></div>`).join('')}</div><div class="weather-note">${fit(w).reason}</div></div>`}
 function lookHeading(){
-  const parts=String(active.name||fam.name||'Look').split(/\\s+\\+\\s+/).map(x=>x.trim()).filter(Boolean);
+  const parts=String(active.name||fam.name||'Look').split(/\s+\+\s+/).map(x=>x.trim()).filter(Boolean);
   if(parts.length>1)return{title:parts[0],subtitle:parts.slice(1).join(' · ')};
   const items=(active.pieces||[]).map(piece).filter(p=>p&&p.category!=='Accessory');
   return{title:parts[0]||items[0]?.name||'Look',subtitle:items.slice(1).map(p=>p.name).join(' · ')};
