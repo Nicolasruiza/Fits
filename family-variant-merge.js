@@ -59,6 +59,7 @@
   // Automatic groupings from the source data that mix a look with a blazer and one without.
   split(['look-04','look-08','look-13','look-30']);
 
-  // Asked for by hand: every look with the brown suede jacket is one card.
-  merge('family-brown-suede-jacket','Brown suede jacket',['look-41','look-156','look-76','look-57','look-66','look-145','look-147','look-148'],'look-41');
+  // The brown suede jacket looks used to be forced into one card, but they mix navy, denim, beige and olive
+  // trousers and tees, shirts, polos and sweaters, which breaks the rule above. Each one is its own card.
+  split(['look-41','look-156','look-76','look-57','look-66','look-145','look-147','look-148']);
 })();
