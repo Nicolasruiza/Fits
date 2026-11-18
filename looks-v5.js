@@ -127,7 +127,7 @@
     return`Needs ${m.length} pieces`;
   }
   function card(c,opts={}){
-    const l=c.look,f=V.feel(l),cls=f==='Warmer'?'warm':f==='Colder'?'cold':'mild';
+    const l=c.look;
     const needs=opts.needs?`<span class="v5-needs">${esc(needsText(c))}</span>`:'';
     const extra=opts.unhide?`<button class="v5-unhide" type="button" data-action="unhide" data-look="${esc(l.id)}">Unhide</button>`:'';
     // Other versions in this card (Detail shows them all); the one on the card and hidden looks don't count.
@@ -136,7 +136,7 @@
     const fresh=!opts.unhide&&c.newBadge?`<span class="v5-new-badge">${esc(c.newBadge)}</span>`:'';
     return `<div class="v5-card-wrap"><a class="v5-card" href="${esc(V.detailHref(l))}" data-action="open-look" aria-label="${esc([l.name,!opts.unhide&&c.newBadge].filter(Boolean).join(' · '))}">
       <img src="${esc(l.image)}" alt="${esc(l.name)}" loading="lazy" onerror="this.classList.add('is-broken')">
-      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${variants}${fresh}${needs}</a>${extra}</div>`;
+      ${variants}${fresh}${needs}</a>${extra}</div>`;
   }
   function favRow(cards){
     if(!cards.length)return'';
