@@ -92,10 +92,17 @@
   }
   const warmth=l=>Number(l.climate?.warmth)||0;
 
+  const RECENT_WINDOW=14*86400000;
+  function isNewLook(look,today=todayKey()){
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(look.publishedOn||''))return false;
+    const age=Date.parse(today)-Date.parse(look.publishedOn);
+    return age>=0&&age<RECENT_WINDOW;
+  }
+
   /* ---------- Families: one card per family, showing its closest variant ---------- */
   function familyCards(opts={}){
     const st=opts.state||state(),s=opts.season,o=opts.occasion||'All',g=opts.garment||'All',sty=opts.styles,includeHidden=!!opts.hiddenOnly;
-    const out=[];
+    const out=[],today=todayKey();
     (D.families||[]).forEach(f=>{
       const variants=(f.looks||[]).map(look).filter(Boolean)
         .filter(l=>includeHidden?st.hidden.has(l.id):!st.hidden.has(l.id))
@@ -104,10 +111,14 @@
         .filter(l=>styleMatch(l,sty))
         .filter(l=>garmentMatch(l,g));
       if(!variants.length)return;
-      const ranked=variants.map(l=>({look:l,missing:missing(l,st)}))
-        .sort((a,b)=>a.missing.length-b.missing.length||(st.saved[b.look.id]?1:0)-(st.saved[a.look.id]?1:0)||(a.look.id===f.hero?-1:b.look.id===f.hero?1:0));
+      const recent=variants.filter(l=>isNewLook(l,today));
+      const eligible=opts.newOnly?recent:variants;
+      if(!eligible.length)return;
+      const ranked=eligible.map(l=>({look:l,missing:missing(l,st)}))
+        .sort((a,b)=>a.missing.length-b.missing.length||(opts.newOnly?b.look.publishedOn.localeCompare(a.look.publishedOn):0)||(st.saved[b.look.id]?1:0)-(st.saved[a.look.id]?1:0)||(a.look.id===f.hero?-1:b.look.id===f.hero?1:0));
       const best=ranked[0];
-      out.push({family:f,look:best.look,missing:best.missing,saved:variants.some(l=>st.saved[l.id])});
+      const newBadge=recent.length?(f.looks.every(id=>isNewLook(look(id)||{},today))?'New':'New variant'):'';
+      out.push({family:f,look:best.look,missing:best.missing,saved:eligible.some(l=>st.saved[l.id]),newBadge});
     });
     return out;
   }
@@ -266,6 +277,6 @@
   function hideNav(){const el=document.querySelector('body>.v5-nav');if(el)el.hidden=true}
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,STYLES,styles,setStyles,styleMatch,garmentMatch,feel,warmth,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
+  window.FITS_V5={bestBuyCard,read,write,todayKey,piece,look,state,owned,missing,SEASONS,OCCASIONS,GARMENTS,season,setSeason,autoSeason,seasonMatch,occasion,setOccasion,occasionMatch,STYLES,styles,setStyles,styleMatch,garmentMatch,feel,warmth,isNewLook,familyCards,sortByWarmth,nextBuys,betterTogether,pairsWithOwned,pieceImage,detailHref,track,
     KINDS,pieceKind,pieceInSeason,wearRecords,pieceWearCounts,logWear,unlogWear,daysSince,relativeDay,pieceHref,nav,esc,SHOP_STORES,shopLinks,hideNav};
 })();

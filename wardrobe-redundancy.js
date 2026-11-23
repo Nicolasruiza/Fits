@@ -1,6 +1,6 @@
 (()=>{
   const D=window.FITS_DATA;if(!D)return;
-  const aliases={'beige-buttondown':'owned-cream-buttondown','stone-shirt':'owned-cream-buttondown','green-buttonup':'olive-buttondown','cognac-suede-jacket':'brown-suede-jacket','striped-blue-linen-shirt':'light-blue-oxford','owned-lightblue-microcheck-shirt':'light-blue-oxford'};
+  const aliases={'beige-buttondown':'owned-cream-buttondown','stone-shirt':'owned-cream-buttondown','green-buttonup':'olive-buttondown','cognac-suede-jacket':'brown-suede-jacket','striped-blue-linen-shirt':'light-blue-oxford','owned-lightblue-microcheck-shirt':'light-blue-oxford','beige-sneakers':'taupe-suede-shoes'};
 
   // The striped linen and micro-check shirts are one real shirt: the owned light blue Oxford.
   const oxfordName=/Blue striped linen shirt|Striped linen shirt|Blue striped shirt|Light blue micro-check shirt/i;

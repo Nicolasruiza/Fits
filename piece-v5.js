@@ -12,10 +12,25 @@
   };
   const backHref=()=>{try{const r=new URL(document.referrer);if(r.origin===location.origin&&/wardrobe|stats|looks|detail|next-buy/.test(r.pathname))return'back'}catch(e){}return'wardrobe.html'};
 
-  function rail(title,looks,count,labelFn){
-    if(!looks.length)return'';
-    return`<section class="p5-section"><div class="v5-row-head v5-pad-x"><h2 class="v5-h2">${title}</h2><span class="v5-count">${count} ${count===1?'look':'looks'}</span></div>
-      <div class="v5-rail">${looks.map(l=>`<a class="p5-look" href="${esc(V.detailHref(l))}" aria-label="${esc(l.name)}"><img src="${esc(l.image)}" alt="${esc(l.name)}" loading="lazy" onerror="this.classList.add('is-broken')">${labelFn?`<span class="v5-needs">${esc(labelFn(l))}</span>`:''}</a>`).join('')}</div></section>`;
+  function pieceFamilies(st){
+    const families=new Map();
+    for(const look of D.looks||[]){
+      if(st.hidden.has(look.id)||!(look.pieces||[]).includes(id))continue;
+      const key=look.family||look.id,missing=V.missing(look,st);
+      const current=families.get(key);
+      if(!current){families.set(key,{look,missing,variants:1});continue}
+      current.variants++;
+      if(missing.length<current.missing.length)Object.assign(current,{look,missing});
+    }
+    return [...families.values()];
+  }
+  function rail(title,cards,labelFn){
+    if(!cards.length)return'';
+    return`<section class="p5-section"><div class="v5-row-head v5-pad-x"><h2 class="v5-h2">${title}</h2><span class="v5-count">${cards.length} ${cards.length===1?'look':'looks'}</span></div>
+      <div class="v5-rail">${cards.slice(0,10).map(card=>{
+        const {look,variants}=card,variantLabel=variants>1?`${variants} variants`:'';
+        return`<a class="p5-look" href="${esc(V.detailHref(look))}" aria-label="${esc(look.name+(variantLabel?` · ${variantLabel}`:''))}"><img src="${esc(look.image)}" alt="" loading="lazy" onerror="this.classList.add('is-broken')">${variantLabel?`<span class="p5-variants">${variantLabel}</span>`:''}${labelFn?`<span class="v5-needs">${esc(labelFn(card))}</span>`:''}</a>`;
+      }).join('')}</div></section>`;
   }
   // Interchangeable pieces (same category, linked both ways by FITS_SWAPS): Looks and Detail suggest
   // one as a stand-in when the other is missing.
@@ -38,20 +53,20 @@
     const p=V.piece(id);
     if(!p){root.innerHTML=`<div class="v5"><div class="v5-back-row"><a class="v5-back" href="wardrobe.html">${I.back}Wardrobe</a></div><p class="v5-empty">This piece isn’t in your catalog anymore.</p></div>`;return}
     const st=V.state(),owned=V.owned(id,st),star=st.wishlist.has(id),hidden=new Set(V.read('fitsHiddenPieces',[])).has(id);
-    const looks=(D.looks||[]).filter(l=>!st.hidden.has(l.id)&&(l.pieces||[]).includes(id)).map(l=>({l,m:V.missing(l,st)}));
+    const looks=pieceFamilies(st);
     const worn=V.pieceWearCounts(V.wearRecords()).get(id)||0;
     const src=V.pieceImage(id),swaps=window.FITS_SWAPS?FITS_SWAPS.interchangeable(id).map(V.piece).filter(Boolean):[];
     let stats,rails;
     if(owned){
-      const ready=looks.filter(x=>!x.m.length),one=looks.filter(x=>x.m.length===1);
+      const ready=looks.filter(x=>!x.missing.length),one=looks.filter(x=>x.missing.length===1);
       stats=[[looks.length,'looks use it',''],[ready.length,'ready to wear','good'],[one.length,'one piece away','']];
-      rails=rail('Ready with it',ready.slice(0,10).map(x=>x.l),ready.length)
-        +rail('One piece away',one.slice(0,10).map(x=>x.l),one.length,l=>`Needs ${(V.piece(V.missing(l,st)[0])?.name||'').toLowerCase()}`);
+      rails=rail('Ready with it',ready)
+        +rail('One piece away',one,card=>`Needs ${(V.piece(card.missing[0])?.name||'').toLowerCase()}`);
     }else{
-      const completes=looks.filter(x=>x.m.length===1),closer=looks.filter(x=>x.m.length===2);
+      const completes=looks.filter(x=>x.missing.length===1),closer=looks.filter(x=>x.missing.length===2);
       stats=[[completes.length,'ready the day it arrives','good'],[closer.length,'become 1 piece away',''],[looks.length,'looks use it','']];
-      rails=rail('Makes these ready',completes.slice(0,10).map(x=>x.l),completes.length)
-        +rail('Gets you closer to',closer.slice(0,10).map(x=>x.l),closer.length,l=>`Then needs ${(V.piece(V.missing(l,st).find(m=>m!==id))?.name||'').toLowerCase()}`);
+      rails=rail('Makes these ready',completes)
+        +rail('Gets you closer to',closer,card=>`Then needs ${(V.piece(card.missing.find(m=>m!==id))?.name||'').toLowerCase()}`);
     }
     const back=backHref();
     root.innerHTML=`<div class="v5">

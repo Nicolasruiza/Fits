@@ -38,7 +38,6 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'navy-tee':'assets/navy-tee.webp?v=1',
 'khaki-shorts':'assets/khaki-shorts.webp?v=1',
 'navy-tailored-shorts':'assets/wardrobe-standardized/navy-tailored-shorts.png?v=1',
-'beige-sneakers':'assets/beige-sneakers.webp?v=1',
 'white-linen-shirt':'assets/wardrobe-standardized/white-linen-shirt.png?v=1',
 'beige-linen-shirt':'assets/wardrobe-standardized/beige-linen-shirt.png?v=1',
 'navy-linen-shirt':'assets/wardrobe-standardized/navy-linen-shirt.png?v=1',
@@ -62,4 +61,42 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 ,'beige-shorts':'assets/wardrobe-standardized/beige-shorts.png?v=1'
 ,'olive-shorts':'assets/wardrobe-standardized/olive-shorts.png?v=1'
 ,'navy-tie':'assets/wardrobe-standardized/navy-tie.png?v=1'
+});
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'owned-md-navy-quilted-vest':'assets/catalog-navy-quilted-vest.webp?v=1',
+'light-grey-crewneck-sweatshirt':'assets/catalog-light-grey-crewneck-sweatshirt.webp?v=1',
+'cream-cable-knit-turtleneck':'assets/catalog-cream-cable-knit-turtleneck.webp?v=1',
+'white-long-sleeve-crew-neck-tee':'assets/catalog-white-long-sleeve-crew-neck-tee.webp?v=1'
+});
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'black-fullzip-sweatshirt-jacket':'assets/catalog-black-fullzip-sweatshirt-jacket.webp?v=1',
+'olive-polo':'assets/catalog-olive-polo.webp?v=1',
+'black-lightweight-joggers':'assets/catalog-black-lightweight-joggers.webp?v=1'
+});
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'navy-wool-shirt-jacket':'assets/catalog-navy-wool-shirt-jacket.webp?v=1',
+'brown-knit-quarterzip':'assets/catalog-brown-knit-quarterzip.webp?v=1',
+'charcoal-denim':'assets/catalog-charcoal-denim.webp?v=1',
+'grey-suede-court-sneakers':'assets/catalog-grey-suede-court-sneakers.webp?v=1',
+'cream-cargo-joggers':'assets/catalog-cream-cargo-joggers.webp?v=1',
+'navy-lightweight-joggers':'assets/catalog-navy-lightweight-joggers.webp?v=1',
+'tobacco-workwear-overshirt':'assets/catalog-tobacco-workwear-overshirt.webp?v=1',
+'black-denim':'assets/catalog-black-denim.webp?v=1',
+'beige-long-sleeve-polo':'assets/catalog-beige-long-sleeve-polo.webp?v=1',
+'taupe-suede-trucker':'assets/catalog-taupe-suede-trucker.webp?v=1',
+'taupe-suede-chelsea':'assets/catalog-taupe-suede-chelsea.webp?v=1',
+'taupe-suede-bomber':'assets/catalog-taupe-suede-bomber.webp?v=1'
+});
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'dark-green-crewneck-sweater':'assets/catalog-dark-green-crewneck-sweater.webp?v=3'
+});
+
+Object.assign(window.FITS_CATALOG_IMAGES, {
+'owned-blue-tailored-waistcoat':'assets/catalog-owned-blue-tailored-waistcoat.webp?v=2',
+'owned-dark-burgundy-silk-tie':'assets/catalog-owned-dark-burgundy-silk-tie.webp?v=1',
+'owned-dark-brown-leather-cafe-racer':'assets/catalog-owned-dark-brown-leather-cafe-racer.webp?v=2'
 });
