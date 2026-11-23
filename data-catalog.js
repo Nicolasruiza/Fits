@@ -245,6 +245,28 @@ families:[
 ,{id:'family-look-205',name:'Navy V-neck + striped shirt + camel chinos',hero:'look-205',looks:['look-205']}
 ,{id:'family-look-206',name:'Black V-neck + striped shirt + beige chinos',hero:'look-206',looks:['look-206']}
 ,{id:'family-look-207',name:'Blue gingham shirt + navy chinos',hero:'look-207',looks:['look-207']}
+,{id:'family-look-217',name:'Navy zip hoodie + grey henley + dark denim',hero:'look-217',looks:['look-217']}
+,{id:'family-look-218',name:'Olive henley + blue denim',hero:'look-218',looks:['look-218']}
+,{id:'family-look-219',name:'Navy blazer + navy polo + dark grey chinos',hero:'look-219',looks:['look-219']}
+,{id:'family-look-220',name:'Grey overshirt + white T-shirt + olive chinos',hero:'look-220',looks:['look-220']}
+,{id:'family-look-221',name:'Blue denim jacket + white T-shirt + taupe chinos',hero:'look-221',looks:['look-221']}
+,{id:'family-look-222',name:'Grey cardigan + grey henley + dark denim',hero:'look-222',looks:['look-222']}
+,{id:'family-look-223',name:'Navy cardigan + light blue Oxford + camel chinos',hero:'look-223',looks:['look-223']}
+,{id:'family-look-224',name:'Green polo + stone shorts + brown loafers',hero:'look-224',looks:['look-224']}
+,{id:'family-look-225',name:'Burgundy polo + black trousers + brown loafers',hero:'look-225',looks:['look-225']}
+,{id:'family-look-226',name:'Off-white T-shirt + olive shorts + brown sandals',hero:'look-226',looks:['look-226']}
+,{id:'family-look-227',name:'Navy T-shirt + khaki shorts + white sneakers',hero:'look-227',looks:['look-227']}
+,{id:'family-look-228',name:'Navy blazer + white shirt + beige chinos + white sneakers',hero:'look-228',looks:['look-228']}
+,{id:'family-look-229',name:'White shirt + navy trousers + black loafers',hero:'look-229',looks:['look-229']}
+,{id:'family-look-230',name:'White shirt + charcoal trousers + brown lace-up shoes',hero:'look-230',looks:['look-230']}
+,{id:'family-look-231',name:'White linen shirt + cream linen trousers + brown loafers',hero:'look-231',looks:['look-231']}
+,{id:'family-look-232',name:'Navy blazer + grey T-shirt + dark denim + brown suede boots',hero:'look-232',looks:['look-232']}
+,{id:'family-look-233',name:'Taupe blazer + green knit + pale blue shirt + dark trousers',hero:'look-233',looks:['look-233']}
+,{id:'family-look-234',name:'Navy blazer + light blue shirt + beige chinos + brown loafers',hero:'look-234',looks:['look-234']}
+,{id:'family-look-235',name:'Charcoal suit + white shirt + navy tie',hero:'look-235',looks:['look-235']}
+,{id:'family-look-236',name:'Navy suit + white shirt + black lace-up shoes',hero:'look-236',looks:['look-236']}
+,{id:'family-look-237',name:'Navy blazer + light blue shirt + charcoal trousers + black loafers',hero:'look-237',looks:['look-237']}
+,{id:'family-look-238',name:'Navy blazer + white shirt + dark trousers + taupe boots',hero:'look-238',looks:['look-238']}
 ],
 looks:[
 {id:'look-blue-microstripe-waistcoat-navy-dress-burgundy-tie',family:'family-blue-microstripe-waistcoat-navy-dress-trousers',name:'Blue micro-stripe waistcoat + burgundy tie + navy dress trousers',image:'assets/look-blue-microstripe-waistcoat-navy-dress-burgundy-tie.webp?v=1',publishedOn:'2026-11-10',formal:4,badges:['Office','Dinner'],pieces:['owned-blue-tailored-waistcoat','white-shirt','owned-dark-burgundy-silk-tie','navy-dress-trousers','owned-brown-leather-captoe']},
@@ -511,6 +533,28 @@ looks:[
 ,{id:'look-214',publishedOn:'2026-11-11',family:'family-look-214',name:'Dark brown café racer + black turtleneck + charcoal trousers + brown Chelsea boots',image:'assets/look-214-brown-cafe-racer-black-turtleneck-charcoal-brown-chelsea.webp?v=1',formal:3,badges:['Transition','Dinner','Office'],pieces:['owned-dark-brown-leather-cafe-racer','black-turtleneck','dark-charcoal-dress-trousers','brown-chelsea']}
 ,{id:'look-215',publishedOn:'2026-11-11',family:'family-look-215',name:'Dark brown café racer + grey T-shirt + black jeans + white leather sneakers',image:'assets/look-215-brown-cafe-racer-grey-tee-black-denim-white.webp?v=1',formal:1,badges:['Transition','Weekend','Travel'],pieces:['owned-dark-brown-leather-cafe-racer','grey-tee','black-denim','white-leather-sneakers']}
 ,{id:'look-216',publishedOn:'2026-11-11',family:'family-look-216',name:'Dark brown café racer + black T-shirt + charcoal jeans + white leather sneakers',image:'assets/look-216-brown-cafe-racer-black-tee-charcoal-denim-white.webp?v=1',formal:1,badges:['Transition','Weekend','Travel'],pieces:['owned-dark-brown-leather-cafe-racer','black-tee','charcoal-denim','white-leather-sneakers']}
+,{id:'look-217',publishedOn:'2026-11-23',family:'family-look-217',name:'Navy zip hoodie + grey henley + dark denim + white sneakers',image:'assets/look-208-navy-zip-hoodie-grey-henley-dark-denim-white.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['navy-zip-hoodie','grey-henley','dark-denim','white-leather-sneakers']}
+,{id:'look-218',publishedOn:'2026-11-23',family:'family-look-218',name:'Olive henley + blue denim + taupe suede shoes',image:'assets/look-209-olive-henley-blue-denim-taupe-suede.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['olive-henley','blue-denim','taupe-suede-shoes']}
+,{id:'look-219',publishedOn:'2026-11-23',family:'family-look-219',name:'Navy blazer + navy polo + dark grey chinos + white sneakers',image:'assets/look-210-navy-blazer-navy-polo-dark-grey-chinos-white.png?v=2',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','navy-polo','dark-chinos','brown-belt','white-leather-sneakers']}
+,{id:'look-220',publishedOn:'2026-11-23',family:'family-look-220',name:'Grey overshirt + white T-shirt + olive chinos + brown cap-toe shoes',image:'assets/look-212-grey-overshirt-white-tee-olive-laceup.png?v=1',formal:2,badges:['Weekend','Office','Dinner'],pieces:['grey-overshirt','white-tee','olive-trousers','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-221',publishedOn:'2026-11-23',family:'family-look-221',name:'Blue denim jacket + white T-shirt + taupe chinos + dark boots',image:'assets/look-213-denim-jacket-white-tee-taupe-dark-boots.png?v=2',formal:1,badges:['Weekend','Travel'],pieces:['blue-denim-jacket','white-tee','taupe-trousers','black-chelsea']}
+,{id:'look-222',publishedOn:'2026-11-23',family:'family-look-222',name:'Grey cardigan + grey henley + dark denim + brown Chelsea boots',image:'assets/look-214-grey-cardigan-grey-henley-dark-denim-brown.png?v=1',formal:2,badges:['Weekend','Dinner'],pieces:['charcoal-cardigan','grey-henley','dark-denim','brown-chelsea']}
+,{id:'look-223',publishedOn:'2026-11-23',family:'family-look-223',name:'Navy cardigan + light blue Oxford + camel chinos + brown lace-up shoes',image:'assets/look-215-navy-cardigan-lightblue-camel-brown-laceup.png?v=1',formal:3,badges:['Office','Dinner'],pieces:['navy-cardigan','light-blue-oxford','beige-chinos','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-224',publishedOn:'2026-11-23',family:'family-look-224',name:'Green polo + stone tailored shorts + brown loafers',image:'assets/look-216-green-polo-stone-shorts-brown-loafers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['green-polo','beige-shorts','brown-loafers']}
+,{id:'look-225',publishedOn:'2026-11-23',family:'family-look-225',name:'Burgundy polo + black trousers + brown loafers',image:'assets/look-217-burgundy-polo-black-trousers-brown-loafers.png?v=1',formal:3,badges:['Office','Dinner'],pieces:['burgundy-polo','black-dress-trousers','brown-belt','brown-loafers']}
+,{id:'look-226',publishedOn:'2026-11-23',family:'family-look-226',name:'Off-white T-shirt + olive shorts + brown sandals',image:'assets/look-218-offwhite-tee-olive-shorts-brown-sandals.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['offwhite-tee','olive-shorts','brown-sandals']}
+,{id:'look-227',publishedOn:'2026-11-23',family:'family-look-227',name:'Navy T-shirt + khaki shorts + white sneakers',image:'assets/look-219-navy-tee-khaki-shorts-white-sneakers.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['navy-tee','khaki-shorts','white-leather-sneakers']}
+,{id:'look-228',publishedOn:'2026-11-23',family:'family-look-228',name:'Navy blazer + white shirt + beige chinos + white sneakers',image:'assets/look-220-navy-blazer-white-shirt-beige-white-sneakers.png?v=1',formal:3,badges:['Office','Dinner','Weekend'],pieces:['navy-blazer','white-shirt','beige-chinos','white-leather-sneakers']}
+,{id:'look-229',publishedOn:'2026-11-23',family:'family-look-229',name:'White shirt + navy trousers + black loafers',image:'assets/look-221-white-shirt-navy-trousers-black-loafers.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['white-shirt','navy-dress-trousers','dark-belt','dark-loafers']}
+,{id:'look-230',publishedOn:'2026-11-23',family:'family-look-230',name:'White shirt + charcoal trousers + brown cap-toe shoes',image:'assets/look-222-white-shirt-charcoal-trousers-brown-laceup.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['white-shirt','dark-charcoal-dress-trousers','brown-belt','owned-brown-leather-captoe']}
+,{id:'look-231',publishedOn:'2026-11-23',family:'family-look-231',name:'White linen shirt + cream linen trousers + brown loafers',image:'assets/look-223-white-linen-cream-linen-brown-loafers.png?v=1',formal:2,badges:['Summer','Dinner','Travel'],pieces:['white-linen-shirt','cream-linen-trousers','brown-loafers']}
+,{id:'look-232',publishedOn:'2026-11-23',family:'family-look-232',name:'Navy blazer + grey T-shirt + dark denim + brown suede Chelsea boots',image:'assets/look-224-navy-blazer-grey-tee-dark-denim-brown-suede.png?v=1',formal:3,badges:['Dinner','Weekend'],pieces:['navy-blazer','grey-tee','dark-denim','owned-darkbrown-suede-chelsea']}
+,{id:'look-233',publishedOn:'2026-11-23',family:'family-look-233',name:'Taupe blazer + green crewneck + pale blue shirt + dark trousers + brown boots',image:'assets/look-225-taupe-blazer-green-knit-shirt-dark-trousers-brown.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['taupe-blazer','owned-green-crewneck','light-blue-dress-shirt','dark-charcoal-dress-trousers','brown-chelsea']}
+,{id:'look-234',publishedOn:'2026-11-23',family:'family-look-234',name:'Navy blazer + light blue shirt + beige chinos + brown loafers',image:'assets/look-226-navy-blazer-lightblue-beige-brown-loafers.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','light-blue-dress-shirt','beige-chinos','brown-belt','brown-loafers']}
+,{id:'look-235',publishedOn:'2026-11-23',family:'family-look-235',name:'Charcoal suit + white shirt + navy tie + black lace-up shoes',image:'assets/look-227-charcoal-suit-white-shirt-navy-tie-black.png?v=1',formal:5,badges:['Office','Formal'],pieces:['grey-blazer','white-shirt','navy-tie','grey-dress-trousers','dark-belt','owned-black-leather-captoe']}
+,{id:'look-236',publishedOn:'2026-11-23',family:'family-look-236',name:'Navy suit + white shirt + black lace-up shoes',image:'assets/look-228-navy-suit-white-shirt-black-laceup.png?v=1',formal:5,badges:['Office','Formal','Dinner'],pieces:['navy-blazer','white-shirt','navy-dress-trousers','dark-belt','owned-black-leather-captoe']}
+,{id:'look-237',publishedOn:'2026-11-23',family:'family-look-237',name:'Navy blazer + light blue shirt + charcoal trousers + black loafers',image:'assets/look-229-navy-blazer-lightblue-charcoal-black-loafers.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','light-blue-dress-shirt','dark-charcoal-dress-trousers','dark-belt','dark-loafers']}
+,{id:'look-238',publishedOn:'2026-11-23',family:'family-look-238',name:'Navy blazer + white shirt + dark trousers + taupe suede Chelsea boots',image:'assets/look-230-navy-blazer-white-shirt-dark-trousers-taupe-boots.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['navy-blazer','white-shirt','dark-charcoal-dress-trousers','dark-belt','tan-chelsea']}
 ],
 pieces:[
 {id:'owned-dark-brown-leather-cafe-racer',name:'Dark brown leather café racer jacket',category:'Outerwear',status:'owned'},
@@ -663,6 +707,12 @@ pieces:[
 {id:'grey-dress-trousers',name:'Grey dress trousers',category:'Pants',status:'missing'},
 {id:'navy-dress-trousers',name:'Navy dress trousers',category:'Pants',status:'owned'},
 {id:'darkbrown-suede-loafers',name:'Dark brown suede loafers',category:'Shoes',status:'missing'}
+,{id:'navy-zip-hoodie',name:'Navy zip-front hoodie',category:'Outerwear',status:'missing'}
+,{id:'olive-henley',name:'Olive green long-sleeve henley',category:'Top',status:'missing'}
+,{id:'grey-overshirt',name:'Grey structured overshirt',category:'Outerwear',status:'missing'}
+,{id:'taupe-blazer',name:'Taupe-brown unstructured blazer',category:'Outerwear',status:'missing'}
+,{id:'navy-cardigan',name:'Navy button cardigan',category:'Outerwear',status:'missing'}
+,{id:'navy-tie',name:'Dark navy silk tie',category:'Accessory',status:'missing'}
 ],
 inspirations:[
 {id:'inspiration-0548',image:'assets/inspiration-0548.jpeg',title:'Warm-weather shorts',summary:'4 complete combinations',status:'Needs individual photos'},

@@ -52,6 +52,15 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'brown-sandals':'assets/wardrobe-standardized/brown-sandals.png?v=1',
 'black-sneakers':'assets/black-sneakers.webp?v=1',
 'offwhite-tee':'assets/offwhite-tee.webp?v=1'
+,'navy-zip-hoodie':'assets/wardrobe-standardized/navy-zip-hoodie.png?v=1'
+,'olive-henley':'assets/wardrobe-standardized/olive-henley.png?v=1'
+,'grey-overshirt':'assets/wardrobe-standardized/grey-overshirt.png?v=1'
+,'taupe-blazer':'assets/wardrobe-standardized/taupe-blazer.png?v=1'
+,'navy-cardigan':'assets/wardrobe-standardized/navy-cardigan.png?v=1'
+,'blue-denim-jacket':'assets/wardrobe-standardized/blue-denim-jacket.png?v=2'
+,'beige-shorts':'assets/wardrobe-standardized/beige-shorts.png?v=1'
+,'olive-shorts':'assets/wardrobe-standardized/olive-shorts.png?v=1'
+,'navy-tie':'assets/wardrobe-standardized/navy-tie.png?v=1'
 });
 
 Object.assign(window.FITS_CATALOG_IMAGES, {
