@@ -17,7 +17,7 @@
     'wardrobe-canonical-v2.js?v=5',
     'look-aliases.js?v=1',
     'wardrobe-normalize.js?v=1',
-    'wardrobe-redundancy.js?v=8',
+    'wardrobe-redundancy.js?v=9',
     'wardrobe-draft-prune.js?v=3',
     // Approved looks, families and ownership
     'approved-look-12.js?v=2',
@@ -41,7 +41,7 @@
     // Garment groups for the Wardrobe and Looks filters (FITS_KINDS)
     'garment-kinds.js?v=5',
     // Piece image maps (window.FITS_CATALOG_IMAGES)
-    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=25'
+    'catalog-images.js?v=2','catalog-batch2.js?v=2','catalog-batch3.js?v=2','catalog-v4.js?v=26'
   ];
   window.FITS_PIPELINE=steps;
   if(typeof document!=='undefined'&&typeof document.write==='function')

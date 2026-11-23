@@ -14,11 +14,11 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 'black-chelsea':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214156_c074d0d5-0424-43ca-b97a-036b43a05db0_min.webp',
 'charcoal-overcoat':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214156_9230dfea-cfda-4d36-bacd-fd33d4a15750_min.webp',
 'navy-crewneck':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214230_fb85873b-94c0-4407-a32a-3de7d9bc1f43_min.webp',
-'brown-leather-jacket':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214230_6d18d31c-d5fb-4861-abfb-3f48cf7021d4_min.webp',
+'brown-leather-jacket':'assets/wardrobe-standardized/brown-leather-jacket.png?v=1',
 'black-turtleneck':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214231_48136002-4097-449f-af6e-21782fa1dcee_min.webp',
 'brown-chelsea':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214231_9af2c3bf-ab66-4030-b8a0-5e6b93c137dd_min.webp',
-'beige-blazer':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214231_f76b34aa-15c1-45b7-b2ec-81f2f50a1f5f_min.webp',
-'tan-suede-derbies':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214231_9ba9bd4e-11f3-4e3e-98fb-7ef1d409b343_min.webp',
+'beige-blazer':'assets/wardrobe-standardized/beige-blazer.png?v=1',
+'tan-suede-derbies':'assets/wardrobe-standardized/tan-suede-derbies.png?v=1',
 'grey-blazer':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214329_ed74ae11-a2ed-4871-94a9-92fcf3522c0d_min.webp',
 'navy-cardigan':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214259_58787045-0e40-41a1-ac59-caa13ec605e2_min.webp',
 'olive-henley':'https://d8j0ntlcm91z4.cloudfront.net/user_3CUt7UpZE1V87ctJC99CMT6AYSe/hf_20260911_214259_000a2ac7-c04d-4ca5-ba8b-9f173c12704d_min.webp',
@@ -58,7 +58,6 @@ Object.assign(window.FITS_CATALOG_IMAGES,{
 ,'taupe-blazer':'assets/wardrobe-standardized/taupe-blazer.png?v=1'
 ,'navy-cardigan':'assets/wardrobe-standardized/navy-cardigan.png?v=1'
 ,'blue-denim-jacket':'assets/wardrobe-standardized/blue-denim-jacket.png?v=2'
-,'beige-shorts':'assets/wardrobe-standardized/beige-shorts.png?v=1'
 ,'olive-shorts':'assets/wardrobe-standardized/olive-shorts.png?v=1'
 ,'navy-tie':'assets/wardrobe-standardized/navy-tie.png?v=1'
 });
