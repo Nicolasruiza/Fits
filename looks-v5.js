@@ -133,7 +133,7 @@
     const variants=more?`<span class="v5-variants" aria-label="${more} more ${more===1?'variant':'variants'}">${I.stack}+${more}</span>`:'';
     return `<div class="v5-card-wrap"><a class="v5-card" href="${esc(V.detailHref(l))}" data-action="open-look" aria-label="${esc(l.name)}">
       <img src="${esc(l.image)}" alt="${esc(l.name)}" loading="lazy" onerror="this.classList.add('is-broken')">
-      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${variants}${needs}</a>${extra}</div>`;
+      <span class="v5-feel ${cls}">${f.toUpperCase()}</span>${l.isNew?'<span class="v5-new">NEW</span>':''}${variants}${needs}</a>${extra}</div>`;
   }
   function favRow(cards){
     if(!cards.length)return'';
