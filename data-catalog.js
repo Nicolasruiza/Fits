@@ -275,6 +275,7 @@ families:[
 ,{id:'family-look-244',name:'Brown leather jacket + black turtleneck + beige chinos',hero:'look-244',looks:['look-244']}
 ,{id:'family-look-245',name:'Navy cardigan + light blue Oxford + light grey chinos',hero:'look-245',looks:['look-245']}
 ,{id:'family-look-246',name:'Grey henley + dark chinos + taupe sneakers',hero:'look-246',looks:['look-246']}
+,{id:'family-look-247',name:'Beige blazer + white shirt + navy chinos',hero:'look-247',looks:['look-247']}
 ],
 looks:[
 {id:'look-blue-microstripe-waistcoat-navy-dress-burgundy-tie',family:'family-blue-microstripe-waistcoat-navy-dress-trousers',name:'Blue micro-stripe waistcoat + burgundy tie + navy dress trousers',image:'assets/look-blue-microstripe-waistcoat-navy-dress-burgundy-tie.webp?v=1',publishedOn:'2026-11-10',formal:4,badges:['Office','Dinner'],pieces:['owned-blue-tailored-waistcoat','white-shirt','owned-dark-burgundy-silk-tie','navy-dress-trousers','owned-brown-leather-captoe']},
@@ -571,6 +572,7 @@ looks:[
 ,{id:'look-244',publishedOn:'2026-11-23',family:'family-look-244',name:'Brown leather jacket + black turtleneck + beige chinos + brown Chelsea boots',image:'assets/look-244-brown-leather-jacket-black-turtleneck-beige-brown-chelsea.png?v=1',formal:3,badges:['Dinner','Weekend'],pieces:['brown-leather-jacket','black-turtleneck','beige-chinos','brown-chelsea']}
 ,{id:'look-245',publishedOn:'2026-11-23',family:'family-look-245',name:'Navy cardigan + light blue Oxford + light grey chinos + taupe suede sneakers',image:'assets/look-245-navy-cardigan-lightblue-lightgrey-taupe-sneakers.png?v=1',formal:2,badges:['Office','Weekend','Travel'],pieces:['navy-cardigan','light-blue-oxford','light-grey-trousers','taupe-suede-shoes']}
 ,{id:'look-246',publishedOn:'2026-11-23',family:'family-look-246',name:'Grey henley + dark chinos + taupe suede sneakers',image:'assets/look-246-grey-henley-dark-chinos-taupe-sneakers.png?v=1',formal:1,badges:['Weekend','Travel'],pieces:['grey-henley','dark-chinos','taupe-suede-shoes']}
+,{id:'look-247',publishedOn:'2026-11-23',family:'family-look-247',name:'Beige blazer + white shirt + navy chinos + tan suede derbies',image:'assets/look-247-beige-blazer-white-shirt-navy-chinos-tan-derbies.png?v=1',formal:4,badges:['Office','Dinner'],pieces:['beige-blazer','white-shirt','navy-trousers','brown-belt','tan-suede-derbies']}
 ],
 pieces:[
 {id:'owned-dark-brown-leather-cafe-racer',name:'Dark brown leather café racer jacket',category:'Outerwear',status:'owned'},
@@ -629,12 +631,14 @@ pieces:[
 {id:'white-leather-sneakers',name:'White leather sneakers',category:'Shoes',status:'owned'},
 {id:'navy-leather-sneakers',name:'Navy blue sneakers',category:'Shoes',status:'owned'},
 {id:'tan-chelsea',name:'Tan suede Chelsea boots',category:'Shoes',status:'missing'},
+{id:'tan-suede-derbies',name:'Tan suede derby shoes',category:'Shoes',status:'missing'},
 {id:'brown-chelsea',name:'Dark brown leather Chelsea boots',category:'Shoes',status:'owned'},
 {id:'black-chelsea',name:'Black leather Chelsea boots',category:'Shoes',status:'missing'},
 {id:'taupe-suede-shoes',name:'Taupe suede sneakers',category:'Shoes',status:'owned'},
 {id:'brown-belt',name:'Brown belt',category:'Accessory',status:'owned'},
 {id:'dark-belt',name:'Dark belt',category:'Accessory',status:'owned'},
 {id:'navy-blazer',name:'Navy blazer',category:'Outerwear',status:'missing'},
+{id:'beige-blazer',name:'Light beige unstructured blazer',category:'Outerwear',status:'missing'},
 {id:'grey-blazer',name:'Grey blazer',category:'Outerwear',status:'missing'},
 {id:'black-blazer',name:'Black tailored blazer',category:'Outerwear',status:'owned'},
 {id:'navy-bomber',name:'Navy casual jacket',category:'Outerwear',status:'missing'},
