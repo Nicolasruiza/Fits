@@ -252,7 +252,7 @@ families:[
 ,{id:'family-look-221',name:'Blue denim jacket + white T-shirt + taupe chinos',hero:'look-221',looks:['look-221']}
 ,{id:'family-look-222',name:'Grey cardigan + grey henley + dark denim',hero:'look-222',looks:['look-222']}
 ,{id:'family-look-223',name:'Navy cardigan + light blue Oxford + camel chinos',hero:'look-223',looks:['look-223']}
-,{id:'family-look-224',name:'Green polo + stone shorts + brown loafers',hero:'look-224',looks:['look-224']}
+,{id:'family-look-224',name:'Green polo + khaki shorts + brown loafers',hero:'look-224',looks:['look-224']}
 ,{id:'family-look-225',name:'Burgundy polo + black trousers + brown loafers',hero:'look-225',looks:['look-225']}
 ,{id:'family-look-226',name:'Off-white T-shirt + olive shorts + brown sandals',hero:'look-226',looks:['look-226']}
 ,{id:'family-look-227',name:'Navy T-shirt + khaki shorts + white sneakers',hero:'look-227',looks:['look-227']}
@@ -549,7 +549,7 @@ looks:[
 ,{id:'look-221',publishedOn:'2026-11-23',family:'family-look-221',name:'Blue denim jacket + white T-shirt + taupe chinos + dark boots',image:'assets/look-213-denim-jacket-white-tee-taupe-dark-boots.png?v=2',formal:1,badges:['Weekend','Travel'],pieces:['blue-denim-jacket','white-tee','taupe-trousers','black-chelsea']}
 ,{id:'look-222',publishedOn:'2026-11-23',family:'family-look-222',name:'Grey cardigan + grey henley + dark denim + brown Chelsea boots',image:'assets/look-214-grey-cardigan-grey-henley-dark-denim-brown.png?v=1',formal:2,badges:['Weekend','Dinner'],pieces:['charcoal-cardigan','grey-henley','dark-denim','brown-chelsea']}
 ,{id:'look-223',publishedOn:'2026-11-23',family:'family-look-223',name:'Navy cardigan + light blue Oxford + camel chinos + brown lace-up shoes',image:'assets/look-215-navy-cardigan-lightblue-camel-brown-laceup.png?v=1',formal:3,badges:['Office','Dinner'],pieces:['navy-cardigan','light-blue-oxford','beige-chinos','brown-belt','owned-brown-leather-captoe']}
-,{id:'look-224',publishedOn:'2026-11-23',family:'family-look-224',name:'Green polo + stone tailored shorts + brown loafers',image:'assets/look-216-green-polo-stone-shorts-brown-loafers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['green-polo','beige-shorts','brown-loafers']}
+,{id:'look-224',publishedOn:'2026-11-23',family:'family-look-224',name:'Green polo + khaki shorts + brown loafers',image:'assets/look-216-green-polo-stone-shorts-brown-loafers.png?v=1',formal:2,badges:['Summer','Weekend','Travel'],pieces:['green-polo','khaki-shorts','brown-loafers']}
 ,{id:'look-225',publishedOn:'2026-11-23',family:'family-look-225',name:'Burgundy polo + black trousers + brown loafers',image:'assets/look-217-burgundy-polo-black-trousers-brown-loafers.png?v=1',formal:3,badges:['Office','Dinner'],pieces:['burgundy-polo','black-dress-trousers','brown-belt','brown-loafers']}
 ,{id:'look-226',publishedOn:'2026-11-23',family:'family-look-226',name:'Off-white T-shirt + olive shorts + brown sandals',image:'assets/look-218-offwhite-tee-olive-shorts-brown-sandals.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['offwhite-tee','olive-shorts','brown-sandals']}
 ,{id:'look-227',publishedOn:'2026-11-23',family:'family-look-227',name:'Navy T-shirt + khaki shorts + white sneakers',image:'assets/look-219-navy-tee-khaki-shorts-white-sneakers.png?v=1',formal:1,badges:['Summer','Weekend','Travel'],pieces:['navy-tee','khaki-shorts','white-leather-sneakers']}
@@ -649,7 +649,6 @@ pieces:[
 {id:'pink-linen-shirt',name:'Pink linen shirt',category:'Top',status:'owned'},
 {id:'beige-linen-shirt',name:'Beige linen shirt',category:'Top',status:'owned'},
 {id:'navy-linen-shirt',name:'Navy linen shirt',category:'Top',status:'owned'},
-{id:'beige-shorts',name:'Beige tailored shorts',category:'Pants',status:'missing'},
 {id:'denim-shorts',name:'Denim shorts',category:'Pants',status:'missing'},
 {id:'olive-shorts',name:'Olive tailored shorts',category:'Pants',status:'missing'},
 {id:'grey-shorts',name:'Grey tailored shorts',category:'Pants',status:'missing'},
